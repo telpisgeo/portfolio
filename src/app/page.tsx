@@ -146,7 +146,7 @@ export default function Home() {
             © 2010–2026 Тельпіс Георгій
           </p>
           <p className="text-xs text-muted-foreground">
-            V.2.0.1
+            V.1.0.0
           </p>
         </div>
       </footer>
