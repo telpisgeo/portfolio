@@ -1,10 +1,28 @@
 export type Locale = "uk" | "en";
 
-export const translations = {
+export type Company = {
+  name: string;
+  url: string;
+  period: string;
+  description: string;
+  images?: readonly string[];
+};
+
+export type Translation = {
+  role: string;
+  name: string;
+  bio: string;
+  emailButton: string;
+  experienceTitle: string;
+  copyright: string;
+  companies: readonly Company[];
+};
+
+export const translations: Record<Locale, Translation> = {
   uk: {
     role: "Product Designer",
-    name: "Георгій Тельпіс",
-    bio: "Останні декілька років працював над продуктами в сфері EdTech (навчальні платформи, сервіси для створення курсів) та MarTech (маркетингові інструменти, сервіси лідогенерації). З нуля створював дизайн-процеси в командах та впроваджував нові UX-дослідження в бізнес процесах.",
+    name: "Тельпіс Георгій. Продуктовий дизайнер з досвідом роботи в доменах EdTech та MarTech які швидко зростають",
+    bio: "",
     emailButton: "Написати email",
     experienceTitle: "Досвід роботи",
     copyright: "© 2010–2026 Тельпіс Георгій",
@@ -14,24 +32,28 @@ export const translations = {
         url: "https://eschool-ua.com/#/",
         period: "2025 → 2026",
         description: "Платформа для освітян, учнів, батьків та вчителів. Розробив внутрішні навчальні сервіси для учнів, оновив головний сайт проєкту, покращив реєстрацію та запис на заняття до репетиторів.",
+        images: ["/images/works/eschool-promo.png", "/images/works/eschool.webp"],
       },
       {
         name: "Westudy.ua",
         url: "http://westudy.ua/",
         period: "2024 → 2025",
         description: "Платформа для створення курсів для освітян та бізнесу. Оновив інтерфейс створення курсів, email кампаній, вебінарів та бронювання занять. Зупинили відтік існуючих користувачів та залучили нових.",
+        images: ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"],
       },
       {
         name: "Snov.io",
         url: "http://snov.io/",
         period: "2022 → 2025",
         description: "Сервіс для лідогенерації та холодних листів. Запустив систему автоматизації LinkedIn аутрічу, оновив інструменти доставлення емейлів та флоу створення кампаній. Підвищили retention rate продукту.",
+        images: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email.png"],
       },
       {
         name: "SendPulse",
         url: "https://sendpulse.ua/",
         period: "2021 → 2022",
         description: "Інструменти багатоканального маркетингу. Оновив інструмент створення email кампаній, перезапустив партнерську програму, оновив інструменти для створення курсів.",
+        images: ["/images/works/sendpulse-2.webp", "/images/works/sendpulse.webp"],
       },
     ],
   },
@@ -69,4 +91,4 @@ export const translations = {
       },
     ],
   },
-} as const;
+};

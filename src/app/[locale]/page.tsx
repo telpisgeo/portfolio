@@ -1,8 +1,9 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { translations, type Locale } from "@/lib/translations";
 
-const VERSION = "V.1.1.0";
+const VERSION = "V.1.2.0";
 
 export function generateStaticParams() {
   return [{ locale: "uk" }, { locale: "en" }];
@@ -20,12 +21,14 @@ export default async function LocalePage({
   const t = translations[locale as Locale];
   const otherLocale = locale === "uk" ? "en" : "uk";
   const otherLabel = locale === "uk" ? "EN" : "UA";
+  const isUk = locale === "uk";
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-1 flex flex-col items-center justify-center px-6 py-16">
-        <div className="max-w-lg w-full">
+      <main className="flex-1 flex flex-col py-16">
 
+        {/* Intro section */}
+        <div className="max-w-[600px] w-full mx-auto px-6 mb-16">
           <p className="text-sm text-muted-foreground mb-8 tracking-widest uppercase">
             {t.role}
           </p>
@@ -34,11 +37,13 @@ export default async function LocalePage({
             {t.name}
           </h1>
 
-          <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-            {t.bio}
-          </p>
+          {!isUk && t.bio && (
+            <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+              {t.bio}
+            </p>
+          )}
 
-          <div className="flex gap-4 items-center mb-16">
+          <div className="flex gap-4 items-center">
             <a
               href="mailto:gtelpis@gmail.com"
               className={buttonVariants({ variant: "default", size: "lg" })}
@@ -70,15 +75,16 @@ export default async function LocalePage({
               </svg>
             </a>
           </div>
+        </div>
 
-          <div className="space-y-8">
-            <p className="text-xs text-muted-foreground tracking-widest uppercase">
-              {t.experienceTitle}
-            </p>
-
-            <div className="space-y-6">
-              {t.companies.map((company) => (
-                <div key={company.name}>
+        {/* Projects / Experience */}
+        {isUk ? (
+          /* UK: project blocks with images */
+          <div className="flex flex-col gap-16">
+            {t.companies.map((company) => (
+              <div key={company.name}>
+                {/* Text block */}
+                <div className="max-w-[600px] w-full mx-auto px-6 mb-6">
                   <div className="flex justify-between items-baseline mb-1">
                     <a
                       href={company.url}
@@ -94,15 +100,64 @@ export default async function LocalePage({
                     {company.description}
                   </p>
                 </div>
-              ))}
+
+                {/* Images block */}
+                {company.images && company.images.length > 0 && (
+                  <div className="max-w-[1100px] w-full mx-auto px-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {company.images.map((src) => (
+                        <div key={src} className="relative overflow-hidden rounded-md bg-muted">
+                          <Image
+                            src={src}
+                            alt={company.name}
+                            width={1200}
+                            height={800}
+                            className="w-full h-auto"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          /* EN: original experience section */
+          <div className="max-w-[600px] w-full mx-auto px-6">
+            <div className="space-y-8">
+              <p className="text-xs text-muted-foreground tracking-widest uppercase">
+                {t.experienceTitle}
+              </p>
+
+              <div className="space-y-6">
+                {t.companies.map((company) => (
+                  <div key={company.name}>
+                    <div className="flex justify-between items-baseline mb-1">
+                      <a
+                        href={company.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground font-medium hover:text-muted-foreground transition-colors"
+                      >
+                        {company.name}
+                      </a>
+                      <span className="text-sm text-muted-foreground">{company.period}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {company.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+        )}
 
-        </div>
       </main>
 
-      <footer className="px-6 py-6 border-t border-border">
-        <div className="max-w-lg mx-auto flex justify-between items-center">
+      <footer className="px-6 py-6 border-t border-border mt-16">
+        <div className="max-w-[600px] mx-auto flex justify-between items-center">
           <p className="text-xs text-muted-foreground">
             {t.copyright}
           </p>
