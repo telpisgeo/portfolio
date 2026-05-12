@@ -1,5 +1,4 @@
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -26,7 +25,7 @@ export default function Home() {
           <div className="flex gap-4 items-center mb-16">
             <a
               href="mailto:gtelpis@gmail.com"
-              className={cn(buttonVariants({ variant: "default", size: "lg" }), "rounded-full")}
+              className={buttonVariants({ variant: "default", size: "lg" })}
             >
               Написати email
             </a>
