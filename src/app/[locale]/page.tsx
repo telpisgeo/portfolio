@@ -85,7 +85,7 @@ export default async function LocalePage({
               <div key={company.name}>
                 {/* Text block */}
                 <div className="max-w-[600px] w-full mx-auto px-6 mb-6">
-                  <div className="flex justify-between items-baseline mb-1">
+                  <div className="mb-1">
                     <a
                       href={company.url}
                       target="_blank"
@@ -94,7 +94,6 @@ export default async function LocalePage({
                     >
                       {company.name}
                     </a>
-                    <span className="text-sm text-muted-foreground">{company.period}</span>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {company.description}
@@ -104,7 +103,7 @@ export default async function LocalePage({
                 {/* Images block */}
                 {company.images && company.images.length > 0 && (
                   <div className="max-w-[1100px] w-full mx-auto px-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-3">
                       {company.images.map((src) => (
                         <div key={src} className="relative overflow-hidden rounded-md bg-muted">
                           <Image
