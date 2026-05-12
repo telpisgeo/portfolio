@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-sans",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -36,9 +32,9 @@ export default function RootLayout({
   return (
     <html
       lang="uk"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${ibmPlexSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col font-sans">
         {children}
         <Analytics />
         <SpeedInsights />
