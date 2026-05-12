@@ -1,3 +1,6 @@
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -23,7 +26,7 @@ export default function Home() {
           <div className="flex gap-4 items-center mb-16">
             <a
               href="mailto:gtelpis@gmail.com"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-medium rounded-full hover:opacity-80 transition-opacity"
+              className={cn(buttonVariants({ variant: "default", size: "lg" }), "rounded-full")}
             >
               Написати email
             </a>
