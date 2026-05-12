@@ -7,7 +7,7 @@ import "./globals.css";
 const ibmPlexSans = IBM_Plex_Sans({
   variable: "--font-sans",
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {

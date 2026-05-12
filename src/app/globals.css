@@ -35,8 +35,9 @@
   --sidebar-accent-foreground: oklch(0.1500 0 0);
   --sidebar-border: oklch(0.8500 0 0);
   --sidebar-ring: oklch(0.1500 0 0);
-  --font-serif: ui-serif, serif;
-  --font-mono: ui-monospace, monospace;
+  --font-sans: IBM Plex Sans, ui-sans-serif, sans-serif, system-ui;
+  --font-serif: IBM Plex Serif, ui-serif, serif;
+  --font-mono: IBM Plex Mono, ui-monospace, monospace;
   --radius: 0.4rem;
   --shadow-x: 0px;
   --shadow-y: 4px;
@@ -89,8 +90,9 @@
   --sidebar-accent-foreground: oklch(0.9500 0 0);
   --sidebar-border: oklch(0.2200 0 0);
   --sidebar-ring: oklch(0.9500 0 0);
-  --font-serif: ui-serif, serif;
-  --font-mono: ui-monospace, monospace;
+  --font-sans: IBM Plex Sans, ui-sans-serif, sans-serif, system-ui;
+  --font-serif: IBM Plex Serif, ui-serif, serif;
+  --font-mono: IBM Plex Mono, ui-monospace, monospace;
   --radius: 0.4rem;
   --shadow-x: 0px;
   --shadow-y: 6px;
@@ -109,7 +111,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: oklch(0.1200 0 0);
     --foreground: oklch(0.9500 0 0);
     --card: oklch(0.1500 0 0);
