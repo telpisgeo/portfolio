@@ -21,7 +21,6 @@ export default async function LocalePage({
   const t = translations[locale as Locale];
   const otherLocale = locale === "uk" ? "en" : "uk";
   const otherLabel = locale === "uk" ? "EN" : "UA";
-  const isUk = locale === "uk";
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -32,12 +31,6 @@ export default async function LocalePage({
           <h1 className="text-4xl font-medium text-foreground mb-6 leading-tight">
             {t.name}
           </h1>
-
-          {!isUk && t.bio && (
-            <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-              {t.bio}
-            </p>
-          )}
 
           <div className="flex gap-4 items-center">
             <a
@@ -73,81 +66,48 @@ export default async function LocalePage({
           </div>
         </div>
 
-        {/* Projects / Experience */}
-        {isUk ? (
-          /* UK: project blocks with images */
-          <div className="flex flex-col gap-16">
-            {t.companies.map((company) => (
-              <div key={company.name}>
-                {/* Text block */}
-                <div className="w-full max-w-[800px] mx-auto px-6 mb-6" style={{ minWidth: "min(600px, 100%)" }}>
-                  <div className="mb-1">
-                    <a
-                      href={company.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-lg font-medium text-primary hover:text-primary/70 transition-colors"
-                    >
-                      {company.name}
-                    </a>
-                  </div>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {company.description}
-                  </p>
+        {/* Projects */}
+        <div className="flex flex-col gap-16">
+          {t.companies.map((company) => (
+            <div key={company.name}>
+              {/* Text block */}
+              <div className="w-full max-w-[800px] mx-auto px-6 mb-6" style={{ minWidth: "min(600px, 100%)" }}>
+                <div className="mb-1">
+                  <a
+                    href={company.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-medium text-primary hover:text-primary/70 transition-colors"
+                  >
+                    {company.name}
+                  </a>
                 </div>
-
-                {/* Images block */}
-                {company.images && company.images.length > 0 && (
-                  <div className="max-w-[1100px] w-full mx-auto px-6">
-                    <div className="flex flex-col gap-3">
-                      {company.images.map((src) => (
-                        <div key={src} className="relative overflow-hidden rounded-md bg-muted">
-                          <Image
-                            src={src}
-                            alt={company.name}
-                            width={1200}
-                            height={800}
-                            className="w-full h-auto"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {company.description}
+                </p>
               </div>
-            ))}
-          </div>
-        ) : (
-          /* EN: original experience section */
-          <div className="w-full max-w-[800px] mx-auto px-6" style={{ minWidth: "min(600px, 100%)" }}>
-            <div className="space-y-8">
-              <p className="text-xs text-muted-foreground tracking-widest uppercase">
-                {t.experienceTitle}
-              </p>
 
-              <div className="space-y-6">
-                {t.companies.map((company) => (
-                  <div key={company.name}>
-                    <div className="flex justify-between items-baseline mb-1">
-                      <a
-                        href={company.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-lg font-medium text-primary hover:text-primary/70 transition-colors"
-                      >
-                        {company.name}
-                      </a>
-                      <span className="text-sm text-muted-foreground">{company.period}</span>
-                    </div>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      {company.description}
-                    </p>
+              {/* Images block */}
+              {company.images && company.images.length > 0 && (
+                <div className="max-w-[1100px] w-full mx-auto px-6">
+                  <div className="flex flex-col gap-3">
+                    {company.images.map((src) => (
+                      <div key={src} className="relative overflow-hidden rounded-md bg-muted">
+                        <Image
+                          src={src}
+                          alt={company.name}
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
-          </div>
-        )}
+          ))}
+        </div>
 
       </main>
 
