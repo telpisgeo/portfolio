@@ -119,7 +119,7 @@ export default async function LocalePage({
           </div>
         ) : (
           /* EN: original experience section */
-          <div className="max-w-[600px] w-full mx-auto px-6">
+          <div className="w-full max-w-[800px] mx-auto px-6" style={{ minWidth: "min(600px, 100%)" }}>
             <div className="space-y-8">
               <p className="text-xs text-muted-foreground tracking-widest uppercase">
                 {t.experienceTitle}
@@ -133,13 +133,13 @@ export default async function LocalePage({
                         href={company.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary font-medium hover:text-primary/70 transition-colors"
+                        className="text-lg font-medium text-primary hover:text-primary/70 transition-colors"
                       >
                         {company.name}
                       </a>
                       <span className="text-sm text-muted-foreground">{company.period}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
                       {company.description}
                     </p>
                   </div>
