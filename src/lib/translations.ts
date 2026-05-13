@@ -29,7 +29,7 @@ export const translations: Record<Locale, Translation> = {
     companies: [
       {
         name: "Єдина школа",
-        url: "https://eschool-ua.com/#/",
+        url: "https://sitev2.eschool-ua.com",
         period: "2025 → 2026",
         description: "Платформа для освітян, учнів, батьків та вчителів. Розробив внутрішні навчальні сервіси для учнів, оновив головний сайт проєкту, покращив реєстрацію та запис на заняття до репетиторів.",
         images: ["/images/works/eschool-promo.png", "/images/works/eschool.webp"],
@@ -67,7 +67,7 @@ export const translations: Record<Locale, Translation> = {
     companies: [
       {
         name: "Yedyna Shkola",
-        url: "https://eschool-ua.com/#/",
+        url: "https://sitev2.eschool-ua.com",
         period: "2025 → 2026",
         description: "Platform for educators, students, parents, and teachers. Designed internal learning features for students, updated the main project website, improved registration and booking flow for tutors.",
         images: ["/images/works/eschool-promo.png", "/images/works/eschool.webp"],
