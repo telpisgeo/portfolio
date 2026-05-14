@@ -27,7 +27,7 @@ export const translations: Record<Locale, Translation> = {
     bio: "",
     emailButton: "Написати email",
     cvButton: "Скачати CV",
-    cvUrl: "https://www.notion.so/telpis/CV-Product-Designer-360c4695d7af811ba2d4ff5a2b322d8b",
+    cvUrl: "/cv-telpis-ua.pdf",
     experienceTitle: "Досвід роботи",
     copyright: "© 2010–2026 Тельпіс Георгій",
     companies: [

@@ -42,9 +42,10 @@ export default async function LocalePage({
 
             <a
               href={t.cvUrl}
-              target="_blank"
+              target={locale === "uk" ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className={buttonVariants({ variant: "outline", size: "lg" })}
+              download={locale === "uk" ? "cv-telpis-ua.pdf" : undefined}
+              className="inline-flex items-center justify-center h-9 px-4 rounded-md border border-border bg-background text-sm font-medium text-foreground hover:bg-muted transition-colors whitespace-nowrap"
             >
               {t.cvButton}
             </a>
