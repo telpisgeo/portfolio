@@ -32,12 +32,21 @@ export default async function LocalePage({
             {t.name}
           </h1>
 
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center flex-wrap">
             <a
               href="mailto:gtelpis@gmail.com"
               className={buttonVariants({ variant: "default", size: "lg" })}
             >
               {t.emailButton}
+            </a>
+
+            <a
+              href={t.cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ variant: "outline", size: "lg" })}
+            >
+              {t.cvButton}
             </a>
 
             <a

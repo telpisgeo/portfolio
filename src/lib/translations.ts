@@ -13,6 +13,8 @@ export type Translation = {
   name: string;
   bio: string;
   emailButton: string;
+  cvButton: string;
+  cvUrl: string;
   experienceTitle: string;
   copyright: string;
   companies: readonly Company[];
@@ -24,6 +26,8 @@ export const translations: Record<Locale, Translation> = {
     name: "Тельпіс Георгій. Продуктовий дизайнер з досвідом роботи в доменах EdTech та MarTech які швидко зростають",
     bio: "",
     emailButton: "Написати email",
+    cvButton: "Скачати CV",
+    cvUrl: "https://www.notion.so/telpis/CV-Product-Designer-360c4695d7af811ba2d4ff5a2b322d8b",
     experienceTitle: "Досвід роботи",
     copyright: "© 2010–2026 Тельпіс Георгій",
     companies: [
@@ -62,6 +66,8 @@ export const translations: Record<Locale, Translation> = {
     name: "Georgiy Telpis. Product Designer with experience in fast-growing EdTech and MarTech domains",
     bio: "",
     emailButton: "Send email",
+    cvButton: "Download CV",
+    cvUrl: "https://www.notion.so/360c4695d7af8194aa61d536582845a9",
     experienceTitle: "Work Experience",
     copyright: "© 2010–2026 Georgiy Telpis",
     companies: [
