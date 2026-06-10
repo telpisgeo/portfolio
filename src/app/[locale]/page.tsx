@@ -276,7 +276,7 @@ export default async function LocalePage({
             {/* CV download button */}
             <div className="pt-6">
               <a
-                href="/cv-telpis-ua.pdf"
+                href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
                 download
                 className="inline-flex items-center gap-2 text-sm text-foreground border border-border rounded-full px-5 py-2.5 hover:bg-foreground hover:text-background transition-colors"
               >
