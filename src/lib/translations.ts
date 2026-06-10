@@ -141,7 +141,7 @@ export const translations: Record<Locale, Translation> = {
         description:
           "Запустив з командою систему автоматизації LinkedIn аутрічу, оновили інструменти для доставлення емейлів, флоу створення емейл кампаній. Підвищили retention rate продукту, кількість успішно створених кампаній та багато іншого.",
         tools: "Figma, HotJar, Amplitude",
-        images: ["/images/works/snov/snov-linkedin-settings.png", "/images/works/snov/snov-email-promo.png"],
+        images: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png"],
         subcases: [
           { name: "LinkedIn автоматизація", slug: "snov-linkedin" },
           { name: "Більше успішних кампаній", slug: "snov-email" },
@@ -348,7 +348,7 @@ export const translations: Record<Locale, Translation> = {
         siteUrl: "http://snov.io/",
         siteLabel: "Відкрити сайт",
         blocks: [
-          { type: "image", src: "/images/works/snov/snov-linkedin-settings.png", alt: "LinkedIn автоматизація" },
+          { type: "image", src: "/images/works/snov-linkedin-settings.png", alt: "LinkedIn автоматизація" },
           { type: "h3", text: "Мета:" },
           { type: "ul", items: [
             "Залучити користувачів які використовують лише лідогенерацію з LinkedIn",
@@ -410,7 +410,7 @@ export const translations: Record<Locale, Translation> = {
         siteUrl: "http://snov.io/",
         siteLabel: "Відкрити сайт",
         blocks: [
-          { type: "image", src: "/images/works/snov/snov-email-promo.png", alt: "Більше успішних кампаній" },
+          { type: "image", src: "/images/works/snov-email-promo.png", alt: "Більше успішних кампаній" },
           { type: "h3", text: "Мета:" },
           { type: "ul", items: ["Збільшити кількість успішно створених кампаній користувачами"] },
           { type: "h3", text: "Результати:" },
@@ -608,7 +608,7 @@ export const translations: Record<Locale, Translation> = {
         description:
           "Launched LinkedIn outreach automation with the team, updated email deliverability tools and campaign creation flows. Improved the product's retention rate, increased successful campaign numbers, and more.",
         tools: "Figma, HotJar, Amplitude",
-        images: ["/images/works/snov/snov-linkedin-settings.png", "/images/works/snov/snov-email-promo.png"],
+        images: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png"],
         subcases: [
           { name: "LinkedIn Automation", slug: "snov-linkedin" },
           { name: "More Successful Campaigns", slug: "snov-email" },
@@ -817,7 +817,7 @@ export const translations: Record<Locale, Translation> = {
         siteUrl: "http://snov.io/",
         siteLabel: "Visit website",
         blocks: [
-          { type: "image", src: "/images/works/snov/snov-linkedin-settings.png", alt: "LinkedIn Automation" },
+          { type: "image", src: "/images/works/snov-linkedin-settings.png", alt: "LinkedIn Automation" },
           { type: "h3", text: "Goals:" },
           { type: "ul", items: [
             "Attract users who rely solely on LinkedIn for lead generation",
@@ -879,7 +879,7 @@ export const translations: Record<Locale, Translation> = {
         siteUrl: "http://snov.io/",
         siteLabel: "Visit website",
         blocks: [
-          { type: "image", src: "/images/works/snov/snov-email-promo.png", alt: "More Successful Campaigns" },
+          { type: "image", src: "/images/works/snov-email-promo.png", alt: "More Successful Campaigns" },
           { type: "h3", text: "Goal:" },
           { type: "ul", items: ["Increase the number of successfully created campaigns by new users"] },
           { type: "h3", text: "Results:" },
