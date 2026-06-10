@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const greetings = ["Привіт", "Hello", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", "Witaj", "Ahoj", "Sveiki"];
+const greetingsUk = ["Привіт", "Hello", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", "Witaj", "Ahoj", "Sveiki"];
+const greetingsEn = ["Hello", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", "Sveiki"];
 
 type HeroProps = {
   locale: string;
@@ -11,11 +12,12 @@ type HeroProps = {
 
 export default function Hero({ locale }: HeroProps) {
   const isUk = locale === "uk";
-  const [greeting, setGreeting] = useState("Привіт");
+  const [greeting, setGreeting] = useState(isUk ? "Привіт" : "Hello");
 
   useEffect(() => {
-    setGreeting(greetings[Math.floor(Math.random() * greetings.length)]);
-  }, []);
+    const list = isUk ? greetingsUk : greetingsEn;
+    setGreeting(list[Math.floor(Math.random() * list.length)]);
+  }, [isUk]);
 
   return (
     <section className="relative bg-[#4f2a16] overflow-hidden" style={{ minHeight: "calc(100vh - 64px)" }}>
