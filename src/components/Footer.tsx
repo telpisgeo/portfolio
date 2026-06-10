@@ -9,7 +9,7 @@ type FooterProps = {
   copyright: string;
 };
 
-export default function Footer({ locale, otherLocale, otherLabel, copyright }: FooterProps) {
+export default function Footer({ locale, copyright }: FooterProps) {
   return (
     <footer className="py-8 border-t border-border">
       <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-12 flex flex-wrap justify-between items-center gap-4">
@@ -23,12 +23,6 @@ export default function Footer({ locale, otherLocale, otherLabel, copyright }: F
           </Link>
         </div>
         <div className="flex items-center gap-5">
-          <Link
-            href={`/${otherLocale}`}
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {otherLabel}
-          </Link>
           <a
             href="https://www.linkedin.com/in/georgiy-telpis-229bbb47/"
             target="_blank"
