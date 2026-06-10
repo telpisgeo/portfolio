@@ -51,7 +51,7 @@ export default function Navbar({
             onClick={() => setMenuOpen(false)}
           >
             <span className={`text-sm font-medium ${text} leading-tight`}>
-              Тельпіс Георгій
+              {locale === "uk" ? "Тельпіс Георгій" : "Georgiy Telpis"}
             </span>
           </Link>
         ) : (
