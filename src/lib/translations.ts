@@ -149,18 +149,6 @@ export const translations: Record<Locale, Translation> = {
           { name: "Перевірка доставлення", slug: "snov-deliverability" },
         ],
       },
-      {
-        name: "SendPulse",
-        url: "https://sendpulse.ua/",
-        period: "2021 → 2022",
-        productType: "Мультиканальна платформа маркетингової автоматизації",
-        role: "UI/UX Designer",
-        icon: "/images/icons/sendpulse.svg",
-        description:
-          "Оновлення інструменту створення емейл кампаній, перезапустив партнерську програму, оновив інструменти для створення курсів та інше.",
-        tools: "Figma, Illustrator, Google Analytics, Miro",
-        images: ["/images/works/sendpulse-2.webp", "/images/works/sendpulse.webp"],
-      },
     ],
     cases: {
       eschool: {
@@ -615,18 +603,6 @@ export const translations: Record<Locale, Translation> = {
           { name: "Email Settings", slug: "snov-email-settings" },
           { name: "Deliverability Check", slug: "snov-deliverability" },
         ],
-      },
-      {
-        name: "SendPulse",
-        url: "https://sendpulse.ua/",
-        period: "2021 → 2022",
-        productType: "Multi-channel marketing automation platform",
-        role: "UI/UX Designer",
-        icon: "/images/icons/sendpulse.svg",
-        description:
-          "Updated the email campaign builder, relaunched the partner program, and updated course creation tools.",
-        tools: "Figma, Illustrator, Google Analytics, Miro",
-        images: ["/images/works/sendpulse-2.webp", "/images/works/sendpulse.webp"],
       },
     ],
     cases: {
