@@ -16,6 +16,11 @@ function safeEqual(a: string, b: string): boolean {
   return timingSafeEqual(ba, bb);
 }
 
+function validateImagePath(img: unknown): string | null {
+  if (typeof img !== "string" || !IMAGE_PATH_RE.test(img)) return `Невірний шлях: ${img}`;
+  return null;
+}
+
 function validateContent(content: unknown): string | null {
   if (!content || typeof content !== "object") return "Невірна структура";
   const c = content as Record<string, unknown>;
@@ -27,9 +32,17 @@ function validateContent(content: unknown): string | null {
       const co = company as Record<string, unknown>;
       if (!ALLOWED_SLUGS.includes(co.slug as string)) return `Невідомий slug: ${co.slug}`;
       if (typeof co.description !== "string" || co.description.length > 2000) return "Опис занадто довгий";
-      if (!Array.isArray(co.images)) return "images має бути масивом";
-      for (const img of co.images as unknown[]) {
-        if (typeof img !== "string" || !IMAGE_PATH_RE.test(img)) return `Невірний шлях: ${img}`;
+      if (!Array.isArray(co.imageRows)) return "imageRows має бути масивом";
+      for (const row of co.imageRows as unknown[]) {
+        if (Array.isArray(row)) {
+          for (const img of row as unknown[]) {
+            const err = validateImagePath(img);
+            if (err) return err;
+          }
+        } else {
+          const err = validateImagePath(row);
+          if (err) return err;
+        }
       }
     }
   }

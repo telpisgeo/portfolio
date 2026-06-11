@@ -62,7 +62,7 @@ export default async function LocalePage({
     const slug = slugMap[company.name];
     const override = slug ? localeContent.companies.find((c) => c.slug === slug) : null;
     if (!override) return company;
-    return { ...company, description: override.description, images: override.images, imageRows: undefined };
+    return { ...company, description: override.description, imageRows: override.imageRows as typeof company.imageRows };
   });
 
   return (
