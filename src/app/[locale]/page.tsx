@@ -6,6 +6,7 @@ import { translations, type Locale } from "@/lib/translations";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import OtherProjects from "@/components/OtherProjects";
 
 
 export function generateStaticParams() {
@@ -35,7 +36,7 @@ export async function generateMetadata({
         : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
       locale: isUk ? "uk_UA" : "en_US",
       type: "website",
-      images: [{ url: "/og-image.png", width: 1200, height: 628 }],
+      images: [{ url: isUk ? "/og-image-ua.png" : "/og-image-en.png", width: 1200, height: 628 }],
     },
   };
 }
@@ -165,6 +166,8 @@ export default async function LocalePage({
             </div>
           ))}
         </div>
+
+        <OtherProjects locale={locale} />
 
       </main>
 
