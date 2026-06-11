@@ -185,7 +185,7 @@ export default async function LocalePage({
       </main>
 
       {/* About section */}
-      <section id="about" className="mt-16 pt-16 pb-16 bg-[#fdf8e7] dark:bg-[#1a1710]">
+      <section id="about" className="mt-16 pt-16 pb-16 bg-[#fdf8e7]">
         <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-12">
 
           <h2 className="text-4xl font-medium text-foreground mb-16 leading-tight">
