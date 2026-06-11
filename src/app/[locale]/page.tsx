@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
+import siteContent from "@/data/content.json";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
@@ -54,6 +55,16 @@ export default async function LocalePage({
   const otherLocale = locale === "uk" ? "en" : "uk";
   const otherLabel = locale === "uk" ? "EN" : "UA";
 
+  // Merge editable content from content.json
+  const localeContent = siteContent[locale as "uk" | "en"];
+  const companies = t.companies.map((company) => {
+    const slugMap: Record<string, string> = { "Єдина школа": "eschool", "Yedyna Shkola": "eschool", "Westudy.ua": "westudy", "Snov.io": "snovio" };
+    const slug = slugMap[company.name];
+    const override = slug ? localeContent.companies.find((c) => c.slug === slug) : null;
+    if (!override) return company;
+    return { ...company, description: override.description, images: override.images };
+  });
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar
@@ -72,7 +83,7 @@ export default async function LocalePage({
 
         {/* Projects */}
         <div id="works" className="flex flex-col gap-24">
-          {t.companies.map((company) => (
+          {companies.map((company) => (
             <div key={company.name} className="max-w-[1440px] w-full mx-auto px-6 sm:px-12">
 
               {/* Header row: icon placeholder + name + type */}
