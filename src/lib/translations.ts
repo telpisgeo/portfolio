@@ -23,6 +23,7 @@ export type Company = {
   description: string;
   tools?: string;
   images?: readonly string[];
+  imageRows?: ReadonlyArray<string | readonly string[]>;
   subcases?: readonly SubCase[];
 };
 
@@ -141,7 +142,7 @@ export const translations: Record<Locale, Translation> = {
         description:
           "Запустив з командою систему автоматизації LinkedIn аутрічу, оновили інструменти для доставлення емейлів, флоу створення емейл кампаній. Підвищили retention rate продукту, кількість успішно створених кампаній та багато іншого.",
         tools: "Figma, HotJar, Amplitude",
-        images: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", "/images/works/snov-project01.webp", "/images/works/snov-project02.webp"],
+        imageRows: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", ["/images/works/snov-project01.webp", "/images/works/snov-project02.webp"] as const, "/images/works/snov-project03.webp"],
         subcases: [
           { name: "LinkedIn автоматизація", slug: "snov-linkedin" },
           { name: "Більше успішних кампаній", slug: "snov-email" },
@@ -596,7 +597,7 @@ export const translations: Record<Locale, Translation> = {
         description:
           "Launched LinkedIn outreach automation with the team, updated email deliverability tools and campaign creation flows. Improved the product's retention rate, increased successful campaign numbers, and more.",
         tools: "Figma, HotJar, Amplitude",
-        images: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", "/images/works/snov-project01.webp", "/images/works/snov-project02.webp"],
+        imageRows: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", ["/images/works/snov-project01.webp", "/images/works/snov-project02.webp"] as const, "/images/works/snov-project03.webp"],
         subcases: [
           { name: "LinkedIn Automation", slug: "snov-linkedin" },
           { name: "More Successful Campaigns", slug: "snov-email" },

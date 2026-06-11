@@ -109,18 +109,22 @@ export default async function LocalePage({
               </div>
 
               {/* Screenshots */}
-              {company.images && company.images.length > 0 && (
+              {(company.imageRows ?? company.images) && (
                 <div className="flex flex-col gap-3 mb-4">
-                  {company.images.map((src) => (
-                    <div key={src} className="relative overflow-hidden rounded-[8px] bg-muted">
-                      <Image
-                        src={src}
-                        alt={company.name}
-                        width={1200}
-                        height={800}
-                        className="w-full h-auto"
-                      />
-                    </div>
+                  {(company.imageRows ?? company.images!.map(s => s)).map((row, i) => (
+                    Array.isArray(row) ? (
+                      <div key={i} className="grid grid-cols-2 gap-3">
+                        {(row as string[]).map((src) => (
+                          <div key={src} className="relative overflow-hidden rounded-[8px] bg-muted">
+                            <Image src={src} alt={company.name} width={600} height={400} className="w-full h-auto" />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div key={row as string} className="relative overflow-hidden rounded-[8px] bg-muted">
+                        <Image src={row as string} alt={company.name} width={1200} height={800} className="w-full h-auto" />
+                      </div>
+                    )
                   ))}
                 </div>
               )}
