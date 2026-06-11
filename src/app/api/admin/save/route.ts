@@ -1,22 +1,60 @@
 import { NextRequest, NextResponse } from "next/server";
+import { timingSafeEqual } from "crypto";
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "admin123";
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN ?? "";
 const GITHUB_REPO = "telpisgeo/portfolio";
 const CONTENT_PATH = "src/data/content.json";
+const IMAGE_PATH_RE = /^\/images\/[A-Za-z0-9_\-./]+\.(webp|png|jpg|jpeg|svg)$/;
+const ALLOWED_SLUGS = ["eschool", "westudy", "snovio"];
+
+function safeEqual(a: string, b: string): boolean {
+  const ba = Buffer.from(a);
+  const bb = Buffer.from(b);
+  if (ba.length !== bb.length) {
+    timingSafeEqual(ba, ba); // consume time
+    return false;
+  }
+  return timingSafeEqual(ba, bb);
+}
+
+function validateContent(content: unknown): string | null {
+  if (!content || typeof content !== "object") return "Невірна структура";
+  const c = content as Record<string, unknown>;
+  for (const locale of ["uk", "en"]) {
+    const loc = c[locale] as Record<string, unknown> | undefined;
+    if (!loc || !Array.isArray(loc.companies)) return `Невірна структура для ${locale}`;
+    for (const company of loc.companies as unknown[]) {
+      if (!company || typeof company !== "object") return "Невірна компанія";
+      const co = company as Record<string, unknown>;
+      if (!ALLOWED_SLUGS.includes(co.slug as string)) return `Невідомий slug: ${co.slug}`;
+      if (typeof co.description !== "string" || co.description.length > 2000) return "Опис занадто довгий";
+      if (!Array.isArray(co.images)) return "images має бути масивом";
+      for (const img of co.images as unknown[]) {
+        if (typeof img !== "string" || !IMAGE_PATH_RE.test(img)) return `Невірний шлях: ${img}`;
+      }
+    }
+  }
+  return null;
+}
 
 export async function POST(req: NextRequest) {
-  const { password, content } = await req.json();
+  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+  const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
-  if (password !== ADMIN_PASSWORD) {
+  if (!ADMIN_PASSWORD) return NextResponse.json({ error: "ADMIN_PASSWORD не налаштований" }, { status: 500 });
+  if (!GITHUB_TOKEN) return NextResponse.json({ error: "GITHUB_TOKEN не налаштований" }, { status: 500 });
+
+  const body = await req.json();
+  const { password, content } = body;
+
+  if (!password || !safeEqual(password, ADMIN_PASSWORD)) {
     return NextResponse.json({ error: "Невірний пароль" }, { status: 401 });
   }
 
-  if (!GITHUB_TOKEN) {
-    return NextResponse.json({ error: "GITHUB_TOKEN не налаштований" }, { status: 500 });
+  const validationError = validateContent(content);
+  if (validationError) {
+    return NextResponse.json({ error: validationError }, { status: 400 });
   }
 
-  // Get current file SHA from GitHub
   const fileRes = await fetch(
     `https://api.github.com/repos/${GITHUB_REPO}/contents/${CONTENT_PATH}`,
     { headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, "User-Agent": "portfolio-admin" } }
@@ -27,9 +65,7 @@ export async function POST(req: NextRequest) {
   }
 
   const fileData = await fileRes.json();
-  const sha = fileData.sha;
 
-  // Update file on GitHub
   const updateRes = await fetch(
     `https://api.github.com/repos/${GITHUB_REPO}/contents/${CONTENT_PATH}`,
     {
@@ -42,7 +78,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         message: "Update site content via admin panel",
         content: Buffer.from(JSON.stringify(content, null, 2)).toString("base64"),
-        sha,
+        sha: fileData.sha,
       }),
     }
   );
