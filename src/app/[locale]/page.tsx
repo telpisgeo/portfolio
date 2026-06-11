@@ -23,16 +23,16 @@ export async function generateMetadata({
   const isUk = locale === "uk";
   return {
     title: isUk
-      ? "Тельпіс Георгій — продуктовий дизайнер"
-      : "Georgiy Telpis — Product Designer",
+      ? "Тельпіс Георгій. Продуктовий дизайнер."
+      : "Georgiy Telpis. Product Designer.",
     description: isUk
-      ? "Продуктовий дизайнер з 8+ роками досвіду в EdTech та MarTech: Єдина школа, Westudy, Snov.io, SendPulse."
-      : "Product designer with 8+ years of experience in EdTech and MarTech: Yedyna Shkola, Westudy, Snov.io, SendPulse.",
+      ? "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу."
+      : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
     openGraph: {
-      title: isUk ? "Тельпіс Георгій — продуктовий дизайнер" : "Georgiy Telpis — Product Designer",
+      title: isUk ? "Тельпіс Георгій. Продуктовий дизайнер." : "Georgiy Telpis. Product Designer.",
       description: isUk
-        ? "Продуктовий дизайнер з 8+ роками досвіду в EdTech та MarTech."
-        : "Product designer with 8+ years of experience in EdTech and MarTech.",
+        ? "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу."
+        : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
       locale: isUk ? "uk_UA" : "en_US",
       type: "website",
       images: [{ url: "/og-image.png", width: 1200, height: 628 }],
