@@ -167,8 +167,6 @@ export default async function LocalePage({
           ))}
         </div>
 
-        <OtherProjects locale={locale} />
-
       </main>
 
       {/* About section */}
