@@ -80,7 +80,20 @@
       "Bash(git remote *)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "mcp__acc9207a-9660-4878-8e96-3b0e03936368__get_project",
+      "Bash(vercel link *)",
+      "Bash(vercel --prod)",
+      "Bash(ls /Users/georgiytelpis/Documents/Portfolio/personal_website/telpis-portfolio/public/images/)",
+      "Bash(cp /Users/georgiytelpis/Documents/Portfolio/personal_website/telpis-portfolio/public/images/features.png /Users/georgiytelpis/Repositories/portfolio-main/public/og-image.png && file /Users/georgiytelpis/Repositories/portfolio-main/public/og-image.png)",
+      "Bash(find /Users/georgiytelpis/Documents/Portfolio/personal_website/telpis-portfolio -name \"*snov*\" 2>/dev/null)",
+      "Bash(brew install *)",
+      "mcp__acc9207a-9660-4878-8e96-3b0e03936368__list_deployments",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(cwebp -q 85 \"/Users/georgiytelpis/Documents/Portfolio/personal_website/telpis-portfolio/screens/snov-project03.png\" -o \"/Users/georgiytelpis/Repositories/portfolio-main/public/images/works/snov-project03.webp\")",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__javascript_tool"
     ]
   },
   "enabledPlugins": {
