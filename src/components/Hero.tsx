@@ -33,8 +33,8 @@ export default function Hero({ locale }: HeroProps) {
           </p>
           <p className="mt-8 text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-[#fef9db] leading-[1.25] max-w-[740px] hero-text-second">
             {isUk
-              ? "Найчастіше, залучаюсь до команд, в яких я перший дизайнер. Використовую сучасні UX фреймворки та роблю AI прототипи для тестування нових ідей в продукті."
-              : "I often join teams as the first designer. I use modern UX frameworks and build AI prototypes to test new product ideas quickly."}
+              ? "Використовую сучасні підходи до проєктування та роблю прототипи з допомогою ШІ для тестування нових ідей в продукті."
+              : "I use modern design practices and build AI prototypes to test new product ideas quickly."}
           </p>
         </div>
 
