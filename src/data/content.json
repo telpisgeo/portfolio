@@ -4,17 +4,28 @@
       {
         "slug": "eschool",
         "description": "Розробка навчальних сервісів для учнів, батьків та вчителів в додатку та веб-версії продукту, спец проєкти всередині платформи, оновив головний сайт платформи, та багато іншого.",
-        "images": ["/images/works/eschool-promo.png", "/images/works/eschool.webp"]
+        "images": [
+          "/images/works/eschool-promo.png",
+          "/images/works/eschool.webp"
+        ]
       },
       {
         "slug": "westudy",
         "description": "Оновив інтерфейс створення курсів, створення емейл кампаній, вебінарів та бронювання занять. Один з самих складних інструментів — це створення власних сайтів для курсів. За допомогою оновлених інструментів, де раніше було маса UX-помилок та проблем, зупинили відтік існуючих користувачів та залучили нових.",
-        "images": ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"]
+        "images": [
+          "/images/works/westudy-editor.webp",
+          "/images/works/westudy-onboarding.png"
+        ]
       },
       {
         "slug": "snovio",
         "description": "Запустив з командою систему автоматизації LinkedIn аутрічу, оновили інструменти для доставлення емейлів, флоу створення емейл кампаній. Підвищили retention rate продукту, кількість успішно створених кампаній та багато іншого.",
-        "images": ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", "/images/works/snov-project01.webp", "/images/works/snov-project02.webp", "/images/works/snov-project03.webp"]
+        "images": [
+          "/images/works/snov-linkedin-settings.png",
+          "/images/works/snov-email-promo.png",
+          "/images/works/snov-project01.webp",
+          "/images/works/snov-project02.webp"
+        ]
       }
     ]
   },
@@ -23,17 +34,29 @@
       {
         "slug": "eschool",
         "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
-        "images": ["/images/works/eschool-promo.png", "/images/works/eschool.webp"]
+        "images": [
+          "/images/works/eschool-promo.png",
+          "/images/works/eschool.webp"
+        ]
       },
       {
         "slug": "westudy",
         "description": "Redesigned the course builder, email campaigns, webinars, and booking flows. One of the most complex tools was the website builder for courses. The updated UX reduced churn and brought in new users.",
-        "images": ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"]
+        "images": [
+          "/images/works/westudy-editor.webp",
+          "/images/works/westudy-onboarding.png"
+        ]
       },
       {
         "slug": "snovio",
         "description": "Launched a LinkedIn outreach automation system with the team, improved email deliverability tooling, and redesigned the email campaign flow. Increased product retention rate and successful campaign creation.",
-        "images": ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", "/images/works/snov-project01.webp", "/images/works/snov-project02.webp", "/images/works/snov-project03.webp"]
+        "images": [
+          "/images/works/snov-linkedin-settings.png",
+          "/images/works/snov-email-promo.png",
+          "/images/works/snov-project01.webp",
+          "/images/works/snov-project02.webp",
+          "/images/works/snov-project03.webp"
+        ]
       }
     ]
   }
