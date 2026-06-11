@@ -36,7 +36,7 @@ export async function generateMetadata({
         : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
       locale: isUk ? "uk_UA" : "en_US",
       type: "website",
-      images: [{ url: isUk ? "/og-image-ua.png" : "/og-image-en.png", width: 1200, height: 628 }],
+      images: [{ url: isUk ? "/og-ua-v2.png" : "/og-en-v2.png", width: 1200, height: 628 }],
     },
   };
 }
