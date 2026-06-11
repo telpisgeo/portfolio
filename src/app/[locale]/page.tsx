@@ -23,18 +23,19 @@ export async function generateMetadata({
   const isUk = locale === "uk";
   return {
     title: isUk
-      ? "Тельпіс Георгій — UX/UI дизайнер"
-      : "Georgiy Telpis — UX/UI Designer",
+      ? "Тельпіс Георгій — продуктовий дизайнер"
+      : "Georgiy Telpis — Product Designer",
     description: isUk
-      ? "Портфоліо UX/UI дизайнера з досвідом у EdTech та MarTech: Єдина школа, Westudy, Snov.io, SendPulse."
-      : "Portfolio of a UX/UI designer with experience in EdTech and MarTech: Yedyna Shkola, Westudy, Snov.io, SendPulse.",
+      ? "Продуктовий дизайнер з 8+ роками досвіду в EdTech та MarTech: Єдина школа, Westudy, Snov.io, SendPulse."
+      : "Product designer with 8+ years of experience in EdTech and MarTech: Yedyna Shkola, Westudy, Snov.io, SendPulse.",
     openGraph: {
-      title: t.name,
+      title: isUk ? "Тельпіс Георгій — продуктовий дизайнер" : "Georgiy Telpis — Product Designer",
       description: isUk
-        ? "Портфоліо UX/UI дизайнера з досвідом у EdTech та MarTech."
-        : "Portfolio of a UX/UI designer with experience in EdTech and MarTech.",
+        ? "Продуктовий дизайнер з 8+ роками досвіду в EdTech та MarTech."
+        : "Product designer with 8+ years of experience in EdTech and MarTech.",
       locale: isUk ? "uk_UA" : "en_US",
       type: "website",
+      images: [{ url: "/og-image.png", width: 1200, height: 628 }],
     },
   };
 }
@@ -94,7 +95,12 @@ export default async function LocalePage({
                   )}
                 </div>
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-lg font-medium text-foreground">{company.name}</span>
+                  <a
+                    href={company.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-medium text-foreground hover:underline underline-offset-2"
+                  >{company.name}</a>
                   {company.productType && (
                     <span className="text-sm text-muted-foreground">{company.productType}</span>
                   )}
