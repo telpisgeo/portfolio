@@ -93,7 +93,13 @@
       "Bash(git stash *)",
       "Bash(cwebp -q 85 \"/Users/georgiytelpis/Documents/Portfolio/personal_website/telpis-portfolio/screens/snov-project03.png\" -o \"/Users/georgiytelpis/Repositories/portfolio-main/public/images/works/snov-project03.webp\")",
       "mcp__Claude_in_Chrome__navigate",
-      "mcp__Claude_in_Chrome__javascript_tool"
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "Bash(curl -I https://telpis.com.ua)",
+      "mcp__Claude_in_Chrome__find",
+      "Bash(cwebp -q 85 '__TRACKED_VAR__/Yedyna school- web-en.png' -o public/images/works/eschool-web-en.webp)",
+      "mcp__Claude_in_Chrome__read_page",
+      "mcp__Claude_in_Chrome__read_network_requests",
+      "Bash(cwebp -q 85 __TRACKED_VAR__/promo-builder-westudy.png -o public/images/works/promo-builder-westudy.webp)"
     ]
   },
   "enabledPlugins": {

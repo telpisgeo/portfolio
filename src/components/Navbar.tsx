@@ -103,6 +103,14 @@ export default function Navbar({
           </Link>
 
           <a
+            href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
+            download
+            className={`hidden md:inline-flex items-center justify-center h-9 px-5 rounded-full border text-sm font-medium transition-colors whitespace-nowrap ${isDark ? "border-[#fef9db]/30 text-[#fef9db] hover:bg-white/10" : "border-border text-foreground hover:bg-muted"}`}
+          >
+            {locale === "uk" ? "Завантажити CV" : "Download CV"}
+          </a>
+
+          <a
             href="mailto:gtelpis@gmail.com"
             className="hidden md:inline-flex items-center justify-center h-9 px-5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/85 transition-colors whitespace-nowrap"
           >
@@ -145,6 +153,14 @@ export default function Navbar({
             onClick={() => setMenuOpen(false)}
           >
             {contactLabel}
+          </a>
+          <a
+            href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
+            download
+            className={`py-3 text-sm font-medium border-b ${dropdownText}`}
+            onClick={() => setMenuOpen(false)}
+          >
+            {locale === "uk" ? "Завантажити CV" : "Download CV"}
           </a>
           <Link
             href={`/${otherLocale}`}

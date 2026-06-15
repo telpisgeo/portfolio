@@ -152,12 +152,6 @@ export default async function LocalePage({
 
                 {/* Right: meta details */}
                 <div className="flex flex-col gap-4 text-sm">
-                  <div>
-                    <p className="text-xs text-muted-foreground/60 uppercase tracking-widest mb-1">
-                      {locale === "uk" ? "Рік" : "Year"}
-                    </p>
-                    <p className="text-foreground">{company.period}</p>
-                  </div>
                   {company.role && (
                     <div>
                       <p className="text-xs text-muted-foreground/60 uppercase tracking-widest mb-1">

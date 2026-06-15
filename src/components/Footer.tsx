@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const VERSION = "V.1.2.0";
 
 type FooterProps = {
@@ -15,12 +13,6 @@ export default function Footer({ locale, copyright }: FooterProps) {
       <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-12 flex flex-wrap justify-between items-center gap-4">
         <div className="flex items-center gap-6">
           <p className="text-xs text-muted-foreground">{copyright}</p>
-          <Link
-            href={`/${locale}/odesa`}
-            className="text-xs text-foreground hover:text-foreground/60 transition-colors"
-          >
-            Перлини Одеси →
-          </Link>
         </div>
         <div className="flex items-center gap-5">
           <a
