@@ -144,9 +144,19 @@ export default async function LocalePage({
 
                 {/* Left: description */}
                 <div className="flex flex-col gap-5">
-                  <p className="text-xl text-foreground/75 leading-relaxed max-w-[620px]">
+                  <p className="text-xl text-foreground/75 leading-relaxed max-w-[920px]">
                     {company.description}
                   </p>
+                  {company.achievements && company.achievements.length > 0 && (
+                    <ul className="flex flex-col gap-2 max-w-[620px]">
+                      {company.achievements.map((a, i) => (
+                        <li key={i} className="flex gap-2.5 text-base text-foreground/70 leading-relaxed">
+                          <span aria-hidden className="text-foreground/40">•</span>
+                          <span>{a}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   {/* Case link hidden for now — re-enable when case page is ready to publish.
                   {company.caseUrl && (
                     <Link
@@ -161,6 +171,14 @@ export default async function LocalePage({
 
                 {/* Right: meta details */}
                 <div className="flex flex-col gap-4 text-sm">
+                  {company.period && (
+                    <div>
+                      <p className="text-xs text-muted-foreground/60 uppercase tracking-widest mb-1">
+                        {locale === "uk" ? "Роки" : "Years"}
+                      </p>
+                      <p className="text-foreground">{company.period}</p>
+                    </div>
+                  )}
                   {company.role && (
                     <div>
                       <p className="text-xs text-muted-foreground/60 uppercase tracking-widest mb-1">

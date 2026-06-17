@@ -12,7 +12,7 @@
       },
       {
         "slug": "westudy",
-        "description": "Оновив інтерфейс створення курсів, створення емейл кампаній, вебінарів та бронювання занять. Один з самих складних інструментів — це створення власних сайтів для курсів. За допомогою оновлених інструментів, де раніше було маса UX-помилок та проблем, зупинили відтік існуючих користувачів та залучили нових.",
+        "description": "Оновив інтерфейс створення курсів, емейл кампаній, вебінарів та бронювання занять. Один з найскладніших інструментів — конструктор власних сайтів для курсів.",
         "imageRows": [
           "/images/works/westudy-editor.webp",
           "/images/works/westudy-onboarding.png"
@@ -20,7 +20,7 @@
       },
       {
         "slug": "snovio",
-        "description": "Запустив з командою систему автоматизації LinkedIn аутрічу, оновили інструменти для доставлення емейлів, флоу створення емейл кампаній. Підвищили retention rate продукту, кількість успішно створених кампаній та багато іншого.",
+        "description": "Запустив з командою систему автоматизації LinkedIn аутрічу, оновив інструменти для доставлення емейлів та флоу створення емейл кампаній.",
         "imageRows": [
           "/images/works/snov-linkedin-settings.png",
           "/images/works/snov-email-promo.png",
@@ -43,14 +43,14 @@
       },
       {
         "slug": "westudy",
-        "description": "Redesigned the course builder, email campaigns, webinars, and booking flows. One of the most complex tools was the website builder for courses. The updated UX reduced churn and brought in new users.",
+        "description": "Redesigned the course builder, email campaigns, webinars, and booking flows. One of the most complex tools was the website builder for courses.",
         "imageRows": [
           "/images/works/promo-builder-westudy.webp"
         ]
       },
       {
         "slug": "snovio",
-        "description": "Launched a LinkedIn outreach automation system with the team, improved email deliverability tooling, and redesigned the email campaign flow. Increased product retention rate and successful campaign creation.",
+        "description": "Launched a LinkedIn outreach automation system with the team, improved email deliverability tooling, and redesigned the email campaign flow.",
         "imageRows": [
           "/images/works/snov-linkedin-settings.png",
           "/images/works/snov-email-promo.png",

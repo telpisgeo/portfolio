@@ -21,6 +21,7 @@ export type Company = {
   role?: string;
   icon?: string;
   description: string;
+  achievements?: readonly string[];
   tools?: string;
   images?: readonly string[];
   imageRows?: ReadonlyArray<string | readonly string[]>;
@@ -111,7 +112,12 @@ export const translations: Record<Locale, Translation> = {
         role: "Product Designer",
         icon: "/images/icons/snovio.svg",
         description:
-          "Запустив з командою систему автоматизації LinkedIn аутрічу, оновили інструменти для доставлення емейлів, флоу створення емейл кампаній. Підвищили retention rate продукту, кількість успішно створених кампаній та багато іншого.",
+          "Запустив з командою систему автоматизації LinkedIn аутрічу, оновив інструменти для доставлення емейлів та флоу створення емейл кампаній.",
+        achievements: [
+          "80% retention після релізу нового інструменту LinkedIn outreach",
+          "На 30% більше успішно створених кампаній після редизайну їх створення",
+          "Удвічі менше звернень до підтримки після редизайну email-налаштувань",
+        ],
         tools: "Figma, HotJar, Amplitude",
         imageRows: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"] as const, "/images/works/snov-campaign-reports.webp"],
         subcases: [
@@ -142,7 +148,12 @@ export const translations: Record<Locale, Translation> = {
         role: "Product Designer",
         icon: "/images/icons/westudy.svg",
         description:
-          "Оновив інтерфейс створення курсів, створення емейл кампаній, вебінарів та бронювання занять. Один з самих складних інструментів — це створення власних сайтів для курсів. За допомогою оновлених інструментів, де раніше було маса UX-помилок та проблем, зупинили відтік існуючих користувачів та залучили нових.",
+          "Оновив інтерфейс створення курсів, емейл кампаній, вебінарів та бронювання занять. Один з найскладніших інструментів — конструктор власних сайтів для курсів.",
+        achievements: [
+          "Зупинив відтік клієнтів після оновлення конструктора сайтів для курсів",
+          "Налагодив дизайн-процеси в команді, впорядкував хаос і впровадив UX-дослідження",
+          "Створив додаток для преміум-клієнтів, яким потрібна була кастомізація за додаткову плату",
+        ],
         tools: "Figma, FigJam, Google Analytics, Affinity Designer",
         images: ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"],
         subcases: [
@@ -505,7 +516,12 @@ export const translations: Record<Locale, Translation> = {
         role: "Product Designer",
         icon: "/images/icons/snovio.svg",
         description:
-          "Launched LinkedIn outreach automation with the team, updated email deliverability tools and campaign creation flows. Improved the product's retention rate, increased successful campaign numbers, and more.",
+          "Launched LinkedIn outreach automation with the team, updated email deliverability tools and campaign creation flows.",
+        achievements: [
+          "80% retention after launching the new LinkedIn outreach tool",
+          "30% more successfully created campaigns after redesigning campaign creation",
+          "Half as many support requests after redesigning email settings",
+        ],
         tools: "Figma, HotJar, Amplitude",
         imageRows: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"] as const, "/images/works/snov-campaign-reports.webp"],
         subcases: [
@@ -536,7 +552,12 @@ export const translations: Record<Locale, Translation> = {
         role: "Product Designer",
         icon: "/images/icons/westudy.svg",
         description:
-          "Redesigned course creation, email campaigns, webinars, and class booking. The most complex part was the custom website builder for courses. Updated tools eliminated major UX issues and reversed user churn.",
+          "Redesigned course creation, email campaigns, webinars, and class booking. The most complex part was the custom website builder for courses.",
+        achievements: [
+          "Stopped customer churn after updating the course website builder",
+          "Set up design processes in the team, brought order to the chaos, and introduced UX research",
+          "Built an add-on for premium clients who needed customization for an extra fee",
+        ],
         tools: "Figma, FigJam, Google Analytics, Affinity Designer",
         images: ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"],
         subcases: [
