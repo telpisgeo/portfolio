@@ -121,7 +121,9 @@
       "Bash(cwebp -q 95 -sharp_yuv '__TRACKED_VAR__/Yedyna school- mob2-ua.png' -o public/images/works/eschool-mob2-ua.webp)",
       "Bash(awk '{print $9, $5}')",
       "Bash(cwebp -lossless '__TRACKED_VAR__/Yedyna school- mob2-en.png' -o public/images/works/eschool-mob2-en.webp)",
-      "Bash(cwebp -lossless '__TRACKED_VAR__/Yedyna school- mob2-ua.png' -o public/images/works/eschool-mob2-ua.webp)"
+      "Bash(cwebp -lossless '__TRACKED_VAR__/Yedyna school- mob2-ua.png' -o public/images/works/eschool-mob2-ua.webp)",
+      "Bash(file __TRACKED_VAR__/footer.png)",
+      "Bash(cwebp -q 92 __TRACKED_VAR__/footer.png -o public/images/footer-illustration.webp)"
     ]
   },
   "enabledPlugins": {
