@@ -6,7 +6,8 @@
         "description": "Розробка навчальних сервісів для учнів, батьків та вчителів в додатку та веб-версії продукту, спец проєкти всередині платформи, оновив головний сайт платформи, та багато іншого.",
         "imageRows": [
           "/images/works/eschool-promo.png",
-          "/images/works/eschool.webp"
+          "/images/works/eschool.webp",
+          "/images/works/eschool-mob2-ua.webp"
         ]
       },
       {
@@ -23,8 +24,8 @@
         "imageRows": [
           "/images/works/snov-linkedin-settings.png",
           "/images/works/snov-email-promo.png",
-          ["/images/works/snov-project01.webp", "/images/works/snov-project02.webp"],
-          "/images/works/snov-report.webp"
+          ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"],
+          "/images/works/snov-campaign-reports.webp"
         ]
       }
     ]
@@ -36,7 +37,8 @@
         "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
         "imageRows": [
           "/images/works/eschool-web-en.webp",
-          "/images/works/eschool-mob-en.webp"
+          "/images/works/eschool-mob-en.webp",
+          "/images/works/eschool-mob2-en.webp"
         ]
       },
       {
@@ -52,8 +54,8 @@
         "imageRows": [
           "/images/works/snov-linkedin-settings.png",
           "/images/works/snov-email-promo.png",
-          ["/images/works/snov-project01.webp", "/images/works/snov-project02.webp"],
-          "/images/works/snov-report.webp"
+          ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"],
+          "/images/works/snov-campaign-reports.webp"
         ]
       }
     ]

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useHideOnScroll } from "@/lib/useHideOnScroll";
 
 type NavbarProps = {
   locale: string;
@@ -13,6 +14,7 @@ type NavbarProps = {
   worksLabel: string;
   aboutLabel: string;
   variant?: "dark" | "light";
+  hideOnScroll?: boolean;
 };
 
 export default function Navbar({
@@ -23,8 +25,10 @@ export default function Navbar({
   worksLabel,
   aboutLabel,
   variant = "dark",
+  hideOnScroll = false,
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const hidden = useHideOnScroll(hideOnScroll) && !menuOpen;
 
   const isDark = variant === "dark";
 
@@ -40,7 +44,9 @@ export default function Navbar({
   const homeLabel = locale === "uk" ? "← Головна" : "← Home";
 
   return (
-    <header className={`sticky top-0 z-50 border-b ${bg}`}>
+    <header
+      className={`sticky top-0 z-40 border-b ${bg} transition-[transform,translate] duration-300 will-change-transform ${hidden ? "-translate-y-full" : "translate-y-0"}`}
+    >
       <nav className="max-w-[1440px] mx-auto px-6 sm:px-12 h-16 flex items-center justify-between gap-4">
 
         {/* Left: back link or name */}

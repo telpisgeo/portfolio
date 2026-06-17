@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
 import siteContent from "@/data/content.json";
@@ -148,6 +147,16 @@ export default async function LocalePage({
                   <p className="text-xl text-foreground/75 leading-relaxed max-w-[620px]">
                     {company.description}
                   </p>
+                  {/* Case link hidden for now — re-enable when case page is ready to publish.
+                  {company.caseUrl && (
+                    <Link
+                      href={company.caseUrl}
+                      className="group inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors w-fit"
+                    >
+                      {locale === "uk" ? "Подивитись кейс" : "View case"}
+                      <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
+                    </Link>
+                  )} */}
                 </div>
 
                 {/* Right: meta details */}

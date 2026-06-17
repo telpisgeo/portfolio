@@ -99,6 +99,7 @@ export default async function CasePage({
         aboutLabel={t.navAboutLabel}
         contactLabel={t.navContactLabel}
         variant="light"
+        hideOnScroll
       />
 
       <main className="flex-1">
