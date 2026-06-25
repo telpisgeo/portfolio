@@ -158,15 +158,6 @@ export default async function LocalePage({
                       ))}
                     </ul>
                   )}
-                  {company.caseUrl && (
-                    <Link
-                      href={company.caseUrl}
-                      className="group inline-flex items-center gap-2 rounded-full bg-[#FFCD00] px-5 py-2.5 text-sm font-medium text-[#181311] hover:bg-[#f0c000] transition-colors w-fit"
-                    >
-                      {locale === "uk" ? "Подивитись кейс" : "View case"}
-                      <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
-                    </Link>
-                  )}
                 </div>
 
                 {/* Right: meta details */}
