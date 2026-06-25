@@ -16,6 +16,7 @@ export type Company = {
   name: string;
   url: string;
   caseUrl?: string;
+  casePending?: boolean;
   period: string;
   productType?: string;
   role?: string;
@@ -157,6 +158,7 @@ export const translations: Record<Locale, Translation> = {
         ],
         tools: "Figma, FigJam, Google Analytics, Affinity Designer",
         images: ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"],
+        casePending: true,
         subcases: [
           { name: "Веб-білдер для сайту", slug: "westudy-website-builder" },
           { name: "Онбординг та підтримка", slug: "westudy-feedback" },
@@ -562,6 +564,7 @@ export const translations: Record<Locale, Translation> = {
         ],
         tools: "Figma, FigJam, Google Analytics, Affinity Designer",
         images: ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"],
+        casePending: true,
         subcases: [
           { name: "Website Builder", slug: "westudy-website-builder" },
           { name: "Onboarding & Support", slug: "westudy-feedback" },

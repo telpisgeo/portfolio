@@ -158,6 +158,11 @@ export default async function LocalePage({
                       ))}
                     </ul>
                   )}
+                  {company.casePending && (
+                    <p className="text-sm text-muted-foreground">
+                      {locale === "uk" ? "Кейс готується до публікації" : "Case coming soon"}
+                    </p>
+                  )}
                   {company.caseUrl && (
                     <div>
                       <Link
