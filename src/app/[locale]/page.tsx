@@ -158,6 +158,19 @@ export default async function LocalePage({
                       ))}
                     </ul>
                   )}
+                  {company.caseUrl && (
+                    <div>
+                      <Link
+                        href={company.caseUrl}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-[#181311] bg-[#FFCD00] rounded-full px-5 py-2.5 hover:bg-[#f0c000] transition-colors"
+                      >
+                        {locale === "uk" ? "Дивитись кейс" : "View case"}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  )}
                 </div>
 
                 {/* Right: meta details */}
