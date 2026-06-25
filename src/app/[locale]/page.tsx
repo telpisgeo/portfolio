@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
 import siteContent from "@/data/content.json";
@@ -157,23 +158,15 @@ export default async function LocalePage({
                       ))}
                     </ul>
                   )}
-                  {/* Case link hidden for now — re-enable when case page is ready to publish.
                   {company.caseUrl && (
                     <Link
                       href={company.caseUrl}
-                      className="group inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors w-fit"
+                      className="group inline-flex items-center gap-2 rounded-full bg-[#FFCD00] px-5 py-2.5 text-sm font-medium text-[#181311] hover:bg-[#f0c000] transition-colors w-fit"
                     >
                       {locale === "uk" ? "Подивитись кейс" : "View case"}
                       <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
                     </Link>
-                  )} */}
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground pt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="9" />
-                      <path d="M12 7v5l3 2" />
-                    </svg>
-                    {locale === "uk" ? "Кейси в процесі наповнення" : "Case studies in progress"}
-                  </div>
+                  )}
                 </div>
 
                 {/* Right: meta details */}

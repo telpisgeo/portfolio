@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon-1">
+<path id="Rectangle 37128" d="M22.2012 31.5C29.5459 31.5001 35.4999 37.4541 35.5 44.7988V98.5H22.6797L13.2578 59.6465L12.9795 58.5H3.13379L9.68848 40.2939C11.5881 35.0177 16.5934 31.5 22.2012 31.5Z" stroke="var(--stroke-0, #171311)" stroke-width="3"/>
+<path id="Rectangle 37131" d="M49.7852 41.5C41.896 41.5 35.5 47.8959 35.5 55.7852V98.5H49.1826L52.5127 72.8076L52.5898 72.2139L53.0537 71.8359L57.0537 68.5859L58.0762 67.7549L59.0322 68.6611L73.0986 82H82.8789L85.2236 79.6553L77.0254 76.9229L76.4258 76.7227L76.1494 76.1533L68.666 60.6865L62.3535 48.9971C59.8595 44.3788 55.0338 41.5002 49.7852 41.5Z" stroke="var(--stroke-0, #171311)" stroke-width="3"/>
+<rect id="Rectangle 37129" x="20.5" y="11.5" width="10" height="15" rx="5" stroke="var(--stroke-0, #171311)" stroke-width="3"/>
+<rect id="Rectangle 37132" x="-1.5" y="1.5" width="10" height="15" rx="5" transform="matrix(-1 0 0 1 49 20)" stroke="var(--stroke-0, #171311)" stroke-width="3"/>
+<rect id="Rectangle 37130" x="1.5" y="1.5" width="97" height="97" rx="14.5" stroke="var(--stroke-0, black)" stroke-width="3"/>
+<path id="Rectangle 37133" d="M100 82H79C70.1634 82 63 89.1634 63 98V100" stroke="var(--stroke-0, black)" stroke-width="3"/>
+</g>
+</svg>

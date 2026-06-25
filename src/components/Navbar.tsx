@@ -13,7 +13,7 @@ type NavbarProps = {
   contactLabel: string;
   worksLabel: string;
   aboutLabel: string;
-  variant?: "dark" | "light";
+  variant?: "dark" | "light" | "case";
   hideOnScroll?: boolean;
 };
 
@@ -32,7 +32,7 @@ export default function Navbar({
 
   const isDark = variant === "dark";
 
-  const bg = isDark ? "bg-[#4f2a16] border-white/10" : "bg-background border-border";
+  const bg = isDark ? "bg-[#4f2a16] border-white/10" : variant === "case" ? "bg-[#FCF9DF] border-border" : "bg-background border-border";
   const dropdownBg = isDark ? "bg-[#4f2a16] border-white/10" : "bg-background border-border";
   const text = isDark ? "text-[#fef9db]" : "text-foreground";
   const textMuted = isDark ? "text-[#fef9db]/70" : "text-foreground/50";
@@ -47,7 +47,7 @@ export default function Navbar({
     <header
       className={`sticky top-0 z-40 border-b ${bg} transition-[transform,translate] duration-300 will-change-transform ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     >
-      <nav className="max-w-[1440px] mx-auto px-6 sm:px-12 h-16 flex items-center justify-between gap-4">
+      <nav className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 h-16 flex items-center justify-between gap-4">
 
         {/* Left: back link or name */}
         {isDark ? (
@@ -83,8 +83,8 @@ export default function Navbar({
           </Link>
         )}
 
-        {/* Center: nav links — hidden on mobile */}
-        <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+        {/* Center: nav links — only when enough space */}
+        <div className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
           <a
             href={`/${locale}#works`}
             className={`px-4 py-2 text-sm font-medium ${textMuted} ${hoverText} transition-colors rounded-full ${hoverBg}`}
@@ -123,9 +123,9 @@ export default function Navbar({
             {contactLabel}
           </a>
 
-          {/* Burger — mobile only */}
+          {/* Burger — until lg */}
           <button
-            className={`md:hidden flex flex-col justify-center items-center w-9 h-9 gap-[5px] rounded-md ${hoverBg} transition-colors`}
+            className={`lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-[5px] rounded-md ${hoverBg} transition-colors`}
             aria-label="Меню"
             onClick={() => setMenuOpen((v) => !v)}
           >
@@ -138,7 +138,7 @@ export default function Navbar({
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className={`md:hidden border-t ${dropdownBg} px-6 py-4 flex flex-col gap-1`}>
+        <div className={`lg:hidden border-t ${dropdownBg} px-6 py-4 flex flex-col gap-1`}>
           <a
             href={`/${locale}#works`}
             className={`py-3 text-sm font-medium border-b ${dropdownText}`}

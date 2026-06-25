@@ -107,6 +107,7 @@ export const translations: Record<Locale, Translation> = {
       {
         name: "Snov.io",
         url: "http://snov.io/",
+        caseUrl: "/uk/cases/snov",
         period: "2022 → 2025",
         productType: "AI платформа лідогенерації та автоматизації аутрічу",
         role: "Product Designer",
@@ -130,7 +131,7 @@ export const translations: Record<Locale, Translation> = {
       {
         name: "Єдина школа",
         url: "https://sitev2.eschool-ua.com",
-        caseUrl: "/uk/cases/eschool",
+        caseUrl: "/uk/cases/eschool-2",
         period: "2025 → 2026",
         productType: "Єдиний простір для вчителів, батьків та дітей",
         role: "Product Designer",
@@ -511,6 +512,7 @@ export const translations: Record<Locale, Translation> = {
       {
         name: "Snov.io",
         url: "http://snov.io/",
+        caseUrl: "/en/cases/snov",
         period: "2022 → 2025",
         productType: "AI-powered lead generation & outreach automation platform",
         role: "Product Designer",
@@ -534,7 +536,7 @@ export const translations: Record<Locale, Translation> = {
       {
         name: "Yedyna Shkola",
         url: "https://sitev2.eschool-ua.com",
-        caseUrl: "/en/cases/eschool",
+        caseUrl: "/en/cases/eschool-2",
         period: "2025 → 2026",
         productType: "A unified space for teachers, parents and children",
         role: "Product Designer",
@@ -554,7 +556,7 @@ export const translations: Record<Locale, Translation> = {
         description:
           "Redesigned course creation, email campaigns, webinars, and class booking. The most complex part was the custom website builder for courses.",
         achievements: [
-          "Stopped customer churn after updating the course website builder",
+          "Reduced customer churn after relaunching the course website builder",
           "Set up design processes in the team, brought order to the chaos, and introduced UX research",
           "Built an add-on for premium clients who needed customization for an extra fee",
         ],
