@@ -167,7 +167,12 @@
       "Bash(sed -i '' 's|/images/works/snov-email-promo\\\\.png|/images/works/snov/snov-email-promo.png|g' src/lib/translations.ts)",
       "Bash(sed -i '' 's|/images/works/snov-deliverability-check\\\\.webp|/images/works/snov/snov-deliverability-check.webp|g' src/lib/translations.ts)",
       "Bash(sed -i '' 's|/images/works/snov-linkedin-analytics\\\\.webp|/images/works/snov/snov-linkedin-analytics.webp|g' src/lib/translations.ts)",
-      "Bash(sed -i '' 's|/images/works/snov-campaign-reports\\\\.webp|/images/works/snov/snov-campaign-reports.webp|g' src/lib/translations.ts)"
+      "Bash(sed -i '' 's|/images/works/snov-campaign-reports\\\\.webp|/images/works/snov/snov-campaign-reports.webp|g' src/lib/translations.ts)",
+      "Bash(sed -i '' 's|/images/works/snov/snov-linkedin-settings\\\\.png|/images/works/snov-linkedin-settings.png|g' src/lib/translations.ts)",
+      "Bash(sed -i '' 's|/images/works/snov/snov-email-promo\\\\.png|/images/works/snov-email-promo.png|g' src/lib/translations.ts)",
+      "Bash(sed -i '' 's|/images/works/snov/snov-deliverability-check\\\\.webp|/images/works/snov-deliverability-check.webp|g' src/lib/translations.ts)",
+      "Bash(sed -i '' 's|/images/works/snov/snov-linkedin-analytics\\\\.webp|/images/works/snov-linkedin-analytics.webp|g' src/lib/translations.ts)",
+      "Bash(sed -i '' 's|/images/works/snov/snov-campaign-reports\\\\.webp|/images/works/snov-campaign-reports.webp|g' src/lib/translations.ts)"
     ]
   },
   "enabledPlugins": {
