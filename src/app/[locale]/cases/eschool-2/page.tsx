@@ -155,13 +155,7 @@ const blocksUk: Block[] = [
         text: "Для учня пропонуємо оцінювати свій стан два рази на тиждень простим опитуванням, як їй в школі, що подобається, що на її погляд корисне, й навпаки.",
         imgLabel: "Рекомендації — опитування",
         imgRatio: "1144/640",
-        imgSrc: "/images/works/eschool/case-app-3.webp",
-      },
-      {
-        text: "Для учня пропонуємо оцінювати свій стан два рази на тиждень простим опитуванням, як їй в школі, що подобається, що на її погляд корисне, й навпаки.",
-        imgLabel: "Рекомендації — опитування 2",
-        imgRatio: "1144/640",
-        imgSrc: "/images/works/eschool/case-app-3-2.webp",
+        imgSrc: "/images/works/eschool/case-app-3-1.webp",
       },
     ],
   },
@@ -196,7 +190,7 @@ const blocksEn: Block[] = [
     caption: "About the product",
     statement:
       "Yedyna Shkola is a free platform for public schools and a paid platform for private educational institutions.",
-    img: { label: "Yedyna school — promo", ratio: "1144/658", src: "/images/works/eschool/case-Yedyna school-promo-ua.webp" },
+    img: { label: "Yedyna school — promo", ratio: "1144/658", src: "/images/works/eschool/case-Yedyna school-promo-en.webp" },
   },
 
   {
@@ -221,7 +215,7 @@ const blocksEn: Block[] = [
     id: "problems",
     caption: "Problems, pain, tears, despair",
     statement: "The team had already launched a parent recommendation service called «Pohovorimo», but it failed due to poor data quality — teachers either didn't fill in grade journals at all or did so too late. Parents saw irrelevant recommendations and unsubscribed.",
-    img: { label: "Old «Pohovorimo»", ratio: "1144/570", src: "/images/works/eschool/case-old-version-ua.webp" },
+    img: { label: "Old «Pohovorimo»", ratio: "1144/570", src: "/images/works/eschool/case-old-version-en.webp" },
   },
 
   {
@@ -276,7 +270,7 @@ const blocksEn: Block[] = [
     t: "light-section",
     caption: "Concept. Templates",
     statement: "Until we solve the data problem, there's no point doing anything else. We proposed that teachers fill in journals using templates — multiple options for each subject and each grade level. That's over 100 templates.",
-    img: { label: "Lesson topic templates", ratio: "1144/822", src: "/images/works/eschool/case-templates-ua.webp" },
+    img: { label: "Lesson topic templates", ratio: "1144/822", src: "/images/works/eschool/case-templates-en.webp" },
   },
 
   {
@@ -287,25 +281,19 @@ const blocksEn: Block[] = [
         text: "Recommendations are built from data: grades, attendance, homework. But they were too generic and provided little value — I proposed changing the algorithms.",
         imgLabel: "Recommendations — promo",
         imgRatio: "1144/640",
-        imgSrc: "/images/works/eschool/case-app-1-ua.webp",
+        imgSrc: "/images/works/eschool/case-app-1-en.webp",
       },
       {
         text: "Real tutor recommendations from the Brainer platform (another Tatl Group product) — develop strong skills and provide basic support in subjects where there are gaps.",
         imgLabel: "Recommendations — tutors",
         imgRatio: "1144/640",
-        imgSrc: "/images/works/eschool/case-app-2.webp",
+        imgSrc: "/images/works/eschool/case-app-2-en.webp",
       },
       {
         text: "We propose that students assess their state twice a week through a simple survey — how they feel at school, what they enjoy, what they find useful, and vice versa.",
         imgLabel: "Recommendations — survey",
         imgRatio: "1144/640",
-        imgSrc: "/images/works/eschool/case-app-3.webp",
-      },
-      {
-        text: "We propose that students assess their state twice a week through a simple survey — how they feel at school, what they enjoy, what they find useful, and vice versa.",
-        imgLabel: "Recommendations — survey 2",
-        imgRatio: "1144/640",
-        imgSrc: "/images/works/eschool/case-app-3-2.webp",
+        imgSrc: "/images/works/eschool/case-app-3-1-en.webp",
       },
     ],
   },
