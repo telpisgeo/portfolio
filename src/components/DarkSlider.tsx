@@ -70,7 +70,7 @@ export default function DarkSlider({
   const slide = slides[active];
 
   return (
-    <div id={id} className="scroll-mt-36 rounded-3xl bg-accent-foreground overflow-hidden flex flex-col">
+    <div id={id} className="scroll-mt-36 rounded-3xl bg-secondary overflow-hidden flex flex-col">
       <style>{`
         @keyframes dark-slider-progress {
           from { width: 0% }

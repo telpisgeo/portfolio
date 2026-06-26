@@ -319,7 +319,7 @@ function renderBlock(block: Block, i: number) {
       return <DarkSlider key={i} id={block.id} caption={block.caption} slides={block.slides} />;
     case "dark-section":
       return (
-        <div key={i} id={block.id} className="scroll-mt-36 rounded-3xl bg-accent-foreground overflow-hidden flex flex-col">
+        <div key={i} id={block.id} className="scroll-mt-36 rounded-3xl bg-secondary overflow-hidden flex flex-col">
           <div className="px-4 md:px-6 lg:px-8 pt-8 md:pt-10 lg:pt-12 pb-6 md:pb-7 lg:pb-8">
             <div className="max-w-[912px] mx-auto flex flex-col gap-4">
               <p className="text-sm font-bold text-primary">{block.caption}</p>
