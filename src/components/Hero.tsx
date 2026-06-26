@@ -41,7 +41,7 @@ export default function Hero({ locale }: HeroProps) {
         {/* Right: collage (hidden below 700px) */}
         <div className="shrink-0 w-[280px] md:w-[360px] lg:w-[474px] hidden [@media(min-width:700px)]:flex justify-center pb-[135px] hero-image">
           <Image
-            src="/images/hero-collage.png"
+            src="/images/hero-collage.webp"
             alt="Георгій Тельпіс"
             width={474}
             height={622}
