@@ -16,7 +16,10 @@
   --primary: #fbcf0b;
   --primary-foreground: #171311;
   --secondary: #461508;
-  --secondary-foreground: #fcf9df;
+  --secondary-foreground: #fef9db;
+  --surface-about: #fdf8e7;
+  --footer-bg: #141210;
+  --footer-text: #f0ead8;
 
   /* State */
   --muted: #ede9df;
@@ -187,6 +190,9 @@
   --color-gray-11: var(--gray-11);
   --color-gray-12: var(--gray-12);
   --color-background-alt: var(--background-alt);
+  --color-surface-about: var(--surface-about);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-text: var(--footer-text);
 
   --shadow-2xs: var(--shadow-2xs);
   --shadow-xs: var(--shadow-xs);

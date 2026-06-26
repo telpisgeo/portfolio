@@ -20,18 +20,18 @@ export default function Hero({ locale }: HeroProps) {
   }, [isUk]);
 
   return (
-    <section className="relative bg-[#4f2a16] overflow-hidden" style={{ minHeight: "calc(100vh - 64px)" }}>
+    <section className="relative bg-secondary overflow-hidden" style={{ minHeight: "calc(100vh - 64px)" }}>
       {/* Main content */}
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 h-full flex flex-row items-end gap-0" style={{ minHeight: "calc(100vh - 64px)" }}>
 
         {/* Left: text */}
         <div className="flex-1 flex flex-col justify-end pb-[135px] pr-8 z-10 hero-text">
-          <p className="text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-[#fef9db] leading-[1.25] max-w-[740px]">
+          <p className="text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-secondary-foreground leading-[1.25] max-w-[740px]">
             {isUk
               ? `${greeting}, я Георгій, продуктовий дизайнер з досвідом запуску продуктів для освітніх платформ та маркетингових мультиканальних сервісів.`
               : `${greeting}, I'm Georgiy, a product designer with experience launching products for educational platforms and multichannel marketing services.`}
           </p>
-          <p className="mt-8 text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-[#fef9db] leading-[1.25] max-w-[740px] hero-text-second">
+          <p className="mt-8 text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-secondary-foreground leading-[1.25] max-w-[740px] hero-text-second">
             {isUk
               ? "Використовую сучасні підходи до проєктування та роблю прототипи з допомогою ШІ для тестування нових ідей в продукті."
               : "I use modern design practices and build AI prototypes to test new product ideas quickly."}
@@ -55,7 +55,7 @@ export default function Hero({ locale }: HeroProps) {
 
       {/* Animated scroll arrow */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="text-[#fef9db] animate-arrow-bounce">
+        <div className="text-secondary-foreground animate-arrow-bounce">
           <svg
             width="24"
             height="24"

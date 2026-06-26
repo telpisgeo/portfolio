@@ -284,7 +284,7 @@ export async function generateMetadata({
 }
 
 function Caption({ text }: { text: string }) {
-  return <p className="text-sm font-bold text-[#8D775E]">{text}</p>;
+  return <p className="text-sm font-bold text-muted-foreground">{text}</p>;
 }
 
 function ImgPlaceholder({ label, ratio, className = "rounded-lg" }: { label: string; ratio: string; className?: string }) {
@@ -293,7 +293,7 @@ function ImgPlaceholder({ label, ratio, className = "rounded-lg" }: { label: str
       className={`w-full bg-black/[0.06] border border-black/5 flex items-center justify-center ${className}`}
       style={{ aspectRatio: ratio.replace("/", " / ") }}
     >
-      <span className="text-sm text-[#171311]/35 px-4 text-center">{label}</span>
+      <span className="text-sm text-foreground/35 px-4 text-center">{label}</span>
     </div>
   );
 }
@@ -305,12 +305,12 @@ function renderBlock(block: Block, i: number) {
         <div
           key={i}
           id={block.id}
-          className="scroll-mt-36 rounded-2xl bg-[#FFFEF9] p-6 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-6"
+          className="scroll-mt-36 rounded-2xl bg-background-alt p-6 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-6"
         >
           {block.items.map((m) => (
             <div key={m.label} className="flex flex-col gap-2">
-              <p className="text-sm font-bold text-[#4A2C1A]">{m.label}</p>
-              <p className="text-sm md:text-[16px] lg:text-lg font-medium text-[#171311]">{m.value}</p>
+              <p className="text-sm font-bold text-accent-foreground">{m.label}</p>
+              <p className="text-sm md:text-[16px] lg:text-lg font-medium text-foreground">{m.value}</p>
             </div>
           ))}
         </div>
@@ -319,11 +319,11 @@ function renderBlock(block: Block, i: number) {
       return <DarkSlider key={i} id={block.id} caption={block.caption} slides={block.slides} />;
     case "dark-section":
       return (
-        <div key={i} id={block.id} className="scroll-mt-36 rounded-3xl bg-[#4A2C1A] overflow-hidden flex flex-col">
+        <div key={i} id={block.id} className="scroll-mt-36 rounded-3xl bg-accent-foreground overflow-hidden flex flex-col">
           <div className="px-4 md:px-6 lg:px-8 pt-8 md:pt-10 lg:pt-12 pb-6 md:pb-7 lg:pb-8">
             <div className="max-w-[912px] mx-auto flex flex-col gap-4">
-              <p className="text-sm font-bold text-[#FFCD00]">{block.caption}</p>
-              <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-[#FEF9DB] font-normal">{block.statement}</p>
+              <p className="text-sm font-bold text-primary">{block.caption}</p>
+              <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-secondary-foreground font-normal">{block.statement}</p>
             </div>
           </div>
           <div className="max-w-[1144px] mx-auto w-full px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
@@ -341,7 +341,7 @@ function renderBlock(block: Block, i: number) {
           <div className="px-4 md:px-6 lg:px-8 pt-6 md:pt-8 lg:pt-10 pb-6 md:pb-7 lg:pb-8">
             <div className="max-w-[912px] mx-auto flex flex-col gap-4">
               <Caption text={block.caption} />
-              <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-[#171311] font-normal">{block.statement}</p>
+              <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">{block.statement}</p>
             </div>
           </div>
           <div className="max-w-[1144px] mx-auto w-full px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
@@ -358,7 +358,7 @@ function renderBlock(block: Block, i: number) {
         <div key={i} id={block.id} className="scroll-mt-36 rounded-3xl bg-white px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10">
           <div className="max-w-[912px] mx-auto flex flex-col gap-4">
             <Caption text={block.caption} />
-            <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-[#171311] font-normal">{block.statement}</p>
+            <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">{block.statement}</p>
           </div>
         </div>
       );
@@ -366,15 +366,15 @@ function renderBlock(block: Block, i: number) {
       return (
         <div key={i} id={block.id} className="bg-white rounded-3xl px-4 md:px-6 lg:px-8 pt-6 md:pt-9 lg:pt-12 pb-6 md:pb-7 lg:pb-8">
           <div className="max-w-[912px] mx-auto flex flex-col gap-5">
-            <p className="text-sm font-bold text-[#8d775e]">{block.caption}</p>
+            <p className="text-sm font-bold text-muted-foreground">{block.caption}</p>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
               {block.items.map((f) => (
-                <div key={f.label} className="bg-[#FBCF0B] rounded-2xl px-6 pt-6 md:pt-10 pb-6 flex flex-col gap-4">
+                <div key={f.label} className="bg-primary rounded-2xl px-6 pt-6 md:pt-10 pb-6 flex flex-col gap-4">
                   <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={`/images/works/snov/icon-${f.icon}.svg`} alt="" className="w-full h-full" />
                   </div>
-                  <div className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.2] text-[#171311] font-normal">
+                  <div className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.2] text-foreground font-normal">
                     <p>{f.value}</p>
                     <p>{f.label}</p>
                   </div>
@@ -389,14 +389,14 @@ function renderBlock(block: Block, i: number) {
         <div key={i} id={block.id} className="scroll-mt-36 rounded-3xl bg-white px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10">
           <div className="max-w-[912px] mx-auto flex flex-col gap-6">
             <Caption text={block.sectionCaption} />
-            <div className="rounded-2xl bg-[#FBCF0B] px-4 md:px-7 lg:px-10 py-4 md:py-6 lg:py-8 flex flex-col gap-6">
+            <div className="rounded-2xl bg-primary px-4 md:px-7 lg:px-10 py-4 md:py-6 lg:py-8 flex flex-col gap-6">
               {block.text && (
-                <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-[#171311] font-normal">{block.text}</p>
+                <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">{block.text}</p>
               )}
               <ul className="flex flex-col gap-4">
                 {block.items.map((it, j) => (
-                  <li key={j} className="flex gap-4 text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-[#171311] font-normal">
-                    <span className="text-[#171311]/30 shrink-0">•</span>
+                  <li key={j} className="flex gap-4 text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">
+                    <span className="text-foreground/30 shrink-0">•</span>
                     <span>{it}</span>
                   </li>
                 ))}
@@ -422,7 +422,7 @@ export default async function SnovPage({
   const otherLabel = locale === "uk" ? "EN" : "UA";
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fcf9df]">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar
         locale={locale}
         otherLocale={otherLocale}
@@ -439,8 +439,8 @@ export default async function SnovPage({
       <main className="flex-1">
         <div className="px-4 md:px-8 lg:px-12 pt-14 pb-4">
           <header className="max-w-[912px] mx-auto flex flex-col gap-2">
-            <p className="text-sm font-bold text-[#8D775E]">{c.eyebrow}</p>
-            <h1 className="text-[22px] md:text-[28px] lg:text-[36px] font-bold text-[#171311] leading-[1.25]">{c.title}</h1>
+            <p className="text-sm font-bold text-muted-foreground">{c.eyebrow}</p>
+            <h1 className="text-[22px] md:text-[28px] lg:text-[36px] font-bold text-foreground leading-[1.25]">{c.title}</h1>
           </header>
         </div>
 

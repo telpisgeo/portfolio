@@ -174,7 +174,7 @@ export default async function LocalePage({
                     <div>
                       <Link
                         href={company.caseUrl}
-                        className="inline-flex items-center gap-2 text-sm font-medium text-[#181311] bg-[#FFCD00] rounded-full px-5 py-2.5 hover:bg-[#f0c000] transition-colors"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground bg-primary rounded-full px-5 py-2.5 hover:brightness-95 transition-all"
                       >
                         {locale === "uk" ? "Дивитись кейс" : "View case"}
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -222,7 +222,7 @@ export default async function LocalePage({
       </main>
 
       {/* About section */}
-      <section id="about" className="mt-16 pt-16 pb-16 bg-[#fdf8e7]">
+      <section id="about" className="mt-16 pt-16 pb-16 bg-surface-about">
         <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-12">
 
           <h2 className="text-4xl font-medium text-foreground mb-16 leading-tight">

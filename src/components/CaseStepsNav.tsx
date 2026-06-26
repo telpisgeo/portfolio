@@ -66,7 +66,7 @@ export default function CaseStepsNav({ items }: { items: StepItem[] }) {
 
   return (
     <nav
-      className={`sticky z-50 transition-[top,background-color] duration-300 ${navHidden ? "bg-transparent" : "bg-[#FCF9DF]"}`}
+      className={`sticky z-50 transition-[top,background-color] duration-300 ${navHidden ? "bg-transparent" : "bg-background"}`}
       style={{ top: navHidden ? 0 : 64 }}
     >
       <div className="px-1 md:px-8 py-4">
@@ -79,12 +79,12 @@ export default function CaseStepsNav({ items }: { items: StepItem[] }) {
                 key={it.href}
                 href={it.href}
                 onClick={(e) => handleClick(e, it.href)}
-                className="relative shrink-0 md:flex-1 text-center overflow-hidden rounded-full bg-[#FFFEF9] border border-[#171311]/10 px-6 py-2.5 text-sm font-medium text-[#171311]"
+                className="relative shrink-0 md:flex-1 text-center overflow-hidden rounded-full bg-background-alt border border-foreground/10 px-6 py-2.5 text-sm font-medium text-foreground"
               >
                 {isActive && (
                   <span
                     aria-hidden
-                    className="absolute inset-y-0 left-0 bg-[#FBCF0B] transition-[width] duration-150 ease-out"
+                    className="absolute inset-y-0 left-0 bg-primary transition-[width] duration-150 ease-out"
                     style={{ width: `${Math.max(progress * 100, 8)}%` }}
                   />
                 )}

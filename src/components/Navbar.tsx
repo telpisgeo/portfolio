@@ -32,15 +32,15 @@ export default function Navbar({
 
   const isDark = variant === "dark";
 
-  const bg = isDark ? "bg-[#4f2a16] border-white/10" : variant === "case" ? "bg-[#FCF9DF] border-border" : "bg-background border-border";
-  const dropdownBg = isDark ? "bg-[#4f2a16] border-white/10" : "bg-background border-border";
-  const text = isDark ? "text-[#fef9db]" : "text-foreground";
-  const textMuted = isDark ? "text-[#fef9db]/70" : "text-foreground/50";
-  const hoverText = isDark ? "hover:text-[#fef9db]" : "hover:text-foreground";
+  const bg = isDark ? "bg-secondary border-white/10" : variant === "case" ? "bg-background border-border" : "bg-background border-border";
+  const dropdownBg = isDark ? "bg-secondary border-white/10" : "bg-background border-border";
+  const text = isDark ? "text-secondary-foreground" : "text-foreground";
+  const textMuted = isDark ? "text-secondary-foreground/70" : "text-foreground/50";
+  const hoverText = isDark ? "hover:text-secondary-foreground" : "hover:text-foreground";
   const hoverBg = isDark ? "hover:bg-white/10" : "hover:bg-muted";
-  const burgerColor = isDark ? "bg-[#fef9db]" : "bg-foreground";
-  const dropdownText = isDark ? "text-[#fef9db]/80 border-white/10" : "text-foreground/80 border-border";
-  const dropdownMuted = isDark ? "text-[#fef9db]/50" : "text-muted-foreground";
+  const burgerColor = isDark ? "bg-secondary-foreground" : "bg-foreground";
+  const dropdownText = isDark ? "text-secondary-foreground/80 border-white/10" : "text-foreground/80 border-border";
+  const dropdownMuted = isDark ? "text-secondary-foreground/50" : "text-muted-foreground";
   const homeLabel = locale === "uk" ? "← Головна" : "← Home";
 
   return (
@@ -111,7 +111,7 @@ export default function Navbar({
           <a
             href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
             download
-            className={`hidden md:inline-flex items-center justify-center h-9 px-5 rounded-full border text-sm font-medium transition-colors whitespace-nowrap ${isDark ? "border-[#fef9db]/30 text-[#fef9db] hover:bg-white/10" : "border-border text-foreground hover:bg-muted"}`}
+            className={`hidden md:inline-flex items-center justify-center h-9 px-5 rounded-full border text-sm font-medium transition-colors whitespace-nowrap ${isDark ? "border-secondary-foreground/30 text-secondary-foreground hover:bg-white/10" : "border-border text-foreground hover:bg-muted"}`}
           >
             {locale === "uk" ? "Завантажити CV" : "Download CV"}
           </a>
