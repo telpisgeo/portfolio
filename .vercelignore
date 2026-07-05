@@ -1,3 +1,5 @@
 node_modules
 .next
-public/images/works/westudy
+public/images/**/raw
+public/images/**/unused
+public/images/unused

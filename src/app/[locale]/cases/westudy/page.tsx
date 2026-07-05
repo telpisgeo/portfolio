@@ -209,7 +209,7 @@ const blocksEn: Block[] = [
     statement:
       "A new concept — enable users to create a website in minutes using existing course information already on the platform.",
     before: { label: "Old website builder", ratio: "1144/640", src: "/images/works/westudy/case-westudy-before-ua.webp" },
-    after: { label: "New website builder", ratio: "1144/640", src: "/images/works/promo-builder-westudy.webp" },
+    after: { label: "New website builder", ratio: "1144/640", src: "/images/works/westudy/case-westudy-after-ua.webp" },
     beforeLabel: "Before",
     afterLabel: "After",
   },
