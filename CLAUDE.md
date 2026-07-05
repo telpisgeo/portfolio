@@ -123,7 +123,27 @@ Group: Інсайти від батьків
 — Дай Боже, щоб дитина... | Ольга, 40 років
 — Раз на два тижня... | Юля, 36 років
 ```
-Quote format: `— Текст` or `— Текст | Автор`. Each `---` separates groups.
+Quote format: `— Текст` or `— Текст | Автор`. The `—` is rendered automatically by the block — do NOT include it in the `text` field of quote items. Each `---` separates groups.
+
+**`before-after`** — Before/after switcher. White bg `rounded-3xl`. Caption + statement text, then a centered pill toggle (active tab = yellow `#FBCF0B`), then one image that swaps on toggle. Default active tab is "After". Supports localized button labels via `beforeLabel`/`afterLabel` props (defaults: "До" / "Після"). Client component (`BeforeAfterBlock.tsx`).
+```
+[before-after]
+Caption: Про кейс
+Text: Нова концепція — дати можливість створити сайт за лічені хвилини...
+Before: назва зображення до (1144/640)
+After: назва зображення після (1144/640)
+BeforeLabel: До        ← optional, default "До"
+AfterLabel: Після      ← optional, default "Після"
+```
+For EN pages pass `beforeLabel: "Before"` and `afterLabel: "After"` in the block definition.
+
+## Adding images to the site
+
+When the user says "додай зображення [name]" or "add image [name]":
+1. Find the file under `public/images/works/` (search by name, any extension)
+2. Convert to WebP: `cwebp -q 85 input.png -o output.webp` (or `ffmpeg -i input.jpg output.webp`)
+3. Place the `.webp` next to the original (same folder)
+4. Set `src` in the relevant block's `imgSrc` / `videoSrc` field to the `/images/works/...` path
 
 ## Notes
 - The **old** case page `cases/eschool` is the previous design — leave it as-is; new design work goes in `cases/eschool-2`.

@@ -158,7 +158,7 @@ export const translations: Record<Locale, Translation> = {
         ],
         tools: "Figma, FigJam, Google Analytics, Affinity Designer",
         images: ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"],
-        casePending: true,
+        caseUrl: "/uk/cases/westudy",
         subcases: [
           { name: "Веб-білдер для сайту", slug: "westudy-website-builder" },
           { name: "Онбординг та підтримка", slug: "westudy-feedback" },

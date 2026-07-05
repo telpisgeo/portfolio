@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
-export type Slide = { caption?: string; text: string; imgLabel: string; imgRatio: string; imgSrc?: string };
+export type Slide = { caption?: string; text: string; imgLabel: string; imgRatio: string; imgSrc?: string; videoSrc?: string };
 
 const DURATION = 10000;
 
@@ -86,9 +86,11 @@ export default function DarkSlider({
       </div>
 
       <div className="max-w-[1144px] mx-auto w-full px-4 md:px-6 lg:px-8">
-        {slide.imgSrc
-          ? <img src={slide.imgSrc} alt={slide.imgLabel} className="w-full rounded-lg" />
-          : <ImgPlaceholder label={slide.imgLabel} ratio={slide.imgRatio} />}
+        {slide.videoSrc
+          ? <video src={slide.videoSrc} autoPlay loop muted playsInline className="w-full rounded-2xl" style={{ aspectRatio: slide.imgRatio.replace("/", " / ") }} />
+          : slide.imgSrc
+            ? <img src={slide.imgSrc} alt={slide.imgLabel} className="w-full rounded-2xl" />
+            : <ImgPlaceholder label={slide.imgLabel} ratio={slide.imgRatio} />}
       </div>
 
       {slides.length > 1 && (
