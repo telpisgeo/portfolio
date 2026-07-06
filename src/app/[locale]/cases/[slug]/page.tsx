@@ -2,12 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale, type CaseBlock } from "@/lib/translations";
+import { listCaseSlugs, readCaseFile } from "@/lib/case-store";
+import { Caption, CaseBlockList } from "@/components/CaseBlocks";
+import CaseStepsNav from "@/components/CaseStepsNav";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export function generateStaticParams() {
   const locales = ["uk", "en"] as const;
-  const slugs = Object.keys(translations.uk.cases);
+  const legacySlugs = Object.keys(translations.uk.cases);
+  const jsonSlugs = listCaseSlugs();
+  const slugs = [...new Set([...legacySlugs, ...jsonSlugs])];
   return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
 
@@ -71,6 +76,43 @@ export default async function CasePage({
   if (locale !== "uk" && locale !== "en") notFound();
 
   const t = translations[locale as Locale];
+
+  // New JSON-based case system (src/data/cases/<slug>.json), managed via /admin/cases.
+  const caseFile = readCaseFile(slug);
+  if (caseFile) {
+    if (caseFile.status === "draft") notFound();
+    const oc = caseFile[locale as Locale];
+    const otherLocale = locale === "uk" ? "en" : "uk";
+    const otherLabel = locale === "uk" ? "EN" : "UA";
+    return (
+      <div className="min-h-screen flex flex-col bg-background">
+        <Navbar
+          locale={locale}
+          otherLocale={otherLocale}
+          otherLabel={otherLabel}
+          cvUrl={t.cvUrl}
+          cvButton={t.cvButton}
+          worksLabel={t.navWorksLabel}
+          aboutLabel={t.navAboutLabel}
+          contactLabel={t.navContactLabel}
+          variant="case"
+          hideOnScroll
+        />
+        <main className="flex-1">
+          <div className="px-4 md:px-8 lg:px-12 pt-14 pb-4">
+            <header className="max-w-[912px] mx-auto flex flex-col gap-2">
+              <Caption text={oc.eyebrow} />
+              <h1 className="text-[22px] md:text-[28px] lg:text-[36px] font-bold text-foreground leading-[1.25]">{oc.title}</h1>
+            </header>
+          </div>
+          <CaseStepsNav items={oc.steps} />
+          <CaseBlockList blocks={oc.blocks} />
+        </main>
+        <Footer locale={locale} otherLocale={otherLocale} otherLabel={otherLabel} copyright={t.copyright} />
+      </div>
+    );
+  }
+
   const c = t.cases[slug];
 
   if (!c) notFound();

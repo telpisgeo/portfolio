@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
-import siteContent from "@/data/content.json";
+import homeJson from "@/data/home.json";
+import type { HomeContent } from "@/lib/home-content";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
@@ -55,18 +56,11 @@ export default async function LocalePage({
   const otherLocale = locale === "uk" ? "en" : "uk";
   const otherLabel = locale === "uk" ? "EN" : "UA";
 
-  // Merge editable content from content.json
-  const localeContent = siteContent[locale as "uk" | "en"];
-  const companies = t.companies.map((company) => {
-    const slugMap: Record<string, string> = { "Єдина школа": "eschool", "Yedyna Shkola": "eschool", "Westudy.ua": "westudy", "Snov.io": "snovio" };
-    const slug = slugMap[company.name];
-    const override = slug ? localeContent.companies.find((c) => c.slug === slug) : null;
-    if (!override) return company;
-    return { ...company, description: override.description, imageRows: override.imageRows as typeof company.imageRows };
-  });
+  const home = (homeJson as unknown as HomeContent)[locale as "uk" | "en"];
+  const companies = home.companies;
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar
         locale={locale}
         otherLocale={otherLocale}
@@ -127,9 +121,9 @@ export default async function LocalePage({
               </div>
 
               {/* Screenshots */}
-              {(company.imageRows ?? company.images) && (
+              {company.imageRows && (
                 <div className="flex flex-col gap-3 mb-4">
-                  {(company.imageRows ?? company.images!.map(s => s)).map((row, i) => (
+                  {company.imageRows.map((row, i) => (
                     Array.isArray(row) ? (
                       <div key={i} className="grid grid-cols-2 gap-3">
                         {(row as string[]).map((src) => (
@@ -239,89 +233,15 @@ export default async function LocalePage({
                 {locale === "uk" ? "Про мене" : "About me"}
               </p>
               <div className="flex flex-col gap-5 text-lg text-foreground/75 leading-relaxed">
-                {locale === "uk" ? (
-                  <>
-                    <p>Останні декілька років працював над продуктами в сфері EdTech (навчальні платформи, сервіси для створення курсів) та MarTech (маркетингові інструменти, сервіси лідогенерації).</p>
-                    <p>З нуля створював дизайн-процеси в командах та впроваджував UX-дослідження в бізнес-процесах.</p>
-                    <p>Зараз відбудовую нові дизайн-процеси в командах за допомогою Claude Code, або інших агентів в залежності від стеку технологій.</p>
-                    <p>Закінчив Одеську політехніку та Британську школу дизайну.</p>
-                  </>
-                ) : (
-                  <>
-                    <p>Hey, I&apos;m Georgiy — a product designer with 8+ years of experience in digital SaaS product design.</p>
-                    <p>I specialize in EdTech and MarTech. I work across the full design cycle: from user research and IA to Figma specs and developer handoff. I do my best work as the first designer on a team — building processes from scratch.</p>
-                    <p>I have experience with email marketing tools, LinkedIn outreach automation, course builders, and educational mobile apps.</p>
-                    <p>I&apos;m into AI prototyping and vibe coding — I love when an idea becomes a real, testable product within days.</p>
-                  </>
-                )}
+                {home.about.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
             </div>
 
           {/* Right: Timeline */}
           <div className="flex flex-col">
-            {(locale === "uk" ? [
-              {
-                period: "2025 — 2026",
-                company: "Tatl Group · Єдина школа",
-                role: "Product Designer",
-                desc: "Спроєктував новий розділ детального аналізу успішності учня для батьків. Створив навчальну платформу відеокурсів для дітей у мобільному додатку. Розробив партнерську інтеграцію в системі, на сайті та в додатку. Оновив дизайн головного сайту платформи.",
-              },
-              {
-                period: "2024 — 2025",
-                company: "WeStudy",
-                role: "Product Designer",
-                desc: "Редизайн конструктора курсів — усунув ключові UX-проблеми, що призводили до відтоку. Спроєктував конструктор сайтів із 10+ типами компонентів. Провів серію юзабіліті-тестів, що виявили критичні точки тертя в онбордингу.",
-              },
-              {
-                period: "2022 — 2024",
-                company: "Snov.io",
-                role: "Product Designer",
-                desc: "Спроєктував інструменти для email та LinkedIn кампаній. Розробив інструменти лідогенерації: пошук по базі, одиночний і масовий email-пошук. Розробив браузерні розширення для лідогенерації. Покращив доставлення email: warm-up, перевірка доставлення та інші інструменти.",
-              },
-              {
-                period: "2022",
-                company: "SendPulse",
-                role: "UI/UX Designer",
-                desc: "Оновив редактор мультиканальних кампаній та редактор форм. Впровадив телефонію у CRM-систему. Спроєктував партнерську платформу. Розробив email-шаблони та сайти для конференцій.",
-              },
-              {
-                period: "2016 — 2019",
-                company: "Serpstat",
-                role: "UI/UX Designer",
-                desc: "Приєднався до команди стартапу на етапі формування. Заклав основу дизайн-системи та підходу до розробки задач. Проєктував інструменти аналізу ключових слів, відстеження позицій, аудиту сайту та аналізу конкурентів.",
-              },
-            ] : [
-              {
-                period: "2025 — 2026",
-                company: "Tatl Group · Yedyna Shkola",
-                role: "Product Designer",
-                desc: "Designed a new detailed student performance analytics section for parents. Built a video course learning platform for children in the mobile app. Developed partner integration across the system, website, and app. Redesigned the main platform website.",
-              },
-              {
-                period: "2024 — 2025",
-                company: "WeStudy",
-                role: "Product Designer",
-                desc: "Redesigned the course builder — resolved key UX issues causing churn. Designed a website builder with 10+ component types. Ran usability testing sessions that uncovered critical friction points in onboarding.",
-              },
-              {
-                period: "2022 — 2024",
-                company: "Snov.io",
-                role: "Product Designer",
-                desc: "Designed tools for email and LinkedIn outreach campaigns. Built lead generation tools: database search, single and bulk email search. Created browser extensions for lead capture. Improved email deliverability tooling: warm-up, deliverability check, and related features.",
-              },
-              {
-                period: "2022",
-                company: "SendPulse",
-                role: "UI/UX Designer",
-                desc: "Updated the multichannel campaign editor and form editor. Implemented telephony in the CRM system. Designed a partner platform. Produced email templates and conference websites.",
-              },
-              {
-                period: "2016 — 2019",
-                company: "Serpstat",
-                role: "UI/UX Designer",
-                desc: "Joined the startup team at the formation stage. Laid the foundation for the design system and task development approach. Designed tools for keyword analysis, rank tracking, site audit, and competitor research.",
-              },
-            ]).map((item) => (
+            {home.timeline.map((item) => (
               <div key={item.company} className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-2 md:gap-8 py-10 border-b border-border last:border-0">
                 <span className="text-sm text-muted-foreground pt-1.5 shrink-0">{item.period}</span>
                 <div>

@@ -1,0 +1,256 @@
+{
+  "uk": {
+    "eyebrow": "Єдина школа",
+    "title": "Створення глибинної аналітики учня та рекомендації, на основі успішності та відвідувань для 930 тисяч батьків",
+    "steps": [
+      { "label": "Контекст", "href": "#context" },
+      { "label": "Проблема", "href": "#problems" },
+      { "label": "Дослідження", "href": "#research-anchor" },
+      { "label": "Концепт", "href": "#concept" },
+      { "label": "Підсумки", "href": "#summary" }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          { "label": "Роль", "value": "Product Designer" },
+          { "label": "Команда", "value": "Flutter розробник, Backend розробник" },
+          { "label": "Таймінг", "value": "1 місяць" },
+          { "label": "Інструменти", "value": "Figma, Claude Code" }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "Про продукт",
+        "statement": "Єдина школа це безкоштовна платформа для державних освітніх закладів, платна для приватних освітніх закладів.",
+        "img": { "label": "Yedyna school — промо", "ratio": "1144/658", "src": "/images/works/eschool/case-Yedyna school-promo-ua.webp" }
+      },
+      {
+        "t": "figures",
+        "caption": "Платформою користуються",
+        "items": [
+          { "value": "930 тисяч", "label": "батьків", "icon": "parents" },
+          { "value": "1,2 млн.", "label": "учнів", "icon": "students" },
+          { "value": "3,5 тисяч", "label": "шкіл", "icon": "schools" },
+          { "value": "89 тисяч", "label": "викладачів", "icon": "teachers" }
+        ]
+      },
+      {
+        "t": "white-section",
+        "caption": "Гіпотеза",
+        "statement": "Зробити платну поглиблену аналітику учня на основі оцінок, домашніх завдань та інших даних, також давати рекомендації репетиторів та інше."
+      },
+      {
+        "t": "light-section",
+        "id": "problems",
+        "caption": "Проблеми, біль, сльози, розпач",
+        "statement": "Команда вже мала реліз сервісу рекомендацій для батьків «Поговорімо», але зазнала невдачі через неякісні дані — вчителі або взагалі не заповнювали журнали, або не робили це своєчасно. Батьки бачили нерелевантні рекомендації та відписувались.",
+        "img": { "label": "Старий «Поговорімо»", "ratio": "1144/570", "src": "/images/works/eschool/case-old-version-ua.webp" }
+      },
+      {
+        "t": "quotes",
+        "id": "research-anchor",
+        "sectionCaption": "Дослідження",
+        "groups": [
+          {
+            "caption": "Інсайти від експертів з галузі освіти",
+            "items": [
+              { "text": "Заповнення електронних журналів з оцінками залежить як від школи, так й від окремого вчителя. Незаповнений журнал — відсутні дані для аналізу." },
+              { "text": "Через велике навантаження, багато хто з вчителів просто не встигає це робити, або лінь, або інші фактори.", "author": "Марина Л." }
+            ]
+          },
+          {
+            "caption": "Інсайти від батьків",
+            "items": [
+              { "text": "Дай Боже, щоб дитина взагалі пішла до школи, нескінченні тривоги, майже повне самостійне навчання вдома.", "author": "Ольга, 40 років" },
+              { "text": "Раз на два тижні я бачу якісь оцінки, але вони взагалі не відповідають тому що вони навчали.", "author": "Юля, 36 років" },
+              { "text": "Мені подобався сервіс «Поговорімо», але коли я бачив що рекомендації дуже загальні, або нерелевантні до того, що навчають в школі, я відписався.", "author": "Юрій, 23 років" }
+            ]
+          }
+        ]
+      },
+      {
+        "t": "proposal",
+        "id": "concept",
+        "sectionCaption": "Що я запропонував",
+        "items": [
+          { "n": "01", "text": "Оновити інструмент створення тем уроків, додавши шаблони з готовими варіантами тем." },
+          { "n": "02", "text": "Запропонував Gallup-підхід до рекомендацій — підсилювати те, що дитині вдається найкраще." },
+          { "n": "03", "text": "Зробити feedback на кожен блок окремо та створити процес постійного оновлення алгоритмів рекомендацій." }
+        ]
+      },
+      {
+        "t": "light-section",
+        "caption": "Концепт. Шаблони",
+        "statement": "Поки не вирішимо проблему з даними, немає сенсу щось робити взагалі. Для вчителів запропонували заповнення журналів використовуючи шаблони. Під кожний предмет, кожного класу — декілька варіантів. Це більше 100 шаблонів.",
+        "img": { "label": "Шаблони тем уроків", "ratio": "1144/822", "src": "/images/works/eschool/case-templates-ua.webp" }
+      },
+      {
+        "t": "dark-slider",
+        "caption": "Концепт. Рекомендації",
+        "slides": [
+          {
+            "text": "Рекомендації формуються на основі даних: оцінки, відвідуваність, домашні завдання. Але вони мали дуже загальний характер, користь була поверхнева — я запропонував поміняти алгоритми.",
+            "imgLabel": "Рекомендації — промо",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/eschool/case-app-1-ua.webp"
+          },
+          {
+            "text": "Рекомендації реальних репетиторів з платформи Brainer (інший продукт Tatl Group), пропонуємо розвивати сильні навички, й базово підтримувати в тих предметах де є прогалини.",
+            "imgLabel": "Рекомендації — репетитори",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/eschool/case-app-2.webp"
+          },
+          {
+            "text": "Для учня пропонуємо оцінювати свій стан два рази на тиждень простим опитуванням, як їй в школі, що подобається, що на її погляд корисне, й навпаки.",
+            "imgLabel": "Рекомендації — опитування",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/eschool/case-app-3-1.webp"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "Концепт. Презентація",
+        "statement": "Щоб донести ідею команді та стейкхолдерам, я зібрав ключові сценарії в одну коротку презентацію — від проблеми до пропонованих рішень.",
+        "video": { "src": "/images/works/eschool/video-presentation-ua.webm", "ratio": "1144/640" }
+      },
+      {
+        "t": "bullets-card",
+        "id": "summary",
+        "sectionCaption": "Підсумки",
+        "text": "Новий сервіс повноцінно запуститься в новому навчальному році, тому реальні результати очікуються від команди, а саме:",
+        "items": [
+          "Конверсія з free preview у підписку",
+          "Відсоток батьків, які залишають feedback по блоках",
+          "Retention після першого місяця"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "eyebrow": "Yedyna Shkola",
+    "title": "Building deep student analytics and recommendations based on performance and attendance for 930K parents",
+    "steps": [
+      { "label": "Context", "href": "#context" },
+      { "label": "Problem", "href": "#problems" },
+      { "label": "Research", "href": "#research-anchor" },
+      { "label": "Concept", "href": "#concept" },
+      { "label": "Summary", "href": "#summary" }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          { "label": "Role", "value": "Product Designer" },
+          { "label": "Team", "value": "Flutter developer, Backend developer" },
+          { "label": "Timeline", "value": "1 month" },
+          { "label": "Tools", "value": "Figma, Claude Code" }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "About the product",
+        "statement": "Yedyna Shkola is a free platform for public schools and a paid platform for private educational institutions.",
+        "img": { "label": "Yedyna school — promo", "ratio": "1144/658", "src": "/images/works/eschool/case-Yedyna school-promo-en.webp" }
+      },
+      {
+        "t": "figures",
+        "caption": "Platform users",
+        "items": [
+          { "value": "930K", "label": "parents", "icon": "parents" },
+          { "value": "1.2M", "label": "students", "icon": "students" },
+          { "value": "3,500", "label": "schools", "icon": "schools" },
+          { "value": "89K", "label": "teachers", "icon": "teachers" }
+        ]
+      },
+      {
+        "t": "white-section",
+        "caption": "Hypothesis",
+        "statement": "Build paid in-depth student analytics based on grades, homework, and other data — plus tutor recommendations and more."
+      },
+      {
+        "t": "light-section",
+        "id": "problems",
+        "caption": "Problems, pain, tears, despair",
+        "statement": "The team had already launched a parent recommendation service called «Pohovorimo», but it failed due to poor data quality — teachers either didn't fill in grade journals at all or did so too late. Parents saw irrelevant recommendations and unsubscribed.",
+        "img": { "label": "Old «Pohovorimo»", "ratio": "1144/570", "src": "/images/works/eschool/case-old-version-en.webp" }
+      },
+      {
+        "t": "quotes",
+        "id": "research-anchor",
+        "sectionCaption": "Research",
+        "groups": [
+          {
+            "caption": "Insights from education experts",
+            "items": [
+              { "text": "Whether electronic grade journals get filled in depends both on the school and on the individual teacher. Unfilled journals mean missing data for analysis." },
+              { "text": "Due to heavy workload, many teachers simply don't have time to do it — or are lazy, or have other reasons.", "author": "Marina L." }
+            ]
+          },
+          {
+            "caption": "Insights from parents",
+            "items": [
+              { "text": "Thank God if the child just goes to school at all endless air-raid alerts, almost fully home-based learning.", "author": "Olha, 40" },
+              { "text": "Once every two weeks I see some grades, but they don't match what the kids are actually studying.", "author": "Yulia, 36" },
+              { "text": "I liked the «Pohovorimo» service, but when I saw the recommendations were too generic or irrelevant to what they teach at school, I unsubscribed.", "author": "Yuriy, 23" }
+            ]
+          }
+        ]
+      },
+      {
+        "t": "proposal",
+        "id": "concept",
+        "sectionCaption": "What I proposed",
+        "items": [
+          { "n": "01", "text": "Update the lesson topic creation tool by adding templates with ready-made topic options." },
+          { "n": "02", "text": "Apply a Gallup-based approach to recommendations — amplify what the child does best." },
+          { "n": "03", "text": "Add per-block feedback and build a continuous process for updating recommendation algorithms." }
+        ]
+      },
+      {
+        "t": "light-section",
+        "caption": "Concept. Templates",
+        "statement": "Until we solve the data problem, there's no point doing anything else. We proposed that teachers fill in journals using templates — multiple options for each subject and each grade level. That's over 100 templates.",
+        "img": { "label": "Lesson topic templates", "ratio": "1144/822", "src": "/images/works/eschool/case-templates-en.webp" }
+      },
+      {
+        "t": "dark-slider",
+        "caption": "Concept. Recommendations",
+        "slides": [
+          {
+            "text": "Recommendations are built from data: grades, attendance, homework. But they were too generic and provided little value — I proposed changing the algorithms.",
+            "imgLabel": "Recommendations — promo",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/eschool/case-app-1-en.webp"
+          },
+          {
+            "text": "Real tutor recommendations from the Brainer platform (another Tatl Group product) — develop strong skills and provide basic support in subjects where there are gaps.",
+            "imgLabel": "Recommendations — tutors",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/eschool/case-app-2-en.webp"
+          },
+          {
+            "text": "We propose that students assess their state twice a week through a simple survey — how they feel at school, what they enjoy, what they find useful, and vice versa.",
+            "imgLabel": "Recommendations — survey",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/eschool/case-app-3-1-en.webp"
+          }
+        ]
+      },
+      {
+        "t": "bullets-card",
+        "id": "summary",
+        "sectionCaption": "Summary",
+        "text": "The new service will fully launch in the new school year, so the team is targeting these real results:",
+        "items": [
+          "Conversion from free preview to subscription",
+          "Percentage of parents leaving per-block feedback",
+          "Retention after the first month"
+        ]
+      }
+    ]
+  }
+}

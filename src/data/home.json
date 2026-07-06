@@ -1,0 +1,207 @@
+{
+  "uk": {
+    "about": [
+      "Останні декілька років працював над продуктами в сфері EdTech (навчальні платформи, сервіси для створення курсів) та MarTech (маркетингові інструменти, сервіси лідогенерації).",
+      "З нуля створював дизайн-процеси в командах та впроваджував UX-дослідження в бізнес-процесах.",
+      "Зараз відбудовую нові дизайн-процеси в командах за допомогою Claude Code, або інших агентів в залежності від стеку технологій.",
+      "Закінчив Одеську політехніку та Британську школу дизайну."
+    ],
+    "companies": [
+      {
+        "slug": "snovio",
+        "name": "Snov.io",
+        "url": "http://snov.io/",
+        "caseUrl": "/uk/cases/snov",
+        "period": "2022 → 2025",
+        "productType": "AI платформа лідогенерації та автоматизації аутрічу",
+        "role": "Product Designer",
+        "icon": "/images/icons/snovio.svg",
+        "description": "Запустив з командою систему автоматизації LinkedIn аутрічу, оновив інструменти для доставлення емейлів та флоу створення емейл кампаній.",
+        "achievements": [
+          "80% retention після релізу нового інструменту LinkedIn outreach",
+          "На 30% більше успішно створених кампаній після редизайну їх створення",
+          "Удвічі менше звернень до підтримки після редизайну email-налаштувань"
+        ],
+        "tools": "Figma, HotJar, Amplitude",
+        "imageRows": [
+          "/images/works/snov-linkedin-settings.png",
+          "/images/works/snov-email-promo.png",
+          ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"],
+          "/images/works/snov-campaign-reports.webp"
+        ]
+      },
+      {
+        "slug": "eschool",
+        "name": "Єдина школа",
+        "url": "https://sitev2.eschool-ua.com",
+        "caseUrl": "/uk/cases/eschool-2",
+        "period": "2025 → 2026",
+        "productType": "Єдиний простір для вчителів, батьків та дітей",
+        "role": "Product Designer",
+        "icon": "/images/icons/eschool.svg",
+        "description": "Розробка навчальних сервісів для учнів, батьків та вчителів в додатку та веб-версії продукту, спец проєкти всередині платформи, оновив головний сайт платформи, та багато іншого.",
+        "tools": "Figma, Claude Code, Android Studio, VS Code, Google Analytics · React, WebGL, TailwindCSS, Flutter",
+        "imageRows": [
+          "/images/works/eschool-promo.png",
+          "/images/works/eschool.webp",
+          "/images/works/eschool-mob2-ua.webp"
+        ]
+      },
+      {
+        "slug": "westudy",
+        "name": "Westudy.ua",
+        "url": "http://westudy.ua/",
+        "caseUrl": "/uk/cases/westudy",
+        "period": "2024 → 2025",
+        "productType": "Платформа для створення онлайн курсів та роботи з студентами",
+        "role": "Product Designer",
+        "icon": "/images/icons/westudy.svg",
+        "description": "Оновив інтерфейс створення курсів, емейл кампаній, вебінарів та бронювання занять. Один з найскладніших інструментів — конструктор власних сайтів для курсів.",
+        "achievements": [
+          "Зупинив відтік клієнтів після оновлення конструктора сайтів для курсів",
+          "Налагодив дизайн-процеси в команді, впорядкував хаос і впровадив UX-дослідження",
+          "Створив додаток для преміум-клієнтів, яким потрібна була кастомізація за додаткову плату"
+        ],
+        "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
+        "imageRows": [
+          "/images/works/westudy-editor.webp",
+          "/images/works/westudy-onboarding.png"
+        ]
+      }
+    ],
+    "timeline": [
+      {
+        "period": "2025 — 2026",
+        "company": "Tatl Group · Єдина школа",
+        "role": "Product Designer",
+        "desc": "Спроєктував новий розділ детального аналізу успішності учня для батьків. Створив навчальну платформу відеокурсів для дітей у мобільному додатку. Розробив партнерську інтеграцію в системі, на сайті та в додатку. Оновив дизайн головного сайту платформи."
+      },
+      {
+        "period": "2024 — 2025",
+        "company": "WeStudy",
+        "role": "Product Designer",
+        "desc": "Редизайн конструктора курсів — усунув ключові UX-проблеми, що призводили до відтоку. Спроєктував конструктор сайтів із 10+ типами компонентів. Провів серію юзабіліті-тестів, що виявили критичні точки тертя в онбордингу."
+      },
+      {
+        "period": "2022 — 2024",
+        "company": "Snov.io",
+        "role": "Product Designer",
+        "desc": "Спроєктував інструменти для email та LinkedIn кампаній. Розробив інструменти лідогенерації: пошук по базі, одиночний і масовий email-пошук. Розробив браузерні розширення для лідогенерації. Покращив доставлення email: warm-up, перевірка доставлення та інші інструменти."
+      },
+      {
+        "period": "2022",
+        "company": "SendPulse",
+        "role": "UI/UX Designer",
+        "desc": "Оновив редактор мультиканальних кампаній та редактор форм. Впровадив телефонію у CRM-систему. Спроєктував партнерську платформу. Розробив email-шаблони та сайти для конференцій."
+      },
+      {
+        "period": "2016 — 2019",
+        "company": "Serpstat",
+        "role": "UI/UX Designer",
+        "desc": "Приєднався до команди стартапу на етапі формування. Заклав основу дизайн-системи та підходу до розробки задач. Проєктував інструменти аналізу ключових слів, відстеження позицій, аудиту сайту та аналізу конкурентів."
+      }
+    ]
+  },
+  "en": {
+    "about": [
+      "For the past several years I've worked on products in EdTech (learning platforms, course creation tools) and MarTech (marketing tools, lead generation services).",
+      "I built design processes from scratch within teams and introduced UX research into business processes.",
+      "Right now I'm rebuilding design processes in teams using Claude Code or other agents, depending on the tech stack.",
+      "I graduated from Odesa Polytechnic and the British Higher School of Art & Design."
+    ],
+    "companies": [
+      {
+        "slug": "snovio",
+        "name": "Snov.io",
+        "url": "http://snov.io/",
+        "caseUrl": "/en/cases/snov",
+        "period": "2022 → 2025",
+        "productType": "AI-powered lead generation & outreach automation platform",
+        "role": "Product Designer",
+        "icon": "/images/icons/snovio.svg",
+        "description": "Launched a LinkedIn outreach automation system with the team, improved email deliverability tooling, and redesigned the email campaign flow.",
+        "achievements": [
+          "80% retention after launching the new LinkedIn outreach tool",
+          "30% more successfully created campaigns after redesigning campaign creation",
+          "Half as many support requests after redesigning email settings"
+        ],
+        "tools": "Figma, HotJar, Amplitude",
+        "imageRows": [
+          "/images/works/snov-linkedin-settings.png",
+          "/images/works/snov-email-promo.png",
+          ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"],
+          "/images/works/snov-campaign-reports.webp"
+        ]
+      },
+      {
+        "slug": "eschool",
+        "name": "Yedyna Shkola",
+        "url": "https://sitev2.eschool-ua.com",
+        "caseUrl": "/en/cases/eschool-2",
+        "period": "2025 → 2026",
+        "productType": "A unified space for teachers, parents and children",
+        "role": "Product Designer",
+        "icon": "/images/icons/eschool.svg",
+        "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
+        "tools": "Figma, Claude Code, Android Studio, VS Code, Google Analytics · React, WebGL, TailwindCSS, Flutter",
+        "imageRows": [
+          "/images/works/eschool-web-en.webp",
+          "/images/works/eschool-mob-en.webp",
+          "/images/works/eschool-mob2-en.webp"
+        ]
+      },
+      {
+        "slug": "westudy",
+        "name": "Westudy.ua",
+        "url": "http://westudy.ua/",
+        "period": "2024 → 2025",
+        "productType": "Online course creation and student management platform",
+        "role": "Product Designer",
+        "icon": "/images/icons/westudy.svg",
+        "description": "Redesigned the course builder, email campaigns, webinars, and booking flows. One of the most complex tools was the website builder for courses.",
+        "achievements": [
+          "Reduced customer churn after relaunching the course website builder",
+          "Set up design processes in the team, brought order to the chaos, and introduced UX research",
+          "Built an add-on for premium clients who needed customization for an extra fee"
+        ],
+        "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
+        "imageRows": [
+          "/images/works/promo-builder-westudy.webp"
+        ],
+        "casePending": true
+      }
+    ],
+    "timeline": [
+      {
+        "period": "2025 — 2026",
+        "company": "Tatl Group · Yedyna Shkola",
+        "role": "Product Designer",
+        "desc": "Designed a new detailed student performance analytics section for parents. Built a video course learning platform for children in the mobile app. Developed partner integration across the system, website, and app. Redesigned the main platform website."
+      },
+      {
+        "period": "2024 — 2025",
+        "company": "WeStudy",
+        "role": "Product Designer",
+        "desc": "Redesigned the course builder — resolved key UX issues causing churn. Designed a website builder with 10+ component types. Ran usability testing sessions that uncovered critical friction points in onboarding."
+      },
+      {
+        "period": "2022 — 2024",
+        "company": "Snov.io",
+        "role": "Product Designer",
+        "desc": "Designed tools for email and LinkedIn outreach campaigns. Built lead generation tools: database search, single and bulk email search. Created browser extensions for lead capture. Improved email deliverability tooling: warm-up, deliverability check, and related features."
+      },
+      {
+        "period": "2022",
+        "company": "SendPulse",
+        "role": "UI/UX Designer",
+        "desc": "Updated the multichannel campaign editor and form editor. Implemented telephony in the CRM system. Designed a partner platform. Produced email templates and conference websites."
+      },
+      {
+        "period": "2016 — 2019",
+        "company": "Serpstat",
+        "role": "UI/UX Designer",
+        "desc": "Joined the startup team at the formation stage. Laid the foundation for the design system and task development approach. Designed tools for keyword analysis, rank tracking, site audit, and competitor research."
+      }
+    ]
+  }
+}
