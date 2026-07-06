@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale, type CaseBlock } from "@/lib/translations";
-import { listCaseSlugs, readCaseFile } from "@/lib/case-store";
+import { listDynamicCaseSlugs, readCaseFile } from "@/lib/case-store";
 import { Caption, CaseBlockList } from "@/components/CaseBlocks";
 import CaseStepsNav from "@/components/CaseStepsNav";
 import Footer from "@/components/Footer";
@@ -11,7 +11,7 @@ import Navbar from "@/components/Navbar";
 export function generateStaticParams() {
   const locales = ["uk", "en"] as const;
   const legacySlugs = Object.keys(translations.uk.cases);
-  const jsonSlugs = listCaseSlugs();
+  const jsonSlugs = listDynamicCaseSlugs();
   const slugs = [...new Set([...legacySlugs, ...jsonSlugs])];
   return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
