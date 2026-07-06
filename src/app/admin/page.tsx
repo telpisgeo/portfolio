@@ -31,10 +31,13 @@ export default function AdminDashboard() {
             <p className="text-sm text-muted-foreground">Компанії, розділ &quot;Про мене&quot;, досвід роботи</p>
           </Link>
 
-          <div className="border border-border rounded-2xl p-6 opacity-50">
+          <Link
+            href="/admin/cases"
+            className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
+          >
             <h2 className="text-base font-medium text-foreground mb-1">Кейси</h2>
-            <p className="text-sm text-muted-foreground">Незабаром</p>
-          </div>
+            <p className="text-sm text-muted-foreground">Створення, редагування та статус кейсів</p>
+          </Link>
         </div>
       </div>
     </div>
