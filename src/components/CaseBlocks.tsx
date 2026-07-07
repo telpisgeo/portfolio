@@ -1,6 +1,9 @@
 import type { Block } from "@/lib/case-blocks";
 import DarkSlider from "@/components/DarkSlider";
 import BeforeAfterBlock from "@/components/BeforeAfterBlock";
+import BrowserCarousel from "@/components/BrowserCarousel";
+import SiteShowcase from "@/components/SiteShowcase";
+import LazyVideo from "@/components/LazyVideo";
 import FadeUp from "@/components/FadeUp";
 
 export function Caption({ text }: { text: string }) {
@@ -63,7 +66,8 @@ function FigureIcon({ name }: { name: string }) {
     case "students": return <IconStudents />;
     case "schools": return <IconSchools />;
     case "teachers": return <IconTeachers />;
-    default: return null;
+    // Anything else is treated as a direct image path (e.g. a per-case SVG asset).
+    default: return <img src={name} alt="" className="w-full h-full" />;
   }
 }
 
@@ -128,9 +132,11 @@ export function renderCaseBlock(block: Block, i: number) {
             </div>
           </div>
           <div className="max-w-[1144px] mx-auto w-full px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
-            {block.img.src
-              ? <img src={block.img.src} alt={block.img.label} className="w-full rounded-lg" />
-              : <ImgPlaceholder label={block.img.label} ratio={block.img.ratio} />}
+            {block.img.videoSrc
+              ? <LazyVideo src={block.img.videoSrc} className="w-full rounded-lg" />
+              : block.img.src
+                ? <img src={block.img.src} alt={block.img.label} className="w-full rounded-lg" />
+                : <ImgPlaceholder label={block.img.label} ratio={block.img.ratio} />}
           </div>
         </div>
       );
@@ -142,6 +148,8 @@ export function renderCaseBlock(block: Block, i: number) {
           statement={block.statement}
           before={block.before}
           after={block.after}
+          beforeLabel={block.beforeLabel}
+          afterLabel={block.afterLabel}
         />
       );
     case "dark-section":
@@ -153,16 +161,37 @@ export function renderCaseBlock(block: Block, i: number) {
               <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-secondary-foreground font-normal">{block.statement}</p>
             </div>
           </div>
+          {block.carousel && block.carousel.length > 0 && (
+            <div className="max-w-[1144px] mx-auto w-full px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
+              <BrowserCarousel sites={block.carousel.map((s) => ({ url: s.url, src: s.src ?? "" }))} />
+            </div>
+          )}
+          {(block.video || block.img) && (
+            <div className="max-w-[1144px] mx-auto w-full px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
+              {block.video ? (
+                <div className="bg-[#4B57A9] rounded-[8px] overflow-hidden">
+                  <video src={block.video.src} autoPlay loop muted playsInline className="w-full" style={{ aspectRatio: block.video.ratio.replace("/", " / ") }} />
+                </div>
+              ) : block.img?.src ? (
+                <img src={block.img.src} alt={block.img.label} className="w-full rounded-lg" />
+              ) : block.img ? (
+                <ImgPlaceholder label={block.img.label} ratio={block.img.ratio} />
+              ) : null}
+            </div>
+          )}
+        </div>
+      );
+    case "showcase":
+      return (
+        <div key={i} id={block.id} className="scroll-mt-36 rounded-3xl bg-secondary overflow-hidden flex flex-col">
+          <div className="px-4 md:px-6 lg:px-8 pt-8 md:pt-10 lg:pt-12 pb-6 md:pb-7 lg:pb-8">
+            <div className="max-w-[912px] mx-auto flex flex-col gap-4">
+              <p className="text-sm font-bold text-primary">{block.caption}</p>
+              <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-secondary-foreground font-normal">{block.statement}</p>
+            </div>
+          </div>
           <div className="max-w-[1144px] mx-auto w-full px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
-            {block.video ? (
-              <div className="bg-[#4B57A9] rounded-[8px] overflow-hidden">
-                <video src={block.video.src} autoPlay loop muted playsInline className="w-full" style={{ aspectRatio: block.video.ratio.replace("/", " / ") }} />
-              </div>
-            ) : block.img?.src ? (
-              <img src={block.img.src} alt={block.img.label} className="w-full rounded-lg" />
-            ) : block.img ? (
-              <ImgPlaceholder label={block.img.label} ratio={block.img.ratio} />
-            ) : null}
+            <SiteShowcase sites={block.sites} />
           </div>
         </div>
       );
@@ -270,7 +299,7 @@ export function CaseBlockList({ blocks }: { blocks: Block[] }) {
       <div className="flex flex-col gap-6 md:gap-8">
         {blocks.map((block, i) => {
           if (block.t === "img") return null;
-          if (block.t === "dark-section" || block.t === "dark-slider" || block.t === "light-section" || block.t === "before-after" || block.t === "figures" || block.t === "white-section" || block.t === "quotes" || block.t === "proposal" || block.t === "bullets-card") {
+          if (block.t === "dark-section" || block.t === "dark-slider" || block.t === "light-section" || block.t === "before-after" || block.t === "figures" || block.t === "white-section" || block.t === "quotes" || block.t === "proposal" || block.t === "bullets-card" || block.t === "showcase") {
             return <FadeUp key={i}>{renderCaseBlock(block, i)}</FadeUp>;
           }
           return (

@@ -46,16 +46,20 @@ All case pages use a typed block system (`Block` union in `page.tsx`). Layout ru
 Інструменти: Figma, Claude Code
 ```
 
-**`dark-section`** — Text + image. Dark brown `#4A2C1A` bg, `rounded-3xl`, `overflow-hidden`. Caption in yellow `#FFCD00`, statement in cream `#FEF9DB`. Image placeholder flush at bottom (no padding, `className=""`  — card clips the corners via overflow-hidden).
+**`dark-section`** — Text + image. Dark brown `#4A2C1A` bg, `rounded-3xl`, `overflow-hidden`. Caption in yellow `#FFCD00`, statement in cream `#FEF9DB`. Image placeholder flush at bottom (no padding, `className=""`  — card clips the corners via overflow-hidden). `Image` and `Video` are mutually exclusive (video wins if both are set). `Carousel` is optional and independent of both — when present it renders an auto-cycling stack of browser-window mockups (`BrowserCarousel.tsx`) driven entirely by the given `sites` list (no hardcoded content).
 ```
 [dark-section]
 Caption: Про продукт
 Text: Єдина школа це безкоштовна платформа...
 Image: назва зображення (ширина/висота)
+Video: назва відео (ширина/висота)          ← optional, replaces Image
+Carousel:                                    ← optional
+  site-one.com | назва скріншоту
+  site-two.com | назва скріншоту
 ```
 
-**`figures`** — Infographic. White bg, `rounded-3xl`. Caption above, then yellow `#FBCF0B` cards in a 4-col grid — each has a 100×100 SVG icon, value (30px), label.
-Icons available: `parents`, `students`, `schools`, `teachers`
+**`figures`** — Infographic. White bg, `rounded-3xl`. Caption above, then yellow `#FBCF0B` cards in a 4-col grid — each has a 100×100 icon, value (30px), label.
+`icon` accepts either a named built-in icon (`parents`, `students`, `schools`, `teachers` — inline SVG) **or** a direct image path (e.g. `/images/works/snov/icon-1.svg`) for case-specific icon assets.
 ```
 [figures]
 Caption: Платформою користуються
@@ -63,26 +67,39 @@ Caption: Платформою користуються
 1,2 млн. | учнів | students
 3,5 тисяч | шкіл | schools
 89 тисяч | викладачів | teachers
+3 млн. | юзерів | /images/works/snov/icon-1.svg
 ```
 
-**`dark-slider`** — Dark brown `#4A2C1A` bg, `rounded-3xl`. Yellow caption at top. Each slide has its own text (cream 30px) + image (max-w 1144px). Dot navigation shown when >1 slide. Client component (`DarkSlider.tsx`).
+**`dark-slider`** — Dark brown `#4A2C1A` bg, `rounded-3xl`. Yellow caption at top (or per-slide `Caption`, which overrides the block-level one for that slide). Each slide has its own text (cream 30px) + image or video (max-w 1144px, video wins if both set). Dot navigation shown when >1 slide. Client component (`DarkSlider.tsx`).
 ```
 [dark-slider]
 Caption: Концепт. Рекомендації
 ---
+Caption: Дослідження. Аналіз конкурентів     ← optional, overrides block Caption for this slide
 Text: Рекомендації формуються на основі даних...
 Image: Рекомендації — промо (1144/640)
 ---
 Text: Текст другого слайду...
-Image: назва (1144/640)
+Video: назва відео (1144/640)                ← optional, replaces Image
 ```
 
-**`light-section`** — Text + image, white bg. Same structure as `dark-section` but white `rounded-3xl` `overflow-hidden`, brown caption, dark `#171311` text. Image flush at bottom (no padding).
+**`light-section`** — Text + image or video, white bg. Same structure as `dark-section` but white `rounded-3xl` `overflow-hidden`, brown caption, dark `#171311` text. Image/video flush at bottom (no padding); video is lazy-loaded on scroll (`LazyVideo.tsx`).
 ```
 [light-section]
 Caption: Концепт. Шаблони
 Text: Поки не вирішимо проблему з даними...
 Image: назва зображення (1144/822)
+Video: назва відео (1144/822)          ← optional, replaces Image
+```
+
+**`showcase`** — Animated scrolling website preview. Dark brown `#4A2C1A` bg, `rounded-3xl`, same header layout as `dark-section` (yellow caption + cream statement). Below the text, a full-width carousel scrolls through each site's full page inside a browser-window frame (`SiteShowcase.tsx`) — distinct from `Carousel` on `dark-section`, which cycles between sites rather than scrolling through one long page.
+```
+[showcase]
+Caption: Оновлена презентація робіт
+Text: Сайти користувачів, які робили авторський дизайн...
+Sites:
+  site-one.com | назва скріншоту (повна сторінка)
+  site-two.com | назва скріншоту
 ```
 
 **`white-section`** — Text only. White bg, `rounded-3xl`. Caption (brown 14px bold) + statement (30px). Gap 16px.
@@ -125,13 +142,13 @@ Group: Інсайти від батьків
 ```
 Quote format: `— Текст` or `— Текст | Автор`. The `—` is rendered automatically by the block — do NOT include it in the `text` field of quote items. Each `---` separates groups.
 
-**`before-after`** — Before/after switcher. White bg `rounded-3xl`. Caption + statement text, then a centered pill toggle (active tab = yellow `#FBCF0B`), then one image that swaps on toggle. Default active tab is "After". Supports localized button labels via `beforeLabel`/`afterLabel` props (defaults: "До" / "Після"). Client component (`BeforeAfterBlock.tsx`).
+**`before-after`** — Before/after switcher. White bg `rounded-3xl`. Caption + statement text, then a centered pill toggle (active tab = yellow `#FBCF0B`), then one image (or video) that swaps on toggle. Default active tab is "After". Supports localized button labels via `beforeLabel`/`afterLabel` props (defaults: "До" / "Після"). Client component (`BeforeAfterBlock.tsx`).
 ```
 [before-after]
 Caption: Про кейс
 Text: Нова концепція — дати можливість створити сайт за лічені хвилини...
 Before: назва зображення до (1144/640)
-After: назва зображення після (1144/640)
+After: назва відео після (1144/640)     ← Before/After each independently accept Image or Video
 BeforeLabel: До        ← optional, default "До"
 AfterLabel: Після      ← optional, default "Після"
 ```

@@ -13,6 +13,13 @@ export function generateStaticParams() {
   return [{ locale: "uk" }, { locale: "en" }];
 }
 
+const CAROUSEL_SITES = [
+  { url: "alina-tanasienko.com", src: "/images/works/westudy/site-example-1.webp" },
+  { url: "giim.edu.ua",          src: "/images/works/westudy/site-example-2.webp" },
+  { url: "chysta-voda.com.ua",   src: "/images/works/westudy/site-example-3.webp" },
+  { url: "khomutovska.com",      src: "/images/works/westudy/site-example-4.webp" },
+];
+
 type Block =
   | { t: "meta"; id?: string; items: { label: string; value: string }[] }
   | { t: "dark-section"; id?: string; caption: string; statement: string; img?: { label: string; ratio: string; src?: string }; carousel?: boolean }
@@ -380,7 +387,7 @@ function renderBlock(block: Block, i: number) {
           </div>
           {block.carousel && (
             <div className="max-w-[1144px] mx-auto w-full px-4 md:px-6 lg:px-8 pb-4 md:pb-6 lg:pb-8">
-              <BrowserCarousel />
+              <BrowserCarousel sites={CAROUSEL_SITES} />
             </div>
           )}
           {block.img && (

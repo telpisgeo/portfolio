@@ -99,6 +99,24 @@ function validateImgRef(img: unknown, required: boolean): string | null {
     const err = validateImagePath(i.src);
     if (err) return err;
   }
+  if (i.videoSrc !== undefined) {
+    const err = validateImagePath(i.videoSrc);
+    if (err) return err;
+  }
+  return null;
+}
+
+function validateSites(sites: unknown): string | null {
+  if (!Array.isArray(sites)) return "Невірний список сайтів";
+  for (const site of sites) {
+    if (!site || typeof site !== "object") return "Невірний сайт";
+    const s = site as Record<string, unknown>;
+    if (!isString(s.url)) return "Невірний URL сайту";
+    if (s.src !== undefined) {
+      const err = validateImagePath(s.src);
+      if (err) return err;
+    }
+  }
   return null;
 }
 
@@ -123,14 +141,23 @@ function validateBlock(block: unknown): string | null {
         const err = validateImagePath(v.src);
         if (err) return err;
       }
+      if (b.carousel !== undefined) {
+        const err = validateSites(b.carousel);
+        if (err) return err;
+      }
       return null;
     }
     case "dark-slider":
       if (!isString(b.caption) || !Array.isArray(b.slides)) return "Невірний блок dark-slider";
       for (const s of b.slides) {
         if (!s || !isString(s.text) || !isString(s.imgLabel) || !isString(s.imgRatio)) return "Невірний слайд";
+        if (s.caption !== undefined && !isString(s.caption)) return "Невірний підзаголовок слайду";
         if (s.imgSrc !== undefined) {
           const err = validateImagePath(s.imgSrc);
+          if (err) return err;
+        }
+        if (s.videoSrc !== undefined) {
+          const err = validateImagePath(s.videoSrc);
           if (err) return err;
         }
       }
@@ -173,10 +200,15 @@ function validateBlock(block: unknown): string | null {
       return null;
     case "before-after": {
       if (!isString(b.caption) || !isString(b.statement)) return "Невірний блок before-after";
+      if (b.beforeLabel !== undefined && !isString(b.beforeLabel)) return "Невірний підпис кнопки «До»";
+      if (b.afterLabel !== undefined && !isString(b.afterLabel)) return "Невірний підпис кнопки «Після»";
       const beforeErr = validateImgRef(b.before, true);
       if (beforeErr) return beforeErr;
       return validateImgRef(b.after, true);
     }
+    case "showcase":
+      if (!isString(b.caption) || !isString(b.statement)) return "Невірний блок showcase";
+      return validateSites(b.sites);
     default:
       return `Невідомий тип блоку: ${b.t}`;
   }

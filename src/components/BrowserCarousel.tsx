@@ -2,12 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const SITES = [
-  { url: "alina-tanasienko.com", src: "/images/works/westudy/site-example-1.webp" },
-  { url: "giim.edu.ua",          src: "/images/works/westudy/site-example-2.webp" },
-  { url: "chysta-voda.com.ua",   src: "/images/works/westudy/site-example-3.webp" },
-  { url: "khomutovska.com",      src: "/images/works/westudy/site-example-4.webp" },
-];
+export type CarouselSite = { url: string; src: string };
 
 type Role = "center" | "next" | "prev" | "hidden";
 
@@ -25,10 +20,11 @@ const ROLE_STYLES: Record<Role, string> = {
   hidden: "translate-x-[-50%] translate-y-[-50%] scale-[0.56] opacity-0   z-0",
 };
 
-export default function BrowserCarousel() {
-  const [order, setOrder] = useState([0, 1, 2, 3]);
+export default function BrowserCarousel({ sites }: { sites: CarouselSite[] }) {
+  const [order, setOrder] = useState(() => sites.map((_, i) => i));
 
   useEffect(() => {
+    if (sites.length < 2) return;
     const id = setInterval(() => {
       setOrder(prev => {
         const next = [...prev];
@@ -37,14 +33,14 @@ export default function BrowserCarousel() {
       });
     }, 3600);
     return () => clearInterval(id);
-  }, []);
+  }, [sites.length]);
 
   return (
     <div
       className="w-full rounded-2xl overflow-hidden relative"
       style={{ aspectRatio: "1144 / 640", background: "#B9CBD7" }}
     >
-      {SITES.map((site, i) => {
+      {sites.map((site, i) => {
         const role = getRole(i, order);
         return (
           <div

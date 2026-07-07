@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { Block, Step, CaseContent } from "@/lib/case-blocks";
+import type { Block, Step, CaseContent, ImgRef, ShowcaseSite } from "@/lib/case-blocks";
 import type { CaseFile, CaseStatus } from "@/lib/case-store";
 import MediaUpload from "@/components/admin/MediaUpload";
 
@@ -45,8 +45,6 @@ function AddBtn({ label, onClick }: { label: string; onClick: () => void }) {
   );
 }
 
-type ImgRef = { label: string; ratio: string; src?: string };
-
 function ImgFields({ value, onChange, dir }: { value: ImgRef | undefined; onChange: (v: ImgRef) => void; dir: string }) {
   const v = value ?? { label: "", ratio: "1144/640", src: "" };
   return (
@@ -62,6 +60,39 @@ function ImgFields({ value, onChange, dir }: { value: ImgRef | undefined; onChan
           label="Зображення"
         />
       </div>
+      <div className="col-span-2">
+        <MediaUpload
+          kind="video"
+          dir={dir}
+          value={v.videoSrc}
+          onChange={(videoSrc) => onChange({ ...v, videoSrc: videoSrc || undefined })}
+          label="Або відео (замінює зображення)"
+        />
+      </div>
+    </div>
+  );
+}
+
+function SitesFields({ sites, onChange, dir }: { sites: ShowcaseSite[]; onChange: (sites: ShowcaseSite[]) => void; dir: string }) {
+  return (
+    <div className="flex flex-col gap-3">
+      {sites.map((s, i) => (
+        <div key={i} className="border border-border rounded-xl p-3 flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">Сайт {i + 1}</span>
+            <RemoveBtn onClick={() => onChange(sites.filter((_, j) => j !== i))} />
+          </div>
+          <Field label="URL (напр. example.com)" value={s.url} onChange={(v) => onChange(sites.map((x, j) => (j === i ? { ...x, url: v } : x)))} />
+          <MediaUpload
+            kind="image"
+            dir={dir}
+            value={s.src}
+            onChange={(src) => onChange(sites.map((x, j) => (j === i ? { ...x, src: src || undefined } : x)))}
+            label="Скріншот"
+          />
+        </div>
+      ))}
+      <AddBtn label="+ Додати сайт" onClick={() => onChange([...sites, { url: "" }])} />
     </div>
   );
 }
@@ -77,6 +108,7 @@ const BLOCK_TYPES: { value: Block["t"]; label: string }[] = [
   { value: "bullets-card", label: "Bullets card" },
   { value: "quotes", label: "Quotes" },
   { value: "before-after", label: "Before/After" },
+  { value: "showcase", label: "Showcase (анімований скрол сайтів)" },
   { value: "caption", label: "Caption" },
   { value: "statement", label: "Statement" },
   { value: "bullets", label: "Bullets (без картки)" },
@@ -103,6 +135,7 @@ function emptyBlock(type: Block["t"]): Block {
     case "bullets": return { t: "bullets", text: "", items: [""] };
     case "bullets-card": return { t: "bullets-card", sectionCaption: "", text: "", items: [""] };
     case "before-after": return { t: "before-after", caption: "", statement: "", before: { label: "", ratio: "1144/640" }, after: { label: "", ratio: "1144/640" } };
+    case "showcase": return { t: "showcase", caption: "", statement: "", sites: [{ url: "" }] };
   }
 }
 
@@ -141,6 +174,19 @@ function renderBlockFields(block: Block, onChange: (next: Block) => void, dir: s
               onChange={(src) => onChange({ ...block, video: src ? { src, ratio: block.video?.ratio ?? block.img?.ratio ?? "1144/640" } : undefined })}
             />
           </div>
+          <div className="border-t border-border pt-3">
+            <label className={labelClass}>Карусель сайтів (необов&apos;язково, показується разом із зображенням/відео)</label>
+            <SitesFields sites={block.carousel ?? []} onChange={(carousel) => onChange({ ...block, carousel: carousel.length > 0 ? carousel : undefined })} dir={dir} />
+          </div>
+        </div>
+      );
+    case "showcase":
+      return (
+        <div className="flex flex-col gap-3">
+          <Field label="ID (якір, необов'язково)" value={block.id ?? ""} onChange={(v) => onChange({ ...block, id: v || undefined })} mono />
+          <Field label="Caption" value={block.caption} onChange={(v) => onChange({ ...block, caption: v })} />
+          <TextAreaField label="Statement" value={block.statement} onChange={(v) => onChange({ ...block, statement: v })} />
+          <SitesFields sites={block.sites} onChange={(sites) => onChange({ ...block, sites })} dir={dir} />
         </div>
       );
     case "light-section":
@@ -260,6 +306,10 @@ function renderBlockFields(block: Block, onChange: (next: Block) => void, dir: s
           <Field label="ID (якір, необов'язково)" value={block.id ?? ""} onChange={(v) => onChange({ ...block, id: v || undefined })} mono />
           <Field label="Caption" value={block.caption} onChange={(v) => onChange({ ...block, caption: v })} />
           <TextAreaField label="Statement" value={block.statement} onChange={(v) => onChange({ ...block, statement: v })} />
+          <div className="grid grid-cols-2 gap-2">
+            <Field label="Підпис кнопки «До» (необов'язково)" value={block.beforeLabel ?? ""} onChange={(v) => onChange({ ...block, beforeLabel: v || undefined })} />
+            <Field label="Підпис кнопки «Після» (необов'язково)" value={block.afterLabel ?? ""} onChange={(v) => onChange({ ...block, afterLabel: v || undefined })} />
+          </div>
           <p className={labelClass}>До</p>
           <ImgFields value={block.before} onChange={(before) => onChange({ ...block, before })} dir={dir} />
           <p className={labelClass}>Після</p>
@@ -277,6 +327,7 @@ function renderBlockFields(block: Block, onChange: (next: Block) => void, dir: s
                 <span className="text-xs uppercase tracking-widest text-muted-foreground">Слайд {i + 1}</span>
                 <RemoveBtn onClick={() => onChange({ ...block, slides: block.slides.filter((_, j) => j !== i) })} />
               </div>
+              <Field label="Підзаголовок слайду (необов'язково, замінює Caption)" value={s.caption ?? ""} onChange={(v) => onChange({ ...block, slides: block.slides.map((x, j) => (j === i ? { ...x, caption: v || undefined } : x)) })} />
               <TextAreaField label="Текст" value={s.text} onChange={(v) => onChange({ ...block, slides: block.slides.map((x, j) => (j === i ? { ...x, text: v } : x)) })} />
               <div className="grid grid-cols-2 gap-2">
                 <Field label="Підпис зображення" value={s.imgLabel} onChange={(v) => onChange({ ...block, slides: block.slides.map((x, j) => (j === i ? { ...x, imgLabel: v } : x)) })} />
@@ -287,6 +338,13 @@ function renderBlockFields(block: Block, onChange: (next: Block) => void, dir: s
                 dir={dir}
                 value={s.imgSrc}
                 onChange={(src, ratio) => onChange({ ...block, slides: block.slides.map((x, j) => (j === i ? { ...x, imgSrc: src || undefined, imgRatio: ratio ?? x.imgRatio } : x)) })}
+              />
+              <MediaUpload
+                kind="video"
+                dir={dir}
+                value={s.videoSrc}
+                onChange={(videoSrc) => onChange({ ...block, slides: block.slides.map((x, j) => (j === i ? { ...x, videoSrc: videoSrc || undefined } : x)) })}
+                label="Або відео (замінює зображення)"
               />
             </div>
           ))}
