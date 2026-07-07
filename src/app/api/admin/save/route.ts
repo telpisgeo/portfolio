@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, verifySessionToken } from "@/lib/admin-session";
 import { commitFiles } from "@/lib/github-commit";
-import { STATIC_CASE_SLUGS } from "@/lib/case-store";
 
 const IMAGE_PATH_RE = /^\/images\/[A-Za-z0-9_\-./ ]+\.(webp|png|jpg|jpeg|svg|webm|gif)$/;
+// Videos are either committed locally (like images) or uploaded through the
+// admin's FFmpeg + Vercel Blob pipeline, which returns an external
+// public.blob.vercel-storage.com URL rather than a local /images/ path.
+const VIDEO_PATH_RE = /^(\/images\/[A-Za-z0-9_\-./ ]+\.(webm|mp4)|https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\/[A-Za-z0-9_\-./]+\.(mp4|webm))$/;
 const CASE_URL_RE = /^\/(uk|en)\/cases\/[a-z0-9-]+$/;
 const SLUG_RE = /^[a-z0-9-]+$/;
 const CASE_FILE_RE = /^src\/data\/cases\/([a-z0-9-]+)\.json$/;
@@ -14,6 +17,11 @@ function isString(v: unknown): v is string {
 
 function validateImagePath(img: unknown): string | null {
   if (!isString(img) || !IMAGE_PATH_RE.test(img)) return `Невірний шлях до зображення: ${img}`;
+  return null;
+}
+
+function validateVideoPath(src: unknown): string | null {
+  if (!isString(src) || !VIDEO_PATH_RE.test(src)) return `Невірний шлях до відео: ${src}`;
   return null;
 }
 
@@ -100,7 +108,7 @@ function validateImgRef(img: unknown, required: boolean): string | null {
     if (err) return err;
   }
   if (i.videoSrc !== undefined) {
-    const err = validateImagePath(i.videoSrc);
+    const err = validateVideoPath(i.videoSrc);
     if (err) return err;
   }
   return null;
@@ -138,7 +146,7 @@ function validateBlock(block: unknown): string | null {
       if (b.video !== undefined) {
         const v = b.video as Record<string, unknown>;
         if (!v || !isString(v.src) || !isString(v.ratio)) return "Невірне відео";
-        const err = validateImagePath(v.src);
+        const err = validateVideoPath(v.src);
         if (err) return err;
       }
       if (b.carousel !== undefined) {
@@ -157,7 +165,7 @@ function validateBlock(block: unknown): string | null {
           if (err) return err;
         }
         if (s.videoSrc !== undefined) {
-          const err = validateImagePath(s.videoSrc);
+          const err = validateVideoPath(s.videoSrc);
           if (err) return err;
         }
       }
@@ -245,7 +253,7 @@ const FILE_VALIDATORS: Record<string, (data: unknown) => string | null> = {
 function findValidator(path: string): ((data: unknown) => string | null) | null {
   if (FILE_VALIDATORS[path]) return FILE_VALIDATORS[path];
   const caseMatch = path.match(CASE_FILE_RE);
-  if (caseMatch && !STATIC_CASE_SLUGS.has(caseMatch[1])) return validateCaseFile;
+  if (caseMatch) return validateCaseFile;
   return null;
 }
 

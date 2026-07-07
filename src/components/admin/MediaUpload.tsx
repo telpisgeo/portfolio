@@ -59,7 +59,7 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
     const ffmpeg = new FFmpeg();
     const baseURL = "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd";
     ffmpeg.on("progress", ({ progress: p }) => {
-      setProgress(`Конвертую у WebM... ${Math.min(100, Math.round(p * 100))}%`);
+      setProgress(`Конвертую відео... ${Math.min(100, Math.round(p * 100))}%`);
     });
     await ffmpeg.load({
       coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, "text/javascript"),
@@ -67,27 +67,26 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
     });
 
     const inputName = `input${getExt(file.name) || ".mp4"}`;
-    const outputName = "output.webm";
+    const outputName = "output.mp4";
     await ffmpeg.writeFile(inputName, await fetchFile(file));
     await ffmpeg.exec([
       "-i", inputName,
-      "-vf", "scale='min(1280,iw)':-2",
-      "-c:v", "libvpx-vp9",
-      "-crf", "32",
-      "-b:v", "0",
-      "-deadline", "realtime",
-      "-cpu-used", "4",
+      "-vf", "scale='min(1920,iw)':-2",
+      "-c:v", "libx264",
+      "-crf", "20",
+      "-preset", "veryfast",
+      "-movflags", "+faststart",
       "-an",
       outputName,
     ]);
     const output = await ffmpeg.readFile(outputName);
     const outputBytes = new ArrayBuffer(output.length);
     new Uint8Array(outputBytes).set(output as Uint8Array);
-    const blob = new Blob([outputBytes], { type: "video/webm" });
+    const blob = new Blob([outputBytes], { type: "video/mp4" });
 
     setProgress("Завантажую у сховище...");
     const { upload } = await import("@vercel/blob/client");
-    const pathname = `${dir}/${sanitizeFilename(file.name)}.webm`;
+    const pathname = `${dir}/${sanitizeFilename(file.name)}.mp4`;
     const result = await upload(pathname, blob, {
       access: "public",
       handleUploadUrl: "/api/admin/blob-upload",
