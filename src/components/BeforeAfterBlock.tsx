@@ -5,13 +5,16 @@ import { useState } from "react";
 type Props = {
   caption: string;
   statement: string;
-  before: { label: string; ratio: string; src?: string };
-  after: { label: string; ratio: string; src?: string };
+  before: { label: string; ratio: string; src?: string; videoSrc?: string };
+  after: { label: string; ratio: string; src?: string; videoSrc?: string };
   beforeLabel?: string;
   afterLabel?: string;
 };
 
 function ImgOrPlaceholder({ img }: { img: Props["before"] }) {
+  if (img.videoSrc) {
+    return <video src={img.videoSrc} autoPlay loop muted playsInline className="w-full rounded-lg" />;
+  }
   if (img.src) {
     return <img src={img.src} alt={img.label} className="w-full rounded-lg" />;
   }
