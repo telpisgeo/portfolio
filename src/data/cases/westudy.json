@@ -1,0 +1,238 @@
+{
+  "uk": {
+    "eyebrow": "WeStudy",
+    "title": "Створили сучасний веб-білдер сайту, який припинив відтік клієнтів сервісу",
+    "steps": [
+      { "label": "Контекст", "href": "#context" },
+      { "label": "Мета", "href": "#goal" },
+      { "label": "Дослідження", "href": "#insights" },
+      { "label": "Концепт", "href": "#concept" },
+      { "label": "Результати", "href": "#results" }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          { "label": "Роль", "value": "Product Designer" },
+          { "label": "Команда", "value": "Product manager\nFront-end розробник\nBack-end розробник" },
+          { "label": "Таймінг", "value": "6 місяців" },
+          { "label": "Інструменти", "value": "Figma" }
+        ]
+      },
+      {
+        "t": "dark-slider",
+        "caption": "Про продукт",
+        "slides": [
+          {
+            "text": "Westudy — це рішення все в одному для створення курсів. Окрім створення курсів, платформа має вбудовані рішення для відправки емейлів, створення вебінарів, сайтів, та CRM.",
+            "imgLabel": "Westudy — промо 1",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/westudy/westudy-about-promo-1-en.webp"
+          },
+          {
+            "text": "Westudy — це рішення все в одному для створення курсів. Окрім створення курсів, платформа має вбудовані рішення для відправки емейлів, створення вебінарів, сайтів, та CRM.",
+            "imgLabel": "Westudy — промо 2",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/westudy/westudy-about-promo-2-ua.webp"
+          },
+          {
+            "text": "Westudy — це рішення все в одному для створення курсів. Окрім створення курсів, платформа має вбудовані рішення для відправки емейлів, створення вебінарів, сайтів, та CRM.",
+            "imgLabel": "Westudy — промо 3",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/westudy/westudy-about-promo-3-ua.webp"
+          }
+        ]
+      },
+      {
+        "t": "white-section",
+        "id": "goal",
+        "caption": "Мета",
+        "statement": "Зупинити відтік клієнтів, які були незадоволені платформою через незручний та незрозумілий інструмент створення сайтів."
+      },
+      {
+        "t": "before-after",
+        "id": "case",
+        "caption": "Про кейс",
+        "statement": "Нова концепція — дати можливість створити сайт за лічені хвилини використовуючи вже наявну інформацію про курси на платформі.",
+        "before": { "label": "Стара версія веб-білдера", "ratio": "1144/640", "src": "/images/works/westudy/case-westudy-before-ua.webp" },
+        "after": { "label": "Нова версія веб-білдера", "ratio": "1144/640", "videoSrc": "/images/works/westudy/case-westudy-after-en.webm" }
+      },
+      {
+        "t": "quotes",
+        "id": "insights",
+        "sectionCaption": "Інсайти",
+        "groups": [
+          {
+            "caption": "Інсайти від користувачів",
+            "items": [
+              { "text": "Я замучалась робити сайт, намагалась декілька разів створити щось, потім психанула й зробила за день сайт на іншій платформі." },
+              { "text": "Не розумію навіщо платити за сервіс, в якому нормально працює лише частина функціоналу." },
+              { "text": "Моя моб версія сайту жахлива, я багато разів спілкувався з службою підтримки, й все одно не допомогло — зробити сайт однаково читабельним на всіх пристроях неможливо!" }
+            ]
+          }
+        ]
+      },
+      {
+        "t": "dark-slider",
+        "id": "concept",
+        "caption": "Концепція",
+        "slides": [
+          {
+            "text": "Зробили універсальну сторінку по замовченню для всіх, хто не хоче мати унікальний дизайн, а лише інформацію про курси, вартість й можливість їх придбати.",
+            "imgLabel": "Концепція — Універсальний сайт",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/westudy/westudy-universal-page-en.webp"
+          },
+          {
+            "text": "Унікальний стиль, дизайн, адаптивна поведінка сторінки, шаблони блоків та багато інших функцій, які спростили створення сайту з більш складним дизайном.",
+            "imgLabel": "Концепція — Авторський дизайн",
+            "imgRatio": "1144/640",
+            "videoSrc": "/images/works/westudy/blocks-demo.webm"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "Приклади сайтів",
+        "statement": "Сайти користувачів, які робили авторський дизайн самостійно або підключали професійних дизайнерів.",
+        "carousel": [
+          { "url": "alina-tanasienko.com", "src": "/images/works/westudy/site-example-1.webp" },
+          { "url": "giim.edu.ua", "src": "/images/works/westudy/site-example-2.webp" },
+          { "url": "chysta-voda.com.ua", "src": "/images/works/westudy/site-example-3.webp" },
+          { "url": "khomutovska.com", "src": "/images/works/westudy/site-example-4.webp" }
+        ]
+      },
+      {
+        "t": "bullets-card",
+        "id": "results",
+        "sectionCaption": "Результати",
+        "text": "",
+        "items": [
+          "Після оновлень, за допомогою партнерів-дизайнерів, ми оновили сайти чинним користувачам (які мали власні сайти), перевірили реальну роботу сервісу, виправили безліч технічних проблем та доопрацювали UX.",
+          "За перші 3 місяці було оновлено та створено більше 100 сайтів.",
+          "Нові можливості редактора, а також оновлений вид «автоматичних» сайтів зупинив відтік користувачів, яких не задовольняв інструмент, та отримав багато позитивних відгуків."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "eyebrow": "WeStudy",
+    "title": "Built a modern website builder that stopped customer churn",
+    "steps": [
+      { "label": "Context", "href": "#context" },
+      { "label": "Goal", "href": "#goal" },
+      { "label": "Research", "href": "#insights" },
+      { "label": "Concept", "href": "#concept" },
+      { "label": "Results", "href": "#results" }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          { "label": "Role", "value": "Product Designer" },
+          { "label": "Team", "value": "Product manager\nFront-end developer\nBack-end developer" },
+          { "label": "Timeline", "value": "6 months" },
+          { "label": "Tools", "value": "Figma" }
+        ]
+      },
+      {
+        "t": "dark-slider",
+        "caption": "About the product",
+        "slides": [
+          {
+            "text": "Westudy is an all-in-one solution for creating online courses. In addition to course creation, the platform has built-in tools for email campaigns, webinars, websites, and CRM.",
+            "imgLabel": "Westudy — promo 1",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/westudy/westudy-about-promo-1-en.webp"
+          },
+          {
+            "text": "Westudy is an all-in-one solution for creating online courses. In addition to course creation, the platform has built-in tools for email campaigns, webinars, websites, and CRM.",
+            "imgLabel": "Westudy — promo 2",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/westudy/westudy-about-promo-2-ua.webp"
+          },
+          {
+            "text": "Westudy is an all-in-one solution for creating online courses. In addition to course creation, the platform has built-in tools for email campaigns, webinars, websites, and CRM.",
+            "imgLabel": "Westudy — promo 3",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/westudy/westudy-about-promo-3-ua.webp"
+          }
+        ]
+      },
+      {
+        "t": "white-section",
+        "id": "goal",
+        "caption": "Goal",
+        "statement": "Stop the churn of customers who were dissatisfied with the platform due to its inconvenient and confusing website builder."
+      },
+      {
+        "t": "before-after",
+        "id": "case",
+        "caption": "About the case",
+        "statement": "A new concept — enable users to create a website in minutes using existing course information already on the platform.",
+        "before": { "label": "Old website builder", "ratio": "1144/640", "src": "/images/works/westudy/case-westudy-before-ua.webp" },
+        "after": { "label": "New website builder", "ratio": "1144/640", "videoSrc": "/images/works/westudy/case-westudy-after-en.webm" },
+        "beforeLabel": "Before",
+        "afterLabel": "After"
+      },
+      {
+        "t": "quotes",
+        "id": "insights",
+        "sectionCaption": "Insights",
+        "groups": [
+          {
+            "caption": "Insights from users",
+            "items": [
+              { "text": "I got so frustrated trying to build a site, I tried multiple times, then gave up and built one on another platform in a day." },
+              { "text": "I don't understand why I'm paying for a service where only part of the functionality actually works." },
+              { "text": "My mobile version looks terrible. I contacted support many times and nothing helped — it's impossible to make the site look the same on all devices!" }
+            ]
+          }
+        ]
+      },
+      {
+        "t": "dark-slider",
+        "id": "concept",
+        "caption": "Concept",
+        "slides": [
+          {
+            "text": "We built a universal default page for everyone who doesn't want a unique design — just course info, pricing, and a way to purchase.",
+            "imgLabel": "Concept — Universal site",
+            "imgRatio": "1144/640",
+            "imgSrc": "/images/works/westudy/westudy-universal-page-en.webp"
+          },
+          {
+            "text": "Unique styles, design, responsive behavior, block templates, and many other features that made building a more complex custom site much simpler.",
+            "imgLabel": "Concept — Custom design",
+            "imgRatio": "1144/640",
+            "videoSrc": "/images/works/westudy/blocks-demo.webm"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "Site examples",
+        "statement": "Sites built by users who designed them independently or hired professional designers.",
+        "carousel": [
+          { "url": "alina-tanasienko.com", "src": "/images/works/westudy/site-example-1.webp" },
+          { "url": "giim.edu.ua", "src": "/images/works/westudy/site-example-2.webp" },
+          { "url": "chysta-voda.com.ua", "src": "/images/works/westudy/site-example-3.webp" },
+          { "url": "khomutovska.com", "src": "/images/works/westudy/site-example-4.webp" }
+        ]
+      },
+      {
+        "t": "bullets-card",
+        "id": "results",
+        "sectionCaption": "Results",
+        "text": "",
+        "items": [
+          "After the update, with help from partner designers, we refreshed existing users' sites, tested real-world usage, fixed many technical issues, and refined the UX.",
+          "In the first 3 months, over 100 sites were updated or created.",
+          "The new editor capabilities and improved automatic site experience stopped the churn among dissatisfied users and received many positive reviews."
+        ]
+      }
+    ]
+  }
+}
