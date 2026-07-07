@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import FadeImage from "@/components/FadeImage";
 
 type Props = {
   caption: string;
@@ -16,7 +17,7 @@ function ImgOrPlaceholder({ img }: { img: Props["before"] }) {
     return <video src={img.videoSrc} autoPlay loop muted playsInline className="w-full rounded-lg" />;
   }
   if (img.src) {
-    return <img src={img.src} alt={img.label} className="w-full rounded-lg" />;
+    return <FadeImage src={img.src} alt={img.label} ratio={img.ratio} className="rounded-lg" />;
   }
   const [w, h] = img.ratio.split("/").map(Number);
   return (

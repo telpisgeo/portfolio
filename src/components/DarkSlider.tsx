@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import FadeImage from "@/components/FadeImage";
 
 export type Slide = { caption?: string; text: string; imgLabel: string; imgRatio: string; imgSrc?: string; videoSrc?: string };
 
@@ -89,7 +90,7 @@ export default function DarkSlider({
         {slide.videoSrc
           ? <video src={slide.videoSrc} autoPlay loop muted playsInline className="w-full rounded-2xl" style={{ aspectRatio: slide.imgRatio.replace("/", " / ") }} />
           : slide.imgSrc
-            ? <img src={slide.imgSrc} alt={slide.imgLabel} className="w-full rounded-2xl" />
+            ? <FadeImage src={slide.imgSrc} alt={slide.imgLabel} ratio={slide.imgRatio} className="rounded-2xl" />
             : <ImgPlaceholder label={slide.imgLabel} ratio={slide.imgRatio} />}
       </div>
 

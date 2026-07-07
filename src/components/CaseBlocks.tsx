@@ -5,6 +5,7 @@ import BrowserCarousel from "@/components/BrowserCarousel";
 import SiteShowcase from "@/components/SiteShowcase";
 import LazyVideo from "@/components/LazyVideo";
 import FadeUp from "@/components/FadeUp";
+import FadeImage from "@/components/FadeImage";
 
 export function Caption({ text }: { text: string }) {
   return <p className="text-sm font-bold text-muted-foreground">{text}</p>;
@@ -135,7 +136,7 @@ export function renderCaseBlock(block: Block, i: number) {
             {block.img.videoSrc
               ? <LazyVideo src={block.img.videoSrc} className="w-full rounded-lg" />
               : block.img.src
-                ? <img src={block.img.src} alt={block.img.label} className="w-full rounded-lg" />
+                ? <FadeImage src={block.img.src} alt={block.img.label} ratio={block.img.ratio} className="rounded-lg" />
                 : <ImgPlaceholder label={block.img.label} ratio={block.img.ratio} />}
           </div>
         </div>
@@ -173,7 +174,7 @@ export function renderCaseBlock(block: Block, i: number) {
                   <video src={block.video.src} autoPlay loop muted playsInline className="w-full" style={{ aspectRatio: block.video.ratio.replace("/", " / ") }} />
                 </div>
               ) : block.img?.src ? (
-                <img src={block.img.src} alt={block.img.label} className="w-full rounded-lg" />
+                <FadeImage src={block.img.src} alt={block.img.label} ratio={block.img.ratio} className="rounded-lg" />
               ) : block.img ? (
                 <ImgPlaceholder label={block.img.label} ratio={block.img.ratio} />
               ) : null}
