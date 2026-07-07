@@ -128,14 +128,14 @@
           {
             "text": "Унікальний стиль, дизайн, адаптивна поведінка сторінки, шаблони блоків та багато інших функцій, які спростили створення сайту з більш складним дизайном.",
             "imgLabel": "Концепція — Авторський дизайн",
-            "imgRatio": "1144/640",
-            "videoSrc": "/images/works/westudy/blocks-demo.webm"
+            "imgRatio": "2288/1280",
+            "imgSrc": "/images/works/westudy/westudy-custom-block-en.webp"
           },
           {
             "text": "Нові сторінки також можна створити за допомогою шаблонів",
             "imgLabel": "",
-            "imgRatio": "1144/640",
-            "videoSrc": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/create-page-Jq3KDnj538ZPHQTMmi3kB9vLVWx2Et.mp4"
+            "imgRatio": "2288/1280",
+            "imgSrc": "/images/works/westudy/westudy-create-page-en.webp"
           }
         ]
       },
