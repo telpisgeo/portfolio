@@ -3,21 +3,48 @@
     "eyebrow": "WeStudy",
     "title": "Створили сучасний веб-білдер сайту, який припинив відтік клієнтів сервісу",
     "steps": [
-      { "label": "Контекст", "href": "#context" },
-      { "label": "Мета", "href": "#goal" },
-      { "label": "Дослідження", "href": "#insights" },
-      { "label": "Концепт", "href": "#concept" },
-      { "label": "Результати", "href": "#results" }
+      {
+        "label": "Контекст",
+        "href": "#context"
+      },
+      {
+        "label": "Мета",
+        "href": "#goal"
+      },
+      {
+        "label": "Дослідження",
+        "href": "#insights"
+      },
+      {
+        "label": "Концепт",
+        "href": "#concept"
+      },
+      {
+        "label": "Результати",
+        "href": "#results"
+      }
     ],
     "blocks": [
       {
         "t": "meta",
         "id": "context",
         "items": [
-          { "label": "Роль", "value": "Product Designer" },
-          { "label": "Команда", "value": "Product manager\nFront-end розробник\nBack-end розробник" },
-          { "label": "Таймінг", "value": "6 місяців" },
-          { "label": "Інструменти", "value": "Figma" }
+          {
+            "label": "Роль",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Команда",
+            "value": "Product manager\nFront-end розробник\nBack-end розробник"
+          },
+          {
+            "label": "Таймінг",
+            "value": "6 місяців"
+          },
+          {
+            "label": "Інструменти",
+            "value": "Figma"
+          }
         ]
       },
       {
@@ -55,8 +82,16 @@
         "id": "case",
         "caption": "Про кейс",
         "statement": "Нова концепція — дати можливість створити сайт за лічені хвилини використовуючи вже наявну інформацію про курси на платформі.",
-        "before": { "label": "Стара версія веб-білдера", "ratio": "1144/640", "src": "/images/works/westudy/case-westudy-before-ua.webp" },
-        "after": { "label": "Нова версія веб-білдера", "ratio": "1144/640", "videoSrc": "/images/works/westudy/case-westudy-after-en.webm" }
+        "before": {
+          "label": "Стара версія веб-білдера",
+          "ratio": "1144/640",
+          "src": "/images/works/westudy/case-westudy-before-ua.webp"
+        },
+        "after": {
+          "label": "Нова версія веб-білдера",
+          "ratio": "1144/640",
+          "videoSrc": "/images/works/westudy/case-westudy-after-en.webm"
+        }
       },
       {
         "t": "quotes",
@@ -66,9 +101,15 @@
           {
             "caption": "Інсайти від користувачів",
             "items": [
-              { "text": "Я замучалась робити сайт, намагалась декілька разів створити щось, потім психанула й зробила за день сайт на іншій платформі." },
-              { "text": "Не розумію навіщо платити за сервіс, в якому нормально працює лише частина функціоналу." },
-              { "text": "Моя моб версія сайту жахлива, я багато разів спілкувався з службою підтримки, й все одно не допомогло — зробити сайт однаково читабельним на всіх пристроях неможливо!" }
+              {
+                "text": "Я замучалась робити сайт, намагалась декілька разів створити щось, потім психанула й зробила за день сайт на іншій платформі."
+              },
+              {
+                "text": "Не розумію навіщо платити за сервіс, в якому нормально працює лише частина функціоналу."
+              },
+              {
+                "text": "Моя моб версія сайту жахлива, я багато разів спілкувався з службою підтримки, й все одно не допомогло — зробити сайт однаково читабельним на всіх пристроях неможливо!"
+              }
             ]
           }
         ]
@@ -89,6 +130,12 @@
             "imgLabel": "Концепція — Авторський дизайн",
             "imgRatio": "1144/640",
             "videoSrc": "/images/works/westudy/blocks-demo.webm"
+          },
+          {
+            "text": "Нові сторінки також можна створити за допомогою шаблонів",
+            "imgLabel": "",
+            "imgRatio": "1144/640",
+            "videoSrc": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/create-page-Jq3KDnj538ZPHQTMmi3kB9vLVWx2Et.mp4"
           }
         ]
       },
@@ -97,10 +144,22 @@
         "caption": "Приклади сайтів",
         "statement": "Сайти користувачів, які робили авторський дизайн самостійно або підключали професійних дизайнерів.",
         "carousel": [
-          { "url": "alina-tanasienko.com", "src": "/images/works/westudy/site-example-1.webp" },
-          { "url": "giim.edu.ua", "src": "/images/works/westudy/site-example-2.webp" },
-          { "url": "chysta-voda.com.ua", "src": "/images/works/westudy/site-example-3.webp" },
-          { "url": "khomutovska.com", "src": "/images/works/westudy/site-example-4.webp" }
+          {
+            "url": "alina-tanasienko.com",
+            "src": "/images/works/westudy/site-example-1.webp"
+          },
+          {
+            "url": "giim.edu.ua",
+            "src": "/images/works/westudy/site-example-2.webp"
+          },
+          {
+            "url": "chysta-voda.com.ua",
+            "src": "/images/works/westudy/site-example-3.webp"
+          },
+          {
+            "url": "khomutovska.com",
+            "src": "/images/works/westudy/site-example-4.webp"
+          }
         ]
       },
       {
@@ -120,21 +179,48 @@
     "eyebrow": "WeStudy",
     "title": "Built a modern website builder that stopped customer churn",
     "steps": [
-      { "label": "Context", "href": "#context" },
-      { "label": "Goal", "href": "#goal" },
-      { "label": "Research", "href": "#insights" },
-      { "label": "Concept", "href": "#concept" },
-      { "label": "Results", "href": "#results" }
+      {
+        "label": "Context",
+        "href": "#context"
+      },
+      {
+        "label": "Goal",
+        "href": "#goal"
+      },
+      {
+        "label": "Research",
+        "href": "#insights"
+      },
+      {
+        "label": "Concept",
+        "href": "#concept"
+      },
+      {
+        "label": "Results",
+        "href": "#results"
+      }
     ],
     "blocks": [
       {
         "t": "meta",
         "id": "context",
         "items": [
-          { "label": "Role", "value": "Product Designer" },
-          { "label": "Team", "value": "Product manager\nFront-end developer\nBack-end developer" },
-          { "label": "Timeline", "value": "6 months" },
-          { "label": "Tools", "value": "Figma" }
+          {
+            "label": "Role",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Team",
+            "value": "Product manager\nFront-end developer\nBack-end developer"
+          },
+          {
+            "label": "Timeline",
+            "value": "6 months"
+          },
+          {
+            "label": "Tools",
+            "value": "Figma"
+          }
         ]
       },
       {
@@ -172,8 +258,16 @@
         "id": "case",
         "caption": "About the case",
         "statement": "A new concept — enable users to create a website in minutes using existing course information already on the platform.",
-        "before": { "label": "Old website builder", "ratio": "1144/640", "src": "/images/works/westudy/case-westudy-before-ua.webp" },
-        "after": { "label": "New website builder", "ratio": "1144/640", "videoSrc": "/images/works/westudy/case-westudy-after-en.webm" },
+        "before": {
+          "label": "Old website builder",
+          "ratio": "1144/640",
+          "src": "/images/works/westudy/case-westudy-before-ua.webp"
+        },
+        "after": {
+          "label": "New website builder",
+          "ratio": "1144/640",
+          "videoSrc": "/images/works/westudy/case-westudy-after-en.webm"
+        },
         "beforeLabel": "Before",
         "afterLabel": "After"
       },
@@ -185,9 +279,15 @@
           {
             "caption": "Insights from users",
             "items": [
-              { "text": "I got so frustrated trying to build a site, I tried multiple times, then gave up and built one on another platform in a day." },
-              { "text": "I don't understand why I'm paying for a service where only part of the functionality actually works." },
-              { "text": "My mobile version looks terrible. I contacted support many times and nothing helped — it's impossible to make the site look the same on all devices!" }
+              {
+                "text": "I got so frustrated trying to build a site, I tried multiple times, then gave up and built one on another platform in a day."
+              },
+              {
+                "text": "I don't understand why I'm paying for a service where only part of the functionality actually works."
+              },
+              {
+                "text": "My mobile version looks terrible. I contacted support many times and nothing helped — it's impossible to make the site look the same on all devices!"
+              }
             ]
           }
         ]
@@ -216,10 +316,22 @@
         "caption": "Site examples",
         "statement": "Sites built by users who designed them independently or hired professional designers.",
         "carousel": [
-          { "url": "alina-tanasienko.com", "src": "/images/works/westudy/site-example-1.webp" },
-          { "url": "giim.edu.ua", "src": "/images/works/westudy/site-example-2.webp" },
-          { "url": "chysta-voda.com.ua", "src": "/images/works/westudy/site-example-3.webp" },
-          { "url": "khomutovska.com", "src": "/images/works/westudy/site-example-4.webp" }
+          {
+            "url": "alina-tanasienko.com",
+            "src": "/images/works/westudy/site-example-1.webp"
+          },
+          {
+            "url": "giim.edu.ua",
+            "src": "/images/works/westudy/site-example-2.webp"
+          },
+          {
+            "url": "chysta-voda.com.ua",
+            "src": "/images/works/westudy/site-example-3.webp"
+          },
+          {
+            "url": "khomutovska.com",
+            "src": "/images/works/westudy/site-example-4.webp"
+          }
         ]
       },
       {
