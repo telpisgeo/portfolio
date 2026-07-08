@@ -132,10 +132,10 @@
             "imgSrc": "/images/works/westudy/westudy-custom-block-en.webp"
           },
           {
-            "text": "Нові сторінки також можна створити за допомогою шаблонів які були створені для кожної категорії сторінок. Сторінки одразу завантажуються у обраному стилі сайта.",
+            "text": "Нові сторінки також можна створити за допомогою шаблонів, під кожний тип сторінки, також коли користувач обирає шаблон він одразу застосовує загальний стиль сайту",
             "imgLabel": "",
             "imgRatio": "2288/1280",
-            "imgSrc": "/images/works/westudy/westudy-create-page-en.webp"
+            "videoSrc": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/2026-07-08-07-35-52-lFPYOnXCTQO00BVHWORAQX9shJp4A3.mp4"
           }
         ]
       },
@@ -306,8 +306,14 @@
           {
             "text": "Unique styles, design, responsive behavior, block templates, and many other features that made building a more complex custom site much simpler.",
             "imgLabel": "Concept — Custom design",
-            "imgRatio": "1144/640",
-            "videoSrc": "/images/works/westudy/blocks-demo.webm"
+            "imgRatio": "2288/1280",
+            "imgSrc": "/images/works/westudy/westudy-custom-block-en.webp"
+          },
+          {
+            "text": "New pages can also be created using templates, for each type of page, and when the user selects a template, they immediately apply the overall style of the site.",
+            "imgLabel": "",
+            "imgRatio": "2288/1280",
+            "videoSrc": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/2026-07-08-07-35-52-7ZxiCIijK3nTmli86dc2jjOC5vtk52.mp4"
           }
         ]
       },
