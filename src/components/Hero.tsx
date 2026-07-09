@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
+import InteractiveCollage from "./InteractiveCollage";
 
 const greetingsUk = ["Привіт", "Hello", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", "Witaj", "Ahoj", "Sveiki"];
 const greetingsEn = ["Hello", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", "Sveiki"];
@@ -38,18 +38,9 @@ export default function Hero({ locale }: HeroProps) {
           </p>
         </div>
 
-        {/* Right: collage (hidden below 700px) */}
-        <div className="shrink-0 w-[280px] md:w-[360px] lg:w-[474px] hidden [@media(min-width:700px)]:flex justify-center pb-[135px] hero-image">
-          <Image
-            src="/images/hero-collage.webp"
-            alt="Георгій Тельпіс"
-            width={474}
-            height={622}
-            quality={100}
-            unoptimized
-            className="object-contain object-bottom w-full h-auto"
-            priority
-          />
+        {/* Right: interactive collage (hidden below 700px) — above text so pieces drag over it */}
+        <div className="shrink-0 w-[280px] md:w-[360px] lg:w-[474px] hidden [@media(min-width:700px)]:flex items-end justify-center pb-[135px] relative z-20 hero-image">
+          <InteractiveCollage />
         </div>
       </div>
 

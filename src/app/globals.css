@@ -250,6 +250,29 @@
   animation: arrow-bounce 1.8s ease-in-out infinite;
 }
 
+/* Легкий одноразовий "wiggle" — натяк, що кусочки колажу можна тягати.
+   fill-mode лишаємо none, щоб після анімації inline-transform (перетягування) переміг. */
+@keyframes collage-hint {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(0, -3px) rotate(-1.2deg); }
+  55%  { transform: translate(0, 2px) rotate(0.9deg); }
+  80%  { transform: translate(0, -1px) rotate(-0.4deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.collage-hint-piece {
+  animation-name: collage-hint;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collage-hint-piece {
+    animation: none;
+  }
+}
+
 @keyframes slideIn {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
