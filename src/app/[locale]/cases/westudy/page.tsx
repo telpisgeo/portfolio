@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
 import type { CaseContent } from "@/lib/case-blocks";
+import { caseMetadata } from "@/lib/seo";
 import caseJson from "@/data/cases/westudy.json";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -22,7 +23,7 @@ export async function generateMetadata({
   const { locale } = await params;
   if (locale !== "uk" && locale !== "en") return {};
   const c = content[locale as Locale];
-  return { title: `${c.eyebrow} — ${c.title}` };
+  return caseMetadata(locale as Locale, "/cases/westudy", c.eyebrow, c.title);
 }
 
 export default async function WestudyPage({

@@ -26,11 +26,11 @@ export default function Hero({ locale }: HeroProps) {
 
         {/* Left: text */}
         <div className="flex-1 flex flex-col justify-end pb-[135px] pr-8 z-10 hero-text">
-          <p className="text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-secondary-foreground leading-[1.25] max-w-[740px]">
+          <h1 className="text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-secondary-foreground leading-[1.25] max-w-[740px]">
             {isUk
               ? `${greeting}, я Георгій, продуктовий дизайнер з досвідом запуску продуктів для освітніх платформ та маркетингових мультиканальних сервісів.`
               : `${greeting}, I'm Georgiy, a product designer with experience launching products for educational platforms and multichannel marketing services.`}
-          </p>
+          </h1>
           <p className="mt-8 text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-secondary-foreground leading-[1.25] max-w-[740px] hero-text-second">
             {isUk
               ? "Використовую сучасні підходи до проєктування та роблю прототипи з допомогою ШІ для тестування нових ідей в продукті."
@@ -40,7 +40,7 @@ export default function Hero({ locale }: HeroProps) {
 
         {/* Right: interactive collage (hidden below 700px) — above text so pieces drag over it */}
         <div className="shrink-0 w-[280px] md:w-[360px] lg:w-[474px] hidden [@media(min-width:700px)]:flex items-end justify-center pb-[135px] relative z-20 hero-image">
-          <InteractiveCollage />
+          <InteractiveCollage resetLabel={isUk ? "Зібрати назад" : "Put it back"} />
         </div>
       </div>
 

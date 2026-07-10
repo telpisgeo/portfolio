@@ -15,7 +15,7 @@ const CASES_DIR = path.join(process.cwd(), "src/data/cases");
 // Slugs already served by their own dedicated route — excluded from the
 // generic [slug] JSON-case lookup and from the admin's case list, so the
 // two systems never collide.
-export const STATIC_CASE_SLUGS = new Set(["eschool-2", "eschool", "westudy", "snov"]);
+export const STATIC_CASE_SLUGS = new Set(["eschool-2", "westudy", "snov"]);
 
 // All case JSON files, including ones with their own dedicated static route
 // (e.g. eschool-2) — this is what the admin's case list should show, since

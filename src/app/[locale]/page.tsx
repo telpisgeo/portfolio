@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
+import { localeAlternates, personJsonLd } from "@/lib/seo";
 import homeJson from "@/data/home.json";
 import type { HomeContent } from "@/lib/home-content";
 import Navbar from "@/components/Navbar";
@@ -31,6 +32,7 @@ export async function generateMetadata({
     description: isUk
       ? "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу."
       : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
+    alternates: localeAlternates(locale as Locale, ""),
     openGraph: {
       title: isUk ? "Тельпіс Георгій. Продуктовий дизайнер." : "Georgiy Telpis. Product Designer.",
       description: isUk
@@ -61,6 +63,10 @@ export default async function LocalePage({
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(locale as Locale)) }}
+      />
       <Navbar
         locale={locale}
         otherLocale={otherLocale}

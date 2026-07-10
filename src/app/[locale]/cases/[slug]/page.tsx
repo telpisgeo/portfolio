@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale, type CaseBlock } from "@/lib/translations";
 import { listDynamicCaseSlugs, readCaseFile } from "@/lib/case-store";
+import { caseMetadata } from "@/lib/seo";
 import { Caption, CaseBlockList } from "@/components/CaseBlocks";
 import CaseStepsNav from "@/components/CaseStepsNav";
 import Footer from "@/components/Footer";
@@ -14,6 +16,30 @@ export function generateStaticParams() {
   const jsonSlugs = listDynamicCaseSlugs();
   const slugs = [...new Set([...legacySlugs, ...jsonSlugs])];
   return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  if (locale !== "uk" && locale !== "en") return {};
+  const lc = locale as Locale;
+  const path = `/cases/${slug}`;
+
+  // JSON-based case (managed via /admin/cases).
+  const caseFile = readCaseFile(slug);
+  if (caseFile && caseFile.status !== "draft") {
+    const oc = caseFile[lc];
+    return caseMetadata(lc, path, oc.eyebrow, oc.title);
+  }
+
+  // Legacy translations-based case.
+  const c = translations[lc].cases[slug];
+  if (c) return caseMetadata(lc, path, c.title, c.subtitle);
+
+  return {};
 }
 
 function renderBlock(block: CaseBlock, i: number) {
