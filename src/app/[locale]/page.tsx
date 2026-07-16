@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import OtherProjects from "@/components/OtherProjects";
+import CvDownloadLink from "@/components/CvDownloadLink";
 
 
 export function generateStaticParams() {
@@ -260,18 +261,7 @@ export default async function LocalePage({
 
             {/* CV download button */}
             <div className="pt-6">
-              <a
-                href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
-                download
-                className="inline-flex items-center gap-2 text-sm text-foreground border border-border rounded-full px-5 py-2.5 hover:bg-foreground hover:text-background transition-colors"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                {locale === "uk" ? "Завантажити CV" : "Download CV"}
-              </a>
+              <CvDownloadLink locale={locale} />
             </div>
 
           </div>
