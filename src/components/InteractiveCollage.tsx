@@ -57,7 +57,11 @@ const PIECES: Piece[] = [1, 2, 3].flatMap((iteration) =>
 
 type Offset = { dx: number; dy: number };
 
-export default function InteractiveCollage() {
+type InteractiveCollageProps = {
+  resetLabel?: string;
+};
+
+export default function InteractiveCollage({ resetLabel = "Зібрати назад" }: InteractiveCollageProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const [offsets, setOffsets] = useState<Record<string, Offset>>({});
@@ -171,8 +175,8 @@ export default function InteractiveCollage() {
       <button
         type="button"
         onClick={reset}
-        title="Зібрати назад"
-        aria-label="Зібрати назад"
+        title={resetLabel}
+        aria-label={resetLabel}
         className={`group absolute top-1 right-1 z-[1100] flex items-center gap-2 rounded-full py-2 pl-2.5 pr-2.5 text-sm font-medium shadow-md transition-all duration-300 hover:pr-4 ${
           hasMoved ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
@@ -183,7 +187,7 @@ export default function InteractiveCollage() {
           <path d="M3 3v5h5" />
         </svg>
         <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover:max-w-[140px] group-hover:opacity-100">
-          Зібрати назад
+          {resetLabel}
         </span>
       </button>
     </div>

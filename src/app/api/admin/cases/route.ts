@@ -50,8 +50,8 @@ export async function POST(req: NextRequest) {
 
   let caseFile: CaseFile;
   if (duplicateFrom !== undefined) {
-    if (typeof duplicateFrom !== "string") {
-      return NextResponse.json({ error: "Невірний duplicateFrom" }, { status: 400 });
+    if (typeof duplicateFrom !== "string" || !SLUG_RE.test(duplicateFrom)) {
+      return NextResponse.json({ error: `Невірний duplicateFrom: ${duplicateFrom}` }, { status: 400 });
     }
     const source = readCaseFile(duplicateFrom);
     if (!source) return NextResponse.json({ error: `Кейс "${duplicateFrom}" не знайдено` }, { status: 404 });

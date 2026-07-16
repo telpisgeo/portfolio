@@ -3,10 +3,10 @@
   "configurations": [
     {
       "name": "next-dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "NEXT_DIST_DIR=.next-preview exec npm run dev"],
       "port": 3000,
-      "autoPort": false
+      "autoPort": true
     }
   ]
 }

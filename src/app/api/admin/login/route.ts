@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, ADMIN_SESSION_MAX_AGE, createSessionToken, safeEqual } from "@/lib/admin-session";
+import { isRateLimited } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
   const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
@@ -8,6 +9,11 @@ export async function POST(req: NextRequest) {
   }
   if (!process.env.ADMIN_SESSION_SECRET) {
     return NextResponse.json({ error: "ADMIN_SESSION_SECRET не налаштований" }, { status: 500 });
+  }
+
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  if (isRateLimited(ip)) {
+    return NextResponse.json({ error: "Забагато спроб. Спробуйте пізніше." }, { status: 429 });
   }
 
   const body = await req.json().catch(() => null);
