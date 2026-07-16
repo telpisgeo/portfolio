@@ -1,16 +1,17 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { Analytics } from "@vercel/analytics/react";
+import { isOwnerDevice } from "@/lib/analytics";
 
 export default function VercelAnalytics() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
+
   return (
     <Analytics
       beforeSend={(event) => {
-        // Drop events on devices flagged as "owner" (run in console once:
-        // localStorage.setItem("va-disable", "1") to stop counting your own visits).
-        if (typeof window !== "undefined" && localStorage.getItem("va-disable") === "1") {
-          return null;
-        }
+        if (isOwnerDevice()) return null;
         return event;
       }}
     />
