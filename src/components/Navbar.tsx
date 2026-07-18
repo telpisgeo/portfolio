@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import * as amplitude from "@amplitude/unified";
 import { useHideOnScroll } from "@/lib/useHideOnScroll";
 
 type NavbarProps = {
@@ -29,6 +31,8 @@ export default function Navbar({
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const hidden = useHideOnScroll(hideOnScroll) && !menuOpen;
+  const pathname = usePathname();
+  const otherLocalePath = pathname.replace(/^\/(uk|en)/, `/${otherLocale}`);
 
   const isDark = variant === "dark";
 
@@ -102,7 +106,7 @@ export default function Navbar({
         {/* Right: lang switcher + contact + burger */}
         <div className="flex items-center gap-2 shrink-0">
           <Link
-            href={`/${otherLocale}`}
+            href={otherLocalePath}
             className={`text-sm font-medium ${textMuted} ${hoverText} transition-all px-4 py-2 rounded-full ${hoverBg} hidden sm:block`}
           >
             {otherLabel}
@@ -111,6 +115,9 @@ export default function Navbar({
           <a
             href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
             download
+            onClick={() =>
+              amplitude.track("CV Downloaded", { location: "navbar", locale })
+            }
             className={`hidden md:inline-flex items-center justify-center h-9 px-5 rounded-full border text-sm font-medium transition-colors whitespace-nowrap ${isDark ? "border-secondary-foreground/30 text-secondary-foreground hover:bg-white/10" : "border-border text-foreground hover:bg-muted"}`}
           >
             {locale === "uk" ? "Завантажити CV" : "Download CV"}
@@ -164,12 +171,18 @@ export default function Navbar({
             href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
             download
             className={`py-3 text-sm font-medium border-b ${dropdownText}`}
-            onClick={() => setMenuOpen(false)}
+            onClick={() => {
+              amplitude.track("CV Downloaded", {
+                location: "navbar_mobile",
+                locale,
+              });
+              setMenuOpen(false);
+            }}
           >
             {locale === "uk" ? "Завантажити CV" : "Download CV"}
           </a>
           <Link
-            href={`/${otherLocale}`}
+            href={otherLocalePath}
             className={`py-3 text-sm font-medium ${dropdownMuted}`}
             onClick={() => setMenuOpen(false)}
           >

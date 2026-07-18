@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
+import { Google_Sans } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import VercelAnalytics from "@/components/VercelAnalytics";
 import Amplitude from "@/components/Amplitude";
 import "./globals.css";
+
+// Self-hosted (no render-blocking request to Google) with Cyrillic support.
+const googleSans = Google_Sans({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  variable: "--font-google-sans",
+});
 
 export const metadata: Metadata = {
   title: "Георгій Тельпіс — Product Designer",
@@ -18,15 +28,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Set by the proxy from the first path segment (see src/proxy.ts).
+  const lang = (await headers()).get("x-locale") === "en" ? "en" : "uk";
   return (
     <html
-      lang="uk"
-      className="h-full antialiased"
+      lang={lang}
+      className={`${googleSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         {children}

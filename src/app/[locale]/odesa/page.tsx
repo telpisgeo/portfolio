@@ -1,12 +1,39 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { translations, type Locale } from "@/lib/translations";
+import { localeAlternates } from "@/lib/seo";
 
 export function generateStaticParams() {
   return [{ locale: "uk" }, { locale: "en" }];
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (locale !== "uk" && locale !== "en") return {};
+  const title = "Перлини Одеси — арт-проєкт · Георгій Тельпіс";
+  const description =
+    "Арт-проєкт «Перлини Одеси» — про знищені та зникаючі архітектурні пам'ятки Одеси, різноманіття архітектури міста та його історію.";
+  return {
+    title,
+    description,
+    alternates: localeAlternates(locale as Locale, "/odesa"),
+    openGraph: {
+      title,
+      description,
+      url: `https://www.telpis.com.ua/${locale}/odesa`,
+      siteName: "Георгій Тельпіс",
+      locale: locale === "uk" ? "uk_UA" : "en_US",
+      type: "article",
+    },
+  };
 }
 
 const buildings = [
