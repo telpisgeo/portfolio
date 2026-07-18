@@ -174,7 +174,20 @@
       "Bash(sed -i '' 's|/images/works/snov/snov-linkedin-analytics\\\\.webp|/images/works/snov-linkedin-analytics.webp|g' src/lib/translations.ts)",
       "Bash(sed -i '' 's|/images/works/snov/snov-campaign-reports\\\\.webp|/images/works/snov-campaign-reports.webp|g' src/lib/translations.ts)",
       "Bash(git -C /Users/georgiytelpis/Repositories/portfolio-main status --porcelain)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/uk/cases/snov)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/uk/cases/snov)",
+      "Bash(git apply *)",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget",
+      "mcp__mcp-registry__search_mcp_registry",
+      "Bash(npx shadcn@latest add card badge --yes)",
+      "Bash(curl -s \"https://api.github.com/users/telpisgeo/repos?sort=updated&per_page=100\")",
+      "Bash(curl -s \"https://api.github.com/users/telpisgeo/orgs\")",
+      "mcp__82a73e42-b6cb-446e-b29b-15b6605b94f0__get_amplitude_context",
+      "mcp__82a73e42-b6cb-446e-b29b-15b6605b94f0__list_session_replays",
+      "Bash(gh pr *)",
+      "Bash(which gh *)",
+      "Bash(git fetch *)",
+      "Bash(git rev-list *)"
     ]
   },
   "enabledPlugins": {

@@ -86,6 +86,11 @@ export type Translation = {
   navWorksLabel: string;
   navAboutLabel: string;
   navContactLabel: string;
+  githubTitle: string;
+  githubUpdatedLabel: string;
+  githubLiveLabel: string;
+  githubCodeLabel: string;
+  githubEmptyState: string;
   companies: readonly Company[];
   cases: Record<string, CaseStudy>;
 };
@@ -104,6 +109,11 @@ export const translations: Record<Locale, Translation> = {
     navWorksLabel: "Роботи",
     navAboutLabel: "Про себе",
     navContactLabel: "Зв'язатись",
+    githubTitle: "Що я зараз будую",
+    githubUpdatedLabel: "Оновлено",
+    githubLiveLabel: "Live",
+    githubCodeLabel: "Код",
+    githubEmptyState: "Наразі не вдалося завантажити репозиторії з GitHub.",
     companies: [
       {
         name: "Snov.io",
@@ -510,6 +520,11 @@ export const translations: Record<Locale, Translation> = {
     navWorksLabel: "Works",
     navAboutLabel: "About",
     navContactLabel: "Contact",
+    githubTitle: "What I'm building now",
+    githubUpdatedLabel: "Updated",
+    githubLiveLabel: "Live",
+    githubCodeLabel: "Code",
+    githubEmptyState: "Couldn't load repositories from GitHub right now.",
     companies: [
       {
         name: "Snov.io",

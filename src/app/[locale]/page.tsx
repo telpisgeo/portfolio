@@ -11,6 +11,7 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import OtherProjects from "@/components/OtherProjects";
 import CvDownloadLink from "@/components/CvDownloadLink";
+import GithubRepos from "@/components/GithubRepos";
 
 
 export function generateStaticParams() {
@@ -221,6 +222,8 @@ export default async function LocalePage({
         </div>
 
       </main>
+
+      <GithubRepos locale={locale as Locale} />
 
       {/* About section */}
       <section id="about" className="mt-16 pt-16 pb-16 bg-surface-about">
