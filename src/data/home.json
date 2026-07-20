@@ -154,6 +154,7 @@
         "slug": "westudy",
         "name": "Westudy.ua",
         "url": "http://westudy.ua/",
+        "caseUrl": "/en/cases/westudy",
         "period": "2024 → 2025",
         "productType": "Online course creation and student management platform",
         "role": "Product Designer",
@@ -167,8 +168,7 @@
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
         "imageRows": [
           "/images/works/promo-builder-westudy.webp"
-        ],
-        "casePending": true
+        ]
       }
     ],
     "timeline": [
