@@ -40,7 +40,7 @@
         "role": "Product Designer",
         "icon": "/images/icons/eschool.svg",
         "description": "Розробка навчальних сервісів для учнів, батьків та вчителів в додатку та веб-версії продукту, спец проєкти всередині платформи, оновив головний сайт платформи, та багато іншого.",
-        "tools": "Figma, Claude Code, Android Studio, VS Code, Google Analytics · React, WebGL, TailwindCSS, Flutter",
+        "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           "/images/works/eschool-promo.png",
           "/images/works/eschool.webp",
@@ -100,6 +100,27 @@
         "role": "UI/UX Designer",
         "desc": "Приєднався до команди стартапу на етапі формування. Заклав основу дизайн-системи та підходу до розробки задач. Проєктував інструменти аналізу ключових слів, відстеження позицій, аудиту сайту та аналізу конкурентів."
       }
+    ],
+    "testimonials": [
+      {
+        "quote": "Втілив у життя багато наших найуспішніших продуктів завдяки інтуїтивному, зручному дизайну.",
+        "fullQuote": "Георгій втілив у життя багато наших найуспішніших продуктів завдяки інтуїтивному, зручному дизайну. Хоч би якою складною була логіка продукту, він завжди знаходив спосіб зробити її зрозумілою для користувача. Хочу окремо відзначити креативність Георгія та його відданість дослідженню користувачів: приймаючи UX-рішення, він завжди спирався на об’єктивні дані та реальний фідбек користувачів. Продукт виграв від його інтерв’ю з користувачами, нестандартних дизайнерських рішень і постійного саморозвитку як UI/UX дизайнера.\n\nЯ вірю, що Георгій стане чудовим доповненням для будь-якої компанії, яка прагне створювати успішний продукт, який полюблять користувачі.",
+        "name": "Dana Rudenko",
+        "role": "Head of Product Marketing at Snov.io",
+        "company": "Snov.io",
+        "companyIcon": "/images/icons/snovio-logo.svg",
+        "sourceUrl": "https://www.linkedin.com/in/georgiy-telpis-229bbb47/details/recommendations/?detailScreenTabIndex=2",
+        "photo": "/images/testimonials/dana-rudenko.webp"
+      },
+      {
+        "quote": "Глибоко розуміє користувачів і поєднує це з аналітичним підходом та креативністю.",
+        "fullQuote": "Георгій глибоко розуміє користувачів і поєднує це з аналітичним підходом та креативністю. За час співпраці він створив уніфіковану дизайн-систему продукту та розробив корпоративний стиль компанії — від сайту до соцмереж і маркетингових матеріалів.\n\nЙого внесок у розвиток продукту, бренду і внутрішніх процесів компанії став справді визначальним.",
+        "name": "Рижков Р.С.",
+        "role": "CEO Westudy",
+        "company": "Westudy",
+        "companyIcon": "/images/icons/westudy-logo.webp",
+        "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
+      }
     ]
   },
   "en": {
@@ -143,7 +164,7 @@
         "role": "Product Designer",
         "icon": "/images/icons/eschool.svg",
         "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
-        "tools": "Figma, Claude Code, Android Studio, VS Code, Google Analytics · React, WebGL, TailwindCSS, Flutter",
+        "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           "/images/works/eschool-web-en.webp",
           "/images/works/eschool-mob-en.webp",
@@ -201,6 +222,27 @@
         "company": "Serpstat",
         "role": "UI/UX Designer",
         "desc": "Joined the startup team at the formation stage. Laid the foundation for the design system and task development approach. Designed tools for keyword analysis, rank tracking, site audit, and competitor research."
+      }
+    ],
+    "testimonials": [
+      {
+        "quote": "Has brought many of our best-performing products to life with intuitive, user-friendly designs.",
+        "fullQuote": "Georgiy has brought many of our best-performing products to life with intuitive, user-friendly designs. No matter how difficult the product logic – he'd find a way to eliminate the learning curve for the user. I'd like to specifically acknowledge Georgiy's creativity and dedication to user research: when faced with UX-decisions, he's always turned to hard data and existing user feedback. The product has benefitted from his interviews with users, unconventional design solutions and constant self-development as a UI/UX designer.\n\nI believe Georgiy will be a great addition to any company looking to create a well-performing product users will love.",
+        "name": "Dana Rudenko",
+        "role": "Head of Product Marketing at Snov.io",
+        "company": "Snov.io",
+        "companyIcon": "/images/icons/snovio-logo.svg",
+        "sourceUrl": "https://www.linkedin.com/in/georgiy-telpis-229bbb47/details/recommendations/?detailScreenTabIndex=2",
+        "photo": "/images/testimonials/dana-rudenko.webp"
+      },
+      {
+        "quote": "Has a deep understanding of users, paired with strong analytical thinking and creativity.",
+        "fullQuote": "Georgiy has a deep understanding of users, paired with strong analytical thinking and creativity. Over our time working together, he built a unified design system for the product and shaped the company's brand identity — from the website to social media and marketing materials.\n\nHis contribution to the product, the brand, and our internal processes has been truly defining.",
+        "name": "R. Ryzhkov",
+        "role": "CEO at Westudy",
+        "company": "Westudy",
+        "companyIcon": "/images/icons/westudy-logo.webp",
+        "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
       }
     ]
   }

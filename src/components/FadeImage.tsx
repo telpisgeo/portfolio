@@ -20,7 +20,7 @@ export default function FadeImage({
       className={`relative w-full overflow-hidden bg-black/[0.06] ${className}`}
       style={{ aspectRatio: ratio.replace("/", " / ") }}
     >
-      {!loaded && <div className="absolute inset-0 animate-pulse bg-black/[0.06]" />}
+      {!loaded && <div className="absolute inset-0 animate-shimmer" />}
       <img
         src={src}
         alt={alt}
