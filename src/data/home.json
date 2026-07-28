@@ -26,7 +26,10 @@
         "imageRows": [
           "/images/works/snov-linkedin-settings.png",
           "/images/works/snov-email-promo.png",
-          ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"],
+          [
+            "/images/works/snov-deliverability-check.webp",
+            "/images/works/snov-linkedin-analytics.webp"
+          ],
           "/images/works/snov-campaign-reports.webp"
         ]
       },
@@ -74,31 +77,36 @@
         "period": "2025 — 2026",
         "company": "Tatl Group · Єдина школа",
         "role": "Product Designer",
-        "desc": "Спроєктував новий розділ детального аналізу успішності учня для батьків. Створив навчальну платформу відеокурсів для дітей у мобільному додатку. Розробив партнерську інтеграцію в системі, на сайті та в додатку. Оновив дизайн головного сайту платформи."
+        "desc": "Спроєктував новий розділ детального аналізу успішності учня для батьків. Створив навчальну платформу відеокурсів для дітей у мобільному додатку. Розробив партнерську інтеграцію в системі, на сайті та в додатку. Оновив дизайн головного сайту платформи.",
+        "icon": "/images/logos/eschool.svg"
       },
       {
         "period": "2024 — 2025",
         "company": "WeStudy",
         "role": "Product Designer",
-        "desc": "Редизайн конструктора курсів — усунув ключові UX-проблеми, що призводили до відтоку. Спроєктував конструктор сайтів із 10+ типами компонентів. Провів серію юзабіліті-тестів, що виявили критичні точки тертя в онбордингу."
+        "desc": "Редизайн конструктора курсів — усунув ключові UX-проблеми, що призводили до відтоку. Спроєктував конструктор сайтів із 10+ типами компонентів. Провів серію юзабіліті-тестів, що виявили критичні точки тертя в онбордингу.",
+        "icon": "/images/logos/westudy.svg"
       },
       {
         "period": "2022 — 2024",
         "company": "Snov.io",
         "role": "Product Designer",
-        "desc": "Спроєктував інструменти для email та LinkedIn кампаній. Розробив інструменти лідогенерації: пошук по базі, одиночний і масовий email-пошук. Розробив браузерні розширення для лідогенерації. Покращив доставлення email: warm-up, перевірка доставлення та інші інструменти."
+        "desc": "Спроєктував інструменти для email та LinkedIn кампаній. Розробив інструменти лідогенерації: пошук по базі, одиночний і масовий email-пошук. Розробив браузерні розширення для лідогенерації. Покращив доставлення email: warm-up, перевірка доставлення та інші інструменти.",
+        "icon": "/images/logos/snovio.svg"
       },
       {
         "period": "2022",
         "company": "SendPulse",
         "role": "UI/UX Designer",
-        "desc": "Оновив редактор мультиканальних кампаній та редактор форм. Впровадив телефонію у CRM-систему. Спроєктував партнерську платформу. Розробив email-шаблони та сайти для конференцій."
+        "desc": "Оновив редактор мультиканальних кампаній та редактор форм. Впровадив телефонію у CRM-систему. Спроєктував партнерську платформу. Розробив email-шаблони та сайти для конференцій.",
+        "icon": "/images/logos/sendpulse.svg"
       },
       {
         "period": "2016 — 2019",
         "company": "Serpstat",
         "role": "UI/UX Designer",
-        "desc": "Приєднався до команди стартапу на етапі формування. Заклав основу дизайн-системи та підходу до розробки задач. Проєктував інструменти аналізу ключових слів, відстеження позицій, аудиту сайту та аналізу конкурентів."
+        "desc": "Приєднався до команди стартапу на етапі формування. Заклав основу дизайн-системи та підходу до розробки задач. Проєктував інструменти аналізу ключових слів, відстеження позицій, аудиту сайту та аналізу конкурентів.",
+        "icon": "/images/logos/serpstat.svg"
       }
     ],
     "testimonials": [
@@ -150,7 +158,10 @@
         "imageRows": [
           "/images/works/snov-linkedin-settings.png",
           "/images/works/snov-email-promo.png",
-          ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"],
+          [
+            "/images/works/snov-deliverability-check.webp",
+            "/images/works/snov-linkedin-analytics.webp"
+          ],
           "/images/works/snov-campaign-reports.webp"
         ]
       },
@@ -197,31 +208,36 @@
         "period": "2025 — 2026",
         "company": "Tatl Group · Yedyna Shkola",
         "role": "Product Designer",
-        "desc": "Designed a new detailed student performance analytics section for parents. Built a video course learning platform for children in the mobile app. Developed partner integration across the system, website, and app. Redesigned the main platform website."
+        "desc": "Designed a new detailed student performance analytics section for parents. Built a video course learning platform for children in the mobile app. Developed partner integration across the system, website, and app. Redesigned the main platform website.",
+        "icon": "/images/logos/eschool.svg"
       },
       {
         "period": "2024 — 2025",
         "company": "WeStudy",
         "role": "Product Designer",
-        "desc": "Redesigned the course builder — resolved key UX issues causing churn. Designed a website builder with 10+ component types. Ran usability testing sessions that uncovered critical friction points in onboarding."
+        "desc": "Redesigned the course builder — resolved key UX issues causing churn. Designed a website builder with 10+ component types. Ran usability testing sessions that uncovered critical friction points in onboarding.",
+        "icon": "/images/logos/westudy.svg"
       },
       {
         "period": "2022 — 2024",
         "company": "Snov.io",
         "role": "Product Designer",
-        "desc": "Designed tools for email and LinkedIn outreach campaigns. Built lead generation tools: database search, single and bulk email search. Created browser extensions for lead capture. Improved email deliverability tooling: warm-up, deliverability check, and related features."
+        "desc": "Designed tools for email and LinkedIn outreach campaigns. Built lead generation tools: database search, single and bulk email search. Created browser extensions for lead capture. Improved email deliverability tooling: warm-up, deliverability check, and related features.",
+        "icon": "/images/logos/snovio.svg"
       },
       {
         "period": "2022",
         "company": "SendPulse",
         "role": "UI/UX Designer",
-        "desc": "Updated the multichannel campaign editor and form editor. Implemented telephony in the CRM system. Designed a partner platform. Produced email templates and conference websites."
+        "desc": "Updated the multichannel campaign editor and form editor. Implemented telephony in the CRM system. Designed a partner platform. Produced email templates and conference websites.",
+        "icon": "/images/logos/sendpulse.svg"
       },
       {
         "period": "2016 — 2019",
         "company": "Serpstat",
         "role": "UI/UX Designer",
-        "desc": "Joined the startup team at the formation stage. Laid the foundation for the design system and task development approach. Designed tools for keyword analysis, rank tracking, site audit, and competitor research."
+        "desc": "Joined the startup team at the formation stage. Laid the foundation for the design system and task development approach. Designed tools for keyword analysis, rank tracking, site audit, and competitor research.",
+        "icon": "/images/logos/serpstat.svg"
       }
     ],
     "testimonials": [

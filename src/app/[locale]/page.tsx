@@ -251,6 +251,18 @@ export default async function LocalePage({
               <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-6">
                 {locale === "uk" ? "Про мене" : "About me"}
               </p>
+
+              {/* Photo stack */}
+              <div className="mb-8">
+                <Image
+                  src="/images/my_photo/photo_me.webp"
+                  alt=""
+                  width={1366}
+                  height={903}
+                  className="w-full max-w-md h-auto"
+                />
+              </div>
+
               <div className="flex flex-col gap-5 text-lg text-foreground/75 leading-relaxed">
                 {home.about.map((p, i) => (
                   <p key={i}>{p}</p>
@@ -264,8 +276,27 @@ export default async function LocalePage({
               <div key={item.company} className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-2 md:gap-8 py-10 border-b border-border last:border-0">
                 <span className="text-sm text-muted-foreground pt-1.5 shrink-0">{item.period}</span>
                 <div>
-                  <h3 className="text-2xl font-medium text-foreground mb-1">{item.company}</h3>
-                  <p className="text-sm text-muted-foreground mb-3">{item.role}</p>
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="w-9 h-9 shrink-0">
+                      {item.icon ? (
+                        <Image
+                          src={item.icon}
+                          alt={item.company}
+                          width={36}
+                          height={36}
+                          className="w-9 h-9 rounded-xl"
+                        />
+                      ) : (
+                        <div className="w-9 h-9 rounded-xl bg-muted flex items-center justify-center">
+                          <span className="text-muted-foreground/40 text-xs font-medium">
+                            {item.company.charAt(0)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <h3 className="text-2xl font-medium text-foreground">{item.company}</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3 pl-12">{item.role}</p>
                   <p className="text-base text-foreground/75 leading-relaxed max-w-2xl">{item.desc}</p>
                 </div>
               </div>
