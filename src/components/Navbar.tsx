@@ -113,7 +113,7 @@ export default function Navbar({
           </Link>
 
           <a
-            href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
+            href={locale === "uk" ? "/CV_Georgiy_Telpis_senior_uiux_(product)_designer_ua.pdf" : "/CV_Georgiy_Telpis_senior_uiux_(product)_designer_en.pdf"}
             download
             onClick={() =>
               amplitude.track("CV Downloaded", { location: "navbar", locale })
@@ -168,7 +168,7 @@ export default function Navbar({
             {contactLabel}
           </a>
           <a
-            href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
+            href={locale === "uk" ? "/CV_Georgiy_Telpis_senior_uiux_(product)_designer_ua.pdf" : "/CV_Georgiy_Telpis_senior_uiux_(product)_designer_en.pdf"}
             download
             className={`py-3 text-sm font-medium border-b ${dropdownText}`}
             onClick={() => {

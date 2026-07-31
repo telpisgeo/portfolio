@@ -97,7 +97,7 @@ export const translations: Record<Locale, Translation> = {
     bio: "",
     emailButton: "Написати email",
     cvButton: "Скачати CV",
-    cvUrl: "/cv-telpis-ua.pdf",
+    cvUrl: "/CV_Georgiy_Telpis_senior_uiux_(product)_designer_ua.pdf",
     experienceTitle: "Досвід роботи",
     casesLabel: "Кейси",
     copyright: "© 2010–2026 Тельпіс Георгій",

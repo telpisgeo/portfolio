@@ -5,7 +5,7 @@ import * as amplitude from "@amplitude/unified";
 export default function CvDownloadLink({ locale }: { locale: string }) {
   return (
     <a
-      href={locale === "uk" ? "/cv-telpis-ua.pdf" : "/cv-telpis-en.pdf"}
+      href={locale === "uk" ? "/CV_Georgiy_Telpis_senior_uiux_(product)_designer_ua.pdf" : "/CV_Georgiy_Telpis_senior_uiux_(product)_designer_en.pdf"}
       download
       onClick={() =>
         amplitude.track("CV Downloaded", { location: "footer", locale })
