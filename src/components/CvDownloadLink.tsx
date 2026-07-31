@@ -10,7 +10,7 @@ export default function CvDownloadLink({ locale }: { locale: string }) {
       onClick={() =>
         amplitude.track("CV Downloaded", { location: "footer", locale })
       }
-      className="inline-flex items-center gap-2 text-sm text-foreground border border-border rounded-full px-5 py-2.5 hover:bg-foreground hover:text-background transition-colors"
+      className="inline-flex items-center gap-2 text-sm font-medium bg-primary text-primary-foreground rounded-full px-5 py-2.5 hover:bg-primary/85 transition-colors"
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
