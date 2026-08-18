@@ -68,7 +68,9 @@
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
         "imageRows": [
           "/images/works/westudy-editor.webp",
-          "/images/works/westudy-onboarding.png"
+          "/images/works/westudy-onboarding.png",
+          "/images/works/westudy/westudy-about-promo-2-ua.webp",
+          "/images/works/westudy/westudy-about-promo-3-ua.webp"
         ]
       }
     ],
@@ -199,7 +201,9 @@
         ],
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
         "imageRows": [
-          "/images/works/promo-builder-westudy.webp"
+          "/images/works/promo-builder-westudy.webp",
+          "/images/works/westudy/westudy-about-promo-2-ua.webp",
+          "/images/works/westudy/westudy-about-promo-3-ua.webp"
         ]
       }
     ],
