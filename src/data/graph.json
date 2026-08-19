@@ -3,7 +3,7 @@
     "cvUrl": "/CV_Georgiy_Telpis_uiux_(product)_designer_ua.pdf",
     "hero": {
       "text1": "я Георгій, продуктовий дизайнер з досвідом запуску продуктів для освітніх платформ та маркетингових мультиканальних сервісів.",
-      "text2": "Використовую сучасні підходи до проєктування та роблю прототипи з допомогою ШІ для тестування нових ідей в продукті."
+      "text2": ""
     },
     "about": [
       "Останні декілька років працював над продуктами в сфері EdTech (навчальні платформи, сервіси для створення курсів) та MarTech (маркетингові інструменти, сервіси лідогенерації).",
@@ -12,32 +12,6 @@
       "Закінчив Одеську політехніку та Британську школу дизайну."
     ],
     "companies": [
-      {
-        "slug": "snovio",
-        "name": "Snov.io",
-        "url": "http://snov.io/",
-        "caseUrl": "/uk/cases/snov",
-        "period": "2022 → 2025",
-        "productType": "AI платформа лідогенерації та автоматизації аутрічу",
-        "role": "Product Designer",
-        "icon": "/images/icons/snovio.svg",
-        "description": "Запустив з командою систему автоматизації LinkedIn аутрічу, оновив інструменти для доставлення емейлів та флоу створення емейл кампаній.",
-        "achievements": [
-          "80% retention після релізу нового інструменту LinkedIn outreach",
-          "На 30% більше успішно створених кампаній після редизайну їх створення",
-          "Удвічі менше звернень до підтримки після редизайну email-налаштувань"
-        ],
-        "tools": "Figma, HotJar, Amplitude",
-        "imageRows": [
-          "/images/works/snov-linkedin-settings.png",
-          "/images/works/snov-email-promo.png",
-          [
-            "/images/works/snov-deliverability-check.webp",
-            "/images/works/snov-linkedin-analytics.webp"
-          ],
-          "/images/works/snov-campaign-reports.webp"
-        ]
-      },
       {
         "slug": "eschool",
         "name": "Єдина школа",
@@ -49,11 +23,7 @@
         "icon": "/images/icons/eschool.svg",
         "description": "Розробка навчальних сервісів для учнів, батьків та вчителів в додатку та веб-версії продукту, спец проєкти всередині платформи, оновив головний сайт платформи, та багато іншого.",
         "tools": "Figma, Claude Code, Android Studio, VS Code",
-        "imageRows": [
-          "/images/works/eschool-promo.png",
-          "/images/works/eschool.webp",
-          "/images/works/eschool-mob2-ua.webp"
-        ]
+        "imageRows": []
       },
       {
         "slug": "westudy",
@@ -71,10 +41,7 @@
           "Створив додаток для преміум-клієнтів, яким потрібна була кастомізація за додаткову плату"
         ],
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
-        "imageRows": [
-          "/images/works/westudy-editor.webp",
-          "/images/works/westudy-onboarding.png"
-        ]
+        "imageRows": []
       }
     ],
     "timeline": [
@@ -140,7 +107,7 @@
     "cvUrl": "https://www.notion.so/360c4695d7af8194aa61d536582845a9",
     "hero": {
       "text1": "I'm Georgiy, a product designer with experience launching products for educational platforms and multichannel marketing services.",
-      "text2": "I use modern design practices and build AI prototypes to test new product ideas quickly."
+      "text2": ""
     },
     "about": [
       "For the past several years I've worked on products in EdTech (learning platforms, course creation tools) and MarTech (marketing tools, lead generation services).",
@@ -149,32 +116,6 @@
       "I graduated from Odesa Polytechnic and the British Higher School of Art & Design."
     ],
     "companies": [
-      {
-        "slug": "snovio",
-        "name": "Snov.io",
-        "url": "http://snov.io/",
-        "caseUrl": "/en/cases/snov",
-        "period": "2022 → 2025",
-        "productType": "AI-powered lead generation & outreach automation platform",
-        "role": "Product Designer",
-        "icon": "/images/icons/snovio.svg",
-        "description": "Launched a LinkedIn outreach automation system with the team, improved email deliverability tooling, and redesigned the email campaign flow.",
-        "achievements": [
-          "80% retention after launching the new LinkedIn outreach tool",
-          "30% more successfully created campaigns after redesigning campaign creation",
-          "Half as many support requests after redesigning email settings"
-        ],
-        "tools": "Figma, HotJar, Amplitude",
-        "imageRows": [
-          "/images/works/snov-linkedin-settings.png",
-          "/images/works/snov-email-promo.png",
-          [
-            "/images/works/snov-deliverability-check.webp",
-            "/images/works/snov-linkedin-analytics.webp"
-          ],
-          "/images/works/snov-campaign-reports.webp"
-        ]
-      },
       {
         "slug": "eschool",
         "name": "Yedyna Shkola",
@@ -187,9 +128,7 @@
         "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
-          "/images/works/eschool-web-en.webp",
-          "/images/works/eschool-mob-en.webp",
-          "/images/works/eschool-mob2-en.webp"
+          "/images/works/eschool-web-en.webp"
         ]
       },
       {
@@ -208,9 +147,7 @@
           "Built an add-on for premium clients who needed customization for an extra fee"
         ],
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
-        "imageRows": [
-          "/images/works/promo-builder-westudy.webp"
-        ]
+        "imageRows": []
       }
     ],
     "timeline": [
