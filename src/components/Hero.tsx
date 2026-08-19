@@ -6,11 +6,26 @@ import InteractiveCollage from "./InteractiveCollage";
 const greetingsUk = ["Привіт", "Hello", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", "Witaj", "Ahoj", "Sveiki"];
 const greetingsEn = ["Hello", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", "Sveiki"];
 
-type HeroProps = {
-  locale: string;
+// Defaults match the original hardcoded copy — used whenever a page doesn't
+// pass its own text1/text2 (e.g. the main homepage).
+const DEFAULT_TEXT1: Record<"uk" | "en", string> = {
+  uk: "я Георгій, продуктовий дизайнер з досвідом запуску продуктів для освітніх платформ та маркетингових мультиканальних сервісів.",
+  en: "I'm Georgiy, a product designer with experience launching products for educational platforms and multichannel marketing services.",
+};
+const DEFAULT_TEXT2: Record<"uk" | "en", string> = {
+  uk: "Використовую сучасні підходи до проєктування та роблю прототипи з допомогою ШІ для тестування нових ідей в продукті.",
+  en: "I use modern design practices and build AI prototypes to test new product ideas quickly.",
 };
 
-export default function Hero({ locale }: HeroProps) {
+type HeroProps = {
+  locale: string;
+  /** Text after the (non-editable, randomized) greeting — e.g. "я Георгій, ...". */
+  text1?: string;
+  /** Second paragraph, shown below the greeting line. */
+  text2?: string;
+};
+
+export default function Hero({ locale, text1, text2 }: HeroProps) {
   const isUk = locale === "uk";
   const [greeting, setGreeting] = useState(isUk ? "Привіт" : "Hello");
 
@@ -18,6 +33,9 @@ export default function Hero({ locale }: HeroProps) {
     const list = isUk ? greetingsUk : greetingsEn;
     setGreeting(list[Math.floor(Math.random() * list.length)]);
   }, [isUk]);
+
+  const line1 = text1 ?? DEFAULT_TEXT1[isUk ? "uk" : "en"];
+  const line2 = text2 ?? DEFAULT_TEXT2[isUk ? "uk" : "en"];
 
   return (
     <section className="relative bg-secondary overflow-hidden" style={{ minHeight: "calc(100vh - 64px)" }}>
@@ -27,14 +45,10 @@ export default function Hero({ locale }: HeroProps) {
         {/* Left: text */}
         <div className="flex-1 flex flex-col justify-end pb-[135px] pr-8 z-10 hero-text">
           <h1 className="text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-secondary-foreground leading-[1.25] max-w-[740px]">
-            {isUk
-              ? `${greeting}, я Георгій, продуктовий дизайнер з досвідом запуску продуктів для освітніх платформ та маркетингових мультиканальних сервісів.`
-              : `${greeting}, I'm Georgiy, a product designer with experience launching products for educational platforms and multichannel marketing services.`}
+            {greeting}, {line1}
           </h1>
           <p className="mt-8 text-[clamp(1.35rem,2.8vw,2.25rem)] font-medium text-secondary-foreground leading-[1.25] max-w-[740px] hero-text-second">
-            {isUk
-              ? "Використовую сучасні підходи до проєктування та роблю прототипи з допомогою ШІ для тестування нових ідей в продукті."
-              : "I use modern design practices and build AI prototypes to test new product ideas quickly."}
+            {line2}
           </p>
         </div>
 

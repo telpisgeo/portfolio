@@ -46,12 +46,17 @@ export default function AdminGraphPage() {
   }, []);
 
   const cvUrl = content[locale].cvUrl;
+  const hero = content[locale].hero;
   const companies = content[locale].companies;
   const about = content[locale].about;
   const timeline = content[locale].timeline;
 
   function updateCvUrl(value: string) {
     setContent((prev) => ({ ...prev, [locale]: { ...prev[locale], cvUrl: value } }));
+  }
+
+  function updateHero(patch: Partial<{ text1: string; text2: string }>) {
+    setContent((prev) => ({ ...prev, [locale]: { ...prev[locale], hero: { ...prev[locale].hero, ...patch } } }));
   }
 
   function updateCompany(index: number, patch: Partial<HomeCompany>) {
@@ -239,6 +244,34 @@ export default function AdminGraphPage() {
             Помилка: {saveError}
           </div>
         )}
+
+        {/* Hero */}
+        <div className="border border-border rounded-2xl p-6 mb-10">
+          <h2 className="text-base font-medium text-foreground mb-1">Hero-блок</h2>
+          <p className="text-sm text-muted-foreground mb-5">
+            Привітання (&quot;Привіт&quot;/&quot;Hello&quot;/...) міняється випадково і не редагується — тут лише текст після нього.
+          </p>
+          <div className="flex flex-col gap-4">
+            <div>
+              <label className={labelClass}>Перший рядок (після привітання)</label>
+              <textarea
+                value={hero.text1}
+                onChange={(e) => updateHero({ text1: e.target.value })}
+                rows={2}
+                className={`${inputClass} resize-none leading-relaxed`}
+              />
+            </div>
+            <div>
+              <label className={labelClass}>Другий рядок</label>
+              <textarea
+                value={hero.text2}
+                onChange={(e) => updateHero({ text2: e.target.value })}
+                rows={2}
+                className={`${inputClass} resize-none leading-relaxed`}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* CV link */}
         <div className="border border-border rounded-2xl p-6 mb-10">

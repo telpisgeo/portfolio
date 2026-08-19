@@ -94,7 +94,7 @@ export default async function GraphLocalePage({
         homeHref={homeHref}
         switchHref={switchHref}
       />
-      <Hero locale={locale} />
+      <Hero locale={locale} text1={graph.hero.text1} text2={graph.hero.text2} />
 
       <main className="flex-1 flex flex-col py-16">
 

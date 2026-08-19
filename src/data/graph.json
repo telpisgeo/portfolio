@@ -1,6 +1,10 @@
 {
   "uk": {
     "cvUrl": "/CV_Georgiy_Telpis_uiux_(product)_designer_ua.pdf",
+    "hero": {
+      "text1": "я Георгій, продуктовий дизайнер з досвідом запуску продуктів для освітніх платформ та маркетингових мультиканальних сервісів.",
+      "text2": "Використовую сучасні підходи до проєктування та роблю прототипи з допомогою ШІ для тестування нових ідей в продукті."
+    },
     "about": [
       "Останні декілька років працював над продуктами в сфері EdTech (навчальні платформи, сервіси для створення курсів) та MarTech (маркетингові інструменти, сервіси лідогенерації).",
       "З нуля створював дизайн-процеси в командах та впроваджував UX-дослідження в бізнес-процесах.",
@@ -134,6 +138,10 @@
   },
   "en": {
     "cvUrl": "https://www.notion.so/360c4695d7af8194aa61d536582845a9",
+    "hero": {
+      "text1": "I'm Georgiy, a product designer with experience launching products for educational platforms and multichannel marketing services.",
+      "text2": "I use modern design practices and build AI prototypes to test new product ideas quickly."
+    },
     "about": [
       "For the past several years I've worked on products in EdTech (learning platforms, course creation tools) and MarTech (marketing tools, lead generation services).",
       "I built design processes from scratch within teams and introduced UX research into business processes.",
