@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // One <url> entry per locale, each carrying the full hreflang alternate set
   // so the uk/en versions are reciprocally linked.
-  return LOCALES.flatMap((locale) =>
+  const localePages = LOCALES.flatMap((locale) =>
     paths.map((path) => ({
       url: `${BASE}/${locale}${path}`,
       lastModified: now,
@@ -42,4 +42,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     })),
   );
+
+  // Graph-design landing page — separate section, own "ua"/"en" segments.
+  const graphPages = (["ua", "en"] as const).map((locale) => ({
+    url: `${BASE}/graph/${locale}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+    alternates: {
+      languages: {
+        uk: `${BASE}/graph/ua`,
+        en: `${BASE}/graph/en`,
+        "x-default": `${BASE}/graph/ua`,
+      },
+    },
+  }));
+
+  return [...localePages, ...graphPages];
 }

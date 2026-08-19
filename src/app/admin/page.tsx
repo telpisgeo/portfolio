@@ -38,6 +38,14 @@ export default function AdminDashboard() {
             <h2 className="text-base font-medium text-foreground mb-1">Кейси</h2>
             <p className="text-sm text-muted-foreground">Створення, редагування та статус кейсів</p>
           </Link>
+
+          <Link
+            href="/admin/graph"
+            className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
+          >
+            <h2 className="text-base font-medium text-foreground mb-1">Сторінка для граф дизайну</h2>
+            <p className="text-sm text-muted-foreground">CV, &quot;Про мене&quot; та досвід для /graph — незалежно від головної</p>
+          </Link>
         </div>
       </div>
     </div>

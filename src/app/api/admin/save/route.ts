@@ -97,6 +97,34 @@ function validateHomeContent(content: unknown): string | null {
   return null;
 }
 
+const CV_URL_RE = /^(\/[A-Za-z0-9_\-./() ]+\.pdf|https:\/\/[A-Za-z0-9.-]+\/[A-Za-z0-9_\-./?=&%]*)$/;
+
+function validateGraphContent(content: unknown): string | null {
+  if (!content || typeof content !== "object") return "Невірна структура graph.json";
+  const c = content as Record<string, unknown>;
+  for (const locale of ["uk", "en"]) {
+    const loc = c[locale] as Record<string, unknown> | undefined;
+    if (!loc) return `Немає локалі ${locale}`;
+    if (!isString(loc.cvUrl) || !CV_URL_RE.test(loc.cvUrl)) return `Невірне посилання на CV: ${loc.cvUrl}`;
+    if (!Array.isArray(loc.about) || loc.about.some((p) => !isString(p))) return `Невірний "about" для ${locale}`;
+    if (!Array.isArray(loc.companies)) return `Невірні companies для ${locale}`;
+    const seenSlugs = new Set<string>();
+    for (const company of loc.companies) {
+      const err = validateCompany(company);
+      if (err) return err;
+      const slug = (company as Record<string, unknown>).slug as string;
+      if (seenSlugs.has(slug)) return `Дублікат slug: ${slug}`;
+      seenSlugs.add(slug);
+    }
+    if (!Array.isArray(loc.timeline)) return `Невірний timeline для ${locale}`;
+    for (const item of loc.timeline) {
+      const err = validateTimelineItem(item);
+      if (err) return err;
+    }
+  }
+  return null;
+}
+
 function validateImgRef(img: unknown, required: boolean): string | null {
   if (img === undefined) return required ? "Відсутнє зображення" : null;
   if (!img || typeof img !== "object") return "Невірне зображення";
@@ -248,6 +276,7 @@ function validateCaseFile(data: unknown): string | null {
 
 const FILE_VALIDATORS: Record<string, (data: unknown) => string | null> = {
   "src/data/home.json": validateHomeContent,
+  "src/data/graph.json": validateGraphContent,
 };
 
 function findValidator(path: string): ((data: unknown) => string | null) | null {

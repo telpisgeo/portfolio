@@ -3,20 +3,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
-import { localeAlternates, personJsonLd } from "@/lib/seo";
-import homeJson from "@/data/home.json";
-import type { HomeContent } from "@/lib/home-content";
+import graphJson from "@/data/graph.json";
+import type { GraphContent } from "@/lib/graph-content";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import OtherProjects from "@/components/OtherProjects";
 import CvDownloadLink from "@/components/CvDownloadLink";
 import ShimmerImage from "@/components/ShimmerImage";
 import Testimonials from "@/components/Testimonials";
 
+const SITE_URL = "https://www.telpis.com.ua";
+
+// This section uses its own URL locale segments ("ua"/"en") instead of the
+// main site's "uk"/"en" — kept distinct per the graph-design page brief.
+type GraphUrlLocale = "ua" | "en";
+
+function toContentLocale(urlLocale: GraphUrlLocale): Locale {
+  return urlLocale === "ua" ? "uk" : "en";
+}
 
 export function generateStaticParams() {
-  return [{ locale: "uk" }, { locale: "en" }];
+  return [{ locale: "ua" }, { locale: "en" }];
 }
 
 export async function generateMetadata({
@@ -25,60 +32,67 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  if (locale !== "uk" && locale !== "en") return {};
-  const t = translations[locale as Locale];
-  const isUk = locale === "uk";
+  if (locale !== "ua" && locale !== "en") return {};
+  const isUa = locale === "ua";
+  const title = isUa
+    ? "Тельпіс Георгій. Графічний дизайнер."
+    : "Georgiy Telpis. Graphic Designer.";
+  const description = isUa
+    ? "Графічний дизайн: фірмові стилі, ілюстрації та візуальні матеріали."
+    : "Graphic design: brand identities, illustrations and visual materials.";
   return {
-    title: isUk
-      ? "Тельпіс Георгій. Продуктовий дизайнер."
-      : "Georgiy Telpis. Product Designer.",
-    description: isUk
-      ? "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу."
-      : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
-    alternates: localeAlternates(locale as Locale, ""),
+    title,
+    description,
+    alternates: {
+      canonical: `${SITE_URL}/graph/${locale}`,
+      languages: {
+        uk: `${SITE_URL}/graph/ua`,
+        en: `${SITE_URL}/graph/en`,
+        "x-default": `${SITE_URL}/graph/ua`,
+      },
+    },
     openGraph: {
-      title: isUk ? "Тельпіс Георгій. Продуктовий дизайнер." : "Georgiy Telpis. Product Designer.",
-      description: isUk
-        ? "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу."
-        : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
-      locale: isUk ? "uk_UA" : "en_US",
+      title,
+      description,
+      locale: isUa ? "uk_UA" : "en_US",
       type: "website",
-      images: [{ url: isUk ? "https://www.telpis.com.ua/og-ua-v2.png" : "https://www.telpis.com.ua/og-en-v2.png", width: 1200, height: 628 }],
+      images: [{ url: isUa ? `${SITE_URL}/og-ua-v2.png` : `${SITE_URL}/og-en-v2.png`, width: 1200, height: 628 }],
     },
   };
 }
 
-export default async function LocalePage({
+export default async function GraphLocalePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale: urlLocale } = await params;
 
-  if (locale !== "uk" && locale !== "en") notFound();
+  if (urlLocale !== "ua" && urlLocale !== "en") notFound();
 
-  const t = translations[locale as Locale];
-  const otherLocale = locale === "uk" ? "en" : "uk";
-  const otherLabel = locale === "uk" ? "EN" : "UA";
+  const locale = toContentLocale(urlLocale);
+  const t = translations[locale];
+  const otherUrlLocale: GraphUrlLocale = urlLocale === "ua" ? "en" : "ua";
+  const otherLabel = urlLocale === "ua" ? "EN" : "UA";
+  const homeHref = `/graph/${urlLocale}`;
+  const switchHref = `/graph/${otherUrlLocale}`;
 
-  const home = (homeJson as unknown as HomeContent)[locale as "uk" | "en"];
-  const companies = home.companies;
+  const graph = (graphJson as unknown as GraphContent)[locale];
+  const companies = graph.companies;
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(locale as Locale)) }}
-      />
       <Navbar
         locale={locale}
-        otherLocale={otherLocale}
+        otherLocale={locale === "uk" ? "en" : "uk"}
         otherLabel={otherLabel}
-        cvUrl={t.cvUrl}
+        cvUrl={graph.cvUrl}
         cvButton={t.cvButton}
         worksLabel={t.navWorksLabel}
         aboutLabel={t.navAboutLabel}
         contactLabel={t.navContactLabel}
+        homeHref={homeHref}
+        switchHref={switchHref}
       />
       <Hero locale={locale} />
 
@@ -232,7 +246,7 @@ export default async function LocalePage({
       </main>
 
       {/* Testimonials */}
-      <Testimonials locale={locale} testimonials={home.testimonials} />
+      <Testimonials locale={locale} testimonials={graph.testimonials} />
 
       {/* About section */}
       <section id="about" className="mt-16 pt-16 pb-16 bg-surface-about">
@@ -264,7 +278,7 @@ export default async function LocalePage({
               </div>
 
               <div className="flex flex-col gap-5 text-lg text-foreground/75 leading-relaxed">
-                {home.about.map((p, i) => (
+                {graph.about.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>
@@ -272,7 +286,7 @@ export default async function LocalePage({
 
           {/* Right: Timeline */}
           <div className="flex flex-col">
-            {home.timeline.map((item) => (
+            {graph.timeline.map((item) => (
               <div key={item.company} className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-2 md:gap-8 py-10 border-b border-border last:border-0">
                 <span className="text-sm text-muted-foreground pt-1.5 shrink-0">{item.period}</span>
                 <div>
@@ -304,7 +318,7 @@ export default async function LocalePage({
 
             {/* CV download button */}
             <div className="pt-6">
-              <CvDownloadLink locale={locale} cvUrl={t.cvUrl} />
+              <CvDownloadLink locale={locale} cvUrl={graph.cvUrl} />
             </div>
 
           </div>
@@ -316,7 +330,7 @@ export default async function LocalePage({
 
       <Footer
         locale={locale}
-        otherLocale={otherLocale}
+        otherLocale={locale === "uk" ? "en" : "uk"}
         otherLabel={otherLabel}
         copyright={t.copyright}
       />

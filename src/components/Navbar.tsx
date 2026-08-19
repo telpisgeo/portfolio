@@ -17,22 +17,30 @@ type NavbarProps = {
   aboutLabel: string;
   variant?: "dark" | "light" | "case";
   hideOnScroll?: boolean;
+  /** Overrides the default `/${locale}` home link and work/about anchor base. */
+  homeHref?: string;
+  /** Overrides the default pathname-derived language switch target. */
+  switchHref?: string;
 };
 
 export default function Navbar({
   locale,
   otherLocale,
   otherLabel,
+  cvUrl,
   contactLabel,
   worksLabel,
   aboutLabel,
   variant = "dark",
   hideOnScroll = false,
+  homeHref,
+  switchHref,
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const hidden = useHideOnScroll(hideOnScroll) && !menuOpen;
   const pathname = usePathname();
-  const otherLocalePath = pathname.replace(/^\/(uk|en)/, `/${otherLocale}`);
+  const home = homeHref ?? `/${locale}`;
+  const otherLocalePath = switchHref ?? pathname.replace(/^\/(uk|en)/, `/${otherLocale}`);
 
   const isDark = variant === "dark";
 
@@ -56,7 +64,7 @@ export default function Navbar({
         {/* Left: back link or name */}
         {isDark ? (
           <Link
-            href={`/${locale}`}
+            href={home}
             className="flex items-center shrink-0"
             onClick={() => setMenuOpen(false)}
           >
@@ -66,7 +74,7 @@ export default function Navbar({
           </Link>
         ) : (
           <Link
-            href={`/${locale}`}
+            href={home}
             className="group flex items-center gap-2 shrink-0"
             onClick={() => setMenuOpen(false)}
           >
@@ -90,13 +98,13 @@ export default function Navbar({
         {/* Center: nav links — only when enough space */}
         <div className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
           <a
-            href={`/${locale}#works`}
+            href={`${home}#works`}
             className={`px-4 py-2 text-sm font-medium ${textMuted} ${hoverText} transition-colors rounded-full ${hoverBg}`}
           >
             {worksLabel}
           </a>
           <a
-            href={`/${locale}#about`}
+            href={`${home}#about`}
             className={`px-4 py-2 text-sm font-medium ${textMuted} ${hoverText} transition-colors rounded-full ${hoverBg}`}
           >
             {aboutLabel}
@@ -113,7 +121,7 @@ export default function Navbar({
           </Link>
 
           <a
-            href={locale === "uk" ? "/CV_Georgiy_Telpis_uiux_(product)_designer_ua.pdf" : "/CV_Georgiy_Telpis_uiux_(product)_designer_en.pdf"}
+            href={cvUrl}
             download
             onClick={() =>
               amplitude.track("CV Downloaded", { location: "navbar", locale })
@@ -147,14 +155,14 @@ export default function Navbar({
       {menuOpen && (
         <div className={`lg:hidden border-t ${dropdownBg} px-6 py-4 flex flex-col gap-1`}>
           <a
-            href={`/${locale}#works`}
+            href={`${home}#works`}
             className={`py-3 text-sm font-medium border-b ${dropdownText}`}
             onClick={() => setMenuOpen(false)}
           >
             {worksLabel}
           </a>
           <a
-            href={`/${locale}#about`}
+            href={`${home}#about`}
             className={`py-3 text-sm font-medium border-b ${dropdownText}`}
             onClick={() => setMenuOpen(false)}
           >
@@ -168,7 +176,7 @@ export default function Navbar({
             {contactLabel}
           </a>
           <a
-            href={locale === "uk" ? "/CV_Georgiy_Telpis_uiux_(product)_designer_ua.pdf" : "/CV_Georgiy_Telpis_uiux_(product)_designer_en.pdf"}
+            href={cvUrl}
             download
             className={`py-3 text-sm font-medium border-b ${dropdownText}`}
             onClick={() => {

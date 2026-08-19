@@ -4,9 +4,11 @@ import { ADMIN_SESSION_COOKIE, verifySessionToken } from "@/lib/admin-session";
 
 // First path segment → the locale served by the root layout. Anything that
 // isn't a known locale (e.g. /admin, /sandbox, the "/" redirect) falls back to
-// "uk", which matches the site's default and the admin UI language.
+// "uk", which matches the site's default and the admin UI language. The
+// /graph section uses its own "ua"/"en" segment one level deeper.
 function localeFromPath(pathname: string): "uk" | "en" {
-  const seg = pathname.split("/")[1];
+  const segments = pathname.split("/").filter(Boolean);
+  const seg = segments[0] === "graph" ? segments[1] : segments[0];
   return seg === "en" ? "en" : "uk";
 }
 
