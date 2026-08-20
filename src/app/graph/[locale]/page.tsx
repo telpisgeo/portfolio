@@ -225,8 +225,8 @@ export default async function GraphLocalePage({
                     Array.isArray(row) ? (
                       <div key={i} className="grid grid-cols-2 gap-3">
                         {(row as string[]).map((src) => (
-                          <div key={src} className="relative overflow-hidden rounded-[8px]">
-                            <ShimmerImage src={src} alt={company.name} width={600} height={400} className="w-full h-auto" />
+                          <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
+                            <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
                           </div>
                         ))}
                       </div>
