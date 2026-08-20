@@ -21,6 +21,10 @@ function caseSlugFromUrl(caseUrl: string | undefined): string {
   return match ? match[1] : "";
 }
 
+function slugify(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
 export default function AdminHomePage() {
   const [content, setContent] = useState<HomeContent>(initialContent);
   const [locale, setLocale] = useState<"uk" | "en">("uk");
@@ -59,8 +63,13 @@ export default function AdminHomePage() {
   }
 
   function addCompany() {
-    const slug = window.prompt("Slug нової компанії (латиницею, напр. my-company):")?.trim();
-    if (!slug) return;
+    const input = window.prompt("Slug нової компанії (латиницею, напр. my-company):")?.trim();
+    if (!input) return;
+    const slug = slugify(input);
+    if (!slug) {
+      window.alert("Slug має містити хоча б одну латинську літеру або цифру");
+      return;
+    }
     const newCompany: HomeCompany = { slug, name: "", url: "", period: "", description: "", imageRows: [] };
     setContent((prev) => ({
       ...prev,
