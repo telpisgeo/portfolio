@@ -54,7 +54,7 @@ function validateCompany(company: unknown): string | null {
   if (c.productType !== undefined && !isString(c.productType)) return "Невірний тип продукту";
   if (c.role !== undefined && !isString(c.role)) return "Невірна роль";
   if (c.tools !== undefined && !isString(c.tools)) return "Невірні інструменти";
-  if (c.icon !== undefined) {
+  if (c.icon !== undefined && c.icon !== "") {
     const err = validateImagePath(c.icon);
     if (err) return err;
   }

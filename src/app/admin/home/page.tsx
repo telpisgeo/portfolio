@@ -25,6 +25,23 @@ function slugify(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
 
+// Drops image-row slots the user added but never uploaded a file into —
+// an empty string there fails server-side path validation and blocked
+// saving the entire form.
+function cleanImageRows(rows: (string | string[])[]): (string | string[])[] {
+  return rows
+    .map((row) => (Array.isArray(row) ? row.filter((v) => v.trim() !== "") : row))
+    .filter((row) => (Array.isArray(row) ? row.length > 0 : row.trim() !== ""))
+    .map((row) => (Array.isArray(row) && row.length === 1 ? row[0] : row));
+}
+
+function cleanContent(content: HomeContent): HomeContent {
+  return {
+    uk: { ...content.uk, companies: content.uk.companies.map((c) => ({ ...c, imageRows: cleanImageRows(c.imageRows) })) },
+    en: { ...content.en, companies: content.en.companies.map((c) => ({ ...c, imageRows: cleanImageRows(c.imageRows) })) },
+  };
+}
+
 export default function AdminHomePage() {
   const [content, setContent] = useState<HomeContent>(initialContent);
   const [locale, setLocale] = useState<"uk" | "en">("uk");
@@ -187,7 +204,7 @@ export default function AdminHomePage() {
       const res = await fetch("/api/admin/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ files: { "src/data/home.json": content } }),
+        body: JSON.stringify({ files: { "src/data/home.json": cleanContent(content) } }),
       });
       const data = await res.json();
       if (!res.ok) { setSaveStatus("error"); setSaveError(data.error ?? "Помилка збереження"); }
