@@ -32,6 +32,21 @@ function getExt(name: string): string {
   return m ? m[0] : "";
 }
 
+// Must match MAX_BYTES in /api/admin/media/route.ts. Checked client-side so
+// an oversized file fails with a clear message instead of the request body
+// getting rejected upstream (Vercel returns a non-JSON error page in that
+// case, which crashes response parsing in a browser-specific, cryptic way).
+const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
+
+async function parseJsonResponse(res: Response): Promise<{ error?: string; [key: string]: unknown }> {
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error(`Сервер повернув невірну відповідь (${res.status})`);
+  }
+}
+
 export default function MediaUpload({ kind, dir, value, onChange, label }: MediaUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
@@ -39,6 +54,9 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
   const [error, setError] = useState("");
 
   async function uploadImage(file: File) {
+    if (file.size > MAX_IMAGE_BYTES) {
+      throw new Error(`Файл завеликий (${(file.size / 1024 / 1024).toFixed(1)}MB, макс. ${MAX_IMAGE_BYTES / 1024 / 1024}MB)`);
+    }
     setProgress("Завантажую...");
     const dataUrl = await readAsDataURL(file);
     const filename = sanitizeFilename(file.name);
@@ -47,9 +65,9 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ dir, filename, data: dataUrl }),
     });
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) throw new Error(data.error ?? "Помилка завантаження зображення");
-    onChange(data.path, data.width && data.height ? `${data.width}/${data.height}` : undefined);
+    onChange(data.path as string, data.width && data.height ? `${data.width}/${data.height}` : undefined);
   }
 
   async function uploadVideo(file: File) {
