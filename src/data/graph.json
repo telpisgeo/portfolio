@@ -28,25 +28,25 @@
           [
             "/images/works/eschool/yedyna-school-mob-style-4.webp",
             "/images/works/eschool/yedyna-school-mob-style-2.webp"
-          ]
+          ],
+          [
+            "/images/works/eschool/yedyna-school-mob-style-1.webp",
+            "/images/works/eschool/yedyna-school-mob-style-3.webp"
+          ],
+          "/images/works/eschool/yedyna-school-social.webp"
         ]
       },
       {
         "slug": "westudy",
         "name": "Westudy.ua",
         "url": "http://westudy.ua/",
-        "caseUrl": "/uk/cases/westudy",
-        "period": "2024 → 2025",
+        "period": "",
         "productType": "Платформа для створення онлайн курсів та роботи з студентами",
-        "role": "Product Designer",
+        "role": "",
         "icon": "/images/icons/westudy.svg",
         "description": "Оновив інтерфейс створення курсів, емейл кампаній, вебінарів та бронювання занять. Один з найскладніших інструментів — конструктор власних сайтів для курсів.",
-        "achievements": [
-          "Зупинив відтік клієнтів після оновлення конструктора сайтів для курсів",
-          "Налагодив дизайн-процеси в команді, впорядкував хаос і впровадив UX-дослідження",
-          "Створив додаток для преміум-клієнтів, яким потрібна була кастомізація за додаткову плату"
-        ],
-        "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
+        "achievements": [],
+        "tools": "",
         "imageRows": []
       }
     ],
