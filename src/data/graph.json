@@ -23,7 +23,12 @@
         "description": "Оновлення візуального стилю компанії, редизайн головного сайту продукту. Розробка інтерфейсів для спец. проєктів для колаборації з брендами. Оновлення всіх комунікацій бренду.",
         "tools": "",
         "imageRows": [
-          "/images/works/eschool/yedyna-school-web.webp"
+          "/images/works/eschool/yedyna-school-web.webp",
+          "/images/works/eschool/yedyna-school-mob.webp",
+          [
+            "/images/works/eschool/yedyna-school-mob-style-4.webp",
+            "/images/works/eschool/yedyna-school-mob-style-2.webp"
+          ]
         ]
       },
       {
