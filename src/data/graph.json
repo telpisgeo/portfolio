@@ -22,7 +22,9 @@
         "icon": "/images/icons/eschool.svg",
         "description": "Оновлення візуального стилю компанії, редизайн головного сайту продукту. Розробка інтерфейсів для спец. проєктів для колаборації з брендами. Оновлення всіх комунікацій бренду.",
         "tools": "",
-        "imageRows": []
+        "imageRows": [
+          "/images/works/eschool/yedyna-school-web.webp"
+        ]
       },
       {
         "slug": "westudy",
