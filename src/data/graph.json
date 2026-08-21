@@ -47,7 +47,16 @@
         "description": "Оновив інтерфейс створення курсів, емейл кампаній, вебінарів та бронювання занять. Один з найскладніших інструментів — конструктор власних сайтів для курсів.",
         "achievements": [],
         "tools": "",
-        "imageRows": []
+        "imageRows": [
+          "/images/works/westudy/westudy-case-1.webp",
+          [
+            "/images/works/westudy/westudy-case-2-side.webp",
+            "/images/works/westudy/westudy-case-3-side.webp"
+          ],
+          "/images/works/westudy/westudy-case-4.webp",
+          "/images/works/westudy/westudy-case-3.webp",
+          "/images/works/westudy/westudy-case-4-web.webp"
+        ]
       }
     ],
     "timeline": [
