@@ -163,7 +163,11 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
       <input
         ref={inputRef}
         type="file"
-        accept={kind === "image" ? "image/png,image/jpeg,image/webp,image/gif,image/svg+xml" : "video/mp4,video/quicktime,video/webm"}
+        accept={
+          kind === "image"
+            ? "image/png,image/jpeg,image/webp,image/gif,image/svg+xml,.png,.jpg,.jpeg,.webp,.gif,.svg"
+            : "video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm"
+        }
         className="hidden"
         onChange={(e) => {
           const f = e.target.files?.[0];
