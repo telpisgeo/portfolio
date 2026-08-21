@@ -121,7 +121,7 @@ export const translations: Record<Locale, Translation> = {
           "Удвічі менше звернень до підтримки після редизайну email-налаштувань",
         ],
         tools: "Figma, HotJar, Amplitude",
-        imageRows: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"] as const, "/images/works/snov-campaign-reports.webp"],
+        imageRows: ["/images/works/snov/snov-linkedin-settings.png", "/images/works/snov/snov-email-promo.png", ["/images/works/snov/snov-deliverability-check.webp", "/images/works/snov/snov-linkedin-analytics.webp"] as const, "/images/works/snov/snov-campaign-reports.webp"],
       },
       {
         name: "Єдина школа",
@@ -134,7 +134,7 @@ export const translations: Record<Locale, Translation> = {
         description:
           "Розробка навчальних сервісів для учнів, батьків та вчителів в додатку та веб-версії продукту, спец проєкти всередині платформи, оновив головний сайт платформи, та багато іншого.",
         tools: "Figma, Claude Code, Android Studio, VS Code, Google Analytics · React, WebGL, TailwindCSS, Flutter",
-        images: ["/images/works/eschool-promo.png", "/images/works/eschool.webp"],
+        images: ["/images/works/eschool/eschool-promo.png", "/images/works/eschool/eschool.webp"],
       },
       {
         name: "Westudy.ua",
@@ -151,7 +151,7 @@ export const translations: Record<Locale, Translation> = {
           "Створив додаток для преміум-клієнтів, яким потрібна була кастомізація за додаткову плату",
         ],
         tools: "Figma, FigJam, Google Analytics, Affinity Designer",
-        images: ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"],
+        images: ["/images/works/westudy/westudy-editor.webp", "/images/works/westudy/westudy-onboarding.png"],
         caseUrl: "/uk/cases/westudy",
       },
     ],
@@ -188,7 +188,7 @@ export const translations: Record<Locale, Translation> = {
           "Half as many support requests after redesigning email settings",
         ],
         tools: "Figma, HotJar, Amplitude",
-        imageRows: ["/images/works/snov-linkedin-settings.png", "/images/works/snov-email-promo.png", ["/images/works/snov-deliverability-check.webp", "/images/works/snov-linkedin-analytics.webp"] as const, "/images/works/snov-campaign-reports.webp"],
+        imageRows: ["/images/works/snov/snov-linkedin-settings.png", "/images/works/snov/snov-email-promo.png", ["/images/works/snov/snov-deliverability-check.webp", "/images/works/snov/snov-linkedin-analytics.webp"] as const, "/images/works/snov/snov-campaign-reports.webp"],
       },
       {
         name: "Yedyna Shkola",
@@ -201,7 +201,7 @@ export const translations: Record<Locale, Translation> = {
         description:
           "Designed internal learning services for students, parents, and teachers across the app and web. Led special projects within the platform, updated the main website, and more.",
         tools: "Figma, Claude Code, Android Studio, VS Code, Google Analytics · React, WebGL, TailwindCSS, Flutter",
-        images: ["/images/works/eschool-web-en.webp", "/images/works/eschool-mob-en.webp"],
+        images: ["/images/works/eschool/eschool-web-en.webp", "/images/works/eschool/eschool-mob-en.webp"],
       },
       {
         name: "Westudy.ua",
@@ -218,7 +218,7 @@ export const translations: Record<Locale, Translation> = {
           "Built an add-on for premium clients who needed customization for an extra fee",
         ],
         tools: "Figma, FigJam, Google Analytics, Affinity Designer",
-        images: ["/images/works/westudy-editor.webp", "/images/works/westudy-onboarding.png"],
+        images: ["/images/works/westudy/westudy-editor.webp", "/images/works/westudy/westudy-onboarding.png"],
         casePending: true,
       },
     ],

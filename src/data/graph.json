@@ -55,7 +55,8 @@
           ],
           "/images/works/westudy/westudy-case-4.webp",
           "/images/works/westudy/westudy-case-3.webp",
-          "/images/works/westudy/westudy-case-4-web.webp"
+          "/images/works/westudy/westudy-case-4-web.webp",
+          "/images/works/westudy/westudy-bg-loop.webm"
         ]
       }
     ],
@@ -143,7 +144,7 @@
         "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
-          "/images/works/eschool-web-en.webp"
+          "/images/works/eschool/eschool-web-en.webp"
         ]
       },
       {

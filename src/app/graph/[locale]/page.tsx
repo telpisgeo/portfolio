@@ -14,6 +14,8 @@ import Testimonials from "@/components/Testimonials";
 
 const SITE_URL = "https://www.telpis.com.ua";
 
+const VIDEO_EXT_RE = /\.(webm|mp4|mov)$/i;
+
 // This section uses its own URL locale segments ("ua"/"en") instead of the
 // main site's "uk"/"en" — kept distinct per the graph-design page brief.
 type GraphUrlLocale = "ua" | "en";
@@ -226,9 +228,17 @@ export default async function GraphLocalePage({
                       <div key={i} className="grid grid-cols-2 gap-3">
                         {(row as string[]).map((src) => (
                           <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
-                            <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
+                            {VIDEO_EXT_RE.test(src) ? (
+                              <video src={src} className="absolute inset-0 w-full h-full object-cover" autoPlay loop muted playsInline />
+                            ) : (
+                              <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
+                            )}
                           </div>
                         ))}
+                      </div>
+                    ) : VIDEO_EXT_RE.test(row as string) ? (
+                      <div key={row as string} className="relative overflow-hidden rounded-[8px]">
+                        <video src={row as string} className="w-full h-auto" autoPlay loop muted playsInline />
                       </div>
                     ) : (
                       <div key={row as string} className="relative overflow-hidden rounded-[8px]">
