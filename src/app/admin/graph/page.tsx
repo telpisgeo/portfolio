@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import graphJson from "@/data/graph.json";
 import type { GraphContent } from "@/lib/graph-content";
-import type { HomeCompany, TimelineItem } from "@/lib/home-content";
+import type { HomeCompany, Testimonial, TimelineItem } from "@/lib/home-content";
 import MediaUpload from "@/components/admin/MediaUpload";
 
 const initialContent = graphJson as unknown as GraphContent;
@@ -71,6 +71,7 @@ export default function AdminGraphPage() {
   const companies = content[locale].companies;
   const about = content[locale].about;
   const timeline = content[locale].timeline;
+  const testimonials = content[locale].testimonials;
 
   function updateCvUrl(value: string) {
     setContent((prev) => ({ ...prev, [locale]: { ...prev[locale], cvUrl: value } }));
@@ -204,6 +205,37 @@ export default function AdminGraphPage() {
     setContent((prev) => ({
       ...prev,
       [locale]: { ...prev[locale], timeline: prev[locale].timeline.filter((_, j) => j !== i) },
+    }));
+  }
+
+  function updateTestimonial(i: number, patch: Partial<Testimonial>) {
+    setContent((prev) => ({
+      ...prev,
+      [locale]: {
+        ...prev[locale],
+        testimonials: prev[locale].testimonials.map((t, j) => (j === i ? { ...t, ...patch } : t)),
+      },
+    }));
+  }
+
+  function addTestimonial() {
+    setContent((prev) => ({
+      ...prev,
+      [locale]: {
+        ...prev[locale],
+        testimonials: [
+          ...prev[locale].testimonials,
+          { quote: "", fullQuote: "", name: "", role: "", company: "" },
+        ],
+      },
+    }));
+  }
+
+  function removeTestimonial(i: number) {
+    if (!window.confirm("Видалити відгук?")) return;
+    setContent((prev) => ({
+      ...prev,
+      [locale]: { ...prev[locale], testimonials: prev[locale].testimonials.filter((_, j) => j !== i) },
     }));
   }
 
@@ -418,48 +450,51 @@ export default function AdminGraphPage() {
                   <label className={labelClass}>Зображення</label>
                   <div className="flex flex-col gap-3">
                     {company.imageRows.map((row, rowIdx) => (
-                      <div key={rowIdx} className="flex items-start gap-2">
-                        <div className="flex-1 flex flex-col gap-2">
-                          {Array.isArray(row) ? (
-                            <div className="flex gap-2">
-                              {row.map((val, colIdx) => (
-                                <div key={colIdx} className="flex-1">
-                                  <MediaUpload
-                                    kind="image"
-                                    dir={company.slug}
-                                    value={val}
-                                    onChange={(src) => updateImageRowValue(index, rowIdx, colIdx, src)}
-                                  />
-                                </div>
-                              ))}
-                            </div>
-                          ) : (
-                            <MediaUpload
-                              kind="image"
-                              dir={company.slug}
-                              value={row}
-                              onChange={(src) => updateImageRowValue(index, rowIdx, 0, src)}
-                            />
-                          )}
+                      <div key={rowIdx} className="border border-border rounded-xl p-3 flex flex-col gap-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-xs uppercase tracking-widest text-muted-foreground">Зображення {rowIdx + 1}</span>
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => toggleImagePair(index, rowIdx)}
+                              title={Array.isArray(row) ? "Зробити одним рядком" : "Поставити поруч (2 в ряд)"}
+                              className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-colors shrink-0 ${Array.isArray(row) ? "border-foreground text-foreground bg-foreground/5" : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"}`}
+                            >
+                              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                <rect x="1" y="3" width="6" height="10" rx="1.5" />
+                                <rect x="9" y="3" width="6" height="10" rx="1.5" />
+                              </svg>
+                            </button>
+                            <button
+                              onClick={() => removeImageRow(index, rowIdx)}
+                              className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors shrink-0"
+                            >
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M18 6L6 18M6 6l12 12" />
+                              </svg>
+                            </button>
+                          </div>
                         </div>
-                        <button
-                          onClick={() => toggleImagePair(index, rowIdx)}
-                          title={Array.isArray(row) ? "Зробити одним рядком" : "Поставити поруч (2 в ряд)"}
-                          className={`mt-0.5 w-8 h-8 flex items-center justify-center rounded-lg border transition-colors shrink-0 ${Array.isArray(row) ? "border-foreground text-foreground bg-foreground/5" : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"}`}
-                        >
-                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <rect x="1" y="3" width="6" height="10" rx="1.5" />
-                            <rect x="9" y="3" width="6" height="10" rx="1.5" />
-                          </svg>
-                        </button>
-                        <button
-                          onClick={() => removeImageRow(index, rowIdx)}
-                          className="mt-0.5 w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors shrink-0"
-                        >
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M18 6L6 18M6 6l12 12" />
-                          </svg>
-                        </button>
+                        {Array.isArray(row) ? (
+                          <div className="flex gap-2">
+                            {row.map((val, colIdx) => (
+                              <div key={colIdx} className="flex-1">
+                                <MediaUpload
+                                  kind="image"
+                                  dir={company.slug}
+                                  value={val}
+                                  onChange={(src) => updateImageRowValue(index, rowIdx, colIdx, src)}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <MediaUpload
+                            kind="image"
+                            dir={company.slug}
+                            value={row}
+                            onChange={(src) => updateImageRowValue(index, rowIdx, 0, src)}
+                          />
+                        )}
                       </div>
                     ))}
 
@@ -546,6 +581,77 @@ export default function AdminGraphPage() {
             ))}
             <button onClick={addTimelineItem} className="text-sm text-muted-foreground hover:text-foreground transition-colors self-start">
               + Додати запис
+            </button>
+          </div>
+        </div>
+
+        {/* Testimonials */}
+        <div className="border border-border rounded-2xl p-6 mt-10">
+          <h2 className="text-base font-medium text-foreground mb-5">Відгуки</h2>
+          <div className="flex flex-col gap-6">
+            {testimonials.map((t, i) => (
+              <div key={i} className="border border-border rounded-xl p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs uppercase tracking-widest text-muted-foreground">{t.name || `Відгук ${i + 1}`}</span>
+                  <button onClick={() => removeTestimonial(i)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    Видалити
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <div>
+                    <label className={labelClass}>Ім&apos;я</label>
+                    <input value={t.name} onChange={(e) => updateTestimonial(i, { name: e.target.value })} className={inputClass} />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Компанія</label>
+                    <input value={t.company} onChange={(e) => updateTestimonial(i, { company: e.target.value })} className={inputClass} />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Роль</label>
+                    <input value={t.role} onChange={(e) => updateTestimonial(i, { role: e.target.value })} className={inputClass} placeholder="напр. Head of Product Marketing at Snov.io" />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Посилання на джерело (необов&apos;язково)</label>
+                    <input value={t.sourceUrl ?? ""} onChange={(e) => updateTestimonial(i, { sourceUrl: e.target.value })} className={`${inputClass} font-mono`} placeholder="https://linkedin.com/..." />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Іконка компанії (шлях, необов&apos;язково)</label>
+                    <input value={t.companyIcon ?? ""} onChange={(e) => updateTestimonial(i, { companyIcon: e.target.value })} className={`${inputClass} font-mono`} placeholder="/images/icons/example.svg" />
+                  </div>
+                </div>
+
+                <div className="mb-3">
+                  <label className={labelClass}>Коротка цитата (для картки)</label>
+                  <textarea
+                    value={t.quote}
+                    onChange={(e) => updateTestimonial(i, { quote: e.target.value })}
+                    rows={2}
+                    className={`${inputClass} resize-none leading-relaxed`}
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className={labelClass}>Повний текст (абзаци через порожній рядок)</label>
+                  <textarea
+                    value={t.fullQuote}
+                    onChange={(e) => updateTestimonial(i, { fullQuote: e.target.value })}
+                    rows={6}
+                    className={`${inputClass} resize-none leading-relaxed`}
+                  />
+                </div>
+
+                <MediaUpload
+                  kind="image"
+                  dir="testimonials"
+                  value={t.photo}
+                  onChange={(src) => updateTestimonial(i, { photo: src })}
+                  label="Фото"
+                />
+              </div>
+            ))}
+            <button onClick={addTestimonial} className="text-sm text-muted-foreground hover:text-foreground transition-colors self-start">
+              + Додати відгук
             </button>
           </div>
         </div>

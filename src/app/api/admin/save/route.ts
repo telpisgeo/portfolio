@@ -72,6 +72,26 @@ function validateTimelineItem(item: unknown): string | null {
   return null;
 }
 
+function validateTestimonial(item: unknown): string | null {
+  if (!item || typeof item !== "object") return "Невірний відгук";
+  const t = item as Record<string, unknown>;
+  if (!isString(t.quote) || t.quote.length > 500) return "Невірна коротка цитата відгуку";
+  if (!isString(t.fullQuote) || t.fullQuote.length > 5000) return "Невірний повний текст відгуку";
+  if (!isString(t.name) || t.name.length > 200) return "Невірне ім'я у відгуку";
+  if (!isString(t.role) || t.role.length > 200) return "Невірна роль у відгуку";
+  if (!isString(t.company) || t.company.length > 200) return "Невірна компанія у відгуку";
+  if (t.companyIcon !== undefined && t.companyIcon !== "") {
+    const err = validateImagePath(t.companyIcon);
+    if (err) return err;
+  }
+  if (t.sourceUrl !== undefined && (!isString(t.sourceUrl) || t.sourceUrl.length > 500)) return "Невірне посилання-джерело відгуку";
+  if (t.photo !== undefined && t.photo !== "") {
+    const err = validateImagePath(t.photo);
+    if (err) return err;
+  }
+  return null;
+}
+
 function validateHomeContent(content: unknown): string | null {
   if (!content || typeof content !== "object") return "Невірна структура home.json";
   const c = content as Record<string, unknown>;
@@ -91,6 +111,11 @@ function validateHomeContent(content: unknown): string | null {
     if (!Array.isArray(loc.timeline)) return `Невірний timeline для ${locale}`;
     for (const item of loc.timeline) {
       const err = validateTimelineItem(item);
+      if (err) return err;
+    }
+    if (!Array.isArray(loc.testimonials)) return `Невірні testimonials для ${locale}`;
+    for (const item of loc.testimonials) {
+      const err = validateTestimonial(item);
       if (err) return err;
     }
   }
@@ -121,6 +146,11 @@ function validateGraphContent(content: unknown): string | null {
     if (!Array.isArray(loc.timeline)) return `Невірний timeline для ${locale}`;
     for (const item of loc.timeline) {
       const err = validateTimelineItem(item);
+      if (err) return err;
+    }
+    if (!Array.isArray(loc.testimonials)) return `Невірні testimonials для ${locale}`;
+    for (const item of loc.testimonials) {
+      const err = validateTestimonial(item);
       if (err) return err;
     }
   }

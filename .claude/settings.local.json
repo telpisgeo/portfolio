@@ -227,7 +227,21 @@
       "Bash(magick montage *)",
       "Bash(mv \"Serpstat.svg\" \"serpstat.svg\")",
       "Bash(mv \"Єдина школа.svg\" \"eschool.svg\")",
-      "Bash(npx vercel *)"
+      "Bash(npx vercel *)",
+      "Bash(ln -sfn \"/Users/georgiytelpis/Documents/ Repositories/portfolio-main\" /tmp/portfolio-main-link)",
+      "Read(//tmp/**)",
+      "Bash(ln -sfn '/Users/georgiytelpis/Documents/ Repositories/portfolio-main' /private/tmp/claude-501/-Users-georgiytelpis-Documents--Repositories-portfolio-main/2ad1bb22-1b65-4d3b-88e9-33ba45693715/scratchpad/repo)",
+      "mcp__plugin_paper-desktop_paper__get_guide",
+      "mcp__plugin_paper-desktop_paper__open_file",
+      "Bash(python3 -c \"print\\(repr\\(__import__\\('os'\\).getcwd\\(\\)\\)\\)\")",
+      "mcp__plugin_paper-desktop_paper__get_font_family_info",
+      "mcp__plugin_paper-desktop_paper__create_tokens",
+      "mcp__plugin_paper-desktop_paper__rename_nodes",
+      "mcp__plugin_paper-desktop_paper__update_styles",
+      "mcp__plugin_paper-desktop_paper__write_html",
+      "mcp__plugin_paper-desktop_paper__get_screenshot",
+      "mcp__plugin_paper-desktop_paper__finish_working_on_nodes",
+      "mcp__plugin_paper-desktop_paper__create_artboard"
     ]
   },
   "enabledPlugins": {
