@@ -55,8 +55,7 @@
           ],
           "/images/works/westudy/westudy-case-4.webp",
           "/images/works/westudy/westudy-case-3.webp",
-          "/images/works/westudy/westudy-case-4-web.webp",
-          "/images/works/westudy/westudy-bg-loop.webm"
+          "/images/works/westudy/westudy-case-4-web.webp"
         ]
       }
     ],
@@ -97,27 +96,7 @@
         "icon": "/images/logos/serpstat.svg"
       }
     ],
-    "testimonials": [
-      {
-        "quote": "Втілив у життя багато наших найуспішніших продуктів завдяки інтуїтивному, зручному дизайну.",
-        "fullQuote": "Георгій втілив у життя багато наших найуспішніших продуктів завдяки інтуїтивному, зручному дизайну. Хоч би якою складною була логіка продукту, він завжди знаходив спосіб зробити її зрозумілою для користувача. Хочу окремо відзначити креативність Георгія та його відданість дослідженню користувачів: приймаючи UX-рішення, він завжди спирався на об’єктивні дані та реальний фідбек користувачів. Продукт виграв від його інтерв’ю з користувачами, нестандартних дизайнерських рішень і постійного саморозвитку як UI/UX дизайнера.\n\nЯ вірю, що Георгій стане чудовим доповненням для будь-якої компанії, яка прагне створювати успішний продукт, який полюблять користувачі.",
-        "name": "Dana Rudenko",
-        "role": "Head of Product Marketing at Snov.io",
-        "company": "Snov.io",
-        "companyIcon": "/images/icons/snovio-logo.svg",
-        "sourceUrl": "https://www.linkedin.com/in/georgiy-telpis-229bbb47/details/recommendations/?detailScreenTabIndex=2",
-        "photo": "/images/testimonials/dana-rudenko.webp"
-      },
-      {
-        "quote": "Глибоко розуміє користувачів і поєднує це з аналітичним підходом та креативністю.",
-        "fullQuote": "Георгій глибоко розуміє користувачів і поєднує це з аналітичним підходом та креативністю. За час співпраці він створив уніфіковану дизайн-систему продукту та розробив корпоративний стиль компанії — від сайту до соцмереж і маркетингових матеріалів.\n\nЙого внесок у розвиток продукту, бренду і внутрішніх процесів компанії став справді визначальним.",
-        "name": "Рижков Р.С.",
-        "role": "CEO Westudy",
-        "company": "Westudy",
-        "companyIcon": "/images/icons/westudy-logo.webp",
-        "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
-      }
-    ]
+    "testimonials": []
   },
   "en": {
     "cvUrl": "https://www.notion.so/360c4695d7af8194aa61d536582845a9",
@@ -144,7 +123,7 @@
         "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
-          "/images/works/eschool/eschool-web-en.webp"
+          "/images/works/eschool-web-en.webp"
         ]
       },
       {
