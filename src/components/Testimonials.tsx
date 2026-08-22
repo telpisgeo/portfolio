@@ -30,6 +30,8 @@ export default function Testimonials({ locale, testimonials }: Props) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const active = activeIndex !== null ? testimonials[activeIndex] : null;
 
+  if (testimonials.length === 0) return null;
+
   useEffect(() => {
     if (!active) return;
 
