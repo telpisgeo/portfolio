@@ -25,16 +25,23 @@ function validateVideoPath(src: unknown): string | null {
   return null;
 }
 
+// imageRows items can be either an image or a video (see MediaUpload's
+// "media" kind), so accept whichever pattern matches.
+function validateMediaPath(v: unknown): string | null {
+  if (isString(v) && (IMAGE_PATH_RE.test(v) || VIDEO_PATH_RE.test(v))) return null;
+  return `Невірний шлях до медіа: ${v}`;
+}
+
 function validateImageRows(rows: unknown): string | null {
   if (!Array.isArray(rows)) return "imageRows має бути масивом";
   for (const row of rows) {
     if (Array.isArray(row)) {
       for (const img of row) {
-        const err = validateImagePath(img);
+        const err = validateMediaPath(img);
         if (err) return err;
       }
     } else {
-      const err = validateImagePath(row);
+      const err = validateMediaPath(row);
       if (err) return err;
     }
   }

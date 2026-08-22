@@ -3,7 +3,10 @@
 import { useRef, useState } from "react";
 
 type MediaUploadProps = {
-  kind: "image" | "video";
+  // "media" accepts either an image or a video file and picks the upload
+  // pipeline based on the file actually chosen, rather than a fixed kind —
+  // used where a single field can hold either (e.g. graph imageRows).
+  kind: "image" | "video" | "media";
   dir: string;
   value: string | undefined;
   // `ratio` is passed alongside `src` in the same call (rather than as a
@@ -116,8 +119,9 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
     setBusy(true);
     setError("");
     try {
-      if (kind === "image") await uploadImage(file);
-      else await uploadVideo(file);
+      const isVideo = kind === "video" || (kind === "media" && file.type.startsWith("video/"));
+      if (isVideo) await uploadVideo(file);
+      else await uploadImage(file);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Помилка завантаження");
     } finally {
@@ -126,17 +130,19 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
     }
   }
 
+  const isVideoValue = !!value && (/\.(webm|mp4|mov)$/i.test(value) || value.includes(".public.blob.vercel-storage.com/"));
+
   return (
     <div>
       {label && <label className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5 block">{label}</label>}
 
       {value && (
         <div className="mb-2 flex items-start gap-2">
-          {kind === "image" ? (
+          {isVideoValue ? (
+            <video src={value} className="max-h-32 rounded-lg" controls autoPlay loop muted playsInline />
+          ) : (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={value} alt="" className="max-h-32 rounded-lg" />
-          ) : (
-            <video src={value} className="max-h-32 rounded-lg" controls />
           )}
           <button
             type="button"
@@ -166,7 +172,9 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
         accept={
           kind === "image"
             ? "image/png,image/jpeg,image/webp,image/gif,image/svg+xml,.png,.jpg,.jpeg,.webp,.gif,.svg"
-            : "video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm"
+            : kind === "video"
+              ? "video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm"
+              : "image/png,image/jpeg,image/webp,image/gif,image/svg+xml,video/mp4,video/quicktime,video/webm,.png,.jpg,.jpeg,.webp,.gif,.svg,.mp4,.mov,.webm"
         }
         className="hidden"
         onChange={(e) => {

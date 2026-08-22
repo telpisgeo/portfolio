@@ -479,7 +479,7 @@ export default function AdminGraphPage() {
                             {row.map((val, colIdx) => (
                               <div key={colIdx} className="flex-1">
                                 <MediaUpload
-                                  kind="image"
+                                  kind="media"
                                   dir={company.slug}
                                   value={val}
                                   onChange={(src) => updateImageRowValue(index, rowIdx, colIdx, src)}
@@ -489,7 +489,7 @@ export default function AdminGraphPage() {
                           </div>
                         ) : (
                           <MediaUpload
-                            kind="image"
+                            kind="media"
                             dir={company.slug}
                             value={row}
                             onChange={(src) => updateImageRowValue(index, rowIdx, 0, src)}
