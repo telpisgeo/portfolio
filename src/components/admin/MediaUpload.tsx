@@ -55,6 +55,11 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
   const [busy, setBusy] = useState(false);
   const [progress, setProgress] = useState("");
   const [error, setError] = useState("");
+  // Images are committed straight to the GitHub repo (see /api/admin/media),
+  // so the returned path isn't actually servable until Vercel finishes
+  // deploying that commit — showing it immediately would 404 half the time.
+  // We show the file we just read instead, until the value changes again.
+  const [localPreview, setLocalPreview] = useState<string | undefined>(undefined);
 
   async function uploadImage(file: File) {
     if (file.size > MAX_IMAGE_BYTES) {
@@ -70,6 +75,7 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
     });
     const data = await parseJsonResponse(res);
     if (!res.ok) throw new Error(data.error ?? "Помилка завантаження зображення");
+    setLocalPreview(dataUrl);
     onChange(data.path as string, data.width && data.height ? `${data.width}/${data.height}` : undefined);
   }
 
@@ -120,8 +126,12 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
     setError("");
     try {
       const isVideo = kind === "video" || (kind === "media" && file.type.startsWith("video/"));
-      if (isVideo) await uploadVideo(file);
-      else await uploadImage(file);
+      if (isVideo) {
+        setLocalPreview(undefined);
+        await uploadVideo(file);
+      } else {
+        await uploadImage(file);
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "Помилка завантаження");
     } finally {
@@ -142,11 +152,14 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
             <video src={value} className="max-h-32 rounded-lg" controls autoPlay loop muted playsInline />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={value} alt="" className="max-h-32 rounded-lg" />
+            <img src={localPreview ?? value} alt="" className="max-h-32 rounded-lg" />
           )}
           <button
             type="button"
-            onClick={() => onChange("")}
+            onClick={() => {
+              setLocalPreview(undefined);
+              onChange("");
+            }}
             className="text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
             Прибрати
