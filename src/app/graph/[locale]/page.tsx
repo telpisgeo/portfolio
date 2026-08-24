@@ -223,10 +223,10 @@ export default async function GraphLocalePage({
               {/* Screenshots */}
               {company.imageRows && (
                 <div className="flex flex-col gap-3">
-                  {company.imageRows.map((row, i) => (
-                    Array.isArray(row) ? (
+                  {company.imageRows.filter((row) => row.active !== false).map((row, i) => (
+                    Array.isArray(row.value) ? (
                       <div key={i} className="grid grid-cols-2 gap-3">
-                        {(row as string[]).map((src) => (
+                        {row.value.map((src) => (
                           <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
                             {VIDEO_EXT_RE.test(src) ? (
                               <video src={src} className="absolute inset-0 w-full h-full object-cover" autoPlay loop muted playsInline />
@@ -236,13 +236,13 @@ export default async function GraphLocalePage({
                           </div>
                         ))}
                       </div>
-                    ) : VIDEO_EXT_RE.test(row as string) ? (
-                      <div key={row as string} className="relative overflow-hidden rounded-[8px]">
-                        <video src={row as string} className="w-full h-auto" autoPlay loop muted playsInline />
+                    ) : VIDEO_EXT_RE.test(row.value) ? (
+                      <div key={row.value} className="relative overflow-hidden rounded-[8px]">
+                        <video src={row.value} className="w-full h-auto" autoPlay loop muted playsInline />
                       </div>
                     ) : (
-                      <div key={row as string} className="relative overflow-hidden rounded-[8px]">
-                        <ShimmerImage src={row as string} alt={company.name} width={1200} height={800} className="w-full h-auto" />
+                      <div key={row.value} className="relative overflow-hidden rounded-[8px]">
+                        <ShimmerImage src={row.value} alt={company.name} width={1200} height={800} className="w-full h-auto" />
                       </div>
                     )
                   ))}

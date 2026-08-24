@@ -24,13 +24,21 @@
         ],
         "tools": "Figma, HotJar, Amplitude",
         "imageRows": [
-          "/images/works/snov/snov-linkedin-settings.png",
-          "/images/works/snov/snov-email-promo.png",
-          [
-            "/images/works/snov/snov-deliverability-check.webp",
-            "/images/works/snov/snov-linkedin-analytics.webp"
-          ],
-          "/images/works/snov/snov-campaign-reports.webp"
+          {
+            "value": "/images/works/snov/snov-linkedin-settings.png"
+          },
+          {
+            "value": "/images/works/snov/snov-email-promo.png"
+          },
+          {
+            "value": [
+              "/images/works/snov/snov-deliverability-check.webp",
+              "/images/works/snov/snov-linkedin-analytics.webp"
+            ]
+          },
+          {
+            "value": "/images/works/snov/snov-campaign-reports.webp"
+          }
         ]
       },
       {
@@ -45,9 +53,15 @@
         "description": "Розробка навчальних сервісів для учнів, батьків та вчителів в додатку та веб-версії продукту, спец проєкти всередині платформи, оновив головний сайт платформи, та багато іншого.",
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
-          "/images/works/eschool/eschool-promo.png",
-          "/images/works/eschool/eschool.webp",
-          "/images/works/eschool/eschool-mob2-ua.webp"
+          {
+            "value": "/images/works/eschool/eschool-promo.png"
+          },
+          {
+            "value": "/images/works/eschool/eschool.webp"
+          },
+          {
+            "value": "/images/works/eschool/eschool-mob2-ua.webp"
+          }
         ]
       },
       {
@@ -67,10 +81,18 @@
         ],
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
         "imageRows": [
-          "/images/works/westudy/westudy-editor.webp",
-          "/images/works/westudy/westudy-onboarding.png",
-          "/images/works/westudy/westudy-about-promo-2-ua.webp",
-          "/images/works/westudy/westudy-about-promo-3-ua.webp"
+          {
+            "value": "/images/works/westudy/westudy-editor.webp"
+          },
+          {
+            "value": "/images/works/westudy/westudy-onboarding.png"
+          },
+          {
+            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp"
+          },
+          {
+            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp"
+          }
         ]
       }
     ],
@@ -158,13 +180,21 @@
         ],
         "tools": "Figma, HotJar, Amplitude",
         "imageRows": [
-          "/images/works/snov/snov-linkedin-settings.png",
-          "/images/works/snov/snov-email-promo.png",
-          [
-            "/images/works/snov/snov-deliverability-check.webp",
-            "/images/works/snov/snov-linkedin-analytics.webp"
-          ],
-          "/images/works/snov/snov-campaign-reports.webp"
+          {
+            "value": "/images/works/snov/snov-linkedin-settings.png"
+          },
+          {
+            "value": "/images/works/snov/snov-email-promo.png"
+          },
+          {
+            "value": [
+              "/images/works/snov/snov-deliverability-check.webp",
+              "/images/works/snov/snov-linkedin-analytics.webp"
+            ]
+          },
+          {
+            "value": "/images/works/snov/snov-campaign-reports.webp"
+          }
         ]
       },
       {
@@ -179,9 +209,15 @@
         "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
-          "/images/works/eschool/eschool-web-en.webp",
-          "/images/works/eschool/eschool-mob-en.webp",
-          "/images/works/eschool/eschool-mob2-en.webp"
+          {
+            "value": "/images/works/eschool/eschool-web-en.webp"
+          },
+          {
+            "value": "/images/works/eschool/eschool-mob-en.webp"
+          },
+          {
+            "value": "/images/works/eschool/eschool-mob2-en.webp"
+          }
         ]
       },
       {
@@ -201,9 +237,15 @@
         ],
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
         "imageRows": [
-          "/images/works/westudy/promo-builder-westudy.webp",
-          "/images/works/westudy/westudy-about-promo-2-ua.webp",
-          "/images/works/westudy/westudy-about-promo-3-ua.webp"
+          {
+            "value": "/images/works/westudy/promo-builder-westudy.webp"
+          },
+          {
+            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp"
+          },
+          {
+            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp"
+          }
         ]
       }
     ],

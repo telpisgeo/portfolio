@@ -23,14 +23,24 @@
         "description": "Оновлення візуального стилю компанії, редизайн головного сайту продукту. Розробка інтерфейсів для спец. проєктів для колаборації з брендами. Оновлення всіх комунікацій бренду.",
         "tools": "",
         "imageRows": [
-          "/images/works/eschool/yedyna-school-web.webp",
-          "/images/works/eschool/yedyna-school-mob.webp",
-          [
-            "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/motion-kn056cg9gL09tLTkJlTNHbiN9s8u5w.mp4",
-            "/images/works/eschool/edyna-school-phone-start.webp"
-          ],
-          "/images/works/eschool/yedyna-school-social.webp",
-          "/images/works/eschool/yedyna-school-email.webp"
+          {
+            "value": "/images/works/eschool/yedyna-school-web.webp"
+          },
+          {
+            "value": "/images/works/eschool/yedyna-school-mob.webp"
+          },
+          {
+            "value": [
+              "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/motion-kn056cg9gL09tLTkJlTNHbiN9s8u5w.mp4",
+              "/images/works/eschool/edyna-school-phone-start.webp"
+            ]
+          },
+          {
+            "value": "/images/works/eschool/yedyna-school-social.webp"
+          },
+          {
+            "value": "/images/works/eschool/yedyna-school-email.webp"
+          }
         ]
       },
       {
@@ -45,15 +55,27 @@
         "achievements": [],
         "tools": "",
         "imageRows": [
-          "/images/works/westudy/westudy-case-1.webp",
-          [
-            "/images/works/westudy/westudy-case-2-side.webp",
-            "/images/works/westudy/westudy-case-3-side.webp"
-          ],
-          "/images/works/westudy/westudy-case-4.webp",
-          "/images/works/westudy/westudy-case-3.webp",
-          "/images/works/westudy/westudy-case-4-web.webp",
-          "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-bg-loop-VhHFUwyC3DYRS93CV36impmK4EKqTc.mp4"
+          {
+            "value": "/images/works/westudy/westudy-case-1.webp"
+          },
+          {
+            "value": [
+              "/images/works/westudy/westudy-case-2-side.webp",
+              "/images/works/westudy/westudy-case-3-side.webp"
+            ]
+          },
+          {
+            "value": "/images/works/westudy/westudy-case-4.webp"
+          },
+          {
+            "value": "/images/works/westudy/westudy-case-3.webp"
+          },
+          {
+            "value": "/images/works/westudy/westudy-case-4-web.webp"
+          },
+          {
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-bg-loop-VhHFUwyC3DYRS93CV36impmK4EKqTc.mp4"
+          }
         ]
       }
     ],
@@ -121,7 +143,9 @@
         "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
-          "/images/works/eschool-web-en.webp"
+          {
+            "value": "/images/works/eschool-web-en.webp"
+          }
         ]
       },
       {

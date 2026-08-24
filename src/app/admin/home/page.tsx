@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import homeJson from "@/data/home.json";
-import type { HomeCompany, HomeContent, Testimonial, TimelineItem } from "@/lib/home-content";
+import type { HomeCompany, HomeContent, HomeImageRow, Testimonial, TimelineItem } from "@/lib/home-content";
 import MediaUpload from "@/components/admin/MediaUpload";
 
 const initialContent = homeJson as unknown as HomeContent;
@@ -28,11 +28,11 @@ function slugify(name: string): string {
 // Drops image-row slots the user added but never uploaded a file into —
 // an empty string there fails server-side path validation and blocked
 // saving the entire form.
-function cleanImageRows(rows: (string | string[])[]): (string | string[])[] {
+function cleanImageRows(rows: HomeImageRow[]): HomeImageRow[] {
   return rows
-    .map((row) => (Array.isArray(row) ? row.filter((v) => v.trim() !== "") : row))
-    .filter((row) => (Array.isArray(row) ? row.length > 0 : row.trim() !== ""))
-    .map((row) => (Array.isArray(row) && row.length === 1 ? row[0] : row));
+    .map((row) => ({ ...row, value: Array.isArray(row.value) ? row.value.filter((v) => v.trim() !== "") : row.value }))
+    .filter((row) => (Array.isArray(row.value) ? row.value.length > 0 : row.value.trim() !== ""))
+    .map((row) => (Array.isArray(row.value) && row.value.length === 1 ? { ...row, value: row.value[0] } : row));
 }
 
 function cleanContent(content: HomeContent): HomeContent {
@@ -117,16 +117,16 @@ export default function AdminHomePage() {
     updateCompany(index, { achievements: (companies[index].achievements ?? []).filter((_, j) => j !== i) });
   }
 
-  function updateImageRows(index: number, rows: (string | string[])[]) {
+  function updateImageRows(index: number, rows: HomeImageRow[]) {
     updateCompany(index, { imageRows: rows });
   }
 
   function addImageRow(index: number) {
-    updateImageRows(index, [...companies[index].imageRows, ""]);
+    updateImageRows(index, [...companies[index].imageRows, { value: "" }]);
   }
 
   function addImagePairRow(index: number) {
-    updateImageRows(index, [...companies[index].imageRows, ["", ""]]);
+    updateImageRows(index, [...companies[index].imageRows, { value: ["", ""] }]);
   }
 
   function removeImageRow(index: number, rowIdx: number) {
@@ -136,22 +136,36 @@ export default function AdminHomePage() {
   function updateImageRowValue(index: number, rowIdx: number, colIdx: number, value: string) {
     const rows = companies[index].imageRows.map((row, i) => {
       if (i !== rowIdx) return row;
-      if (Array.isArray(row)) {
-        const updated = [...row];
+      if (Array.isArray(row.value)) {
+        const updated = [...row.value];
         updated[colIdx] = value;
-        return updated;
+        return { ...row, value: updated };
       }
-      return value;
+      return { ...row, value };
     });
     updateImageRows(index, rows);
   }
 
   function toggleImagePair(index: number, rowIdx: number) {
-    const rows = companies[index].imageRows.map((r, i) => {
-      if (i !== rowIdx) return r;
-      if (Array.isArray(r)) return r[0] ?? "";
-      return [r, ""];
+    const rows = companies[index].imageRows.map((row, i) => {
+      if (i !== rowIdx) return row;
+      if (Array.isArray(row.value)) return { ...row, value: row.value[0] ?? "" };
+      return { ...row, value: [row.value, ""] };
     });
+    updateImageRows(index, rows);
+  }
+
+  function moveImageRow(index: number, rowIdx: number, dir: -1 | 1) {
+    const rows = companies[index].imageRows;
+    const target = rowIdx + dir;
+    if (target < 0 || target >= rows.length) return;
+    const next = [...rows];
+    [next[rowIdx], next[target]] = [next[target], next[rowIdx]];
+    updateImageRows(index, next);
+  }
+
+  function toggleImageRowActive(index: number, rowIdx: number) {
+    const rows = companies[index].imageRows.map((row, i) => (i === rowIdx ? { ...row, active: row.active === false } : row));
     updateImageRows(index, rows);
   }
 
@@ -393,20 +407,41 @@ export default function AdminHomePage() {
                 <div>
                   <label className={labelClass}>Зображення</label>
                   <div className="flex flex-col gap-3">
-                    {company.imageRows.map((row, rowIdx) => (
-                      <div key={rowIdx} className="border border-border rounded-xl p-3 flex flex-col gap-2">
+                    {company.imageRows.map((row, rowIdx) => {
+                      const isActive = row.active !== false;
+                      return (
+                      <div key={rowIdx} className={`border border-border rounded-xl p-3 flex flex-col gap-2 transition-opacity ${isActive ? "" : "opacity-50"}`}>
                         <div className="flex items-center justify-between gap-2">
-                          <span className="text-xs uppercase tracking-widest text-muted-foreground">Зображення {rowIdx + 1}</span>
-                          <div className="flex items-center gap-2">
+                          <span className="text-xs uppercase tracking-widest text-muted-foreground">Зображення {rowIdx + 1}{!isActive && " (вимкнено)"}</span>
+                          <div className="flex items-center gap-1">
+                            <button onClick={() => moveImageRow(index, rowIdx, -1)} disabled={rowIdx === 0} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors disabled:opacity-30">↑</button>
+                            <button onClick={() => moveImageRow(index, rowIdx, 1)} disabled={rowIdx === company.imageRows.length - 1} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors disabled:opacity-30">↓</button>
                             <button
                               onClick={() => toggleImagePair(index, rowIdx)}
-                              title={Array.isArray(row) ? "Зробити одним рядком" : "Поставити поруч (2 в ряд)"}
-                              className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-colors shrink-0 ${Array.isArray(row) ? "border-foreground text-foreground bg-foreground/5" : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"}`}
+                              title={Array.isArray(row.value) ? "Зробити одним рядком" : "Поставити поруч (2 в ряд)"}
+                              className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-colors shrink-0 ${Array.isArray(row.value) ? "border-foreground text-foreground bg-foreground/5" : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"}`}
                             >
                               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                                 <rect x="1" y="3" width="6" height="10" rx="1.5" />
                                 <rect x="9" y="3" width="6" height="10" rx="1.5" />
                               </svg>
+                            </button>
+                            <button
+                              onClick={() => toggleImageRowActive(index, rowIdx)}
+                              title={isActive ? "Вимкнути зображення" : "Увімкнути зображення"}
+                              className={`w-8 h-8 flex items-center justify-center rounded-lg transition-colors shrink-0 ${isActive ? "text-muted-foreground hover:text-foreground hover:bg-muted" : "text-foreground bg-muted"}`}
+                            >
+                              {isActive ? (
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                                  <circle cx="12" cy="12" r="3" />
+                                </svg>
+                              ) : (
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.9 19.9 0 0 1 4.22-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a19.86 19.86 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                                  <path d="M1 1l22 22" />
+                                </svg>
+                              )}
                             </button>
                             <button
                               onClick={() => removeImageRow(index, rowIdx)}
@@ -418,9 +453,9 @@ export default function AdminHomePage() {
                             </button>
                           </div>
                         </div>
-                        {Array.isArray(row) ? (
+                        {Array.isArray(row.value) ? (
                           <div className="flex gap-2">
-                            {row.map((val, colIdx) => (
+                            {row.value.map((val, colIdx) => (
                               <div key={colIdx} className="flex-1 min-w-0">
                                 <MediaUpload
                                   kind="image"
@@ -435,12 +470,13 @@ export default function AdminHomePage() {
                           <MediaUpload
                             kind="image"
                             dir={company.slug}
-                            value={row}
+                            value={row.value}
                             onChange={(src) => updateImageRowValue(index, rowIdx, 0, src)}
                           />
                         )}
                       </div>
-                    ))}
+                      );
+                    })}
 
                     <div className="flex gap-3 pt-1">
                       <button onClick={() => addImageRow(index)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">

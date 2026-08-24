@@ -207,18 +207,18 @@ export default async function LocalePage({
               {/* Screenshots */}
               {company.imageRows && (
                 <div className="flex flex-col gap-3">
-                  {company.imageRows.map((row, i) => (
-                    Array.isArray(row) ? (
+                  {company.imageRows.filter((row) => row.active !== false).map((row, i) => (
+                    Array.isArray(row.value) ? (
                       <div key={i} className="grid grid-cols-2 gap-3">
-                        {(row as string[]).map((src) => (
+                        {row.value.map((src) => (
                           <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
                             <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <div key={row as string} className="relative overflow-hidden rounded-[8px]">
-                        <ShimmerImage src={row as string} alt={company.name} width={1200} height={800} className="w-full h-auto" />
+                      <div key={row.value} className="relative overflow-hidden rounded-[8px]">
+                        <ShimmerImage src={row.value} alt={company.name} width={1200} height={800} className="w-full h-auto" />
                       </div>
                     )
                   ))}

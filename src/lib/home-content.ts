@@ -1,3 +1,5 @@
+export type HomeImageRow = { value: string | string[]; active?: boolean };
+
 export type HomeCompany = {
   slug: string;
   name: string;
@@ -11,7 +13,7 @@ export type HomeCompany = {
   description: string;
   achievements?: string[];
   tools?: string;
-  imageRows: (string | string[])[];
+  imageRows: HomeImageRow[];
 };
 
 export type TimelineItem = {
