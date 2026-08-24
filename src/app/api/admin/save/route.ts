@@ -35,13 +35,16 @@ function validateMediaPath(v: unknown): string | null {
 function validateImageRows(rows: unknown): string | null {
   if (!Array.isArray(rows)) return "imageRows має бути масивом";
   for (const row of rows) {
-    if (Array.isArray(row)) {
-      for (const img of row) {
+    if (!row || typeof row !== "object") return `Невірний рядок зображення: ${row}`;
+    const r = row as Record<string, unknown>;
+    if (r.active !== undefined && typeof r.active !== "boolean") return "active має бути булевим";
+    if (Array.isArray(r.value)) {
+      for (const img of r.value) {
         const err = validateMediaPath(img);
         if (err) return err;
       }
     } else {
-      const err = validateMediaPath(row);
+      const err = validateMediaPath(r.value);
       if (err) return err;
     }
   }
