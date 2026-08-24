@@ -299,6 +299,7 @@ export function CaseBlockList({ blocks }: { blocks: Block[] }) {
     <article className="pt-6 px-4 md:px-8 lg:px-12">
       <div className="flex flex-col gap-6 md:gap-8">
         {blocks.map((block, i) => {
+          if (block.active === false) return null;
           if (block.t === "img") return null;
           if (block.t === "dark-section" || block.t === "dark-slider" || block.t === "light-section" || block.t === "before-after" || block.t === "figures" || block.t === "white-section" || block.t === "quotes" || block.t === "proposal" || block.t === "bullets-card" || block.t === "showcase") {
             return <FadeUp key={i}>{renderCaseBlock(block, i)}</FadeUp>;

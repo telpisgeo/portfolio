@@ -37,6 +37,46 @@ function RemoveBtn({ onClick }: { onClick: () => void }) {
   );
 }
 
+function DragHandle({ onDragStart, onDragEnd }: { onDragStart: () => void; onDragEnd: () => void }) {
+  return (
+    <span
+      draggable
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      title="Перетягнути для зміни порядку"
+      className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors shrink-0 cursor-grab active:cursor-grabbing"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="9" cy="6" r="1.5" /><circle cx="15" cy="6" r="1.5" />
+        <circle cx="9" cy="12" r="1.5" /><circle cx="15" cy="12" r="1.5" />
+        <circle cx="9" cy="18" r="1.5" /><circle cx="15" cy="18" r="1.5" />
+      </svg>
+    </span>
+  );
+}
+
+function ToggleActiveBtn({ active, onClick }: { active: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      title={active ? "Вимкнути блок" : "Увімкнути блок"}
+      className={`w-8 h-8 flex items-center justify-center rounded-lg transition-colors shrink-0 ${active ? "text-muted-foreground hover:text-foreground hover:bg-muted" : "text-foreground bg-muted"}`}
+    >
+      {active ? (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      ) : (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.9 19.9 0 0 1 4.22-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a19.86 19.86 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+          <path d="M1 1l22 22" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
 function AddBtn({ label, onClick }: { label: string; onClick: () => void }) {
   return (
     <button onClick={onClick} className="text-sm text-muted-foreground hover:text-foreground transition-colors self-start">
@@ -358,6 +398,8 @@ export default function CaseEditorClient({ slug, initialCase }: { slug: string; 
   const [caseFile, setCaseFile] = useState<CaseFile>(initialCase);
   const [locale, setLocale] = useState<"uk" | "en">("uk");
   const [collapsed, setCollapsed] = useState<Set<number>>(new Set());
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "ok" | "error">("idle");
   const [saveError, setSaveError] = useState("");
@@ -388,6 +430,18 @@ export default function CaseEditorClient({ slug, initialCase }: { slug: string; 
     const next = [...blocks];
     [next[index], next[target]] = [next[target], next[index]];
     updateBlocks(next);
+  }
+
+  function reorderBlock(from: number, to: number) {
+    if (from === to) return;
+    const next = [...blocks];
+    const [moved] = next.splice(from, 1);
+    next.splice(to, 0, moved);
+    updateBlocks(next);
+  }
+
+  function toggleActive(index: number) {
+    updateBlocks(blocks.map((b, j) => (j === index ? { ...b, active: b.active === false } : b)));
   }
 
   function toggleCollapsed(index: number) {
@@ -503,16 +557,38 @@ export default function CaseEditorClient({ slug, initialCase }: { slug: string; 
         <div className="flex flex-col gap-4 mb-6">
           {blocks.map((block, i) => {
             const isCollapsed = collapsed.has(i);
+            const isActive = block.active !== false;
             return (
-              <div key={i} className="border border-border rounded-2xl p-5">
+              <div
+                key={i}
+                onDragOver={(e) => {
+                  if (dragIndex === null) return;
+                  e.preventDefault();
+                  if (dragOverIndex !== i) setDragOverIndex(i);
+                }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  if (dragIndex !== null) reorderBlock(dragIndex, i);
+                  setDragIndex(null);
+                  setDragOverIndex(null);
+                }}
+                className={`border rounded-2xl p-5 transition-opacity ${dragOverIndex === i && dragIndex !== null && dragIndex !== i ? "border-foreground" : "border-border"} ${isActive ? "" : "opacity-50"} ${dragIndex === i ? "opacity-30" : ""}`}
+              >
                 <div className="flex items-center justify-between mb-1">
-                  <button onClick={() => toggleCollapsed(i)} className="flex items-center gap-2 text-sm font-medium text-foreground">
-                    <span className={`transition-transform ${isCollapsed ? "" : "rotate-90"}`}>▸</span>
-                    {i + 1}. {blockLabel(block.t)}
-                  </button>
+                  <div className="flex items-center gap-1">
+                    <DragHandle
+                      onDragStart={() => setDragIndex(i)}
+                      onDragEnd={() => { setDragIndex(null); setDragOverIndex(null); }}
+                    />
+                    <button onClick={() => toggleCollapsed(i)} className="flex items-center gap-2 text-sm font-medium text-foreground">
+                      <span className={`transition-transform ${isCollapsed ? "" : "rotate-90"}`}>▸</span>
+                      {i + 1}. {blockLabel(block.t)}{!isActive && <span className="text-muted-foreground font-normal"> (вимкнено)</span>}
+                    </button>
+                  </div>
                   <div className="flex items-center gap-1">
                     <button onClick={() => moveBlock(i, -1)} disabled={i === 0} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors disabled:opacity-30">↑</button>
                     <button onClick={() => moveBlock(i, 1)} disabled={i === blocks.length - 1} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors disabled:opacity-30">↓</button>
+                    <ToggleActiveBtn active={isActive} onClick={() => toggleActive(i)} />
                     <RemoveBtn onClick={() => removeBlock(i)} />
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 export type ImgRef = { label: string; ratio: string; src?: string; videoSrc?: string };
 export type ShowcaseSite = { url: string; src?: string };
 
-export type Block =
+export type Block = (
   | { t: "meta"; id?: string; items: { label: string; value: string }[] }
   | { t: "caption"; id?: string; text: string }
   | { t: "statement"; text: string }
@@ -37,7 +37,8 @@ export type Block =
       beforeLabel?: string;
       afterLabel?: string;
     }
-  | { t: "showcase"; id?: string; caption: string; statement: string; sites: ShowcaseSite[] };
+  | { t: "showcase"; id?: string; caption: string; statement: string; sites: ShowcaseSite[] }
+) & { active?: boolean };
 
 export type Step = { label: string; href: string };
 
