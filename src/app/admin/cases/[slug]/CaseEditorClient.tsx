@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import type { Block, Step, CaseContent, ImgRef, ShowcaseSite } from "@/lib/case-blocks";
 import type { CaseFile, CaseStatus } from "@/lib/case-store";
@@ -34,35 +34,6 @@ function RemoveBtn({ onClick }: { onClick: () => void }) {
         <path d="M18 6L6 18M6 6l12 12" />
       </svg>
     </button>
-  );
-}
-
-function DragHandle({
-  onPointerDown,
-  onPointerMove,
-  onPointerUp,
-  onPointerCancel,
-}: {
-  onPointerDown: (e: ReactPointerEvent) => void;
-  onPointerMove: (e: ReactPointerEvent) => void;
-  onPointerUp: (e: ReactPointerEvent) => void;
-  onPointerCancel: (e: ReactPointerEvent) => void;
-}) {
-  return (
-    <span
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerCancel}
-      title="Перетягнути для зміни порядку"
-      className="touch-none w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors shrink-0 cursor-grab active:cursor-grabbing"
-    >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="9" cy="6" r="1.5" /><circle cx="15" cy="6" r="1.5" />
-        <circle cx="9" cy="12" r="1.5" /><circle cx="15" cy="12" r="1.5" />
-        <circle cx="9" cy="18" r="1.5" /><circle cx="15" cy="18" r="1.5" />
-      </svg>
-    </span>
   );
 }
 
@@ -409,11 +380,6 @@ export default function CaseEditorClient({ slug, initialCase }: { slug: string; 
   const [caseFile, setCaseFile] = useState<CaseFile>(initialCase);
   const [locale, setLocale] = useState<"uk" | "en">("uk");
   const [collapsed, setCollapsed] = useState<Set<number>>(new Set());
-  const [dragIndex, setDragIndex] = useState<number | null>(null);
-  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
-  const dragIndexRef = useRef<number | null>(null);
-  const dragOverIndexRef = useRef<number | null>(null);
-  const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [saving, setSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "ok" | "error">("idle");
   const [saveError, setSaveError] = useState("");
@@ -446,54 +412,8 @@ export default function CaseEditorClient({ slug, initialCase }: { slug: string; 
     updateBlocks(next);
   }
 
-  function reorderBlock(from: number, to: number) {
-    if (from === to) return;
-    const next = [...blocks];
-    const [moved] = next.splice(from, 1);
-    next.splice(to, 0, moved);
-    updateBlocks(next);
-  }
-
   function toggleActive(index: number) {
     updateBlocks(blocks.map((b, j) => (j === index ? { ...b, active: b.active === false } : b)));
-  }
-
-  function indexUnderPoint(clientY: number): number | null {
-    for (let j = 0; j < blockRefs.current.length; j++) {
-      const el = blockRefs.current[j];
-      if (!el) continue;
-      const rect = el.getBoundingClientRect();
-      if (clientY >= rect.top && clientY <= rect.bottom) return j;
-    }
-    return null;
-  }
-
-  function handleDragStart(e: ReactPointerEvent, i: number) {
-    e.preventDefault();
-    (e.target as Element).setPointerCapture(e.pointerId);
-    dragIndexRef.current = i;
-    dragOverIndexRef.current = i;
-    setDragIndex(i);
-    setDragOverIndex(i);
-  }
-
-  function handleDragMove(e: ReactPointerEvent) {
-    if (dragIndexRef.current === null) return;
-    const over = indexUnderPoint(e.clientY);
-    if (over !== null && over !== dragOverIndexRef.current) {
-      dragOverIndexRef.current = over;
-      setDragOverIndex(over);
-    }
-  }
-
-  function handleDragEnd() {
-    if (dragIndexRef.current !== null && dragOverIndexRef.current !== null) {
-      reorderBlock(dragIndexRef.current, dragOverIndexRef.current);
-    }
-    dragIndexRef.current = null;
-    dragOverIndexRef.current = null;
-    setDragIndex(null);
-    setDragOverIndex(null);
   }
 
   function toggleCollapsed(index: number) {
@@ -613,17 +533,10 @@ export default function CaseEditorClient({ slug, initialCase }: { slug: string; 
             return (
               <div
                 key={i}
-                ref={(el) => { blockRefs.current[i] = el; }}
-                className={`border rounded-2xl p-5 transition-opacity ${dragOverIndex === i && dragIndex !== null && dragIndex !== i ? "border-foreground" : "border-border"} ${isActive ? "" : "opacity-50"} ${dragIndex === i ? "opacity-30" : ""}`}
+                className={`border rounded-2xl p-5 transition-opacity border-border ${isActive ? "" : "opacity-50"}`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-1">
-                    <DragHandle
-                      onPointerDown={(e) => handleDragStart(e, i)}
-                      onPointerMove={handleDragMove}
-                      onPointerUp={handleDragEnd}
-                      onPointerCancel={handleDragEnd}
-                    />
                     <button onClick={() => toggleCollapsed(i)} className="flex items-center gap-2 text-sm font-medium text-foreground">
                       <span className={`transition-transform ${isCollapsed ? "" : "rotate-90"}`}>▸</span>
                       {i + 1}. {blockLabel(block.t)}{!isActive && <span className="text-muted-foreground font-normal"> (вимкнено)</span>}
