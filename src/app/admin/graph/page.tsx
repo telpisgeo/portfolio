@@ -477,7 +477,7 @@ export default function AdminGraphPage() {
                         {Array.isArray(row) ? (
                           <div className="flex gap-2">
                             {row.map((val, colIdx) => (
-                              <div key={colIdx} className="flex-1">
+                              <div key={colIdx} className="flex-1 min-w-0">
                                 <MediaUpload
                                   kind="media"
                                   dir={company.slug}
