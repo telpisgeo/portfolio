@@ -153,7 +153,8 @@
         "companyIcon": "/images/icons/westudy-logo.webp",
         "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
       }
-    ]
+    ],
+    "worksTitle": "Обрані кейси"
   },
   "en": {
     "about": [
@@ -306,6 +307,7 @@
         "companyIcon": "/images/icons/westudy-logo.webp",
         "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
       }
-    ]
+    ],
+    "worksTitle": "Selected cases"
   }
 }

@@ -86,11 +86,13 @@ export default async function LocalePage({
 
         {/* Projects */}
         <div id="works" className="flex flex-col">
-          <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-12">
-            <h2 className="text-4xl font-medium text-foreground">
-              {locale === "uk" ? "Обрані кейси" : "Selected cases"}
-            </h2>
-          </div>
+          {home.worksTitle && (
+            <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-12">
+              <h2 className="text-4xl font-medium text-foreground">
+                {home.worksTitle}
+              </h2>
+            </div>
+          )}
           {companies.map((company, index) => (
             <div
               key={company.name}

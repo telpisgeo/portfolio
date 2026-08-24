@@ -122,7 +122,8 @@
         "icon": "/images/logos/serpstat.svg"
       }
     ],
-    "testimonials": []
+    "testimonials": [],
+    "worksTitle": "Обрані кейси"
   },
   "en": {
     "cvUrl": "https://www.notion.so/360c4695d7af8194aa61d536582845a9",
@@ -230,6 +231,7 @@
         "companyIcon": "/images/icons/westudy-logo.webp",
         "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
       }
-    ]
+    ],
+    "worksTitle": "Selected cases"
   }
 }

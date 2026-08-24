@@ -10,6 +10,7 @@ export type HeroContent = {
 export type GraphLocaleContent = {
   cvUrl: string;
   hero: HeroContent;
+  worksTitle: string;
   about: string[];
   companies: HomeCompany[];
   timeline: TimelineItem[];

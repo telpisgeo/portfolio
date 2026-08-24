@@ -108,6 +108,7 @@ function validateHomeContent(content: unknown): string | null {
   for (const locale of ["uk", "en"]) {
     const loc = c[locale] as Record<string, unknown> | undefined;
     if (!loc) return `Немає локалі ${locale}`;
+    if (!isString(loc.worksTitle) || loc.worksTitle.length > 200) return `Невірний заголовок розділу кейсів для ${locale}`;
     if (!Array.isArray(loc.about) || loc.about.some((p) => !isString(p))) return `Невірний "about" для ${locale}`;
     if (!Array.isArray(loc.companies)) return `Невірні companies для ${locale}`;
     const seenSlugs = new Set<string>();
@@ -143,6 +144,7 @@ function validateGraphContent(content: unknown): string | null {
     if (!isString(loc.cvUrl) || !CV_URL_RE.test(loc.cvUrl)) return `Невірне посилання на CV: ${loc.cvUrl}`;
     const hero = loc.hero as Record<string, unknown> | undefined;
     if (!hero || !isString(hero.text1) || !isString(hero.text2)) return `Невірний "hero" для ${locale}`;
+    if (!isString(loc.worksTitle) || loc.worksTitle.length > 200) return `Невірний заголовок розділу кейсів для ${locale}`;
     if (!Array.isArray(loc.about) || loc.about.some((p) => !isString(p))) return `Невірний "about" для ${locale}`;
     if (!Array.isArray(loc.companies)) return `Невірні companies для ${locale}`;
     const seenSlugs = new Set<string>();

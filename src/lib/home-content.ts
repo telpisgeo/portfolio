@@ -36,6 +36,7 @@ export type Testimonial = {
 };
 
 export type HomeLocaleContent = {
+  worksTitle: string;
   about: string[];
   companies: HomeCompany[];
   timeline: TimelineItem[];

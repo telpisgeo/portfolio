@@ -81,6 +81,10 @@ export default function AdminGraphPage() {
     setContent((prev) => ({ ...prev, [locale]: { ...prev[locale], hero: { ...prev[locale].hero, ...patch } } }));
   }
 
+  function updateWorksTitle(value: string) {
+    setContent((prev) => ({ ...prev, [locale]: { ...prev[locale], worksTitle: value } }));
+  }
+
   function updateCompany(index: number, patch: Partial<HomeCompany>) {
     setContent((prev) => ({
       ...prev,
@@ -352,6 +356,12 @@ export default function AdminGraphPage() {
             <label className={labelClass}>Посилання (файл або зовнішній лінк)</label>
             <input value={cvUrl} onChange={(e) => updateCvUrl(e.target.value)} className={`${inputClass} font-mono`} placeholder="/CV_....pdf або https://..." />
           </div>
+        </div>
+
+        {/* Works section title */}
+        <div className="border border-border rounded-2xl p-6 mb-6">
+          <label className={labelClass}>Заголовок розділу кейсів (пусто — заголовок не показується)</label>
+          <input value={content[locale].worksTitle} onChange={(e) => updateWorksTitle(e.target.value)} className={inputClass} />
         </div>
 
         {/* Companies */}
