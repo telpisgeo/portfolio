@@ -54,7 +54,8 @@
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           {
-            "value": "/images/works/eschool/eschool-promo.png"
+            "value": "/images/works/eschool/eschool-promo.png",
+            "active": false
           },
           {
             "value": "/images/works/eschool/eschool.webp"
@@ -211,7 +212,8 @@
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           {
-            "value": "/images/works/eschool/eschool-web-en.webp"
+            "value": "/images/works/eschool/eschool-web-en.webp",
+            "active": false
           },
           {
             "value": "/images/works/eschool/eschool-mob-en.webp"
