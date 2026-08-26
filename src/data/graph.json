@@ -1,6 +1,6 @@
 {
   "uk": {
-    "cvUrl": "/CV_Georgiy_Telpis_uiux_(product)_designer_ua.pdf",
+    "cvUrl": "/Georgiy_Telpis_uxui_(product)_designer-ua.pdf",
     "hero": {
       "text1": "я Георгій, дизайнер з досвідом розробки візуальних комунікацій в SaaS продуктів.",
       "text2": "Оновлюю всі візуальні комунікації та займаюсь підтримкою бренду та створенням всього що потрібно маркетинговому відділу, від розробки сайтів та реклами до підготовки участі на івентах."
@@ -126,10 +126,10 @@
     "worksTitle": "Обрані кейси"
   },
   "en": {
-    "cvUrl": "https://www.notion.so/360c4695d7af8194aa61d536582845a9",
+    "cvUrl": "/Georgiy_Telpis_uxui_(product)_designer-en.pdf",
     "hero": {
       "text1": "I'm Georgiy, a designer with experience launching products for educational platforms and multichannel marketing services.",
-      "text2": ""
+      "text2": "I keep all visual communications up to date and take care of the brand, creating everything the marketing team needs — from building websites and ads to preparing for events."
     },
     "about": [
       "For the past several years I've worked on products in EdTech (learning platforms, course creation tools) and MarTech (marketing tools, lead generation services).",
@@ -142,16 +142,36 @@
         "slug": "eschool",
         "name": "Yedyna Shkola",
         "url": "https://sitev2.eschool-ua.com",
-        "caseUrl": "/en/cases/eschool-2",
-        "period": "2025 → 2026",
+        "period": "",
         "productType": "A unified space for teachers, parents and children",
-        "role": "Product Designer",
+        "role": "",
         "icon": "/images/icons/eschool.svg",
-        "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
-        "tools": "Figma, Claude Code, Android Studio, VS Code",
+        "description": "Refreshed the company's visual style and redesigned the main product website. Designed interfaces for special projects built in collaboration with brands. Updated all of the brand's communications.",
+        "tools": "",
         "imageRows": [
           {
-            "value": "/images/works/eschool-web-en.webp"
+            "value": "/images/works/eschool/yedyna-school-web.webp"
+          },
+          {
+            "value": "/images/works/eschool/yedyna-school-mob.webp"
+          },
+          {
+            "value": [
+              "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/motion-kn056cg9gL09tLTkJlTNHbiN9s8u5w.mp4",
+              "/images/works/eschool/edyna-school-phone-start.webp"
+            ]
+          },
+          {
+            "value": "/images/works/eschool/yedyna-school-social.webp"
+          },
+          {
+            "value": "/images/works/eschool/yedyna-school-email.webp"
+          },
+          {
+            "value": [
+              "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/pattern-7FYP7nbV3CGC1QLG91RSvOTvGTFutP.mp4",
+              "/images/works/eschool/andrej-lisakov-x6n28pzzhiq-unsplash.webp"
+            ]
           }
         ]
       },
@@ -159,19 +179,36 @@
         "slug": "westudy",
         "name": "Westudy.ua",
         "url": "http://westudy.ua/",
-        "caseUrl": "/en/cases/westudy",
-        "period": "2024 → 2025",
+        "period": "",
         "productType": "Online course creation and student management platform",
-        "role": "Product Designer",
+        "role": "",
         "icon": "/images/icons/westudy.svg",
         "description": "Redesigned the course builder, email campaigns, webinars, and booking flows. One of the most complex tools was the website builder for courses.",
-        "achievements": [
-          "Reduced customer churn after relaunching the course website builder",
-          "Set up design processes in the team, brought order to the chaos, and introduced UX research",
-          "Built an add-on for premium clients who needed customization for an extra fee"
-        ],
-        "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
-        "imageRows": []
+        "achievements": [],
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/westudy/westudy-case-1.webp"
+          },
+          {
+            "value": [
+              "/images/works/westudy/westudy-case-2-side.webp",
+              "/images/works/westudy/westudy-case-3-side.webp"
+            ]
+          },
+          {
+            "value": "/images/works/westudy/westudy-case-4.webp"
+          },
+          {
+            "value": "/images/works/westudy/westudy-case-3.webp"
+          },
+          {
+            "value": "/images/works/westudy/westudy-case-4-web.webp"
+          },
+          {
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-bg-loop-VhHFUwyC3DYRS93CV36impmK4EKqTc.mp4"
+          }
+        ]
       }
     ],
     "timeline": [
