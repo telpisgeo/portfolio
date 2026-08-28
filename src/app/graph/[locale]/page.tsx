@@ -8,7 +8,6 @@ import type { GraphContent } from "@/lib/graph-content";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import CvDownloadLink from "@/components/CvDownloadLink";
 import ShimmerImage from "@/components/ShimmerImage";
 import Testimonials from "@/components/Testimonials";
 
@@ -95,6 +94,7 @@ export default async function GraphLocalePage({
         contactLabel={t.navContactLabel}
         homeHref={homeHref}
         switchHref={switchHref}
+        showCvButton={false}
       />
       <Hero locale={locale} text1={graph.hero.text1} text2={graph.hero.text2} />
 
@@ -327,12 +327,6 @@ export default async function GraphLocalePage({
                 </div>
               </div>
             ))}
-
-            {/* CV download button */}
-            <div className="pt-6">
-              <CvDownloadLink locale={locale} cvUrl={graph.cvUrl} />
-            </div>
-
           </div>
 
           </div>{/* end grid */}

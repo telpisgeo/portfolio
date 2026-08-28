@@ -17,6 +17,8 @@ type NavbarProps = {
   aboutLabel: string;
   variant?: "dark" | "light" | "case";
   hideOnScroll?: boolean;
+  /** Hides the "Download CV" link in both the desktop bar and mobile dropdown. */
+  showCvButton?: boolean;
   /** Overrides the default `/${locale}` home link and work/about anchor base. */
   homeHref?: string;
   /** Overrides the default pathname-derived language switch target. */
@@ -33,6 +35,7 @@ export default function Navbar({
   aboutLabel,
   variant = "dark",
   hideOnScroll = false,
+  showCvButton = true,
   homeHref,
   switchHref,
 }: NavbarProps) {
@@ -120,16 +123,18 @@ export default function Navbar({
             {otherLabel}
           </Link>
 
-          <a
-            href={cvUrl}
-            download
-            onClick={() =>
-              amplitude.track("CV Downloaded", { location: "navbar", locale })
-            }
-            className={`hidden md:inline-flex items-center justify-center h-9 px-5 rounded-full border text-sm font-medium transition-colors whitespace-nowrap ${isDark ? "border-secondary-foreground/30 text-secondary-foreground hover:bg-white/10" : "border-border text-foreground hover:bg-muted"}`}
-          >
-            {locale === "uk" ? "Завантажити CV" : "Download CV"}
-          </a>
+          {showCvButton && (
+            <a
+              href={cvUrl}
+              download
+              onClick={() =>
+                amplitude.track("CV Downloaded", { location: "navbar", locale })
+              }
+              className={`hidden md:inline-flex items-center justify-center h-9 px-5 rounded-full border text-sm font-medium transition-colors whitespace-nowrap ${isDark ? "border-secondary-foreground/30 text-secondary-foreground hover:bg-white/10" : "border-border text-foreground hover:bg-muted"}`}
+            >
+              {locale === "uk" ? "Завантажити CV" : "Download CV"}
+            </a>
+          )}
 
           <a
             href="mailto:gtelpis@gmail.com"
@@ -175,20 +180,22 @@ export default function Navbar({
           >
             {contactLabel}
           </a>
-          <a
-            href={cvUrl}
-            download
-            className={`py-3 text-sm font-medium border-b ${dropdownText}`}
-            onClick={() => {
-              amplitude.track("CV Downloaded", {
-                location: "navbar_mobile",
-                locale,
-              });
-              setMenuOpen(false);
-            }}
-          >
-            {locale === "uk" ? "Завантажити CV" : "Download CV"}
-          </a>
+          {showCvButton && (
+            <a
+              href={cvUrl}
+              download
+              className={`py-3 text-sm font-medium border-b ${dropdownText}`}
+              onClick={() => {
+                amplitude.track("CV Downloaded", {
+                  location: "navbar_mobile",
+                  locale,
+                });
+                setMenuOpen(false);
+              }}
+            >
+              {locale === "uk" ? "Завантажити CV" : "Download CV"}
+            </a>
+          )}
           <Link
             href={otherLocalePath}
             className={`py-3 text-sm font-medium ${dropdownMuted}`}
