@@ -248,27 +248,7 @@
         "icon": "/images/logos/serpstat.svg"
       }
     ],
-    "testimonials": [
-      {
-        "quote": "Has brought many of our best-performing products to life with intuitive, user-friendly designs.",
-        "fullQuote": "Georgiy has brought many of our best-performing products to life with intuitive, user-friendly designs. No matter how difficult the product logic – he'd find a way to eliminate the learning curve for the user. I'd like to specifically acknowledge Georgiy's creativity and dedication to user research: when faced with UX-decisions, he's always turned to hard data and existing user feedback. The product has benefitted from his interviews with users, unconventional design solutions and constant self-development as a UI/UX designer.\n\nI believe Georgiy will be a great addition to any company looking to create a well-performing product users will love.",
-        "name": "Dana Rudenko",
-        "role": "Head of Product Marketing at Snov.io",
-        "company": "Snov.io",
-        "companyIcon": "/images/icons/snovio-logo.svg",
-        "sourceUrl": "https://www.linkedin.com/in/georgiy-telpis-229bbb47/details/recommendations/?detailScreenTabIndex=2",
-        "photo": "/images/testimonials/dana-rudenko.webp"
-      },
-      {
-        "quote": "Has a deep understanding of users, paired with strong analytical thinking and creativity.",
-        "fullQuote": "Georgiy has a deep understanding of users, paired with strong analytical thinking and creativity. Over our time working together, he built a unified design system for the product and shaped the company's brand identity — from the website to social media and marketing materials.\n\nHis contribution to the product, the brand, and our internal processes has been truly defining.",
-        "name": "R. Ryzhkov",
-        "role": "CEO at Westudy",
-        "company": "Westudy",
-        "companyIcon": "/images/icons/westudy-logo.webp",
-        "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
-      }
-    ],
+    "testimonials": [],
     "worksTitle": "Selected cases"
   }
 }
