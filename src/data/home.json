@@ -54,7 +54,8 @@
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           {
-            "value": "/images/works/eschool/eschool-promo.png"
+            "value": "/images/works/eschool/eschool-promo.png",
+            "active": false
           },
           {
             "value": "/images/works/eschool/eschool.webp"
@@ -75,7 +76,7 @@
         "icon": "/images/icons/westudy.svg",
         "description": "Оновив інтерфейс створення курсів, емейл кампаній, вебінарів та бронювання занять. Один з найскладніших інструментів — конструктор власних сайтів для курсів.",
         "achievements": [
-          "Зупинив відтік клієнтів після оновлення конструктора сайтів для курсів",
+          "Оновив конструктор сайтів для курсів, щоб утримати клієнтів під ризиком відтоку",
           "Налагодив дизайн-процеси в команді, впорядкував хаос і впровадив UX-дослідження",
           "Створив додаток для преміум-клієнтів, яким потрібна була кастомізація за додаткову плату"
         ],
@@ -211,7 +212,8 @@
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           {
-            "value": "/images/works/eschool/eschool-web-en.webp"
+            "value": "/images/works/eschool/eschool-web-en.webp",
+            "active": false
           },
           {
             "value": "/images/works/eschool/eschool-mob-en.webp"
@@ -232,7 +234,7 @@
         "icon": "/images/icons/westudy.svg",
         "description": "Redesigned the course builder, email campaigns, webinars, and booking flows. One of the most complex tools was the website builder for courses.",
         "achievements": [
-          "Reduced customer churn after relaunching the course website builder",
+          "Updated the course website builder to help retain at-risk clients",
           "Set up design processes in the team, brought order to the chaos, and introduced UX research",
           "Built an add-on for premium clients who needed customization for an extra fee"
         ],
