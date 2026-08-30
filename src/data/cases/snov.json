@@ -145,8 +145,7 @@
             "caption": "Тестування з користувачами",
             "imgSrc": "/images/works/snov/interview.webp"
           }
-        ],
-        "id": "research"
+        ]
       },
       {
         "t": "light-section",
@@ -301,6 +300,33 @@
           "Avoid manual operations — automate everything possible;",
           "Keep automation within LinkedIn's limits to prevent accounts from being banned;",
           "Use solutions that increase the ability to send requests and notifications, such as LinkedIn account rotation."
+        ]
+      },
+      {
+        "t": "dark-slider",
+        "caption": "Design process. Defining the MVP",
+        "slides": [
+          {
+            "text": "Together with the team, we defined the minimum product requirements: connecting and configuring a LinkedIn account, creating LinkedIn campaigns, and warming up LinkedIn accounts (to prevent bans).",
+            "imgLabel": "The MVP covers connecting an account and creating campaigns — additional features and capabilities came in later iterations",
+            "imgRatio": "2320/1284",
+            "caption": "LinkedIn automation MVP",
+            "imgSrc": "/images/works/snov/snov-linkedin-mvp.webp"
+          },
+          {
+            "text": "We built a high-level, non-detailed information architecture that helped estimate the scope of work and forecast development timelines.",
+            "imgLabel": "Beyond the core scenarios, we also had to account for updates to the service as a whole.",
+            "imgRatio": "2288/1280",
+            "imgSrc": "/images/works/snov/information-arhitecture.webp",
+            "caption": "Information architecture"
+          },
+          {
+            "text": "Testing showed that the description of LinkedIn sequences was missing when creating campaigns — users didn't fully understand what they were, or why separate manual actions were needed, and this confused everyone.",
+            "imgLabel": "A research excerpt. Feedback on each step of creating a LinkedIn campaign. ",
+            "imgRatio": "2288/1280",
+            "caption": "User testing",
+            "imgSrc": "/images/works/snov/interview.webp"
+          }
         ]
       },
       {
