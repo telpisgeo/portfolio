@@ -3,36 +3,79 @@
     "eyebrow": "Snov.io",
     "title": "Створення нового інструменту, який дав приріст продаж, та 80% retention",
     "steps": [
-      { "label": "Контекст", "href": "#context" },
-      { "label": "Мета", "href": "#problems" },
-      { "label": "Дослідження", "href": "#research" },
-      { "label": "Концепт", "href": "#decision" },
-      { "label": "Результати", "href": "#summary" }
+      {
+        "label": "Контекст",
+        "href": "#context"
+      },
+      {
+        "label": "Мета",
+        "href": "#problems"
+      },
+      {
+        "label": "Дослідження",
+        "href": "#research"
+      },
+      {
+        "label": "Концепт",
+        "href": "#decision"
+      },
+      {
+        "label": "Результати",
+        "href": "#summary"
+      }
     ],
     "blocks": [
       {
         "t": "meta",
         "id": "context",
         "items": [
-          { "label": "Роль", "value": "Product Designer" },
-          { "label": "Команда", "value": "Product manager, UX writer, Front-end розробник, Back-end розробник" },
-          { "label": "Таймінг", "value": "6 місяців" },
-          { "label": "Інструменти", "value": "Figma" }
+          {
+            "label": "Роль",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Команда",
+            "value": "Product manager, UX writer, Front-end розробник, Back-end розробник"
+          },
+          {
+            "label": "Таймінг",
+            "value": "6 місяців"
+          },
+          {
+            "label": "Інструменти",
+            "value": "Figma"
+          }
         ]
       },
       {
         "t": "dark-section",
         "caption": "Про продукт",
         "statement": "Snov.io — платформа для лідогенерації, створена для спеціалістів із продажів, рекрутерів та маркетологів. Сервіс знаходить контакти необхідних людей для аутрічу.",
-        "img": { "label": "Snov.io — промо", "ratio": "1144/658", "src": "/images/works/snov/case-snov.io-promo-ua.webp" }
+        "img": {
+          "label": "Snov.io — промо",
+          "ratio": "1144/658",
+          "src": "/images/works/snov/case-snov.io-promo-ua.webp"
+        }
       },
       {
         "t": "figures",
         "caption": "Платформою користуються",
         "items": [
-          { "value": "3 млн.", "label": "юзерів", "icon": "/images/works/snov/icon-1.svg" },
-          { "value": "300 тис.", "label": "компаній", "icon": "/images/works/snov/icon-2.svg" },
-          { "value": "180", "label": "країн", "icon": "/images/works/snov/icon-3.svg" }
+          {
+            "value": "3 млн.",
+            "label": "юзерів",
+            "icon": "/images/works/snov/icon-1.svg"
+          },
+          {
+            "value": "300 тис.",
+            "label": "компаній",
+            "icon": "/images/works/snov/icon-2.svg"
+          },
+          {
+            "value": "180",
+            "label": "країн",
+            "icon": "/images/works/snov/icon-3.svg"
+          }
         ]
       },
       {
@@ -78,17 +121,53 @@
         ]
       },
       {
+        "t": "dark-slider",
+        "caption": "Дизайн процес. Визначення MVP",
+        "slides": [
+          {
+            "text": "З командою визначили мінімальні вимоги по продукту, а саме це підключення лінкедін аккаунту, та його налаштування, створення лінкедін кампаній, та прогрів лінкедін аккаунтів (для запобігання блокування).",
+            "imgLabel": "MVP це підключення та створення кампаній, в інших ітераціях вже додаткові функції та можливості",
+            "imgRatio": "2320/1284",
+            "caption": "MVP автоматизації LinkedIn",
+            "imgSrc": "/images/works/snov/snov-linkedin-mvp.webp"
+          },
+          {
+            "text": "Розроблена поверхнева не деталізована інформаційна архітектура яка допомогла оцінити масштаб роботи, та спрогнозувати строки розробки.",
+            "imgLabel": "Окрім основних сценаріїв, треба було врахувати оновлення сервісу загалом.",
+            "imgRatio": "2288/1280",
+            "imgSrc": "/images/works/snov/information-arhitecture.webp",
+            "caption": "Інформаційна архітектура"
+          },
+          {
+            "text": "Тестування, показало що не вистачало опису ланцюжків LinkedIn при створенні кампаній, користувачі не до кінця розуміли що це таке та не розуміння навіщо потрібно ручні дії окремо, плутанина з цим була у всіх.",
+            "imgLabel": "Фрагмент досліджень. Фідбек по кожному з етапу створення LinkedIn кампанії. ",
+            "imgRatio": "2288/1280",
+            "caption": "Тестування з користувачами",
+            "imgSrc": "/images/works/snov/interview.webp"
+          }
+        ],
+        "id": "research"
+      },
+      {
         "t": "light-section",
         "id": "decision",
         "caption": "Концепт. LinkedIn профіль",
         "statement": "Ми також оновили профіль LinkedIn, додали індекс Social Selling Index та важливу інформацію про Proxy для користувачів, яким потрібно розуміти місцезнаходження свого облікового запису.",
-        "img": { "label": "LinkedIn профіль — концепт", "ratio": "1144/822", "videoSrc": "/images/works/snov/snov-linkedin-profile.webm" }
+        "img": {
+          "label": "LinkedIn профіль — концепт",
+          "ratio": "1144/822",
+          "videoSrc": "/images/works/snov/snov-linkedin-profile.webm"
+        }
       },
       {
         "t": "light-section",
         "caption": "Концепт. LinkedIn кампанії",
         "statement": "В останній версії ми додали такі основні дії, як View profile, Like post, Send connection requests, Follow, Messages та InMail. Це базові елементи, які потрібні для створення LinkedIn автоматизації.",
-        "img": { "label": "LinkedIn кампанії — концепт", "ratio": "1144/822", "videoSrc": "/images/works/snov/snov-linkedin-fullflow.webm" }
+        "img": {
+          "label": "LinkedIn кампанії — концепт",
+          "ratio": "1144/822",
+          "videoSrc": "/images/works/snov/snov-linkedin-fullflow.webm"
+        }
       },
       {
         "t": "bullets-card",
@@ -107,36 +186,79 @@
     "eyebrow": "Snov.io",
     "title": "Building a new tool that drove sales growth and 80% retention",
     "steps": [
-      { "label": "Context", "href": "#context" },
-      { "label": "Goal", "href": "#problems" },
-      { "label": "Research", "href": "#research" },
-      { "label": "Concept", "href": "#decision" },
-      { "label": "Results", "href": "#summary" }
+      {
+        "label": "Context",
+        "href": "#context"
+      },
+      {
+        "label": "Goal",
+        "href": "#problems"
+      },
+      {
+        "label": "Research",
+        "href": "#research"
+      },
+      {
+        "label": "Concept",
+        "href": "#decision"
+      },
+      {
+        "label": "Results",
+        "href": "#summary"
+      }
     ],
     "blocks": [
       {
         "t": "meta",
         "id": "context",
         "items": [
-          { "label": "Role", "value": "Product Designer" },
-          { "label": "Team", "value": "Product manager, UX writer, Front-end developer, Back-end developer" },
-          { "label": "Timeline", "value": "6 months" },
-          { "label": "Tools", "value": "Figma" }
+          {
+            "label": "Role",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Team",
+            "value": "Product manager, UX writer, Front-end developer, Back-end developer"
+          },
+          {
+            "label": "Timeline",
+            "value": "6 months"
+          },
+          {
+            "label": "Tools",
+            "value": "Figma"
+          }
         ]
       },
       {
         "t": "dark-section",
         "caption": "About the product",
         "statement": "Snov.io is a lead generation platform built for sales professionals, recruiters, and marketers. The service finds contact information for the right people to reach out to.",
-        "img": { "label": "Snov.io — promo", "ratio": "1144/658", "src": "/images/works/snov/case-snov.io-promo-ua.webp" }
+        "img": {
+          "label": "Snov.io — promo",
+          "ratio": "1144/658",
+          "src": "/images/works/snov/case-snov.io-promo-ua.webp"
+        }
       },
       {
         "t": "figures",
         "caption": "Platform is used by",
         "items": [
-          { "value": "3M", "label": "users", "icon": "/images/works/snov/icon-1.svg" },
-          { "value": "300K", "label": "companies", "icon": "/images/works/snov/icon-2.svg" },
-          { "value": "180", "label": "countries", "icon": "/images/works/snov/icon-3.svg" }
+          {
+            "value": "3M",
+            "label": "users",
+            "icon": "/images/works/snov/icon-1.svg"
+          },
+          {
+            "value": "300K",
+            "label": "companies",
+            "icon": "/images/works/snov/icon-2.svg"
+          },
+          {
+            "value": "180",
+            "label": "countries",
+            "icon": "/images/works/snov/icon-3.svg"
+          }
         ]
       },
       {
@@ -186,13 +308,21 @@
         "id": "decision",
         "caption": "Concept. LinkedIn profile",
         "statement": "We also updated the LinkedIn profile, added the Social Selling Index and important Proxy information for users who need to understand the location of their account.",
-        "img": { "label": "LinkedIn profile — concept", "ratio": "1144/822", "videoSrc": "/images/works/snov/snov-linkedin-profile.webm" }
+        "img": {
+          "label": "LinkedIn profile — concept",
+          "ratio": "1144/822",
+          "videoSrc": "/images/works/snov/snov-linkedin-profile.webm"
+        }
       },
       {
         "t": "light-section",
         "caption": "Concept. LinkedIn campaigns",
         "statement": "In the latest version we added core actions such as View profile, Like post, Send connection requests, Follow, Messages, and InMail. These are the essential building blocks for creating LinkedIn automation.",
-        "img": { "label": "LinkedIn campaigns — concept", "ratio": "1144/822", "videoSrc": "/images/works/snov/snov-linkedin-fullflow.webm" }
+        "img": {
+          "label": "LinkedIn campaigns — concept",
+          "ratio": "1144/822",
+          "videoSrc": "/images/works/snov/snov-linkedin-fullflow.webm"
+        }
       },
       {
         "t": "bullets-card",
