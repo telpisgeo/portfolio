@@ -95,6 +95,7 @@
         "name": "SendPulse",
         "url": "https://sendpulse.ua",
         "period": "",
+        "productType": "Сервіс для email-розсилок та мультиканальної маркетингової автоматизації",
         "icon": "/images/logos/sendpulse.svg",
         "description": "Оновлення стилю, розробка візуальних комунікацій, розробка сайтів для конференцій, розробляв інтереси та сторінки для партнерів.",
         "imageRows": [
@@ -253,6 +254,7 @@
         "name": "SendPulse",
         "url": "https://sendpulse.ua",
         "period": "",
+        "productType": "Email marketing and multichannel marketing automation service",
         "icon": "/images/logos/sendpulse.svg",
         "description": "Refreshed the visual style, produced visual communications, built conference landing pages, and designed interfaces and pages for partners.",
         "imageRows": [
