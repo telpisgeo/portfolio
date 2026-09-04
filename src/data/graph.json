@@ -95,6 +95,7 @@
         "name": "SendPulse",
         "url": "https://sendpulse.ua",
         "period": "",
+        "icon": "/images/logos/sendpulse.svg",
         "description": "Оновлення стилю, розробка візуальних комунікацій, розробка сайтів для конференцій, розробляв інтереси та сторінки для партнерів.",
         "imageRows": [
           {
@@ -244,6 +245,46 @@
           },
           {
             "value": "/images/works/westudy/westudy-case-5.webp"
+          }
+        ]
+      },
+      {
+        "slug": "sednpulse",
+        "name": "SendPulse",
+        "url": "https://sendpulse.ua",
+        "period": "",
+        "icon": "/images/logos/sendpulse.svg",
+        "description": "Refreshed the visual style, produced visual communications, built conference landing pages, and designed interfaces and pages for partners.",
+        "imageRows": [
+          {
+            "value": "/images/works/sednpulse/sendpulse-logo.webp"
+          },
+          {
+            "value": [
+              "/images/works/sednpulse/sendpulse-txt.webp",
+              "/images/works/sednpulse/sendpulse-gradients.webp"
+            ]
+          },
+          {
+            "value": "/images/works/sednpulse/sendpulse-case-icons.webp"
+          },
+          {
+            "value": [
+              "/images/works/sednpulse/sendpulse-case-customer.webp",
+              "/images/works/sednpulse/sendpulse-case-icons-2.webp"
+            ]
+          },
+          {
+            "value": "/images/works/sednpulse/sendpulse-blog-gradient-2.webp"
+          },
+          {
+            "value": "/images/works/sednpulse/sendpulse-page.webp"
+          },
+          {
+            "value": "/images/works/sednpulse/sendpulse-social-media.webp"
+          },
+          {
+            "value": "/images/works/sednpulse/sendpulse-page-2.webp"
           }
         ]
       }
