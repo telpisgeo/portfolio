@@ -1,7 +1,7 @@
 {
   "uk": {
     "eyebrow": "WeStudy",
-    "title": "Створили сучасний веб-білдер сайту, який припинив відтік клієнтів сервісу",
+    "title": "Комплексний редизайн інструменту створення сайтів в Westudy, завдяки якому збільшилось кількість успішно створених сайтів на 25%",
     "steps": [
       {
         "label": "Контекст",
@@ -169,15 +169,14 @@
         "text": "",
         "items": [
           "Після оновлень, за допомогою партнерів-дизайнерів, ми оновили сайти чинним користувачам (які мали власні сайти), перевірили реальну роботу сервісу, виправили безліч технічних проблем та доопрацювали UX.",
-          "За перші 3 місяці було оновлено та створено більше 100 сайтів.",
-          "Нові можливості редактора, а також оновлений вид «автоматичних» сайтів зупинив відтік користувачів, яких не задовольняв інструмент, та отримав багато позитивних відгуків."
+          "Збільшили кількість успішно створених сайтів на 25%"
         ]
       }
     ]
   },
   "en": {
     "eyebrow": "WeStudy",
-    "title": "Built a modern website builder that stopped customer churn",
+    "title": "Led a comprehensive redesign of WeStudy's website builder, which increased the number of successfully created sites by 25%.",
     "steps": [
       {
         "label": "Context",
@@ -347,8 +346,7 @@
         "text": "",
         "items": [
           "After the update, with help from partner designers, we refreshed existing users' sites, tested real-world usage, fixed many technical issues, and refined the UX.",
-          "In the first 3 months, over 100 sites were updated or created.",
-          "The new editor capabilities and improved automatic site experience stopped the churn among dissatisfied users and received many positive reviews."
+          "The number of successfully created sites grew by 25% after the redesign"
         ]
       }
     ]
