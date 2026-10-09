@@ -46,6 +46,14 @@ export default function AdminDashboard() {
             <h2 className="text-base font-medium text-foreground mb-1">Сторінка для граф дизайну</h2>
             <p className="text-sm text-muted-foreground">CV, &quot;Про мене&quot; та досвід для /graph — незалежно від головної</p>
           </Link>
+
+          <Link
+            href="/admin/resume"
+            className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
+          >
+            <h2 className="text-base font-medium text-foreground mb-1">Резюме</h2>
+            <p className="text-sm text-muted-foreground">Завантажити нове PDF-резюме (UA та EN)</p>
+          </Link>
         </div>
       </div>
     </div>
