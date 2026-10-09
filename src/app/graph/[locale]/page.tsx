@@ -95,6 +95,7 @@ export default async function GraphLocalePage({
         homeHref={homeHref}
         switchHref={switchHref}
         showCvButton={false}
+        showPetProjects={false}
       />
       <Hero locale={locale} text1={graph.hero.text1} text2={graph.hero.text2} />
 

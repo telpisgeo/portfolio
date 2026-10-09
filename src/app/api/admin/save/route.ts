@@ -102,6 +102,36 @@ function validateTestimonial(item: unknown): string | null {
   return null;
 }
 
+function validatePetProjects(section: unknown): string | null {
+  if (section === undefined) return null;
+  if (!section || typeof section !== "object") return "Невірний розділ Pet-проєктів";
+  const s = section as Record<string, unknown>;
+  if (!isString(s.title) || s.title.length > 200) return "Невірний заголовок Pet-проєктів";
+  if (!Array.isArray(s.items)) return "Невірний список Pet-проєктів";
+  const seen = new Set<string>();
+  for (const item of s.items) {
+    if (!item || typeof item !== "object") return "Невірний Pet-проєкт";
+    const p = item as Record<string, unknown>;
+    if (!isString(p.slug) || !SLUG_RE.test(p.slug)) return `Невірний slug: ${p.slug}`;
+    if (seen.has(p.slug)) return `Дублікат slug: ${p.slug}`;
+    seen.add(p.slug);
+    if (!isString(p.name) || p.name.length > 200) return "Невірна назва Pet-проєкту";
+    if (!isString(p.description) || p.description.length > 3000) return "Невірний опис Pet-проєкту";
+    for (const k of ["url", "productType", "period", "role", "tools"] as const) {
+      if (p[k] !== undefined && (!isString(p[k]) || (p[k] as string).length > 500)) return `Невірне поле ${k} Pet-проєкту`;
+    }
+    if (p.icon !== undefined && p.icon !== "") {
+      const err = validateImagePath(p.icon);
+      if (err) return err;
+    }
+    if (p.image !== undefined && p.image !== "") {
+      const err = validateMediaPath(p.image);
+      if (err) return err;
+    }
+  }
+  return null;
+}
+
 function validateHomeContent(content: unknown): string | null {
   if (!content || typeof content !== "object") return "Невірна структура home.json";
   const c = content as Record<string, unknown>;
@@ -129,6 +159,8 @@ function validateHomeContent(content: unknown): string | null {
       const err = validateTestimonial(item);
       if (err) return err;
     }
+    const petErr = validatePetProjects(loc.petProjects);
+    if (petErr) return petErr;
   }
   return null;
 }

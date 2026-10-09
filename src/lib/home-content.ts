@@ -35,12 +35,31 @@ export type Testimonial = {
   photo?: string;
 };
 
+export type PetProject = {
+  slug: string;
+  name: string;
+  url?: string;
+  productType?: string;
+  icon?: string;
+  period?: string;
+  role?: string;
+  tools?: string;
+  description: string;
+  image?: string;
+};
+
+export type PetProjectsSection = {
+  title: string;
+  items: PetProject[];
+};
+
 export type HomeLocaleContent = {
   worksTitle: string;
   about: string[];
   companies: HomeCompany[];
   timeline: TimelineItem[];
   testimonials: Testimonial[];
+  petProjects?: PetProjectsSection;
 };
 
 export type HomeContent = Record<"uk" | "en", HomeLocaleContent>;
