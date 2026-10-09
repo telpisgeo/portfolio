@@ -14,6 +14,8 @@ import CvDownloadLink from "@/components/CvDownloadLink";
 import ShimmerImage from "@/components/ShimmerImage";
 import Testimonials from "@/components/Testimonials";
 
+const VIDEO_EXT_RE = /\.(webm|mp4|mov)$/i;
+
 
 export function generateStaticParams() {
   return [{ locale: "uk" }, { locale: "en" }];
@@ -214,9 +216,17 @@ export default async function LocalePage({
                       <div key={i} className="grid grid-cols-2 gap-3">
                         {row.value.map((src) => (
                           <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
-                            <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
+                            {VIDEO_EXT_RE.test(src) ? (
+                              <video src={src} className="absolute inset-0 w-full h-full object-cover" autoPlay loop muted playsInline />
+                            ) : (
+                              <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
+                            )}
                           </div>
                         ))}
+                      </div>
+                    ) : VIDEO_EXT_RE.test(row.value) ? (
+                      <div key={row.value} className="relative overflow-hidden rounded-[8px]">
+                        <video src={row.value} className="w-full h-auto" autoPlay loop muted playsInline />
                       </div>
                     ) : (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">

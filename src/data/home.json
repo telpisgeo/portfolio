@@ -86,6 +86,9 @@
             "value": "/images/works/westudy/westudy-editor.webp"
           },
           {
+            "value": "/images/works/westudy/case-westudy-after-en.webm"
+          },
+          {
             "value": "/images/works/westudy/westudy-onboarding.png"
           },
           {
@@ -242,6 +245,9 @@
         "imageRows": [
           {
             "value": "/images/works/westudy/promo-builder-westudy.webp"
+          },
+          {
+            "value": "/images/works/westudy/case-westudy-after-en.webm"
           },
           {
             "value": "/images/works/westudy/westudy-about-promo-2-ua.webp"

@@ -468,7 +468,7 @@ export default function AdminHomePage() {
                             {row.value.map((val, colIdx) => (
                               <div key={colIdx} className="flex-1 min-w-0">
                                 <MediaUpload
-                                  kind="image"
+                                  kind="media"
                                   dir={company.slug}
                                   value={val}
                                   onChange={(src) => updateImageRowValue(index, rowIdx, colIdx, src)}
@@ -478,7 +478,7 @@ export default function AdminHomePage() {
                           </div>
                         ) : (
                           <MediaUpload
-                            kind="image"
+                            kind="media"
                             dir={company.slug}
                             value={row.value}
                             onChange={(src) => updateImageRowValue(index, rowIdx, 0, src)}
