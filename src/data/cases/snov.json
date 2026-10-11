@@ -175,9 +175,9 @@
         "text": "",
         "items": [
           "Кількісний опитувальник показав позитивний відгук від користувачів, які відмітили дуже простий флоу створення LinkedIn кампаній, зручний аналіз результатів як однієї кампанії, так й декількох одночасно;",
-          "Retention rate інструменту 80%;",
           "Кількість проданих слотів, та дохід від впровадженого функціоналу під NDA."
-        ]
+        ],
+        "active": false
       }
     ]
   },
@@ -359,7 +359,8 @@
           "A quantitative survey showed positive feedback from users who found the LinkedIn campaign creation flow very simple and the analytics easy to use — both for individual campaigns and multiple campaigns at once;",
           "Tool retention rate: 80%;",
           "Number of sold seats and revenue from the shipped feature — under NDA."
-        ]
+        ],
+        "active": false
       }
     ]
   }
