@@ -59,7 +59,7 @@ export default function Navbar({
   const burgerColor = isDark ? "bg-secondary-foreground" : "bg-foreground";
   const dropdownText = isDark ? "text-secondary-foreground/80 border-white/10" : "text-foreground/80 border-border";
   const dropdownMuted = isDark ? "text-secondary-foreground/50" : "text-muted-foreground";
-  const petLabel = locale === "uk" ? "Pet-проєкти" : "Pet projects";
+  const petLabel = locale === "uk" ? "Pet-проєкт" : "Pet project";
   const homeLabel = locale === "uk" ? "← Головна" : "← Home";
 
   return (

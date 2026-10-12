@@ -160,7 +160,7 @@
     ],
     "worksTitle": "Обрані кейси",
     "petProjects": {
-      "title": "Pet-проєкти",
+      "title": "Pet-проєкт",
       "items": [
         {
           "slug": "vgolos",
@@ -335,7 +335,7 @@
     ],
     "worksTitle": "Selected cases",
     "petProjects": {
-      "title": "Pet projects",
+      "title": "Pet project",
       "items": [
         {
           "slug": "vgolos",

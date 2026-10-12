@@ -40,6 +40,14 @@ export default function AdminDashboard() {
           </Link>
 
           <Link
+            href="/admin/pet-projects"
+            className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
+          >
+            <h2 className="text-base font-medium text-foreground mb-1">Pet-проєкт</h2>
+            <p className="text-sm text-muted-foreground">Опис, зображення та посилання pet-проєкту на головній</p>
+          </Link>
+
+          <Link
             href="/admin/graph"
             className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
           >

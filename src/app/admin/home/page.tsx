@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import homeJson from "@/data/home.json";
-import type { HomeCompany, HomeContent, HomeImageRow, PetProject, Testimonial, TimelineItem } from "@/lib/home-content";
+import type { HomeCompany, HomeContent, HomeImageRow, Testimonial, TimelineItem } from "@/lib/home-content";
 import MediaUpload from "@/components/admin/MediaUpload";
 
 const initialContent = homeJson as unknown as HomeContent;
@@ -244,32 +244,6 @@ export default function AdminHomePage() {
       ...prev,
       [locale]: { ...prev[locale], testimonials: prev[locale].testimonials.filter((_, j) => j !== i) },
     }));
-  }
-
-  const petProjects = content[locale].petProjects ?? { title: "", items: [] };
-
-  function setPetProjects(next: { title: string; items: PetProject[] }) {
-    setContent((prev) => ({ ...prev, [locale]: { ...prev[locale], petProjects: next } }));
-  }
-
-  function updatePetProject(i: number, patch: Partial<PetProject>) {
-    setPetProjects({ ...petProjects, items: petProjects.items.map((p, j) => (j === i ? { ...p, ...patch } : p)) });
-  }
-
-  function addPetProject() {
-    const input = window.prompt("Slug нового проєкту (латиницею, напр. my-project):")?.trim();
-    if (!input) return;
-    const slug = slugify(input);
-    if (!slug) {
-      window.alert("Slug має містити хоча б одну латинську літеру або цифру");
-      return;
-    }
-    setPetProjects({ ...petProjects, items: [...petProjects.items, { slug, name: "", description: "" }] });
-  }
-
-  function removePetProject(i: number) {
-    if (!window.confirm("Видалити проєкт?")) return;
-    setPetProjects({ ...petProjects, items: petProjects.items.filter((_, j) => j !== i) });
   }
 
   async function handleSave() {
@@ -668,75 +642,6 @@ export default function AdminHomePage() {
             ))}
             <button onClick={addTestimonial} className="text-sm text-muted-foreground hover:text-foreground transition-colors self-start">
               + Додати відгук
-            </button>
-          </div>
-        </div>
-        {/* Pet projects */}
-        <div className="border border-border rounded-2xl p-6 mt-10">
-          <h2 className="text-base font-medium text-foreground mb-5">Pet-проєкти</h2>
-          <div className="mb-6">
-            <label className={labelClass}>Заголовок розділу</label>
-            <input value={petProjects.title} onChange={(e) => setPetProjects({ ...petProjects, title: e.target.value })} className={inputClass} />
-          </div>
-          <div className="flex flex-col gap-6">
-            {petProjects.items.map((p, i) => (
-              <div key={i} className="border border-border rounded-xl p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs uppercase tracking-widest text-muted-foreground">{p.name || `Проєкт ${i + 1}`}</span>
-                  <button onClick={() => removePetProject(i)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Видалити
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 gap-3 mb-3">
-                  <div>
-                    <label className={labelClass}>Назва</label>
-                    <input value={p.name} onChange={(e) => updatePetProject(i, { name: e.target.value })} className={inputClass} />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Посилання (необов&apos;язково)</label>
-                    <input value={p.url ?? ""} onChange={(e) => updatePetProject(i, { url: e.target.value })} className={`${inputClass} font-mono`} placeholder="https://..." />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Тип продукту</label>
-                    <input value={p.productType ?? ""} onChange={(e) => updatePetProject(i, { productType: e.target.value })} className={inputClass} />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Іконка (шлях)</label>
-                    <input value={p.icon ?? ""} onChange={(e) => updatePetProject(i, { icon: e.target.value })} className={`${inputClass} font-mono`} placeholder="/images/icons/example.svg" />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Роки</label>
-                    <input value={p.period ?? ""} onChange={(e) => updatePetProject(i, { period: e.target.value })} className={inputClass} />
-                  </div>
-                  <div>
-                    <label className={labelClass}>Роль</label>
-                    <input value={p.role ?? ""} onChange={(e) => updatePetProject(i, { role: e.target.value })} className={inputClass} />
-                  </div>
-                  <div className="col-span-2">
-                    <label className={labelClass}>Інструменти</label>
-                    <input value={p.tools ?? ""} onChange={(e) => updatePetProject(i, { tools: e.target.value })} className={inputClass} />
-                  </div>
-                </div>
-                <div className="mb-4">
-                  <label className={labelClass}>Опис</label>
-                  <textarea
-                    value={p.description}
-                    onChange={(e) => updatePetProject(i, { description: e.target.value })}
-                    rows={6}
-                    className={`${inputClass} resize-none leading-relaxed`}
-                  />
-                </div>
-                <MediaUpload
-                  kind="media"
-                  dir={`pet-${p.slug}`}
-                  value={p.image}
-                  onChange={(src) => updatePetProject(i, { image: src })}
-                  label="Зображення"
-                />
-              </div>
-            ))}
-            <button onClick={addPetProject} className="text-sm text-muted-foreground hover:text-foreground transition-colors self-start">
-              + Додати проєкт
             </button>
           </div>
         </div>
