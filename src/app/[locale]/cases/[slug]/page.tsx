@@ -180,7 +180,7 @@ export default async function CasePage({
             {/* Title */}
             <div className="max-w-[680px] mx-auto mb-10">
               <p className="text-sm text-muted-foreground mb-4">{c.subtitle}</p>
-              <h1 className="text-4xl font-medium text-foreground leading-tight">{c.title}</h1>
+              <h1 className="text-[22px] md:text-[28px] lg:text-[36px] font-bold text-foreground leading-[1.25]">{c.title}</h1>
             </div>
 
             {/* Blocks */}
@@ -224,7 +224,7 @@ export default async function CasePage({
             {/* Title */}
             <div>
               <p className="text-sm text-muted-foreground mb-4">{c.subtitle}</p>
-              <h1 className="text-4xl font-medium text-foreground leading-tight">{c.title}</h1>
+              <h1 className="text-[22px] md:text-[28px] lg:text-[36px] font-bold text-foreground leading-[1.25]">{c.title}</h1>
             </div>
 
             {/* Preview image */}
