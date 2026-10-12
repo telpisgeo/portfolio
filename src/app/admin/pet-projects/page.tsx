@@ -155,6 +155,10 @@ export default function AdminPetProjectsPage() {
                     className={`${inputClass} resize-none leading-relaxed`}
                   />
                 </div>
+                <div className="mb-4">
+                  <label className={labelClass}>Примітка під описом (необов&apos;язково)</label>
+                  <input value={p.note ?? ""} onChange={(e) => updatePetProject(i, { note: e.target.value })} className={inputClass} placeholder="напр. Кейс у стані наповнення" />
+                </div>
                 <MediaUpload
                   kind="media"
                   dir={`pet-${p.slug}`}

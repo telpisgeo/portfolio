@@ -45,6 +45,7 @@ export type PetProject = {
   role?: string;
   tools?: string;
   description: string;
+  note?: string;
   image?: string;
 };
 

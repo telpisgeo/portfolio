@@ -306,7 +306,10 @@ export default async function LocalePage({
                         </div>
                       )}
                     </div>
-                    <p className="text-xl text-foreground/75 leading-relaxed">{project.description}</p>
+                    <div className="flex flex-col gap-5">
+                      <p className="text-xl text-foreground/75 leading-relaxed">{project.description}</p>
+                      {project.note && <p className="text-sm text-muted-foreground">{project.note}</p>}
+                    </div>
                   </div>
                   {project.image && (
                     <div className="relative overflow-hidden rounded-[8px]">
