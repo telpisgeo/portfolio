@@ -170,7 +170,7 @@
           "role": "Product Designer",
           "tools": "Figma, Claude Code, Supabase",
           "description": "Щоденна 15-хвилинна вправа з читання для дітей 6–12 років з дислексією, яку проводять батьки вдома. AI підбирає слова та історії під інтереси дитини, а голосове читання з самооцінкою допомагає тренуватись без стресу.",
-          "image": "/images/works/vgolos/placeholder.webp",
+          "image": "/images/works/vgolos/vgolos.webm",
           "productType": "Читалка для дітей з дислексією",
           "icon": "/images/icons/vgolos.svg"
         }
@@ -345,7 +345,7 @@
           "role": "Product Designer",
           "tools": "Figma, Claude Code, Supabase",
           "description": "A daily 15-minute reading exercise for children aged 6–12 with dyslexia, run by parents at home. AI picks words and stories around the child's interests, and reading aloud with self-assessment makes practice stress-free.",
-          "image": "/images/works/vgolos/placeholder.webp",
+          "image": "/images/works/vgolos/vgolos.webm",
           "productType": "Reading app for children with dyslexia",
           "icon": "/images/icons/vgolos.svg"
         }
