@@ -8,6 +8,7 @@ import { caseMetadata } from "@/lib/seo";
 import { Caption, CaseBlockList } from "@/components/CaseBlocks";
 import CaseStepsNav from "@/components/CaseStepsNav";
 import Footer from "@/components/Footer";
+import { hasPetProjects } from "@/lib/pet-projects";
 import Navbar from "@/components/Navbar";
 
 export function generateStaticParams() {
@@ -120,6 +121,7 @@ export default async function CasePage({
           cvButton={t.cvButton}
           worksLabel={t.navWorksLabel}
           aboutLabel={t.navAboutLabel}
+        showPetProjects={hasPetProjects(locale)}
           contactLabel={t.navContactLabel}
           variant="case"
           hideOnScroll
@@ -165,6 +167,7 @@ export default async function CasePage({
         cvButton={t.cvButton}
         worksLabel={t.navWorksLabel}
         aboutLabel={t.navAboutLabel}
+        showPetProjects={hasPetProjects(locale)}
         contactLabel={t.navContactLabel}
         variant="light"
         hideOnScroll

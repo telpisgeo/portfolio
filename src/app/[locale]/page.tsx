@@ -6,6 +6,7 @@ import { translations, type Locale } from "@/lib/translations";
 import { localeAlternates, personJsonLd } from "@/lib/seo";
 import homeJson from "@/data/home.json";
 import type { HomeContent } from "@/lib/home-content";
+import { hasPetProjects } from "@/lib/pet-projects";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
@@ -80,7 +81,7 @@ export default async function LocalePage({
         cvButton={t.cvButton}
         worksLabel={t.navWorksLabel}
         aboutLabel={t.navAboutLabel}
-        showPetProjects={(home.petProjects?.items.length ?? 0) > 0}
+        showPetProjects={hasPetProjects(locale)}
         contactLabel={t.navContactLabel}
       />
       <Hero locale={locale} />

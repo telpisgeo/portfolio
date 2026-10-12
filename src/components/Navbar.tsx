@@ -15,7 +15,7 @@ type NavbarProps = {
   contactLabel: string;
   worksLabel: string;
   aboutLabel: string;
-  /** Shows the "Pet projects" menu item (links to the home page section). */
+  /** Shows the "Pet projects" menu item (links to the home page section); see hasPetProjects(). */
   showPetProjects?: boolean;
   variant?: "dark" | "light" | "case";
   hideOnScroll?: boolean;
@@ -35,7 +35,7 @@ export default function Navbar({
   contactLabel,
   worksLabel,
   aboutLabel,
-  showPetProjects = true,
+  showPetProjects = false,
   variant = "dark",
   hideOnScroll = false,
   showCvButton = true,

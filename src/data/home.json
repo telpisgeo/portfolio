@@ -337,21 +337,7 @@
     "worksTitle": "Selected cases",
     "petProjects": {
       "title": "Pet project",
-      "items": [
-        {
-          "slug": "vgolos",
-          "name": "Vgolos",
-          "url": "https://www.vgolos.fun",
-          "period": "2026",
-          "role": "Product Designer",
-          "tools": "Figma, Claude Code, Supabase",
-          "description": "A daily 15-minute reading exercise for children aged 6–12 with dyslexia, run by parents at home. AI picks words and stories around the child's interests, and reading aloud with self-assessment makes practice stress-free.",
-          "image": "/images/works/vgolos/vgolos.webm",
-          "productType": "Reading app for children with dyslexia",
-          "icon": "/images/icons/vgolos.svg",
-          "note": "Case is being filled in"
-        }
-      ]
+      "items": []
     }
   }
 }

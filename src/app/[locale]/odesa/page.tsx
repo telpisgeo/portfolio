@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
+import { hasPetProjects } from "@/lib/pet-projects";
 import Navbar from "@/components/Navbar";
 import { translations, type Locale } from "@/lib/translations";
 import { localeAlternates } from "@/lib/seo";
@@ -104,6 +105,7 @@ export default async function OdesaPage({
         cvButton={t.cvButton}
         worksLabel={t.navWorksLabel}
         aboutLabel={t.navAboutLabel}
+        showPetProjects={hasPetProjects(locale)}
         contactLabel={t.navContactLabel}
         variant="light"
       />

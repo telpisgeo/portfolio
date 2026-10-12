@@ -4,6 +4,7 @@ import { translations, type Locale } from "@/lib/translations";
 import type { CaseContent } from "@/lib/case-blocks";
 import { caseMetadata } from "@/lib/seo";
 import caseJson from "@/data/cases/eschool-2.json";
+import { hasPetProjects } from "@/lib/pet-projects";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CaseStepsNav from "@/components/CaseStepsNav";
@@ -49,6 +50,7 @@ export default async function EschoolV2Page({
         cvButton={t.cvButton}
         worksLabel={t.navWorksLabel}
         aboutLabel={t.navAboutLabel}
+        showPetProjects={hasPetProjects(locale)}
         contactLabel={t.navContactLabel}
         variant="case"
         hideOnScroll
