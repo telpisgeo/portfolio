@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Георгій Тельпіс — портфоліо
 
-## Getting Started
+Сайт-портфоліо Product Designer: [www.telpis.com.ua](https://www.telpis.com.ua)
 
-First, run the development server:
+Кейси з B2B SaaS, EdTech та MarTech, відгуки, резюме, граф навичок і адмінка для редагування контенту. Мови: UA та EN.
+
+## Пет-проєкт
+
+- **[Вголос](https://www.vgolos.fun)** — щоденна 15-хвилинна вправа з читання для дітей 6–12 років з дислексією, яку проводять батьки вдома. Figma, Claude Code, Supabase.
+
+## Стек
+
+- [Next.js](https://nextjs.org) 16 (App Router), React 19, TypeScript
+- Tailwind CSS 4, shadcn/ui, Google Sans (`next/font`)
+- Vercel (хостинг, Analytics, Speed Insights, Blob), Amplitude
+
+## Запуск
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Відкрити [http://localhost:3000](http://localhost:3000). Інші команди: `npm run build`, `npm run start`, `npm run lint`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Структура
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/[locale]/` — публічні сторінки (головна, `cases/*`, `odesa`)
+- `src/app/admin/` — адмінка (кейси, головна, пет-проєкти, резюме, граф)
+- `src/app/graph/` — граф навичок
+- `src/components/` — компоненти, зокрема блоки кейсів (`CaseBlocks.tsx`)
+- `src/lib/case-blocks.ts` — типи блоків кейсів
+- `src/data/` — контент (`home.json`, `graph.json`, `cases/`)
+- `public/images/works/` — зображення та відео кейсів
 
-## Learn More
+## Змінні середовища
 
-To learn more about Next.js, take a look at the following resources:
+| Змінна | Призначення |
+| --- | --- |
+| `ADMIN_PASSWORD` | пароль адмінки |
+| `ADMIN_SESSION_SECRET` | підпис сесії адмінки |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob (завантаження медіа) |
+| `GITHUB_TOKEN` | коміт у репозиторій з адмінки (оновлення резюме) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Правила стилів і формат блоків кейсів — у [CLAUDE.md](CLAUDE.md).
