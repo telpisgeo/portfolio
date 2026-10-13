@@ -1,45 +1,41 @@
-# Георгій Тельпіс — портфоліо
+# Georgii Telpis — Portfolio
 
-Сайт-портфоліо Product Designer: [www.telpis.com.ua](https://www.telpis.com.ua)
+Product Designer portfolio: [www.telpis.com.ua](https://www.telpis.com.ua)
 
-Кейси з B2B SaaS, EdTech та MarTech, відгуки, резюме, граф навичок і адмінка для редагування контенту. Мови: UA та EN.
+Case studies in B2B SaaS, EdTech and MarTech, testimonials, résumé, a skills graph and an admin panel for editing content. Languages: UA and EN.
 
-## Пет-проєкт
-
-- **[Вголос](https://www.vgolos.fun)** — щоденна 15-хвилинна вправа з читання для дітей 6–12 років з дислексією, яку проводять батьки вдома. Figma, Claude Code, Supabase.
-
-## Стек
+## Stack
 
 - [Next.js](https://nextjs.org) 16 (App Router), React 19, TypeScript
 - Tailwind CSS 4, shadcn/ui, Google Sans (`next/font`)
-- Vercel (хостинг, Analytics, Speed Insights, Blob), Amplitude
+- Vercel (hosting, Analytics, Speed Insights, Blob), Amplitude
 
-## Запуск
+## Getting started
 
 ```bash
 npm install
 npm run dev
 ```
 
-Відкрити [http://localhost:3000](http://localhost:3000). Інші команди: `npm run build`, `npm run start`, `npm run lint`.
+Open [http://localhost:3000](http://localhost:3000). Other commands: `npm run build`, `npm run start`, `npm run lint`.
 
-## Структура
+## Project structure
 
-- `src/app/[locale]/` — публічні сторінки (головна, `cases/*`, `odesa`)
-- `src/app/admin/` — адмінка (кейси, головна, пет-проєкти, резюме, граф)
-- `src/app/graph/` — граф навичок
-- `src/components/` — компоненти, зокрема блоки кейсів (`CaseBlocks.tsx`)
-- `src/lib/case-blocks.ts` — типи блоків кейсів
-- `src/data/` — контент (`home.json`, `graph.json`, `cases/`)
-- `public/images/works/` — зображення та відео кейсів
+- `src/app/[locale]/` — public pages (home, `cases/*`, `odesa`)
+- `src/app/admin/` — admin panel (cases, home, pet projects, résumé, graph)
+- `src/app/graph/` — skills graph
+- `src/components/` — components, including case blocks (`CaseBlocks.tsx`)
+- `src/lib/case-blocks.ts` — case block types
+- `src/data/` — content (`home.json`, `graph.json`, `cases/`)
+- `public/images/works/` — case images and videos
 
-## Змінні середовища
+## Environment variables
 
-| Змінна | Призначення |
+| Variable | Purpose |
 | --- | --- |
-| `ADMIN_PASSWORD` | пароль адмінки |
-| `ADMIN_SESSION_SECRET` | підпис сесії адмінки |
-| `BLOB_READ_WRITE_TOKEN` | Vercel Blob (завантаження медіа) |
-| `GITHUB_TOKEN` | коміт у репозиторій з адмінки (оновлення резюме) |
+| `ADMIN_PASSWORD` | admin panel password |
+| `ADMIN_SESSION_SECRET` | admin session signing |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob (media uploads) |
+| `GITHUB_TOKEN` | commits to the repository from the admin panel (résumé update) |
 
-Правила стилів і формат блоків кейсів — у [CLAUDE.md](CLAUDE.md).
+Style rules and the case block format are described in [CLAUDE.md](CLAUDE.md).
