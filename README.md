@@ -4,10 +4,6 @@
 
 Кейси з B2B SaaS, EdTech та MarTech, відгуки, резюме, граф навичок і адмінка для редагування контенту. Мови: UA та EN.
 
-## Пет-проєкт
-
-- **[Вголос](https://www.vgolos.fun)** — щоденна 15-хвилинна вправа з читання для дітей 6–12 років з дислексією, яку проводять батьки вдома. Figma, Claude Code, Supabase.
-
 ## Стек
 
 - [Next.js](https://nextjs.org) 16 (App Router), React 19, TypeScript
