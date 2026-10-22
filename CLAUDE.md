@@ -181,4 +181,4 @@ Whenever content is changed on the site (images, videos, texts, works, cases), u
 
 ## Graph design page (`/graph/[locale]`)
 - URL locales are **`ua`** and **`en`** (not `uk`): `/graph/ua`, `/graph/en`. Content locale keys in `graph.json` are `uk`/`en`.
-- Work screenshots (`imageRows`) accept images **or** video: a value ending in `.webm/.mp4/.mov` renders as an autoplaying muted looping `<video>`. Example: Yedyna school posts → `/images/works/eschool/yedyna-school-posts-carousel.webm` (Figma Motion carousel).
+- Work screenshots (`imageRows`) accept images **or** video: a value ending in `.webm/.mp4/.mov` renders as a muted `<video>` (`CenterPlayVideo`) that preloads, plays from the start when it reaches the viewport center and pauses when it leaves. A file named `*-once.webm` plays a single time and stays on its last frame. Example: Yedyna school posts → `/images/works/eschool/yedyna-school-posts-carousel.webm` (Figma Motion carousel).
