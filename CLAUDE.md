@@ -171,14 +171,3 @@ When the user says "додай зображення [name]" or "add image [name]
 ## Notes
 - The old `cases/eschool` page was removed; `src/proxy.ts` 301-redirects `/uk|en/cases/eschool` to `eschool-2`.
 - Case page body copy is currently **UA only**; EN is translated later.
-
-## Content updates must stay in sync (site ↔ admin ↔ docs)
-
-Whenever content is changed on the site (images, videos, texts, works, cases), update **everywhere it lives**, not only the rendered page:
-- **Admin:** the admin panel edits the same JSON files the site reads (`src/data/graph.json`, `src/data/home.json`, `src/data/cases/*.json`), so change the JSON — never hardcode content in `page.tsx` only. Check the admin form still accepts the value (see `IMAGE_PATH_RE` / `VIDEO_PATH_RE` in `src/app/api/admin/save/route.ts`).
-- **Both locales:** `graph.json` / `home.json` hold `uk` and `en` — update both.
-- **Docs:** update the matching `.md` (this file's block descriptions, `docs/admin-panel-task.md`) when a content type, format or rule changes.
-
-## Graph design page (`/graph/[locale]`)
-- URL locales are **`ua`** and **`en`** (not `uk`): `/graph/ua`, `/graph/en`. Content locale keys in `graph.json` are `uk`/`en`.
-- Work screenshots (`imageRows`) accept images **or** video: a value ending in `.webm/.mp4/.mov` renders as an autoplaying muted looping `<video>`. Example: Yedyna school posts → `/images/works/eschool/yedyna-school-posts-carousel.webm` (Figma Motion carousel).
