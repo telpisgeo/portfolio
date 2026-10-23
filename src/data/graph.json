@@ -24,7 +24,8 @@
         "tools": "",
         "imageRows": [
           {
-            "value": "/images/works/agroprolisok/agroprolisok-guide.webp"
+            "value": "/images/works/agroprolisok/prolis.webp",
+            "active": true
           },
           {
             "value": "/images/works/agroprolisok/agroprolisok-carousel.webm"
@@ -33,7 +34,7 @@
             "value": "/images/works/agroprolisok/agroprolisok-slide-once.webm"
           },
           {
-            "value": "/images/works/agroprolisok/agroprolisok-billboard.webp"
+            "value": "/images/works/agroprolisok/poster-agroprolisok.webp"
           }
         ]
       },
