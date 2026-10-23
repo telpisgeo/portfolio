@@ -25,10 +25,10 @@
         "tools": "Figma, HotJar, Amplitude",
         "imageRows": [
           {
-            "value": "/images/works/snov/snov-linkedin-settings.png"
+            "value": "/images/works/snov/snov-linkedin-settings.webp"
           },
           {
-            "value": "/images/works/snov/snov-email-promo.png"
+            "value": "/images/works/snov/snov-email-promo.webp"
           },
           {
             "value": [
@@ -54,7 +54,7 @@
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           {
-            "value": "/images/works/eschool/eschool-promo.png",
+            "value": "/images/works/eschool/eschool-promo.webp",
             "active": false
           },
           {
@@ -89,7 +89,7 @@
             "value": "/images/works/westudy/case-westudy-after-en.webm"
           },
           {
-            "value": "/images/works/westudy/westudy-onboarding.png"
+            "value": "/images/works/westudy/westudy-onboarding.webp"
           },
           {
             "value": "/images/works/westudy/westudy-about-promo-2-ua.webp"
@@ -204,10 +204,10 @@
         "tools": "Figma, HotJar, Amplitude",
         "imageRows": [
           {
-            "value": "/images/works/snov/snov-linkedin-settings.png"
+            "value": "/images/works/snov/snov-linkedin-settings.webp"
           },
           {
-            "value": "/images/works/snov/snov-email-promo.png"
+            "value": "/images/works/snov/snov-email-promo.webp"
           },
           {
             "value": [
