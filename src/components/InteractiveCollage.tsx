@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 /*
  * Інтерактивний колаж hero — геометрія 1:1 з Figma (Website / Collage).
@@ -57,6 +57,12 @@ const PIECES: Piece[] = [1, 2, 3].flatMap((iteration) =>
 
 type Offset = { dx: number; dy: number };
 
+// Один фрагмент верхнього шару плавно з'їжджає вниз і повертається:
+// видно, що під ним є ще графіка, і що її можна рухати.
+const NUDGED: Record<string, Offset> = { "element-04-i1": { dx: 0, dy: 72 } };
+const NUDGE_DELAY_MS = 1200;
+const NUDGE_HOLD_MS = 1600;
+
 type InteractiveCollageProps = {
   resetLabel?: string;
 };
@@ -67,6 +73,7 @@ export default function InteractiveCollage({ resetLabel = "Зібрати наз
   const [offsets, setOffsets] = useState<Record<string, Offset>>({});
   const [zOrder, setZOrder] = useState<Record<string, number>>({});
   const [draggingId, setDraggingId] = useState<string | null>(null);
+  const [nudged, setNudged] = useState(false);
   const zCounter = useRef(0);
   const dragStart = useRef<{ id: string; startX: number; startY: number; baseDx: number; baseDy: number; scale: number } | null>(null);
 
@@ -81,13 +88,25 @@ export default function InteractiveCollage({ resetLabel = "Зібрати наз
     return () => ro.disconnect();
   }, []);
 
+  // Підказка: один раз фрагмент з'їжджає вниз і повертається (якщо колаж ще ніхто не чіпав).
+  useEffect(() => {
+    const down = setTimeout(() => setNudged(true), NUDGE_DELAY_MS);
+    const up = setTimeout(() => setNudged(false), NUDGE_DELAY_MS + NUDGE_HOLD_MS);
+    return () => {
+      clearTimeout(down);
+      clearTimeout(up);
+    };
+  }, []);
+
+  const offsetOf = (id: string): Offset => offsets[id] ?? (nudged ? NUDGED[id] : undefined) ?? { dx: 0, dy: 0 };
+
   const onPointerDown = (piece: Piece) => (e: React.PointerEvent<HTMLDivElement>) => {
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
     } catch {
       // synthetic events don't have an active pointer to capture
     }
-    const current = offsets[piece.id] ?? { dx: 0, dy: 0 };
+    const current = offsetOf(piece.id);
     dragStart.current = {
       id: piece.id,
       startX: e.clientX,
@@ -132,21 +151,20 @@ export default function InteractiveCollage({ resetLabel = "Зібрати наз
         style={{ width: FRAME_W, height: FRAME_H, transformOrigin: "top left", transform: `scale(${scale})` }}
       >
         {PIECES.map((piece) => {
-          const offset = offsets[piece.id] ?? { dx: 0, dy: 0 };
+          const offset = offsetOf(piece.id);
           const touched = zOrder[piece.id] !== undefined;
           const isDragging = draggingId === piece.id;
+          const hinted = nudged && !!NUDGED[piece.id] && !offsets[piece.id];
           // Ітерація домінує (1 зверху); всередині — порядок малювання елемента.
           // Зачеплені кусочки підіймаються над усіма у порядку останнього дотику.
           const z = touched ? 1000 + zOrder[piece.id] : (3 - piece.iteration) * 100 + piece.slot.z;
-          // Натяк-тремтіння лише для верхнього шару, доки його не чіпали.
-          const hint = piece.iteration === 1 && !touched;
           return (
             <div
               key={piece.id}
               onPointerDown={onPointerDown(piece)}
               onPointerMove={onPointerMove(piece)}
               onPointerUp={onPointerUp(piece)}
-              className={`absolute select-none${hint ? " collage-hint-piece" : ""}`}
+              className="absolute select-none"
               style={{
                 left: piece.slot.x,
                 top: piece.slot.y,
@@ -157,10 +175,15 @@ export default function InteractiveCollage({ resetLabel = "Зібрати наз
                 backgroundRepeat: "no-repeat",
                 zIndex: z,
                 transform: `translate(${offset.dx}px, ${offset.dy}px)${isDragging ? " scale(1.03) rotate(1.5deg)" : ""}`,
-                transition: isDragging ? "none" : "transform 0.15s ease",
-                animationDelay: hint ? `${1400 + piece.slot.z * 70}ms` : undefined,
+                transition: isDragging
+                  ? "none"
+                  : NUDGED[piece.id] && !offsets[piece.id]
+                    ? "transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.9s ease"
+                    : "transform 0.15s ease",
                 boxShadow: isDragging
                   ? "0 12px 32px rgba(0,0,0,0.35)"
+                  : hinted
+                    ? "0 8px 24px rgba(0,0,0,0.3)"
                   : touched
                     ? "0 4px 12px rgba(0,0,0,0.25)"
                     : "none",
