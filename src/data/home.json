@@ -25,19 +25,35 @@
         "tools": "Figma, HotJar, Amplitude",
         "imageRows": [
           {
-            "value": "/images/works/snov/snov-linkedin-settings.png"
+            "value": "/images/works/snov/n-li-flow.mp4",
+            "title": "LinkedIn автоматизація",
+            "description": "Брав участь у розробці LinkedIn-автоматизації у зв’язці з PM. Провів дослідження конкурентів і процесів продажів та спроєктував весь флоу від концепту до фінального дизайну: купівля слотів, підключення акаунту, ліміти безпеки, створення мультиканальних кампаній і статистика.",
+            "caseUrl": "/uk/cases/snov"
           },
           {
-            "value": "/images/works/snov/snov-email-promo.png"
+            "value": "/images/works/snov/n-ui-flow-v3.mp4",
+            "title": "Редизайн email outreach",
+            "description": "Оновлення в кількох інструментах: автопоєднання ланцюжків у кампанії, перевірка доставлення в підключенні емейлу, рекомендації та шаблони. +30% успішно створених кампаній."
           },
           {
-            "value": [
-              "/images/works/snov/snov-deliverability-check.webp",
-              "/images/works/snov/snov-linkedin-analytics.webp"
-            ]
+            "value": "/images/works/snov/n-dlv-flow.mp4",
+            "title": "Редизайн інструментів доставлення емейлів",
+            "description": "Оновили інструмент підготовки емейлу до розсилок: перевірка домену, потрапляння в Inbox чи спам та вмісту листа. Retention інструменту — 30%."
           },
           {
-            "value": "/images/works/snov/snov-campaign-reports.webp"
+            "value": "/images/works/snov/n-set-flow.mp4",
+            "title": "Редизайн налаштувань емейлу",
+            "description": "Редизайн налаштувань розсилок: мінімум полів та зрозумілий флоу. Кастомний домен підключають на 20% частіше, а підтримка отримує менше звернень щодо SMTP."
+          },
+          {
+            "value": "/images/works/snov/n-rep-cover.webp",
+            "title": "Звіти по всіх кампаніях",
+            "description": "Єдиний розділ аналітики для власних і командних кампаній: розподіл по каналах, вибір кампаній, періоду й команди та експорт."
+          },
+          {
+            "value": "/images/works/snov/n-warm-flow.mp4",
+            "title": "Оновлення інструменту прогріву емейлів",
+            "description": "Редизайн всього інструменту: прогрів одразу для кількох емейлів, більше стратегій з поясненнями та орієнтовним часом, оновлений вибір контенту."
           }
         ]
       },
@@ -54,14 +70,19 @@
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           {
+            "value": "/images/works/eschool/eschool-mob2-ua.webp",
+            "caseUrl": "/uk/cases/eschool-2",
+            "title": "Аналітика учня та рекомендації",
+            "description": "Оновив сервіс рекомендацій для батьків: поглиблена аналітика учня на основі оцінок, домашніх завдань і відвідуваності та рекомендації репетиторів. Запропонував Gallup-підхід — підсилювати те, що дитині вдається найкраще."
+          },
+          {
             "value": "/images/works/eschool/eschool-promo.png",
             "active": false
           },
           {
-            "value": "/images/works/eschool/eschool.webp"
-          },
-          {
-            "value": "/images/works/eschool/eschool-mob2-ua.webp"
+            "value": "/images/works/eschool/eschool.webp",
+            "title": "Розумники",
+            "description": "Спроєктував сервіс «Розумники» для дітей: щоденні цікавинки зі шкільної програми та тижневий рейтинг серед друзів по класу й школі. До запуску сервіс не дійшов."
           }
         ]
       },
@@ -83,19 +104,30 @@
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
         "imageRows": [
           {
-            "value": "/images/works/westudy/westudy-editor.webp"
+            "value": "/images/works/westudy/westudy-editor.webp",
+            "caseUrl": "/uk/cases/westudy",
+            "title": "Розробка сайтбілдеру",
+            "description": "Оновив конструктор сайтів для курсів, щоб утримати клієнтів, яких не влаштовував складний інструмент: сайт за лічені хвилини з наявних даних про курси та окремий режим для авторського дизайну."
           },
           {
-            "value": "/images/works/westudy/case-westudy-after-en.webm"
+            "value": "/images/works/westudy/case-westudy-after-en.webm",
+            "title": "Майстер створення сайту",
+            "description": "Покроковий майстер створення сайту: вибір потрібних блоків і кольорової палітри, після чого сайт збирається з даних про курси на платформі."
           },
           {
-            "value": "/images/works/westudy/westudy-onboarding.png"
+            "value": "/images/works/westudy/westudy-onboarding.png",
+            "title": "Онбординг нових клієнтів",
+            "description": "Онбординг для нових клієнтів платформи: чекліст налаштування проєкту, персональний помічник із записом на відео-зустріч та віджет допомоги з поширеними запитаннями."
           },
           {
-            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp"
+            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp",
+            "title": "Додаток-маркетплейс шкіл",
+            "description": "Мобільний додаток-маркетплейс для шкіл на Westudy: пошук курсів за категоріями, кабінет учня з прогресом навчання та завантаженням матеріалів на телефон. Створив для преміум-клієнтів, яким потрібна була кастомізація."
           },
           {
-            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp"
+            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp",
+            "title": "Конструктор email-розсилок",
+            "description": "Оновив інструмент створення email-розсилок: візуальний редактор листа з блоками, шаблонами й кольоровими темами та тестовим відправленням."
           }
         ]
       }
@@ -204,19 +236,35 @@
         "tools": "Figma, HotJar, Amplitude",
         "imageRows": [
           {
-            "value": "/images/works/snov/snov-linkedin-settings.png"
+            "value": "/images/works/snov/n-li-flow.mp4",
+            "title": "LinkedIn automation",
+            "description": "Took part in building LinkedIn automation in partnership with the PM. Researched competitors and sales workflows and designed the whole flow from concept to final design: buying slots, connecting an account, safety limits, creating multichannel campaigns and statistics.",
+            "caseUrl": "/en/cases/snov"
           },
           {
-            "value": "/images/works/snov/snov-email-promo.png"
+            "value": "/images/works/snov/n-ui-flow-v3.mp4",
+            "title": "Email outreach redesign",
+            "description": "Updates across several tools: auto-connected campaign steps, deliverability check when connecting an email, recommendations and templates. 30% more successfully created campaigns."
           },
           {
-            "value": [
-              "/images/works/snov/snov-deliverability-check.webp",
-              "/images/works/snov/snov-linkedin-analytics.webp"
-            ]
+            "value": "/images/works/snov/n-dlv-flow.mp4",
+            "title": "Email deliverability tools redesign",
+            "description": "Redesigned the tool for preparing an email before sending: domain check, inbox vs. spam placement and content check. Tool retention: 30%."
           },
           {
-            "value": "/images/works/snov/snov-campaign-reports.webp"
+            "value": "/images/works/snov/n-set-flow.mp4",
+            "title": "Email settings redesign",
+            "description": "A redesign of sender settings: fewer fields and a clearer flow. 20% more users connect a custom domain and support gets fewer SMTP requests."
+          },
+          {
+            "value": "/images/works/snov/n-rep-cover.webp",
+            "title": "Reports across all campaigns",
+            "description": "A single analytics section for personal and team campaigns: channel split, campaign, period and team filters, and export."
+          },
+          {
+            "value": "/images/works/snov/n-warm-flow.mp4",
+            "title": "Email warm-up redesign",
+            "description": "A redesign of the whole tool: warm up several emails at once, more strategies with explanations and estimated time, an updated content picker."
           }
         ]
       },
@@ -233,14 +281,19 @@
         "tools": "Figma, Claude Code, Android Studio, VS Code",
         "imageRows": [
           {
+            "value": "/images/works/eschool/eschool-mob2-en.webp",
+            "caseUrl": "/en/cases/eschool-2",
+            "title": "Student analytics and recommendations",
+            "description": "Redesigned the parent recommendations service: in-depth student analytics based on grades, homework and attendance, plus tutor recommendations. Proposed a Gallup-style approach: reinforce what the child does best."
+          },
+          {
             "value": "/images/works/eschool/eschool-web-en.webp",
             "active": false
           },
           {
-            "value": "/images/works/eschool/eschool-mob-en.webp"
-          },
-          {
-            "value": "/images/works/eschool/eschool-mob2-en.webp"
+            "value": "/images/works/eschool/eschool-mob-en.webp",
+            "title": "Rozumnyky",
+            "description": "Designed “Rozumnyky”, a service for kids: daily fun facts from the school curriculum and a weekly leaderboard among classmates and schoolmates. The service was never launched."
           }
         ]
       },
@@ -262,16 +315,25 @@
         "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
         "imageRows": [
           {
-            "value": "/images/works/westudy/promo-builder-westudy.webp"
+            "value": "/images/works/westudy/promo-builder-westudy.webp",
+            "caseUrl": "/en/cases/westudy",
+            "title": "Site builder development",
+            "description": "Redesigned the course site builder to retain clients unhappy with a complex tool: a site in minutes from existing course data, plus a separate mode for custom design."
           },
           {
-            "value": "/images/works/westudy/case-westudy-after-en.webm"
+            "value": "/images/works/westudy/case-westudy-after-en.webm",
+            "title": "Site creation wizard",
+            "description": "A step-by-step site creation wizard: pick the blocks you need and a color palette, and the site is built from the course data already on the platform."
           },
           {
-            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp"
+            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp",
+            "title": "Schools marketplace app",
+            "description": "A mobile marketplace app for schools on Westudy: course search by category, a student space with learning progress and downloads to the phone. Built for premium clients who needed customization."
           },
           {
-            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp"
+            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp",
+            "title": "Email campaign builder",
+            "description": "Redesigned the email campaign tool: a visual email editor with blocks, templates and color themes, plus test sending."
           }
         ]
       }

@@ -1,4 +1,10 @@
-export type HomeImageRow = { value: string | string[]; active?: boolean };
+export type HomeImageRow = {
+  value: string | string[];
+  active?: boolean;
+  title?: string;
+  description?: string;
+  caseUrl?: string;
+};
 
 export type HomeCompany = {
   slug: string;

@@ -4,6 +4,7 @@ export type WorkScreen = {
   src: string;
   title: string;
   description: string;
+  caseUrl?: string;
 };
 
 export type WorkItem = {
@@ -36,9 +37,21 @@ function stubScreen(src: string, n: number, locale: string): WorkScreen {
 }
 
 export function companyToWorkItem(c: HomeCompany, locale: string): WorkItem {
-  const srcs = c.imageRows
+  let n = 0;
+  const screens = c.imageRows
     .filter((r) => r.active !== false)
-    .flatMap((r) => (Array.isArray(r.value) ? r.value : [r.value]));
+    .flatMap((r) =>
+      (Array.isArray(r.value) ? r.value : [r.value]).map((src): WorkScreen => {
+        n += 1;
+        const stub = stubScreen(src, n, locale);
+        return {
+          src,
+          title: r.title || stub.title,
+          description: r.description || stub.description,
+          caseUrl: r.caseUrl,
+        };
+      }),
+    );
   return {
     slug: c.slug,
     name: c.name,
@@ -52,7 +65,7 @@ export function companyToWorkItem(c: HomeCompany, locale: string): WorkItem {
     achievements: c.achievements,
     caseUrl: c.caseUrl,
     casePending: c.casePending,
-    screens: srcs.map((s, i) => stubScreen(s, i + 1, locale)),
+    screens,
   };
 }
 

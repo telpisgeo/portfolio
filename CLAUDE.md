@@ -182,3 +182,6 @@ Whenever content is changed on the site (images, videos, texts, works, cases), u
 ## Graph design page (`/graph/[locale]`)
 - URL locales are **`ua`** and **`en`** (not `uk`): `/graph/ua`, `/graph/en`. Content locale keys in `graph.json` are `uk`/`en`.
 - Work screenshots (`imageRows`) accept images **or** video: a value ending in `.webm/.mp4/.mov` renders as an autoplaying muted looping `<video>`. Example: Yedyna school posts → `/images/works/eschool/yedyna-school-posts-carousel.webm` (Figma Motion carousel).
+
+## Home works section (`WorksSection`)
+Each `home.json` company `imageRows` item is one screen in the rail/drawer: `{ value, active?, title?, description?, caseUrl? }`. `title`/`description` fill the caption and the drawer (placeholder stubs if empty); `caseUrl` shows "Дивитись кейс" in the drawer **only on that screen** (no link if there is no case). Validated in `api/admin/save/route.ts`; the admin form doesn't expose the new fields yet — edit `home.json` (uk + en).

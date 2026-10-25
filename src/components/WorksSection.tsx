@@ -163,11 +163,11 @@ function Drawer({
   if (item.role) rows.push({ label: uk ? "Роль" : "Role", value: item.role });
   if (item.tools) rows.push({ label: uk ? "Інструменти" : "Tools", value: item.tools });
   if (item.period) rows.push({ label: uk ? "Роки" : "Years", value: item.period });
-  if (item.caseUrl) {
+  if (s.caseUrl) {
     rows.push({
       label: uk ? "Кейс" : "Case",
       value: (
-        <Link href={item.caseUrl} className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:no-underline">
+        <Link href={s.caseUrl} className="inline-flex items-center gap-1.5 underline underline-offset-2 hover:no-underline">
           {uk ? "Дивитись кейс" : "View case"}
           <ExternalIcon className="opacity-50" />
         </Link>
@@ -175,13 +175,13 @@ function Drawer({
     });
   }
 
-  const navBtn = "w-10 h-10 rounded-full bg-muted hover:bg-border text-foreground flex items-center justify-center transition-colors disabled:opacity-30 disabled:hover:bg-muted";
+  const navBtn = "w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-secondary-foreground flex items-center justify-center transition-colors disabled:opacity-30 disabled:hover:bg-white/10";
 
   return (
     <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label={s.title}>
       <div
         onClick={onClose}
-        className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${shown ? "opacity-100" : "opacity-0"}`}
+        className={`absolute inset-0 bg-footer-bg/90 backdrop-blur-sm transition-opacity duration-300 ${shown ? "opacity-100" : "opacity-0"}`}
       />
       <div
         onClick={onClose}
@@ -195,7 +195,7 @@ function Drawer({
         )}
       </div>
       <aside
-        className={`absolute bg-white shadow-2xl overflow-y-auto transition-transform duration-300 ease-out
+        className={`absolute bg-secondary text-secondary-foreground shadow-2xl overflow-y-auto transition-transform duration-300 ease-out
           sm:top-0 sm:right-0 sm:h-full sm:w-[480px] sm:max-w-full ${shown ? "sm:translate-x-0" : "sm:translate-x-full"}
           max-sm:bottom-0 max-sm:inset-x-0 max-sm:max-h-[85vh] max-sm:rounded-t-3xl ${shown ? "max-sm:translate-y-0" : "max-sm:translate-y-full"}`}
       >
@@ -223,22 +223,22 @@ function Drawer({
             )}
           </div>
 
-          <div className="flex items-start justify-between gap-4 pb-6 border-b border-border">
+          <div className="flex items-start justify-between gap-4 pb-6 border-b border-secondary-foreground/15">
             <div>
-              <p className="text-sm text-muted-foreground">{item.name}</p>
-              <h3 className="text-2xl font-medium text-foreground mt-0.5">{s.title}</h3>
+              <p className="text-sm text-secondary-foreground/60">{item.name}</p>
+              <h3 className="text-2xl font-medium text-secondary-foreground mt-0.5">{s.title}</h3>
             </div>
             <CompanyIcon item={item} size={40} />
           </div>
 
-          <p className="text-lg text-foreground/80 leading-relaxed">{s.description}</p>
+          <p className="text-lg text-secondary-foreground/80 leading-relaxed">{s.description}</p>
 
           {rows.length > 0 && (
-            <dl className="rounded-2xl bg-muted/60 px-5 py-1">
+            <dl className="rounded-2xl bg-white/5 px-5 py-1">
               {rows.map((r, i) => (
-                <div key={r.label} className={`flex justify-between gap-6 py-4 text-sm ${i > 0 ? "border-t border-border" : ""}`}>
-                  <dt className="text-muted-foreground shrink-0">{r.label}</dt>
-                  <dd className="text-foreground text-right">{r.value}</dd>
+                <div key={r.label} className={`flex justify-between gap-6 py-4 text-sm ${i > 0 ? "border-t border-secondary-foreground/15" : ""}`}>
+                  <dt className="text-secondary-foreground/60 shrink-0">{r.label}</dt>
+                  <dd className="text-secondary-foreground text-right">{r.value}</dd>
                 </div>
               ))}
             </dl>

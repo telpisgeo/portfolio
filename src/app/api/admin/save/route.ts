@@ -38,6 +38,9 @@ function validateImageRows(rows: unknown): string | null {
     if (!row || typeof row !== "object") return `Невірний рядок зображення: ${row}`;
     const r = row as Record<string, unknown>;
     if (r.active !== undefined && typeof r.active !== "boolean") return "active має бути булевим";
+    if (r.title !== undefined && (!isString(r.title) || r.title.length > 200)) return "Невірна назва екрана";
+    if (r.description !== undefined && (!isString(r.description) || r.description.length > 1000)) return "Невірний опис екрана";
+    if (r.caseUrl !== undefined && (!isString(r.caseUrl) || !CASE_URL_RE.test(r.caseUrl))) return `Невірне посилання на кейс: ${r.caseUrl}`;
     if (Array.isArray(r.value)) {
       for (const img of r.value) {
         const err = validateMediaPath(img);
