@@ -1,0 +1,354 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root { --pad: 12px; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 12px/1.45 Inter, system-ui, sans-serif; color: var(--figma-color-text, #222); background: var(--figma-color-bg, #fff); }
+  main { padding: var(--pad); display: flex; flex-direction: column; gap: 12px; min-height: 100vh; }
+  h1 { font-size: 13px; margin: 0; font-weight: 600; }
+  .muted { color: var(--figma-color-text-secondary, #777); }
+  .box { border: 1px solid var(--figma-color-border, #ddd); border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+  label { display: flex; align-items: center; gap: 8px; }
+  select { width: 100%; padding: 4px; }
+  .list { max-height: 150px; overflow: auto; display: flex; flex-direction: column; gap: 4px; }
+  .row { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+  .row span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tag { font-size: 10px; padding: 1px 6px; border-radius: 99px; background: var(--figma-color-bg-secondary, #eee); }
+  .tag.ok { background: #d9f5df; color: #14532d; }
+  .tag.err { background: #fde2e2; color: #7f1d1d; }
+  .tag.run { background: #fff1cc; color: #7a4b00; }
+  button { padding: 8px 12px; border-radius: 6px; border: 0; background: var(--figma-color-bg-brand, #0d99ff); color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: .4; cursor: default; }
+  .bar { height: 4px; background: var(--figma-color-bg-secondary, #eee); border-radius: 2px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; width: 0; background: var(--figma-color-bg-brand, #0d99ff); transition: width .15s; }
+  #demo { display: none; }
+  .checker { background: conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0) 0 0/16px 16px; }
+  #demo img { max-width: 100%; }
+</style>
+</head>
+<body>
+<main>
+  <div>
+    <h1>Cutout — remove background</h1>
+    <div class="muted">Select images (or a frame/section that contains them). The model runs locally in this window, nothing is uploaded.</div>
+  </div>
+
+  <div class="box">
+    <div class="row"><b id="count">0 images selected</b><span class="muted" id="status"></span></div>
+    <div class="list" id="list"></div>
+  </div>
+
+  <div class="box">
+    <label>AI quality
+      <select id="model">
+        <option value="isnet_quint8">Fast (smaller download)</option>
+        <option value="isnet_fp16" selected>Balanced</option>
+        <option value="isnet">Best (largest download)</option>
+      </select>
+    </label>
+    <label>Method
+      <select id="method">
+        <option value="auto" selected>Auto (plain backgrounds, else AI)</option>
+        <option value="plain">Plain background (flood fill from edges)</option>
+        <option value="ai">AI model</option>
+      </select>
+    </label>
+    <label>Tolerance <input type="range" id="tol" min="2" max="60" value="14" style="flex:1" /> <span id="tolv" class="muted">14</span></label>
+    <label>Result
+      <select id="mode">
+        <option value="new" selected>New layer next to the original</option>
+        <option value="replace">Replace the original image</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="trim" checked /> Trim transparent edges</label>
+    <label><input type="checkbox" id="holes" checked /> Also clear enclosed background (windows, loops)</label>
+    <label><input type="checkbox" id="split" /> Split into separate pieces (sheets of many objects)</label>
+  </div>
+
+  <div class="bar"><i id="bar"></i></div>
+  <button id="run" disabled>Remove background</button>
+  <div class="muted" id="hint">First run downloads the model (about 40–170 MB depending on quality) and caches it.</div>
+
+  <div id="demo"></div>
+</main>
+
+<script type="module">
+const LIB = 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm';
+const $ = (id) => document.getElementById(id);
+const inFigma = window.parent !== window;
+let removeBackground = null;
+let items = [];
+const state = new Map(); // id -> 'run' | 'ok' | 'err'
+let running = false;
+
+const post = (m) => parent.postMessage({ pluginMessage: m }, '*');
+
+function renderList() {
+  $('count').textContent = items.length + (items.length === 1 ? ' image selected' : ' images selected');
+  $('run').disabled = running || !items.length;
+  $('list').innerHTML = '';
+  for (const it of items) {
+    const s = state.get(it.id);
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.innerHTML = '<span></span><span class="tag ' + (s || '') + '">' + (s === 'ok' ? 'done' : s === 'run' ? 'working…' : s === 'err' ? 'failed' : it.w + '×' + it.h) + '</span>';
+    row.firstChild.textContent = it.name;
+    $('list').appendChild(row);
+  }
+}
+
+async function loadLib(onProgress) {
+  if (removeBackground) return;
+  onProgress && onProgress('Loading runtime…');
+  const mod = await import(LIB);
+  removeBackground = mod.removeBackground || (mod.default && mod.default.removeBackground);
+  if (!removeBackground) throw new Error('Could not load the background removal library');
+}
+
+function sniff(bytes) {
+  return bytes[0] === 0x89 ? 'image/png' : bytes[0] === 0xff ? 'image/jpeg' : bytes[0] === 0x47 ? 'image/gif' : 'image/webp';
+}
+
+async function alphaBox(bmp) {
+  const c = new OffscreenCanvas(bmp.width, bmp.height);
+  const g = c.getContext('2d', { willReadFrequently: true });
+  g.drawImage(bmp, 0, 0);
+  const { data, width, height } = g.getImageData(0, 0, bmp.width, bmp.height);
+  let x0 = width, y0 = height, x1 = -1, y1 = -1;
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      if (data[(y * width + x) * 4 + 3] > 8) {
+        if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
+      }
+    }
+  }
+  if (x1 < 0) return { x: 0, y: 0, w: width, h: height };
+  return { x: x0, y: y0, w: x1 - x0 + 1, h: y1 - y0 + 1 };
+}
+
+// Plain-background removal: flood fill from the image border over pixels close to the border colour.
+// Keeps near-white subjects (cream paper on white) that the AI model tends to drop.
+async function plain(src, tol, holes) {
+  const W = src.width, H = src.height;
+  const c = new OffscreenCanvas(W, H);
+  const g = c.getContext('2d', { willReadFrequently: true });
+  g.drawImage(src, 0, 0);
+  const img = g.getImageData(0, 0, W, H);
+  const d = img.data;
+  // background colour = median of the border pixels
+  const bs = [];
+  const step = Math.max(1, Math.floor((W + H) / 400));
+  for (let x = 0; x < W; x += step) { bs.push((0 * W + x) * 4, ((H - 1) * W + x) * 4); }
+  for (let y = 0; y < H; y += step) { bs.push((y * W) * 4, (y * W + W - 1) * 4); }
+  const med = (k) => { const a = bs.map((i) => d[i + k]).sort((p, q) => p - q); return a[a.length >> 1]; };
+  const bg = [med(0), med(1), med(2)];
+  const dist = (i) => Math.max(Math.abs(d[i] - bg[0]), Math.abs(d[i + 1] - bg[1]), Math.abs(d[i + 2] - bg[2]));
+  let close = 0;
+  for (const i of bs) if (dist(i) <= tol * 1.5) close++;
+  const isPlain = close / bs.length >= 0.6 && d[3] > 0;
+  if (!isPlain) return { isPlain: false };
+  const mask = new Uint8Array(W * H); // 1 = background
+  const stack = new Int32Array(W * H);
+  let sp = 0;
+  const push = (p) => { if (!mask[p] && dist(p * 4) <= tol) { mask[p] = 1; stack[sp++] = p; } };
+  for (let x = 0; x < W; x++) { push(x); push((H - 1) * W + x); }
+  for (let y = 0; y < H; y++) { push(y * W); push(y * W + W - 1); }
+  while (sp) {
+    const p = stack[--sp], x = p % W, y = (p / W) | 0;
+    if (x > 0) push(p - 1); if (x < W - 1) push(p + 1);
+    if (y > 0) push(p - W); if (y < H - 1) push(p + W);
+  }
+  if (holes) {
+    // enclosed regions that look like the background (e.g. the window of a frame, the loop of a paperclip)
+    const minHole = Math.max(300, Math.round(W * H * 0.0008));
+    const seen = new Uint8Array(W * H);
+    const q = new Int32Array(W * H);
+    for (let s0 = 0; s0 < W * H; s0++) {
+      if (mask[s0] || seen[s0] || dist(s0 * 4) > tol) continue;
+      let qh = 0, qt = 0; q[qt++] = s0; seen[s0] = 1;
+      while (qh < qt) {
+        const p = q[qh++], x = p % W, y = (p / W) | 0;
+        const nb = [x > 0 ? p - 1 : -1, x < W - 1 ? p + 1 : -1, y > 0 ? p - W : -1, y < H - 1 ? p + W : -1];
+        for (const n of nb) if (n >= 0 && !mask[n] && !seen[n] && dist(n * 4) <= tol) { seen[n] = 1; q[qt++] = n; }
+      }
+      if (qt >= minHole) for (let i = 0; i < qt; i++) mask[q[i]] = 1;
+    }
+  }
+  // alpha: background 0, subject 255, one-pixel soft edge
+  for (let p = 0; p < W * H; p++) d[p * 4 + 3] = mask[p] ? 0 : 255;
+  for (let y = 1; y < H - 1; y++) {
+    for (let x = 1; x < W - 1; x++) {
+      const p = y * W + x;
+      if (mask[p]) continue;
+      const n = mask[p - 1] + mask[p + 1] + mask[p - W] + mask[p + W];
+      if (n) d[p * 4 + 3] = Math.round(255 * (1 - n * 0.22));
+    }
+  }
+  g.putImageData(img, 0, 0);
+  return { isPlain: true, blob: await c.convertToBlob({ type: 'image/png' }) };
+}
+
+// Split a cutout into separate pieces (8-connected components of the alpha channel).
+async function splitPieces(bmp, minArea) {
+  const W = bmp.width, H = bmp.height;
+  const c = new OffscreenCanvas(W, H);
+  const g = c.getContext('2d', { willReadFrequently: true });
+  g.drawImage(bmp, 0, 0);
+  const img = g.getImageData(0, 0, W, H);
+  const d = img.data;
+  const label = new Int32Array(W * H);
+  const q = new Int32Array(W * H);
+  const comps = [];
+  for (let s0 = 0; s0 < W * H; s0++) {
+    if (label[s0] || d[s0 * 4 + 3] <= 16) continue;
+    const id = comps.length + 1;
+    let qh = 0, qt = 0; q[qt++] = s0; label[s0] = id;
+    let x0 = W, y0 = H, x1 = 0, y1 = 0;
+    while (qh < qt) {
+      const p = q[qh++], x = p % W, y = (p / W) | 0;
+      if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        const nx = x + dx, ny = y + dy;
+        if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+        const n = ny * W + nx;
+        if (!label[n] && d[n * 4 + 3] > 16) { label[n] = id; q[qt++] = n; }
+      }
+    }
+    comps.push({ id, x: x0, y: y0, w: x1 - x0 + 1, h: y1 - y0 + 1, area: qt });
+  }
+  const pieces = [];
+  for (const k of comps) {
+    if (k.area < minArea) continue;
+    const pc = new OffscreenCanvas(k.w, k.h);
+    const pg = pc.getContext('2d');
+    const out = pg.createImageData(k.w, k.h);
+    for (let y = 0; y < k.h; y++) for (let x = 0; x < k.w; x++) {
+      const p = (k.y + y) * W + k.x + x;
+      if (label[p] === k.id) { const o = (y * k.w + x) * 4, i = p * 4; out.data[o] = d[i]; out.data[o + 1] = d[i + 1]; out.data[o + 2] = d[i + 2]; out.data[o + 3] = d[i + 3]; }
+    }
+    pg.putImageData(out, 0, 0);
+    const blob = await pc.convertToBlob({ type: 'image/png' });
+    pieces.push({ bytes: new Uint8Array(await blob.arrayBuffer()), w: k.w, h: k.h, boxX: k.x, boxY: k.y, blob });
+  }
+  return pieces;
+}
+
+// Core: bytes -> cutout PNG bytes (+ geometry). Used by both Figma and demo mode.
+async function cutout(bytes, { model, trim, method = 'auto', tol = 14, holes = true, split = false, onProgress }) {
+  const input = new Blob([bytes], { type: sniff(bytes) });
+  const src = await createImageBitmap(input);
+  let out = null, used = 'ai';
+  if (method !== 'ai') {
+    const r = await plain(src, tol, holes);
+    if (r.isPlain) { out = r.blob; used = 'plain'; }
+    else if (method === 'plain') throw new Error('Background is not plain — use Auto or AI');
+  }
+  if (!out) {
+    await loadLib(onProgress);
+    out = await removeBackground(input, {
+      model,
+      output: { format: 'image/png', quality: 1 },
+      progress: (key, cur, total) => onProgress && onProgress(key.startsWith('fetch') ? 'Downloading model ' + Math.round((cur / total) * 100) + '%' : 'Processing…', cur / total),
+    });
+  }
+  const bmp = await createImageBitmap(out);
+  if (split) {
+    const pieces = await splitPieces(bmp, Math.max(150, Math.round(bmp.width * bmp.height * 0.0004)));
+    return { pieces, srcW: src.width, srcH: src.height, used };
+  }
+  let box = { x: 0, y: 0, w: bmp.width, h: bmp.height };
+  if (trim) box = await alphaBox(bmp);
+  const c = new OffscreenCanvas(box.w, box.h);
+  c.getContext('2d').drawImage(bmp, box.x, box.y, box.w, box.h, 0, 0, box.w, box.h);
+  const png = await c.convertToBlob({ type: 'image/png' });
+  return { bytes: new Uint8Array(await png.arrayBuffer()), w: box.w, h: box.h, boxX: box.x, boxY: box.y, srcW: src.width, srcH: src.height, blob: png, used };
+}
+window.__cutout = cutout;
+
+const pending = new Map();
+function getBytes(id) {
+  return new Promise((resolve, reject) => { pending.set(id, { resolve, reject }); post({ type: 'get-bytes', id }); });
+}
+const saved = new Map();
+function waitSaved(id) { return new Promise((resolve, reject) => saved.set(id, { resolve, reject })); }
+
+window.onmessage = (e) => {
+  const m = e.data && e.data.pluginMessage;
+  if (!m) return;
+  if (m.type === 'selection') { items = m.items; if (!running) { state.clear(); } renderList(); }
+  else if (m.type === 'bytes') { const p = pending.get(m.id); if (p) { pending.delete(m.id); p.resolve(m.bytes); } }
+  else if (m.type === 'saved') { const p = saved.get(m.id); if (p) { saved.delete(m.id); p.resolve(m.nodeId); } }
+  else if (m.type === 'error') {
+    const p = pending.get(m.id) || saved.get(m.id);
+    if (p) { pending.delete(m.id); saved.delete(m.id); p.reject(new Error(m.message)); }
+  }
+};
+
+$('tol').oninput = () => { $('tolv').textContent = $('tol').value; };
+$('run').onclick = async () => {
+  running = true; $('run').disabled = true; state.clear(); renderList();
+  const opts = { model: $('model').value, trim: $('trim').checked, mode: $('mode').value, method: $('method').value, tol: Number($('tol').value), holes: $('holes').checked, split: $('split').checked };
+  if (opts.split) opts.mode = 'new';
+  const todo = items.slice();
+  const created = [];
+  let done = 0;
+  for (const it of todo) {
+    state.set(it.id, 'run'); renderList();
+    try {
+      const bytes = await getBytes(it.id);
+      const r = await cutout(bytes, {
+        model: opts.model,
+        method: opts.method,
+        tol: opts.tol,
+        holes: opts.holes,
+        split: opts.split,
+        trim: opts.trim && opts.mode === 'new',
+        onProgress: (txt, frac) => { $('status').textContent = txt; if (frac != null && txt.startsWith('Downloading')) $('bar').style.width = Math.round(frac * 100) + '%'; },
+      });
+      const wait = waitSaved(it.id);
+      if (r.pieces) post({ type: 'result', id: it.id, mode: 'new', pieces: r.pieces.map(({ bytes, w, h, boxX, boxY }) => ({ bytes, w, h, boxX, boxY })), srcW: r.srcW });
+      else post({ type: 'result', id: it.id, mode: opts.mode, bytes: r.bytes, w: r.w, h: r.h, boxX: r.boxX, boxY: r.boxY, srcW: r.srcW, srcH: r.srcH });
+      const ids = await wait; created.push(...[].concat(ids));
+      if (r.pieces) $('status').textContent = it.name + ': ' + r.pieces.length + ' pieces';
+      state.set(it.id, 'ok');
+      if (!r.pieces) $('status').textContent = it.name + ': ' + (r.used === 'plain' ? 'plain background' : 'AI model');
+    } catch (err) {
+      console.error(err);
+      state.set(it.id, 'err');
+      $('status').textContent = String(err.message || err).slice(0, 80);
+    }
+    done++; $('bar').style.width = Math.round((done / todo.length) * 100) + '%';
+    renderList();
+  }
+  running = false;
+  $('status').textContent = '';
+  if (opts.mode === 'new' && created.length) post({ type: 'select', ids: created });
+  post({ type: 'notify', text: 'Cutout: ' + created.length + ' of ' + todo.length + ' done' });
+  renderList();
+};
+
+// Stand-alone mode (opened in a normal browser tab): ?demo=<image url>
+if (!inFigma) {
+  const qs = new URLSearchParams(location.search); const url = qs.get('demo');
+  if (url) {
+    $('demo').style.display = 'block';
+    (async () => {
+      try {
+        const t = performance.now();
+        const bytes = new Uint8Array(await (await fetch(url)).arrayBuffer());
+        const r = await cutout(bytes, { model: 'isnet_fp16', trim: true, method: qs.get('method') || 'auto', tol: Number(qs.get('tol')) || 14, holes: qs.get('holes') !== '0', split: qs.get('split') === '1', onProgress: (txt) => { $('status').textContent = txt; } });
+        $('demo').innerHTML = '<div class="checker" style="display:flex;flex-wrap:wrap;gap:6px;padding:6px"></div>';
+        for (const p of (r.pieces || [r])) { const img = new Image(); img.src = URL.createObjectURL(p.blob); img.style.maxHeight = r.pieces ? '90px' : 'none'; $('demo').firstChild.appendChild(img); }
+        window.__demoResult = { used: r.used, ms: Math.round(performance.now() - t), pieces: r.pieces ? r.pieces.length : 1, srcW: r.srcW, srcH: r.srcH };
+        $('status').textContent = 'done in ' + window.__demoResult.ms + ' ms';
+      } catch (e) { window.__demoError = String(e && e.message || e); $('status').textContent = window.__demoError; }
+    })();
+  }
+}
+renderList();
+</script>
+</body>
+</html>
