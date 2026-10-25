@@ -13,6 +13,32 @@
     ],
     "companies": [
       {
+        "slug": "agroprolisok",
+        "name": "Агропролісок",
+        "url": "https://agroprolisok.com.ua/ua/",
+        "period": "",
+        "productType": "Постачання, монтаж і сервіс обладнання для птахівництва, свинарства та мікроклімату (B2B)",
+        "role": "",
+        "icon": "/images/icons/agroprolisok.svg",
+        "description": "Технічний партнер птахівничих і тваринницьких господарств. Розробив гайдлайн візуальних комунікацій для соцмереж: палітра, типографіка, графічні елементи, фотостиль і каруселі для Instagram.",
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/agroprolisok/prolis.webp",
+            "active": true
+          },
+          {
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/agroprolisok/carousel-animation-agroprolisok-PwljqJGxR4WUi8ZzfDm1y7ycuKYh1g.mp4"
+          },
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-slide-once.webm"
+          },
+          {
+            "value": "/images/works/agroprolisok/poster-agroprolisok.webp"
+          }
+        ]
+      },
+      {
         "slug": "eschool",
         "name": "Єдина школа",
         "url": "https://sitev2.eschool-ua.com",
@@ -175,6 +201,31 @@
       "I graduated from Odesa Polytechnic and the British Higher School of Art & Design."
     ],
     "companies": [
+      {
+        "slug": "agroprolisok",
+        "name": "Agroprolisok",
+        "url": "https://agroprolisok.com.ua/ua/",
+        "period": "",
+        "productType": "Supply, installation and service of equipment for poultry, pig farming and climate control (B2B)",
+        "role": "",
+        "icon": "/images/icons/agroprolisok.svg",
+        "description": "A technical partner for poultry and livestock farms. Created a visual communications guide for social media: palette, typography, graphic elements, photo style and Instagram carousels.",
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-guide.webp"
+          },
+          {
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/agroprolisok/carousel-animation-agroprolisok-ooGSQyj53Ba5Ek2K8mC4O5cr0W1pdr.mp4"
+          },
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-slide-once.webm"
+          },
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-billboard.webp"
+          }
+        ]
+      },
       {
         "slug": "eschool",
         "name": "Yedyna Shkola",

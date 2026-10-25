@@ -10,11 +10,13 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import ShimmerImage from "@/components/ShimmerImage";
 import Testimonials from "@/components/Testimonials";
-import LazyVideo from "@/components/LazyVideo";
+import CenterPlayVideo from "@/components/CenterPlayVideo";
 
 const SITE_URL = "https://www.telpis.com.ua";
 
 const VIDEO_EXT_RE = /\.(webm|mp4|mov)$/i;
+// Videos named "*-once.<ext>" play a single time and stay on the last frame.
+const ONCE_VIDEO_RE = /-once\.(webm|mp4|mov)$/i;
 
 // This section uses its own URL locale segments ("ua"/"en") instead of the
 // main site's "uk"/"en" — kept distinct per the graph-design page brief.
@@ -233,7 +235,7 @@ export default async function GraphLocalePage({
                         {row.value.map((src) => (
                           <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
                             {VIDEO_EXT_RE.test(src) ? (
-                              <LazyVideo src={src} className="absolute inset-0 w-full h-full object-cover" />
+                              <CenterPlayVideo src={src} className="absolute inset-0 w-full h-full object-cover" />
                             ) : (
                               <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
                             )}
@@ -242,7 +244,7 @@ export default async function GraphLocalePage({
                       </div>
                     ) : VIDEO_EXT_RE.test(row.value) ? (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">
-                        <LazyVideo src={row.value} className="w-full h-auto" />
+                        <CenterPlayVideo src={row.value} className="w-full h-auto" once={ONCE_VIDEO_RE.test(row.value)} />
                       </div>
                     ) : (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">
