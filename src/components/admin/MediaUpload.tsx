@@ -41,6 +41,15 @@ function getExt(name: string): string {
 // case, which crashes response parsing in a browser-specific, cryptic way).
 const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
 
+// Videos that are already web-ready (mp4/webm up to this size) are uploaded as
+// they are. Re-encoding them only makes them bigger and softer: the converter
+// below targets high quality, so a 3MB VP9 clip came back as tens of MB.
+const PASSTHROUGH_MAX_BYTES = 10 * 1024 * 1024;
+
+function formatMB(bytes: number): string {
+  return `${(bytes / 1024 / 1024).toFixed(1)}MB`;
+}
+
 async function parseJsonResponse(res: Response): Promise<{ error?: string; [key: string]: unknown }> {
   const text = await res.text();
   try {
@@ -55,6 +64,7 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
   const [busy, setBusy] = useState(false);
   const [progress, setProgress] = useState("");
   const [error, setError] = useState("");
+  const [info, setInfo] = useState("");
   // Images are committed straight to the GitHub repo (see /api/admin/media),
   // so the returned path isn't actually servable until Vercel finishes
   // deploying that commit — showing it immediately would 404 half the time.
@@ -80,6 +90,23 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
   }
 
   async function uploadVideo(file: File) {
+    const ext = getExt(file.name).toLowerCase();
+    const { upload } = await import("@vercel/blob/client");
+    const base = sanitizeFilename(file.name);
+
+    // Already a compact web video: upload untouched.
+    if ((ext === ".webm" || ext === ".mp4") && file.size <= PASSTHROUGH_MAX_BYTES) {
+      setProgress("Завантажую у сховище...");
+      const result = await upload(`${dir}/${base}${ext}`, file, {
+        access: "public",
+        contentType: ext === ".webm" ? "video/webm" : "video/mp4",
+        handleUploadUrl: "/api/admin/blob-upload",
+      });
+      setInfo(`Завантажено без перекодування (${formatMB(file.size)})`);
+      onChange(result.url);
+      return;
+    }
+
     setProgress("Завантажую FFmpeg...");
     const { FFmpeg } = await import("@ffmpeg/ffmpeg");
     const { toBlobURL, fetchFile } = await import("@ffmpeg/util");
@@ -93,15 +120,18 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
       wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, "application/wasm"),
     });
 
-    const inputName = `input${getExt(file.name) || ".mp4"}`;
+    const inputName = `input${ext || ".mp4"}`;
     const outputName = "output.mp4";
     await ffmpeg.writeFile(inputName, await fetchFile(file));
+    // Sized for a web page, not for archiving: 1280px wide and crf 28
+    // (crf 20 produced files several times larger with no visible gain).
     await ffmpeg.exec([
       "-i", inputName,
-      "-vf", "scale='min(1920,iw)':-2",
+      "-vf", "scale='min(1280,iw)':-2",
       "-c:v", "libx264",
-      "-crf", "20",
+      "-crf", "28",
       "-preset", "veryfast",
+      "-pix_fmt", "yuv420p",
       "-movflags", "+faststart",
       "-an",
       outputName,
@@ -112,18 +142,20 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
     const blob = new Blob([outputBytes], { type: "video/mp4" });
 
     setProgress("Завантажую у сховище...");
-    const { upload } = await import("@vercel/blob/client");
-    const pathname = `${dir}/${sanitizeFilename(file.name)}.mp4`;
-    const result = await upload(pathname, blob, {
+    const result = await upload(`${dir}/${base}.mp4`, blob, {
       access: "public",
+      contentType: "video/mp4",
       handleUploadUrl: "/api/admin/blob-upload",
     });
+    const note = `${formatMB(file.size)} → ${formatMB(blob.size)}`;
+    setInfo(blob.size > 8 * 1024 * 1024 ? `${note}. Важко для сторінки — краще стиснути сильніше` : note);
     onChange(result.url);
   }
 
   async function handleFile(file: File) {
     setBusy(true);
     setError("");
+    setInfo("");
     try {
       const isVideo = kind === "video" || (kind === "media" && file.type.startsWith("video/"));
       if (isVideo) {
@@ -197,6 +229,7 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
         }}
       />
       {error && <p className="text-xs text-red-600 mt-1">{error}</p>}
+      {info && !error && <p className="text-xs text-muted-foreground mt-1">{info}</p>}
       {value && <p className="text-xs text-muted-foreground font-mono mt-1 truncate">{value}</p>}
     </div>
   );

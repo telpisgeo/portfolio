@@ -10,6 +10,7 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import ShimmerImage from "@/components/ShimmerImage";
 import Testimonials from "@/components/Testimonials";
+import LazyVideo from "@/components/LazyVideo";
 
 const SITE_URL = "https://www.telpis.com.ua";
 
@@ -232,7 +233,7 @@ export default async function GraphLocalePage({
                         {row.value.map((src) => (
                           <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
                             {VIDEO_EXT_RE.test(src) ? (
-                              <video src={src} className="absolute inset-0 w-full h-full object-cover" autoPlay loop muted playsInline />
+                              <LazyVideo src={src} className="absolute inset-0 w-full h-full object-cover" />
                             ) : (
                               <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
                             )}
@@ -241,7 +242,7 @@ export default async function GraphLocalePage({
                       </div>
                     ) : VIDEO_EXT_RE.test(row.value) ? (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">
-                        <video src={row.value} className="w-full h-auto" autoPlay loop muted playsInline />
+                        <LazyVideo src={row.value} className="w-full h-auto" />
                       </div>
                     ) : (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">

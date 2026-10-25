@@ -19,7 +19,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       body,
       request,
       onBeforeGenerateToken: async () => ({
-        allowedContentTypes: ["video/mp4"],
+        allowedContentTypes: ["video/mp4", "video/webm"],
         addRandomSuffix: true,
       }),
     });

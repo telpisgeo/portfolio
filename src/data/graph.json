@@ -83,10 +83,13 @@
             "value": "/images/works/westudy/westudy-case-4-web.webp"
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-bg-loop-VhHFUwyC3DYRS93CV36impmK4EKqTc.mp4"
+            "value": "/images/works/westudy/westudy-bg-loop.webm"
           },
           {
             "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-ETVdg8QtHWVscj8A5SRC5TAjvRTjJ4.mp4"
+          },
+          {
+            "value": "/images/works/westudy/westudy-ads-carousel.webm"
           }
         ]
       },
@@ -242,10 +245,13 @@
             "value": "/images/works/westudy/westudy-case-4-web.webp"
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-bg-loop-VhHFUwyC3DYRS93CV36impmK4EKqTc.mp4"
+            "value": "/images/works/westudy/westudy-bg-loop.webm"
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-S3A5HmZky7z5gEPsdPPz3c7MNNSIbf.mp4"
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-ETVdg8QtHWVscj8A5SRC5TAjvRTjJ4.mp4"
+          },
+          {
+            "value": "/images/works/westudy/westudy-ads-carousel.webm"
           }
         ]
       },
@@ -268,12 +274,12 @@
             ]
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-9jGBtsBPI5U1PiGc2QCv2k29FF8UJ4.mp4"
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-tI00blXpyrUv6JiBqhcBXpXW4PTyCM.mp4"
           },
           {
             "value": [
               "/images/works/sednpulse/sendpulse-case-customer.webp",
-              "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-2-z59sZD2RhovqZiRWqm5Cu4RHIs06Xk.mp4"
+              "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-2-2nfrXSmhQIM1M0nSryecfBWezuE3Wt.mp4"
             ]
           },
           {

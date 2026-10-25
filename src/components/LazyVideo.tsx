@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
+// Loads the video only when it gets close to the viewport and pauses it again
+// when it scrolls away, so a page with many autoplaying clips doesn't download
+// or decode all of them at once.
 export default function LazyVideo({
   src,
   className = "",
@@ -17,15 +20,21 @@ export default function LazyVideo({
     const el = videoRef.current;
     if (!el) return;
 
+    let loaded = false;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.src = el.dataset.src ?? "";
-          el.load();
-          observer.disconnect();
+          if (!loaded) {
+            loaded = true;
+            el.src = el.dataset.src ?? "";
+            el.load();
+          }
+          el.play().catch(() => {});
+        } else if (loaded) {
+          el.pause();
         }
       },
-      { rootMargin: "200px" }
+      { rootMargin: "300px" }
     );
 
     observer.observe(el);
@@ -36,6 +45,7 @@ export default function LazyVideo({
     <video
       ref={videoRef}
       data-src={src}
+      preload="none"
       autoPlay
       loop
       muted

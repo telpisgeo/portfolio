@@ -182,3 +182,4 @@ Whenever content is changed on the site (images, videos, texts, works, cases), u
 ## Graph design page (`/graph/[locale]`)
 - URL locales are **`ua`** and **`en`** (not `uk`): `/graph/ua`, `/graph/en`. Content locale keys in `graph.json` are `uk`/`en`.
 - Work screenshots (`imageRows`) accept images **or** video: a value ending in `.webm/.mp4/.mov` renders as an autoplaying muted looping `<video>`. Example: Yedyna school posts → `/images/works/eschool/yedyna-school-posts-carousel.webm` (Figma Motion carousel).
+- Videos on this page render through `LazyVideo` (loads when within ~300px of the viewport, pauses off-screen, `preload="none"`). Keep clips small: ~0.5–3 MB (VP9 webm, ≤1280px wide, no audio, `-crf 34–38`). Admin video upload (`MediaUpload.tsx`) passes mp4/webm ≤10 MB through untouched; anything else is re-encoded to H.264 at 1280px / crf 28 and uploaded to Vercel Blob. Identical clips shared by both locales should point at one URL.
