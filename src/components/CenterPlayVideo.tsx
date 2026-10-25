@@ -9,9 +9,8 @@ import { useEffect, useRef } from "react";
 // Safari needs extra care: React doesn't render `muted` as an attribute on a
 // server-rendered <video>, and without it Safari blocks autoplay (the clip
 // stays frozen on its first frame). So muted/playsinline are applied by hand,
-// a rejected play() is retried once the clip can play and on the first
-// touch/scroll (Low Power Mode blocks autoplay until the user interacts), and
-// currentTime is only reset after the metadata has loaded.
+// and a rejected play() is retried once the clip can play and on the first
+// touch/scroll (Low Power Mode blocks autoplay until the user interacts).
 export default function CenterPlayVideo({
   src,
   className = "",
@@ -40,15 +39,15 @@ export default function CenterPlayVideo({
       const p = el.play();
       if (p) p.catch(() => {});
     };
-    const whenReady = (fn: () => void) => {
-      if (el.readyState >= 1) fn();
-      else el.addEventListener("loadedmetadata", fn, { once: true });
-    };
+    // Don't wait for metadata before play(): iOS Safari doesn't fetch anything
+    // until play() is called, so waiting for `loadedmetadata` would deadlock.
     const start = () => {
-      whenReady(() => {
+      try {
         el.currentTime = 0;
-        tryPlay();
-      });
+      } catch {
+        // not seekable yet — it will start from the beginning anyway
+      }
+      tryPlay();
     };
     // Retry if the browser refused the first play() attempt.
     const retry = () => {
