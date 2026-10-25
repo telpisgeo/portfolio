@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
 import type { CaseContent } from "@/lib/case-blocks";
+import { isCaseDraft } from "@/lib/case-store";
 import { caseMetadata } from "@/lib/seo";
 import caseJson from "@/data/cases/eschool-2.json";
 import { hasPetProjects } from "@/lib/pet-projects";
@@ -34,6 +35,7 @@ export default async function EschoolV2Page({
 }) {
   const { locale } = await params;
   if (locale !== "uk" && locale !== "en") notFound();
+  if (isCaseDraft("eschool-2")) notFound();
 
   const t = translations[locale as Locale];
   const c = content[locale as Locale];

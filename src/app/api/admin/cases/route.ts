@@ -72,3 +72,35 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({ ok: true });
 }
+
+export async function PATCH(req: NextRequest) {
+  const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+  if (!GITHUB_TOKEN) return NextResponse.json({ error: "GITHUB_TOKEN не налаштований" }, { status: 500 });
+
+  const session = req.cookies.get(ADMIN_SESSION_COOKIE)?.value;
+  if (!verifySessionToken(session)) {
+    return NextResponse.json({ error: "Не авторизовано" }, { status: 401 });
+  }
+
+  const { slug, status } = await req.json();
+  if (typeof slug !== "string" || !SLUG_RE.test(slug)) {
+    return NextResponse.json({ error: `Невірний slug: ${slug}` }, { status: 400 });
+  }
+  if (status !== "draft" && status !== "published") {
+    return NextResponse.json({ error: "Невірний status" }, { status: 400 });
+  }
+  const file = readCaseFile(slug);
+  if (!file) return NextResponse.json({ error: `Кейс "${slug}" не знайдено` }, { status: 404 });
+
+  try {
+    await commitFiles(
+      GITHUB_TOKEN,
+      { [`src/data/cases/${slug}.json`]: JSON.stringify({ ...file, status }, null, 2) + "\n" },
+      `${status === "draft" ? "Hide" : "Show"} case ${slug} via admin panel`
+    );
+  } catch (e) {
+    return NextResponse.json({ error: e instanceof Error ? e.message : "Помилка збереження в GitHub" }, { status: 500 });
+  }
+
+  return NextResponse.json({ ok: true });
+}

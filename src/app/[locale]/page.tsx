@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { isHiddenCaseUrl } from "@/lib/case-store";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -193,7 +194,7 @@ export default async function LocalePage({
                       {locale === "uk" ? "Кейс готується до публікації" : "Case coming soon"}
                     </p>
                   )}
-                  {company.caseUrl && (
+                  {company.caseUrl && !isHiddenCaseUrl(company.caseUrl) && (
                     <div>
                       <Link
                         href={company.caseUrl}
