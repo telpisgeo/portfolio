@@ -15,10 +15,14 @@ export default function CenterPlayVideo({
   src,
   className = "",
   once = false,
+  poster,
 }: {
   src: string;
   className?: string;
   once?: boolean;
+  // Still shown until the video has data — keeps the box from looking empty
+  // while a large clip downloads (slow on Safari / mobile).
+  poster?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -87,6 +91,7 @@ export default function CenterPlayVideo({
     <video
       ref={videoRef}
       src={src}
+      poster={poster || undefined}
       className={className}
       preload="auto"
       loop={!once}

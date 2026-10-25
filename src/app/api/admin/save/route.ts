@@ -38,6 +38,12 @@ function validateImageRows(rows: unknown): string | null {
     if (!row || typeof row !== "object") return `Невірний рядок зображення: ${row}`;
     const r = row as Record<string, unknown>;
     if (r.active !== undefined && typeof r.active !== "boolean") return "active має бути булевим";
+    if (r.posters !== undefined) {
+      if (!Array.isArray(r.posters)) return "posters має бути масивом";
+      for (const p of r.posters) {
+        if (!isString(p) || (p !== "" && !IMAGE_PATH_RE.test(p))) return `Невірний шлях до постера: ${p}`;
+      }
+    }
     if (Array.isArray(r.value)) {
       for (const img of r.value) {
         const err = validateMediaPath(img);

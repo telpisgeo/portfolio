@@ -12,7 +12,9 @@ type MediaUploadProps = {
   // `ratio` is passed alongside `src` in the same call (rather than as a
   // separate callback) so consumers can merge both into one state update —
   // two sequential callbacks would each close over the same stale value.
-  onChange: (src: string, ratio?: string) => void;
+  // `poster` is only passed for videos: the path of a preview image captured
+  // from the clip and committed next to the other images.
+  onChange: (src: string, ratio?: string, poster?: string) => void;
   label?: string;
 };
 
@@ -48,6 +50,38 @@ const PASSTHROUGH_MAX_BYTES = 10 * 1024 * 1024;
 
 function formatMB(bytes: number): string {
   return `${(bytes / 1024 / 1024).toFixed(1)}MB`;
+}
+
+// Grabs a representative frame (~1.5s in) of a video as a JPEG data URL.
+async function captureVideoFrame(source: Blob): Promise<string> {
+  const url = URL.createObjectURL(source);
+  try {
+    const video = document.createElement("video");
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.src = url;
+    await new Promise<void>((resolve, reject) => {
+      video.onloadeddata = () => resolve();
+      video.onerror = () => reject(new Error("Не вдалося прочитати відео"));
+    });
+    await new Promise<void>((resolve, reject) => {
+      video.onseeked = () => resolve();
+      video.onerror = () => reject(new Error("Не вдалося перемотати відео"));
+      video.currentTime = Math.min(1.5, (video.duration || 2) * 0.3);
+    });
+    const width = Math.min(1280, video.videoWidth);
+    const height = Math.round((video.videoHeight * width) / video.videoWidth);
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Canvas недоступний");
+    ctx.drawImage(video, 0, 0, width, height);
+    return canvas.toDataURL("image/jpeg", 0.85);
+  } finally {
+    URL.revokeObjectURL(url);
+  }
 }
 
 async function parseJsonResponse(res: Response): Promise<{ error?: string; [key: string]: unknown }> {
@@ -89,6 +123,24 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
     onChange(data.path as string, data.width && data.height ? `${data.width}/${data.height}` : undefined);
   }
 
+  // The preview is a nice-to-have: if capturing or uploading it fails the
+  // video itself must still be saved, so this never throws.
+  async function uploadPoster(source: Blob, base: string): Promise<string | undefined> {
+    try {
+      setProgress("Створюю превʼю...");
+      const dataUrl = await captureVideoFrame(source);
+      const res = await fetch("/api/admin/media", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dir, filename: `${base}-poster`, data: dataUrl }),
+      });
+      const data = await parseJsonResponse(res);
+      return res.ok ? (data.path as string) : undefined;
+    } catch {
+      return undefined;
+    }
+  }
+
   async function uploadVideo(file: File) {
     const ext = getExt(file.name).toLowerCase();
     const { upload } = await import("@vercel/blob/client");
@@ -102,8 +154,9 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
         contentType: ext === ".webm" ? "video/webm" : "video/mp4",
         handleUploadUrl: "/api/admin/blob-upload",
       });
-      setInfo(`Завантажено без перекодування (${formatMB(file.size)})`);
-      onChange(result.url);
+      const poster = await uploadPoster(file, base);
+      setInfo(`Завантажено без перекодування (${formatMB(file.size)})${poster ? ", превʼю створено" : ", превʼю не вдалося створити"}`);
+      onChange(result.url, undefined, poster);
       return;
     }
 
@@ -147,9 +200,10 @@ export default function MediaUpload({ kind, dir, value, onChange, label }: Media
       contentType: "video/mp4",
       handleUploadUrl: "/api/admin/blob-upload",
     });
-    const note = `${formatMB(file.size)} → ${formatMB(blob.size)}`;
+    const poster = await uploadPoster(blob, base);
+    const note = `${formatMB(file.size)} → ${formatMB(blob.size)}${poster ? ", превʼю створено" : ", превʼю не вдалося створити"}`;
     setInfo(blob.size > 8 * 1024 * 1024 ? `${note}. Важко для сторінки — краще стиснути сильніше` : note);
-    onChange(result.url);
+    onChange(result.url, undefined, poster);
   }
 
   async function handleFile(file: File) {
