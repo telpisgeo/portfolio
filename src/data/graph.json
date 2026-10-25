@@ -28,10 +28,16 @@
             "active": true
           },
           {
-            "value": "/images/works/agroprolisok/agroprolisok-carousel.mp4"
+            "value": "/images/works/agroprolisok/agroprolisok-carousel.mp4",
+            "posters": [
+              "/images/works/agroprolisok/agroprolisok-carousel-poster.webp"
+            ]
           },
           {
-            "value": "/images/works/agroprolisok/agroprolisok-slide-once.mp4"
+            "value": "/images/works/agroprolisok/agroprolisok-slide-once.mp4",
+            "posters": [
+              "/images/works/agroprolisok/agroprolisok-slide-once-poster.webp"
+            ]
           },
           {
             "value": "/images/works/agroprolisok/poster-agroprolisok.webp"
@@ -56,6 +62,10 @@
             "value": [
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/pattern-7FYP7nbV3CGC1QLG91RSvOTvGTFutP.mp4",
               "/images/works/eschool/andrej-lisakov-x6n28pzzhiq-unsplash.webp"
+            ],
+            "posters": [
+              "/images/works/eschool/pattern-poster.webp",
+              ""
             ]
           },
           {
@@ -65,6 +75,10 @@
             "value": [
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/motion-kn056cg9gL09tLTkJlTNHbiN9s8u5w.mp4",
               "/images/works/eschool/edyna-school-phone-start.webp"
+            ],
+            "posters": [
+              "/images/works/eschool/motion-poster.webp",
+              ""
             ]
           },
           {
@@ -74,7 +88,10 @@
             "value": "/images/works/eschool/yedyna-school-email.webp"
           },
           {
-            "value": "/images/works/eschool/yedyna-school-posts-carousel.mp4"
+            "value": "/images/works/eschool/yedyna-school-posts-carousel.mp4",
+            "posters": [
+              "/images/works/eschool/yedyna-school-posts-carousel-poster.webp"
+            ]
           }
         ]
       },
@@ -109,14 +126,20 @@
             "value": "/images/works/westudy/westudy-case-4-web.webp"
           },
           {
-            "value": "/images/works/westudy/westudy-bg-loop.mp4"
+            "value": "/images/works/westudy/westudy-bg-loop.mp4",
+            "posters": [
+              "/images/works/westudy/westudy-bg-loop-poster.webp"
+            ]
           },
           {
             "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-ETVdg8QtHWVscj8A5SRC5TAjvRTjJ4.mp4",
             "active": false
           },
           {
-            "value": "/images/works/westudy/westudy-ads-carousel.mp4"
+            "value": "/images/works/westudy/westudy-ads-carousel.mp4",
+            "posters": [
+              "/images/works/westudy/westudy-ads-carousel-poster.webp"
+            ]
           }
         ]
       },
@@ -139,12 +162,19 @@
             ]
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-tI00blXpyrUv6JiBqhcBXpXW4PTyCM.mp4"
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-tI00blXpyrUv6JiBqhcBXpXW4PTyCM.mp4",
+            "posters": [
+              "/images/works/sednpulse/sendpulse-case-icons-poster.webp"
+            ]
           },
           {
             "value": [
               "/images/works/sednpulse/sendpulse-case-customer.webp",
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-2-2nfrXSmhQIM1M0nSryecfBWezuE3Wt.mp4"
+            ],
+            "posters": [
+              "",
+              "/images/works/sednpulse/sendpulse-case-icons-2-poster.webp"
             ]
           },
           {
@@ -216,10 +246,16 @@
             "value": "/images/works/agroprolisok/agroprolisok-guide.webp"
           },
           {
-            "value": "/images/works/agroprolisok/agroprolisok-carousel.mp4"
+            "value": "/images/works/agroprolisok/agroprolisok-carousel.mp4",
+            "posters": [
+              "/images/works/agroprolisok/agroprolisok-carousel-poster.webp"
+            ]
           },
           {
-            "value": "/images/works/agroprolisok/agroprolisok-slide-once.mp4"
+            "value": "/images/works/agroprolisok/agroprolisok-slide-once.mp4",
+            "posters": [
+              "/images/works/agroprolisok/agroprolisok-slide-once-poster.webp"
+            ]
           },
           {
             "value": "/images/works/agroprolisok/agroprolisok-billboard.webp"
@@ -244,6 +280,10 @@
             "value": [
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/pattern-7FYP7nbV3CGC1QLG91RSvOTvGTFutP.mp4",
               "/images/works/eschool/andrej-lisakov-x6n28pzzhiq-unsplash.webp"
+            ],
+            "posters": [
+              "/images/works/eschool/pattern-poster.webp",
+              ""
             ]
           },
           {
@@ -253,6 +293,10 @@
             "value": [
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/motion-kn056cg9gL09tLTkJlTNHbiN9s8u5w.mp4",
               "/images/works/eschool/edyna-school-phone-start.webp"
+            ],
+            "posters": [
+              "/images/works/eschool/motion-poster.webp",
+              ""
             ]
           },
           {
@@ -262,7 +306,10 @@
             "value": "/images/works/eschool/yedyna-school-email.webp"
           },
           {
-            "value": "/images/works/eschool/yedyna-school-posts-carousel.mp4"
+            "value": "/images/works/eschool/yedyna-school-posts-carousel.mp4",
+            "posters": [
+              "/images/works/eschool/yedyna-school-posts-carousel-poster.webp"
+            ]
           }
         ]
       },
@@ -297,14 +344,20 @@
             "value": "/images/works/westudy/westudy-case-4-web.webp"
           },
           {
-            "value": "/images/works/westudy/westudy-bg-loop.mp4"
+            "value": "/images/works/westudy/westudy-bg-loop.mp4",
+            "posters": [
+              "/images/works/westudy/westudy-bg-loop-poster.webp"
+            ]
           },
           {
             "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-ETVdg8QtHWVscj8A5SRC5TAjvRTjJ4.mp4",
             "active": false
           },
           {
-            "value": "/images/works/westudy/westudy-ads-carousel.mp4"
+            "value": "/images/works/westudy/westudy-ads-carousel.mp4",
+            "posters": [
+              "/images/works/westudy/westudy-ads-carousel-poster.webp"
+            ]
           }
         ]
       },
@@ -327,12 +380,19 @@
             ]
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-tI00blXpyrUv6JiBqhcBXpXW4PTyCM.mp4"
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-tI00blXpyrUv6JiBqhcBXpXW4PTyCM.mp4",
+            "posters": [
+              "/images/works/sednpulse/sendpulse-case-icons-poster.webp"
+            ]
           },
           {
             "value": [
               "/images/works/sednpulse/sendpulse-case-customer.webp",
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-2-2nfrXSmhQIM1M0nSryecfBWezuE3Wt.mp4"
+            ],
+            "posters": [
+              "",
+              "/images/works/sednpulse/sendpulse-case-icons-2-poster.webp"
             ]
           },
           {

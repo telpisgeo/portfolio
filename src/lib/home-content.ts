@@ -1,4 +1,6 @@
-export type HomeImageRow = { value: string | string[]; active?: boolean };
+// `posters` is aligned with `value` (one entry per item, "" when there is none):
+// preview images shown while a video loads, so Safari doesn't show an empty box.
+export type HomeImageRow = { value: string | string[]; posters?: string[]; active?: boolean };
 
 export type HomeCompany = {
   slug: string;

@@ -232,10 +232,10 @@ export default async function GraphLocalePage({
                   {company.imageRows.filter((row) => row.active !== false).map((row, i) => (
                     Array.isArray(row.value) ? (
                       <div key={i} className="grid grid-cols-2 gap-3">
-                        {row.value.map((src) => (
+                        {row.value.map((src, i) => (
                           <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
                             {VIDEO_EXT_RE.test(src) ? (
-                              <CenterPlayVideo src={src} className="absolute inset-0 w-full h-full object-cover" />
+                              <CenterPlayVideo src={src} poster={row.posters?.[i]} className="absolute inset-0 w-full h-full object-cover" />
                             ) : (
                               <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
                             )}
@@ -244,7 +244,7 @@ export default async function GraphLocalePage({
                       </div>
                     ) : VIDEO_EXT_RE.test(row.value) ? (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">
-                        <CenterPlayVideo src={row.value} className="w-full h-auto" once={ONCE_VIDEO_RE.test(row.value)} />
+                        <CenterPlayVideo src={row.value} poster={row.posters?.[0]} className="w-full h-auto" once={ONCE_VIDEO_RE.test(row.value)} />
                       </div>
                     ) : (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">
