@@ -308,3 +308,49 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide native scrollbars on horizontal rails/chips (still scrollable). */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Hero intro: words rise one by one, the photo pops in after "я" (like anialisovska.com). */
+@keyframes hero-word-rise {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes hero-photo-pop {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.hero-word-clip {
+  display: inline-block;
+  padding: 0.12em 0.08em;
+  margin: -0.12em -0.08em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.hero-word {
+  display: inline-block;
+  animation: hero-word-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 150ms);
+}
+
+.hero-photo {
+  animation: hero-photo-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: var(--photo-delay, 400ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word,
+  .hero-photo {
+    animation: none;
+  }
+}

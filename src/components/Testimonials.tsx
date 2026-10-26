@@ -48,12 +48,11 @@ export default function Testimonials({ locale, testimonials }: Props) {
   }, [active]);
 
   return (
-    <section className="max-w-[1440px] w-full mx-auto px-6 sm:px-12">
-      <h2 className="text-4xl font-medium text-foreground mb-8">
-        {locale === "uk" ? "Відгуки" : "Testimonials"}
-      </h2>
-
-      <div className="bg-surface-about rounded-lg overflow-hidden">
+    <section
+      aria-label={locale === "uk" ? "Відгуки" : "Testimonials"}
+      className="max-w-[1440px] w-full mx-auto px-6 sm:px-12"
+    >
+      <div className="rounded-2xl border border-border overflow-hidden">
         {testimonials.map((item, i) => (
           <div
             key={item.name}
@@ -61,19 +60,21 @@ export default function Testimonials({ locale, testimonials }: Props) {
               i > 0 ? "border-t border-border" : ""
             }`}
           >
-            <div className="flex-1 flex flex-col gap-3">
-              <QuoteIcon className="text-primary shrink-0" />
-              <p className="text-3xl font-medium text-foreground leading-snug">{item.quote}</p>
-              <button
-                type="button"
-                onClick={() => setActiveIndex(i)}
-                className="w-fit text-sm font-medium text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity"
-              >
-                {locale === "uk" ? "Читати повністю" : "Read all"}
-              </button>
+            <div className="flex-1 flex items-start gap-4 md:gap-6">
+              <QuoteIcon className="text-primary shrink-0 mt-1.5" />
+              <div className="flex flex-col gap-3">
+                <p className="text-3xl font-medium text-foreground leading-snug">{item.quote}</p>
+                <button
+                  type="button"
+                  onClick={() => setActiveIndex(i)}
+                  className="w-fit text-sm font-medium text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity"
+                >
+                  {locale === "uk" ? "Читати повністю" : "Read all"}
+                </button>
+              </div>
             </div>
 
-            <div className="flex items-center gap-4 shrink-0 md:ml-auto md:mt-11 md:w-[262px]">
+            <div className="flex items-center gap-4 shrink-0 md:ml-auto md:mt-1 md:w-[262px]">
               {item.photo ? (
                 <Image
                   src={item.photo}

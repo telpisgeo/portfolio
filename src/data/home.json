@@ -8,6 +8,78 @@
     ],
     "companies": [
       {
+        "slug": "eschool",
+        "name": "Єдина школа",
+        "url": "https://sitev2.eschool-ua.com",
+        "caseUrl": "/uk/cases/eschool-2",
+        "period": "2025 → 2026",
+        "productType": "Єдиний простір для вчителів, батьків та дітей",
+        "role": "Product Designer",
+        "icon": "/images/icons/eschool.svg",
+        "description": "Проєктував навчальні сервіси для учнів, батьків і вчителів у застосунку та вебі, спецпроєкти всередині платформи й оновлений головний сайт.",
+        "tools": "Figma, Claude Code",
+        "imageRows": [
+          {
+            "value": "/images/works/eschool/eschool-mob2-ua.webp",
+            "caseUrl": "/uk/cases/eschool-2",
+            "title": "Аналітика учня та рекомендації",
+            "description": "Оновив сервіс рекомендацій для батьків: поглиблена аналітика учня на основі оцінок, домашніх завдань і відвідуваності та рекомендації репетиторів. Запропонував Gallup-підхід — підсилювати те, що дитині вдається найкраще."
+          },
+          {
+            "value": "/images/works/eschool/eschool-promo.png",
+            "active": false
+          },
+          {
+            "value": "/images/works/eschool/eschool.webp",
+            "title": "Розумники",
+            "description": "Спроєктував сервіс «Розумники» для дітей: щоденні цікавинки зі шкільної програми та тижневий рейтинг серед друзів по класу й школі. До запуску сервіс не дійшов."
+          }
+        ],
+        "achievements": []
+      },
+      {
+        "slug": "westudy",
+        "name": "Westudy.ua",
+        "url": "http://westudy.ua/",
+        "caseUrl": "/uk/cases/westudy",
+        "period": "2024 → 2025",
+        "productType": "Платформа для створення онлайн курсів та роботи з студентами",
+        "role": "Product Designer",
+        "icon": "/images/icons/westudy.svg",
+        "description": "Оновив інструменти платформи для онлайн-курсів: від створення курсів і розсилок до конструктора сайтів, щоб утримати клієнтів. Створив додаток для преміум-клієнтів.",
+        "achievements": [],
+        "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
+        "imageRows": [
+          {
+            "value": "/images/works/westudy/westudy-editor.webp",
+            "title": "Розробка сайтбілдеру",
+            "description": "Оновив конструктор сайтів для курсів, щоб утримати клієнтів, яких не влаштовував складний інструмент: сайт за лічені хвилини з наявних даних про курси та окремий режим для авторського дизайну.",
+            "active": false
+          },
+          {
+            "value": "/images/works/westudy/case-westudy-after-en.webm",
+            "title": "Розробка сайтбілдеру",
+            "description": "Оновив конструктор сайтів для курсів, щоб утримати клієнтів, яких не влаштовував складний інструмент: сайт за лічені хвилини з наявних даних про курси та окремий режим для авторського дизайну.",
+            "caseUrl": "/uk/cases/westudy"
+          },
+          {
+            "value": "/images/works/westudy/westudy-onboarding.png",
+            "title": "Онбординг нових клієнтів",
+            "description": "Онбординг для нових клієнтів платформи: чекліст налаштування проєкту, персональний помічник із записом на відео-зустріч та віджет допомоги з поширеними запитаннями."
+          },
+          {
+            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp",
+            "title": "Додаток-маркетплейс шкіл",
+            "description": "Мобільний додаток-маркетплейс для шкіл на Westudy: пошук курсів за категоріями, кабінет учня з прогресом навчання та завантаженням матеріалів на телефон. Створив для преміум-клієнтів, яким потрібна була кастомізація."
+          },
+          {
+            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp",
+            "title": "Конструктор email-розсилок",
+            "description": "Оновив інструмент створення email-розсилок: візуальний редактор листа з блоками, шаблонами й кольоровими темами та тестовим відправленням."
+          }
+        ]
+      },
+      {
         "slug": "snovio",
         "name": "Snov.io",
         "url": "http://snov.io/",
@@ -16,12 +88,8 @@
         "productType": "AI платформа лідогенерації та автоматизації аутрічу",
         "role": "Product Designer",
         "icon": "/images/icons/snovio.svg",
-        "description": "Запустив з командою систему автоматизації LinkedIn аутрічу, оновив інструменти для доставлення емейлів та флоу створення емейл кампаній.",
-        "achievements": [
-          "Провів дослідження та спроєктував LinkedIn outreach від концепту до фінального дизайну, у зв'язці з PM",
-          "На 30% більше успішно створених кампаній після редизайну їх створення",
-          "Удвічі менше звернень до підтримки після редизайну email-налаштувань"
-        ],
+        "description": "Брав участь у запуску LinkedIn-автоматизації та оновив ключові інструменти email-аутрічу: створення кампаній, доставлення, налаштування й прогрів.",
+        "achievements": [],
         "tools": "Figma, HotJar, Amplitude",
         "imageRows": [
           {
@@ -54,80 +122,6 @@
             "value": "/images/works/snov/n-warm-flow.mp4",
             "title": "Оновлення інструменту прогріву емейлів",
             "description": "Редизайн всього інструменту: прогрів одразу для кількох емейлів, більше стратегій з поясненнями та орієнтовним часом, оновлений вибір контенту."
-          }
-        ]
-      },
-      {
-        "slug": "eschool",
-        "name": "Єдина школа",
-        "url": "https://sitev2.eschool-ua.com",
-        "caseUrl": "/uk/cases/eschool-2",
-        "period": "2025 → 2026",
-        "productType": "Єдиний простір для вчителів, батьків та дітей",
-        "role": "Product Designer",
-        "icon": "/images/icons/eschool.svg",
-        "description": "Розробка навчальних сервісів для учнів, батьків та вчителів в додатку та веб-версії продукту, спец проєкти всередині платформи, оновив головний сайт платформи, та багато іншого.",
-        "tools": "Figma, Claude Code, Android Studio, VS Code",
-        "imageRows": [
-          {
-            "value": "/images/works/eschool/eschool-mob2-ua.webp",
-            "caseUrl": "/uk/cases/eschool-2",
-            "title": "Аналітика учня та рекомендації",
-            "description": "Оновив сервіс рекомендацій для батьків: поглиблена аналітика учня на основі оцінок, домашніх завдань і відвідуваності та рекомендації репетиторів. Запропонував Gallup-підхід — підсилювати те, що дитині вдається найкраще."
-          },
-          {
-            "value": "/images/works/eschool/eschool-promo.png",
-            "active": false
-          },
-          {
-            "value": "/images/works/eschool/eschool.webp",
-            "title": "Розумники",
-            "description": "Спроєктував сервіс «Розумники» для дітей: щоденні цікавинки зі шкільної програми та тижневий рейтинг серед друзів по класу й школі. До запуску сервіс не дійшов."
-          }
-        ]
-      },
-      {
-        "slug": "westudy",
-        "name": "Westudy.ua",
-        "url": "http://westudy.ua/",
-        "caseUrl": "/uk/cases/westudy",
-        "period": "2024 → 2025",
-        "productType": "Платформа для створення онлайн курсів та роботи з студентами",
-        "role": "Product Designer",
-        "icon": "/images/icons/westudy.svg",
-        "description": "Оновив інтерфейс створення курсів, емейл кампаній, вебінарів та бронювання занять. Один з найскладніших інструментів — конструктор власних сайтів для курсів.",
-        "achievements": [
-          "Оновив конструктор сайтів для курсів, щоб утримати клієнтів під ризиком відтоку",
-          "Налагодив дизайн-процеси в команді, впорядкував хаос і впровадив UX-дослідження",
-          "Створив додаток для преміум-клієнтів, яким потрібна була кастомізація за додаткову плату"
-        ],
-        "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
-        "imageRows": [
-          {
-            "value": "/images/works/westudy/westudy-editor.webp",
-            "caseUrl": "/uk/cases/westudy",
-            "title": "Розробка сайтбілдеру",
-            "description": "Оновив конструктор сайтів для курсів, щоб утримати клієнтів, яких не влаштовував складний інструмент: сайт за лічені хвилини з наявних даних про курси та окремий режим для авторського дизайну."
-          },
-          {
-            "value": "/images/works/westudy/case-westudy-after-en.webm",
-            "title": "Майстер створення сайту",
-            "description": "Покроковий майстер створення сайту: вибір потрібних блоків і кольорової палітри, після чого сайт збирається з даних про курси на платформі."
-          },
-          {
-            "value": "/images/works/westudy/westudy-onboarding.png",
-            "title": "Онбординг нових клієнтів",
-            "description": "Онбординг для нових клієнтів платформи: чекліст налаштування проєкту, персональний помічник із записом на відео-зустріч та віджет допомоги з поширеними запитаннями."
-          },
-          {
-            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp",
-            "title": "Додаток-маркетплейс шкіл",
-            "description": "Мобільний додаток-маркетплейс для шкіл на Westudy: пошук курсів за категоріями, кабінет учня з прогресом навчання та завантаженням матеріалів на телефон. Створив для преміум-клієнтів, яким потрібна була кастомізація."
-          },
-          {
-            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp",
-            "title": "Конструктор email-розсилок",
-            "description": "Оновив інструмент створення email-розсилок: візуальний редактор листа з блоками, шаблонами й кольоровими темами та тестовим відправленням."
           }
         ]
       }
@@ -190,7 +184,7 @@
         "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
       }
     ],
-    "worksTitle": "Обрані кейси",
+    "worksTitle": "",
     "petProjects": {
       "title": "Pet-проєкт",
       "items": [
@@ -201,7 +195,7 @@
           "period": "2026",
           "role": "Product Designer",
           "tools": "Figma, Claude Code, Supabase",
-          "description": "Щоденна 15-хвилинна вправа з читання для дітей 6–12 років з дислексією, яку проводять батьки вдома. AI підбирає слова та історії під інтереси дитини, а голосове читання з самооцінкою допомагає тренуватись без стресу.",
+          "description": "Щоденна 15-хвилинна вправа з читання для дітей 6–12 років з дислексією: AI підбирає слова та історії під інтереси дитини, а батьки проводять її вдома.",
           "image": "/images/works/vgolos/vgolos.webm",
           "productType": "Читалка для дітей з дислексією",
           "icon": "/images/icons/vgolos.svg",
@@ -219,6 +213,73 @@
     ],
     "companies": [
       {
+        "slug": "eschool",
+        "name": "Yedyna Shkola",
+        "url": "https://sitev2.eschool-ua.com",
+        "caseUrl": "/en/cases/eschool-2",
+        "period": "2025 → 2026",
+        "productType": "A unified space for teachers, parents and children",
+        "role": "Product Designer",
+        "icon": "/images/icons/eschool.svg",
+        "description": "Designed learning services for students, parents and teachers in the app and on the web, special projects inside the platform and the redesigned main site.",
+        "tools": "Figma, Claude Code",
+        "imageRows": [
+          {
+            "value": "/images/works/eschool/eschool-mob2-en.webp",
+            "caseUrl": "/en/cases/eschool-2",
+            "title": "Student analytics and recommendations",
+            "description": "Redesigned the parent recommendations service: in-depth student analytics based on grades, homework and attendance, plus tutor recommendations. Proposed a Gallup-style approach: reinforce what the child does best."
+          },
+          {
+            "value": "/images/works/eschool/eschool-web-en.webp",
+            "active": false
+          },
+          {
+            "value": "/images/works/eschool/eschool-mob-en.webp",
+            "title": "Rozumnyky",
+            "description": "Designed “Rozumnyky”, a service for kids: daily fun facts from the school curriculum and a weekly leaderboard among classmates and schoolmates. The service was never launched."
+          }
+        ],
+        "achievements": []
+      },
+      {
+        "slug": "westudy",
+        "name": "Westudy.ua",
+        "url": "http://westudy.ua/",
+        "caseUrl": "/en/cases/westudy",
+        "period": "2024 → 2025",
+        "productType": "Online course creation and student management platform",
+        "role": "Product Designer",
+        "icon": "/images/icons/westudy.svg",
+        "description": "Redesigned the tools of an online course platform, from course creation and email campaigns to the site builder, to retain clients. Built an app for premium clients.",
+        "achievements": [],
+        "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
+        "imageRows": [
+          {
+            "value": "/images/works/westudy/promo-builder-westudy.webp",
+            "title": "Site builder development",
+            "description": "Redesigned the course site builder to retain clients unhappy with a complex tool: a site in minutes from existing course data, plus a separate mode for custom design.",
+            "active": false
+          },
+          {
+            "value": "/images/works/westudy/case-westudy-after-en.webm",
+            "title": "Site builder development",
+            "description": "Redesigned the course site builder to retain clients unhappy with a complex tool: a site in minutes from existing course data, plus a separate mode for custom design.",
+            "caseUrl": "/en/cases/westudy"
+          },
+          {
+            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp",
+            "title": "Schools marketplace app",
+            "description": "A mobile marketplace app for schools on Westudy: course search by category, a student space with learning progress and downloads to the phone. Built for premium clients who needed customization."
+          },
+          {
+            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp",
+            "title": "Email campaign builder",
+            "description": "Redesigned the email campaign tool: a visual email editor with blocks, templates and color themes, plus test sending."
+          }
+        ]
+      },
+      {
         "slug": "snovio",
         "name": "Snov.io",
         "url": "http://snov.io/",
@@ -227,12 +288,8 @@
         "productType": "AI-powered lead generation & outreach automation platform",
         "role": "Product Designer",
         "icon": "/images/icons/snovio.svg",
-        "description": "Launched a LinkedIn outreach automation system with the team, improved email deliverability tooling, and redesigned the email campaign flow.",
-        "achievements": [
-          "Researched and designed the LinkedIn outreach tool end-to-end, in partnership with the PM",
-          "30% more successfully created campaigns after redesigning campaign creation",
-          "Half as many support requests after redesigning email settings"
-        ],
+        "description": "Took part in launching LinkedIn automation and redesigned the key email outreach tools: campaign creation, deliverability, settings and warm-up.",
+        "achievements": [],
         "tools": "Figma, HotJar, Amplitude",
         "imageRows": [
           {
@@ -265,75 +322,6 @@
             "value": "/images/works/snov/n-warm-flow.mp4",
             "title": "Email warm-up redesign",
             "description": "A redesign of the whole tool: warm up several emails at once, more strategies with explanations and estimated time, an updated content picker."
-          }
-        ]
-      },
-      {
-        "slug": "eschool",
-        "name": "Yedyna Shkola",
-        "url": "https://sitev2.eschool-ua.com",
-        "caseUrl": "/en/cases/eschool-2",
-        "period": "2025 → 2026",
-        "productType": "A unified space for teachers, parents and children",
-        "role": "Product Designer",
-        "icon": "/images/icons/eschool.svg",
-        "description": "Designed learning services for students, parents, and teachers across the app and web. Built special projects within the platform and redesigned the main website.",
-        "tools": "Figma, Claude Code, Android Studio, VS Code",
-        "imageRows": [
-          {
-            "value": "/images/works/eschool/eschool-mob2-en.webp",
-            "caseUrl": "/en/cases/eschool-2",
-            "title": "Student analytics and recommendations",
-            "description": "Redesigned the parent recommendations service: in-depth student analytics based on grades, homework and attendance, plus tutor recommendations. Proposed a Gallup-style approach: reinforce what the child does best."
-          },
-          {
-            "value": "/images/works/eschool/eschool-web-en.webp",
-            "active": false
-          },
-          {
-            "value": "/images/works/eschool/eschool-mob-en.webp",
-            "title": "Rozumnyky",
-            "description": "Designed “Rozumnyky”, a service for kids: daily fun facts from the school curriculum and a weekly leaderboard among classmates and schoolmates. The service was never launched."
-          }
-        ]
-      },
-      {
-        "slug": "westudy",
-        "name": "Westudy.ua",
-        "url": "http://westudy.ua/",
-        "caseUrl": "/en/cases/westudy",
-        "period": "2024 → 2025",
-        "productType": "Online course creation and student management platform",
-        "role": "Product Designer",
-        "icon": "/images/icons/westudy.svg",
-        "description": "Redesigned the course builder, email campaigns, webinars, and booking flows. One of the most complex tools was the website builder for courses.",
-        "achievements": [
-          "Updated the course website builder to help retain at-risk clients",
-          "Set up design processes in the team, brought order to the chaos, and introduced UX research",
-          "Built an add-on for premium clients who needed customization for an extra fee"
-        ],
-        "tools": "Figma, FigJam, Google Analytics, Affinity Designer",
-        "imageRows": [
-          {
-            "value": "/images/works/westudy/promo-builder-westudy.webp",
-            "caseUrl": "/en/cases/westudy",
-            "title": "Site builder development",
-            "description": "Redesigned the course site builder to retain clients unhappy with a complex tool: a site in minutes from existing course data, plus a separate mode for custom design."
-          },
-          {
-            "value": "/images/works/westudy/case-westudy-after-en.webm",
-            "title": "Site creation wizard",
-            "description": "A step-by-step site creation wizard: pick the blocks you need and a color palette, and the site is built from the course data already on the platform."
-          },
-          {
-            "value": "/images/works/westudy/westudy-about-promo-2-ua.webp",
-            "title": "Schools marketplace app",
-            "description": "A mobile marketplace app for schools on Westudy: course search by category, a student space with learning progress and downloads to the phone. Built for premium clients who needed customization."
-          },
-          {
-            "value": "/images/works/westudy/westudy-about-promo-3-ua.webp",
-            "title": "Email campaign builder",
-            "description": "Redesigned the email campaign tool: a visual email editor with blocks, templates and color themes, plus test sending."
           }
         ]
       }
@@ -396,7 +384,7 @@
         "photo": "/images/testimonials/ryzhkov-rostyslav.webp"
       }
     ],
-    "worksTitle": "Selected cases",
+    "worksTitle": "",
     "petProjects": {
       "title": "Pet project",
       "items": []

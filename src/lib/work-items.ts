@@ -21,6 +21,8 @@ export type WorkItem = {
   note?: string;
   caseUrl?: string;
   casePending?: boolean;
+  /** Pet/side project (kept in home.json petProjects, shown first in the works list). */
+  isPet?: boolean;
   screens: WorkScreen[];
 };
 
@@ -81,6 +83,7 @@ export function petToWorkItem(p: PetProject, locale: string): WorkItem {
     tools: p.tools,
     description: p.description,
     note: p.note,
+    isPet: true,
     screens: p.image ? [stubScreen(p.image, 1, locale)] : [],
   };
 }

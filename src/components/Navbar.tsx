@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as amplitude from "@amplitude/unified";
 import { useHideOnScroll } from "@/lib/useHideOnScroll";
+import SocialLinks from "./SocialLinks";
 
 type NavbarProps = {
   locale: string;
@@ -13,9 +14,11 @@ type NavbarProps = {
   cvUrl: string;
   cvButton: string;
   contactLabel: string;
-  worksLabel: string;
-  aboutLabel: string;
-  /** Shows the "Pet projects" menu item (links to the home page section); see hasPetProjects(). */
+  /** @deprecated The "Роботи"/"Про себе" menu links were removed; kept so callers still compile. */
+  worksLabel?: string;
+  /** @deprecated see worksLabel */
+  aboutLabel?: string;
+  /** @deprecated The pet project is part of the works list now; the menu item is gone. Kept so callers still compile. */
   showPetProjects?: boolean;
   variant?: "dark" | "light" | "case";
   hideOnScroll?: boolean;
@@ -33,9 +36,6 @@ export default function Navbar({
   otherLabel,
   cvUrl,
   contactLabel,
-  worksLabel,
-  aboutLabel,
-  showPetProjects = false,
   variant = "dark",
   hideOnScroll = false,
   showCvButton = true,
@@ -59,7 +59,6 @@ export default function Navbar({
   const burgerColor = isDark ? "bg-secondary-foreground" : "bg-foreground";
   const dropdownText = isDark ? "text-secondary-foreground/80 border-white/10" : "text-foreground/80 border-border";
   const dropdownMuted = isDark ? "text-secondary-foreground/50" : "text-muted-foreground";
-  const petLabel = locale === "uk" ? "Pet-проєкт" : "Pet project";
   const homeLabel = locale === "uk" ? "← Головна" : "← Home";
 
   return (
@@ -102,32 +101,14 @@ export default function Navbar({
           </Link>
         )}
 
-        {/* Center: nav links — only when enough space */}
-        <div className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
-          <a
-            href={`${home}#works`}
-            className={`px-4 py-2 text-sm font-medium ${textMuted} ${hoverText} transition-colors rounded-full ${hoverBg}`}
-          >
-            {worksLabel}
-          </a>
-          <a
-            href={`${home}#about`}
-            className={`px-4 py-2 text-sm font-medium ${textMuted} ${hoverText} transition-colors rounded-full ${hoverBg}`}
-          >
-            {aboutLabel}
-          </a>
-          {showPetProjects && (
-            <a
-              href={`${home}#pet-projects`}
-              className={`px-4 py-2 text-sm font-medium ${textMuted} ${hoverText} transition-colors rounded-full ${hoverBg}`}
-            >
-              {petLabel}
-            </a>
-          )}
-        </div>
 
         {/* Right: lang switcher + contact + burger */}
         <div className="flex items-center gap-2 shrink-0">
+          <SocialLinks
+            size={18}
+            className="hidden lg:flex items-center gap-1 mr-2"
+            linkClassName={`p-2 rounded-full ${textMuted} ${hoverText} ${hoverBg} transition-colors`}
+          />
           <Link
             href={otherLocalePath}
             className={`text-sm font-medium ${textMuted} ${hoverText} transition-all px-4 py-2 rounded-full ${hoverBg} hidden sm:block`}
@@ -172,31 +153,8 @@ export default function Navbar({
       {menuOpen && (
         <div className={`lg:hidden border-t ${dropdownBg} px-6 py-4 flex flex-col gap-1`}>
           <a
-            href={`${home}#works`}
-            className={`py-3 text-sm font-medium border-b ${dropdownText}`}
-            onClick={() => setMenuOpen(false)}
-          >
-            {worksLabel}
-          </a>
-          <a
-            href={`${home}#about`}
-            className={`py-3 text-sm font-medium border-b ${dropdownText}`}
-            onClick={() => setMenuOpen(false)}
-          >
-            {aboutLabel}
-          </a>
-          {showPetProjects && (
-            <a
-              href={`${home}#pet-projects`}
-              className={`py-3 text-sm font-medium border-b ${dropdownText}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {petLabel}
-            </a>
-          )}
-          <a
             href="mailto:gtelpis@gmail.com"
-            className={`py-3 text-sm font-medium border-b ${dropdownText}`}
+            className={`md:hidden py-3 text-sm font-medium border-b ${dropdownText}`}
             onClick={() => setMenuOpen(false)}
           >
             {contactLabel}
@@ -205,7 +163,7 @@ export default function Navbar({
             <a
               href={cvUrl}
               download
-              className={`py-3 text-sm font-medium border-b ${dropdownText}`}
+              className={`md:hidden py-3 text-sm font-medium border-b ${dropdownText}`}
               onClick={() => {
                 amplitude.track("CV Downloaded", {
                   location: "navbar_mobile",
@@ -219,11 +177,16 @@ export default function Navbar({
           )}
           <Link
             href={otherLocalePath}
-            className={`py-3 text-sm font-medium ${dropdownMuted}`}
+            className={`sm:hidden py-3 text-sm font-medium ${dropdownMuted}`}
             onClick={() => setMenuOpen(false)}
           >
             {otherLabel}
           </Link>
+          <SocialLinks
+            size={20}
+            className="flex items-center gap-5 pt-3"
+            linkClassName={`${textMuted} ${hoverText} transition-colors`}
+          />
         </div>
       )}
     </header>

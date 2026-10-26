@@ -84,7 +84,7 @@ export default async function LocalePage({
       />
       <Hero locale={locale} />
 
-      <main className="flex-1 flex flex-col py-16">
+      <main className="flex-1 flex flex-col pb-16">
 
         {/* Projects */}
         <div id="works" className="flex flex-col">
@@ -95,91 +95,53 @@ export default async function LocalePage({
               </h2>
             </div>
           )}
-          <WorksSection items={companies.map((c) => companyToWorkItem(c, locale))} locale={locale} showTimeline />
+          {/* Side project first (newest), then the cases — one list and one timeline, no separate category. */}
+          <WorksSection
+            items={[
+              ...(home.petProjects?.items ?? []).map((p) => petToWorkItem(p, locale)),
+              ...companies.map((c) => companyToWorkItem(c, locale)),
+            ]}
+            locale={locale}
+            showTimeline
+          />
         </div>
 
       </main>
-
-      {/* Pet projects */}
-      {home.petProjects && home.petProjects.items.length > 0 && (
-        <section id="pet-projects" className="scroll-mt-20 pb-16">
-          <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-12">
-            <h2 className="text-4xl font-medium text-foreground">{home.petProjects.title}</h2>
-          </div>
-          <WorksSection items={home.petProjects.items.map((p) => petToWorkItem(p, locale))} locale={locale} />
-        </section>
-      )}
 
       {/* Testimonials */}
       <Testimonials locale={locale} testimonials={home.testimonials} />
 
       {/* About section */}
-      <section id="about" className="mt-16 pt-16 pb-16 bg-surface-about">
+      <section
+        id="about"
+        aria-label={locale === "uk" ? "Досвід роботи та освіта" : "Work, experience & education"}
+        className="mt-16 pt-16 pb-16 bg-surface-about"
+      >
         <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-12">
-
-          <h2 className="text-4xl font-medium text-foreground mb-16 leading-tight">
-            {locale === "uk"
-              ? "Досвід роботи та освіта"
-              : "Work, experience & education"}
-          </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-            {/* Left: About me */}
+            {/* Left: photo */}
             <div className="lg:sticky lg:top-24 lg:self-start">
-              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-6">
-                {locale === "uk" ? "Про мене" : "About me"}
-              </p>
-
-              {/* Photo stack */}
-              <div className="mb-8">
-                <Image
-                  src="/images/my_photo/photo_me.webp"
-                  alt=""
-                  width={1366}
-                  height={903}
-                  className="w-full max-w-md h-auto"
-                />
-              </div>
-
-              <div className="flex flex-col gap-5 text-lg text-foreground/75 leading-relaxed">
-                {home.about.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
+              <Image
+                src="/images/my_photo/photo_me.webp"
+                alt=""
+                width={1366}
+                height={903}
+                className="w-full max-w-md h-auto"
+              />
             </div>
 
-          {/* Right: Timeline */}
+          {/* Right: About me text and the CV download button (the experience timeline is not shown; copy kept in docs/experience-timeline.md) */}
           <div className="flex flex-col">
-            {home.timeline.map((item) => (
-              <div key={item.company} className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-2 md:gap-8 py-10 border-b border-border last:border-0">
-                <span className="text-sm text-muted-foreground pt-1.5 shrink-0">{item.period}</span>
-                <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <div className="w-9 h-9 shrink-0">
-                      {item.icon ? (
-                        <Image
-                          src={item.icon}
-                          alt={item.company}
-                          width={36}
-                          height={36}
-                          className="w-9 h-9 rounded-xl"
-                        />
-                      ) : (
-                        <div className="w-9 h-9 rounded-xl bg-muted flex items-center justify-center">
-                          <span className="text-muted-foreground/40 text-xs font-medium">
-                            {item.company.charAt(0)}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                    <h3 className="text-2xl font-medium text-foreground">{item.company}</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-3 pl-12">{item.role}</p>
-                  <p className="text-base text-foreground/75 leading-relaxed max-w-2xl">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-6">
+              {locale === "uk" ? "Про мене" : "About me"}
+            </p>
+            <div className="flex flex-col gap-5 text-lg text-foreground/75 leading-relaxed mb-6">
+              {home.about.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
 
             {/* CV download button */}
             <div className="pt-6">
