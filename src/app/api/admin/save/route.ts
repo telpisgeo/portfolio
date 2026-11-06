@@ -42,6 +42,12 @@ function validateImageRows(rows: unknown): string | null {
     if (r.description !== undefined && (!isString(r.description) || r.description.length > 1000)) return "Невірний опис екрана";
     if (r.caseUrl !== undefined && (!isString(r.caseUrl) || !CASE_URL_RE.test(r.caseUrl))) return `Невірне посилання на кейс: ${r.caseUrl}`;
     if (r.crop !== undefined && (typeof r.crop !== "number" || !(r.crop > 0 && r.crop <= 1))) return "crop має бути числом від 0 до 1";
+    if (r.posters !== undefined) {
+      if (!Array.isArray(r.posters)) return "posters має бути масивом";
+      for (const p of r.posters) {
+        if (!isString(p) || (p !== "" && !IMAGE_PATH_RE.test(p))) return `Невірний шлях до постера: ${p}`;
+      }
+    }
     if (Array.isArray(r.value)) {
       for (const img of r.value) {
         const err = validateMediaPath(img);
@@ -123,6 +129,17 @@ function validatePetProjects(section: unknown): string | null {
     if (!isString(p.description) || p.description.length > 3000) return "Невірний опис Pet-проєкту";
     for (const k of ["url", "productType", "period", "role", "tools", "note", "imageTitle", "imageDescription"] as const) {
       if (p[k] !== undefined && (!isString(p[k]) || (p[k] as string).length > 500)) return `Невірне поле ${k} Pet-проєкту`;
+    }
+    if (p.moreScreens !== undefined) {
+      if (!Array.isArray(p.moreScreens) || p.moreScreens.length > 20) return "moreScreens має бути масивом (до 20)";
+      for (const m of p.moreScreens as unknown[]) {
+        if (!m || typeof m !== "object") return "Невірний екран Pet-проєкту";
+        const ms = m as Record<string, unknown>;
+        const err = validateMediaPath(ms.src);
+        if (err) return err;
+        if (!isString(ms.title) || ms.title.length > 200) return "Невірна назва екрана Pet-проєкту";
+        if (ms.description !== undefined && (!isString(ms.description) || ms.description.length > 1000)) return "Невірний опис екрана Pet-проєкту";
+      }
     }
     if (p.icon !== undefined && p.icon !== "") {
       const err = validateImagePath(p.icon);

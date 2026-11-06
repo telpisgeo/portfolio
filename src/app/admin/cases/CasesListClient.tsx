@@ -43,6 +43,30 @@ export default function CasesListClient({ cases }: { cases: CaseListItem[] }) {
     }
   }
 
+  async function toggleStatus(c: CaseListItem) {
+    const next = c.status === "published" ? "draft" : "published";
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/cases", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: c.slug, status: next }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Помилка збереження");
+        return;
+      }
+      window.alert(`Кейс "${c.slug}" ${next === "draft" ? "сховано" : "показано"}. Зачекайте ~1 хв на деплой, потім оновіть цю сторінку.`);
+      router.refresh();
+    } catch {
+      setError("Мережева помилка");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-6 py-12">
@@ -90,6 +114,14 @@ export default function CasesListClient({ cases }: { cases: CaseListItem[] }) {
                 </div>
                 <p className="text-sm text-muted-foreground font-mono truncate">{c.slug}</p>
               </div>
+              <div className="flex items-center gap-4 shrink-0">
+              <button
+                onClick={() => toggleStatus(c)}
+                disabled={busy}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors disabled:opacity-40"
+              >
+                {c.status === "published" ? "Сховати" : "Показати"}
+              </button>
               <button
                 onClick={() => createCase(c.slug)}
                 disabled={busy}
@@ -97,6 +129,7 @@ export default function CasesListClient({ cases }: { cases: CaseListItem[] }) {
               >
                 Дублювати
               </button>
+              </div>
             </div>
           ))}
         </div>

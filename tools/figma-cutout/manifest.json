@@ -1,0 +1,12 @@
+{
+  "name": "Cutout — remove background",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["https://cdn.jsdelivr.net", "https://staticimgly.com"],
+    "reasoning": "Loads the background-removal runtime and its model, which then run locally in the plugin window. Your images are never uploaded."
+  }
+}

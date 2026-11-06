@@ -31,9 +31,15 @@ function slugify(name: string): string {
 // saving the entire form.
 function cleanImageRows(rows: HomeImageRow[]): HomeImageRow[] {
   return rows
-    .map((row) => ({ ...row, value: Array.isArray(row.value) ? row.value.filter((v) => v.trim() !== "") : row.value }))
+    .map((row) => {
+      if (!Array.isArray(row.value)) return row;
+      // Drop empty slots, keeping each remaining item's poster aligned with it.
+      const keep = row.value.map((v, i) => ({ v, p: row.posters?.[i] ?? "" })).filter((x) => x.v.trim() !== "");
+      return { ...row, value: keep.map((x) => x.v), posters: keep.map((x) => x.p) };
+    })
     .filter((row) => (Array.isArray(row.value) ? row.value.length > 0 : row.value.trim() !== ""))
-    .map((row) => (Array.isArray(row.value) && row.value.length === 1 ? { ...row, value: row.value[0] } : row));
+    .map((row) => (Array.isArray(row.value) && row.value.length === 1 ? { ...row, value: row.value[0], posters: row.posters?.slice(0, 1) } : row))
+    .map(({ posters, ...row }) => (posters && posters.some((p) => p) ? { ...row, posters } : row));
 }
 
 function cleanContent(content: GraphContent): GraphContent {
@@ -148,15 +154,20 @@ export default function AdminGraphPage() {
     updateImageRows(index, companies[index].imageRows.filter((_, i) => i !== rowIdx));
   }
 
-  function updateImageRowValue(index: number, rowIdx: number, colIdx: number, value: string) {
+  // `poster` is the preview image for the new media (undefined = none): it is
+  // always replaced together with the media so a stale poster never lingers.
+  function updateImageRowValue(index: number, rowIdx: number, colIdx: number, value: string, poster?: string) {
     const rows = companies[index].imageRows.map((row, i) => {
       if (i !== rowIdx) return row;
+      const count = Array.isArray(row.value) ? row.value.length : 1;
+      const posters = Array.from({ length: count }, (_, k) => row.posters?.[k] ?? "");
+      posters[colIdx] = poster ?? "";
       if (Array.isArray(row.value)) {
         const updated = [...row.value];
         updated[colIdx] = value;
-        return { ...row, value: updated };
+        return { ...row, value: updated, posters };
       }
-      return { ...row, value };
+      return { ...row, value, posters };
     });
     updateImageRows(index, rows);
   }
@@ -164,8 +175,8 @@ export default function AdminGraphPage() {
   function toggleImagePair(index: number, rowIdx: number) {
     const rows = companies[index].imageRows.map((row, i) => {
       if (i !== rowIdx) return row;
-      if (Array.isArray(row.value)) return { ...row, value: row.value[0] ?? "" };
-      return { ...row, value: [row.value, ""] };
+      if (Array.isArray(row.value)) return { ...row, value: row.value[0] ?? "", posters: row.posters?.slice(0, 1) };
+      return { ...row, value: [row.value, ""], posters: [row.posters?.[0] ?? "", ""] };
     });
     updateImageRows(index, rows);
   }
@@ -527,7 +538,7 @@ export default function AdminGraphPage() {
                                   kind="media"
                                   dir={company.slug}
                                   value={val}
-                                  onChange={(src) => updateImageRowValue(index, rowIdx, colIdx, src)}
+                                  onChange={(src, _ratio, poster) => updateImageRowValue(index, rowIdx, colIdx, src, poster)}
                                 />
                               </div>
                             ))}
@@ -537,7 +548,7 @@ export default function AdminGraphPage() {
                             kind="media"
                             dir={company.slug}
                             value={row.value}
-                            onChange={(src) => updateImageRowValue(index, rowIdx, 0, src)}
+                            onChange={(src, _ratio, poster) => updateImageRowValue(index, rowIdx, 0, src, poster)}
                           />
                         )}
                       </div>

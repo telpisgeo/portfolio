@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { translations } from "@/lib/translations";
-import { listDynamicCaseSlugs } from "@/lib/case-store";
+import { isCaseDraft, listDynamicCaseSlugs } from "@/lib/case-store";
 
 const BASE = "https://www.telpis.com.ua";
 const LOCALES = ["uk", "en"] as const;
@@ -9,16 +9,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Locale-agnostic paths (without the leading /<locale> segment).
   const staticPaths = [
     "",
-    "/cases/eschool-2",
-    "/cases/westudy",
-    "/cases/snov",
+    ...["eschool-2", "westudy", "snov"].filter((s) => !isCaseDraft(s)).map((s) => `/cases/${s}`),
     "/odesa",
   ];
 
   // Cases served through the generic [slug] route — kept in sync with the
   // same sources the page itself uses (legacy translations + JSON files).
   const caseSlugs = [
-    ...new Set([...Object.keys(translations.uk.cases), ...listDynamicCaseSlugs()]),
+    ...new Set([...Object.keys(translations.uk.cases), ...listDynamicCaseSlugs().filter((s) => !isCaseDraft(s))]),
   ];
   const casePaths = caseSlugs.map((slug) => `/cases/${slug}`);
 

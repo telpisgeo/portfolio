@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { isHiddenCaseUrl } from "@/lib/case-store";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -10,10 +11,13 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import ShimmerImage from "@/components/ShimmerImage";
 import Testimonials from "@/components/Testimonials";
+import CenterPlayVideo from "@/components/CenterPlayVideo";
 
 const SITE_URL = "https://www.telpis.com.ua";
 
 const VIDEO_EXT_RE = /\.(webm|mp4|mov)$/i;
+// Videos named "*-once.<ext>" play a single time and stay on the last frame.
+const ONCE_VIDEO_RE = /-once\.(webm|mp4|mov)$/i;
 
 // This section uses its own URL locale segments ("ua"/"en") instead of the
 // main site's "uk"/"en" — kept distinct per the graph-design page brief.
@@ -206,7 +210,7 @@ export default async function GraphLocalePage({
                       {locale === "uk" ? "Кейс готується до публікації" : "Case coming soon"}
                     </p>
                   )}
-                  {company.caseUrl && (
+                  {company.caseUrl && !isHiddenCaseUrl(company.caseUrl) && (
                     <div>
                       <Link
                         href={company.caseUrl}
@@ -229,10 +233,10 @@ export default async function GraphLocalePage({
                   {company.imageRows.filter((row) => row.active !== false).map((row, i) => (
                     Array.isArray(row.value) ? (
                       <div key={i} className="grid grid-cols-2 gap-3">
-                        {row.value.map((src) => (
+                        {row.value.map((src, i) => (
                           <div key={src} className="relative overflow-hidden rounded-[8px] aspect-square">
                             {VIDEO_EXT_RE.test(src) ? (
-                              <video src={src} className="absolute inset-0 w-full h-full object-cover" autoPlay loop muted playsInline />
+                              <CenterPlayVideo src={src} poster={row.posters?.[i]} className="absolute inset-0 w-full h-full object-cover" />
                             ) : (
                               <ShimmerImage src={src} alt={company.name} fill sizes="(min-width: 1440px) 660px, 45vw" className="object-cover" />
                             )}
@@ -241,7 +245,7 @@ export default async function GraphLocalePage({
                       </div>
                     ) : VIDEO_EXT_RE.test(row.value) ? (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">
-                        <video src={row.value} className="w-full h-auto" autoPlay loop muted playsInline />
+                        <CenterPlayVideo src={row.value} poster={row.posters?.[0]} className="w-full h-auto" once={ONCE_VIDEO_RE.test(row.value)} />
                       </div>
                     ) : (
                       <div key={row.value} className="relative overflow-hidden rounded-[8px]">

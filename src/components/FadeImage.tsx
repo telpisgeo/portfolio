@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function FadeImage({
   src,
@@ -21,12 +22,18 @@ export default function FadeImage({
       style={{ aspectRatio: ratio.replace("/", " / ") }}
     >
       {!loaded && <div className="absolute inset-0 animate-shimmer" />}
-      <img
+      <Image
         src={src}
         alt={alt}
-        loading="lazy"
+        fill
+        sizes="(min-width: 1024px) 912px, 100vw"
+        ref={(img) => {
+          // Safari can skip onLoad for cached images; reveal them right away.
+          if (img?.complete && img.naturalWidth > 0) setLoaded(true);
+        }}
         onLoad={() => setLoaded(true)}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+        onError={() => setLoaded(true)}
+        className={`object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
       />
     </div>
   );

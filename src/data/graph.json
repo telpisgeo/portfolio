@@ -2,7 +2,7 @@
   "uk": {
     "cvUrl": "/Georgiy_Telpis_uxui_(product)_designer-ua.pdf",
     "hero": {
-      "text1": "я Георгій, дизайнер який працюю комплексно з SaaS продуктами. Від візуальних комунікацій до розробки інтерфейсів продуктів. Люблю поєднувати інжиніринг з графічним дизайном.",
+      "text1": "я Георгій, дизайнер який працюю комплексно з брендами. Від візуальних комунікацій до розробки інтерфейсів продуктів. Люблю поєднувати інжиніринг з графічним дизайном.",
       "text2": ""
     },
     "about": [
@@ -12,6 +12,38 @@
       "Закінчив Одеську політехніку та Британську школу дизайну."
     ],
     "companies": [
+      {
+        "slug": "agroprolisok",
+        "name": "Агропролісок",
+        "url": "https://agroprolisok.com.ua/ua/",
+        "period": "",
+        "productType": "Постачання, монтаж і сервіс обладнання для птахівництва, свинарства та мікроклімату (B2B)",
+        "role": "",
+        "icon": "/images/icons/agroprolisok.svg",
+        "description": "Технічний партнер птахівничих і тваринницьких господарств. Розробив гайдлайн візуальних комунікацій для соцмереж: палітра, типографіка, графічні елементи, фотостиль і каруселі для Instagram.",
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/agroprolisok/prolis.webp",
+            "active": true
+          },
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-carousel.mp4",
+            "posters": [
+              "/images/works/agroprolisok/agroprolisok-carousel-poster.webp"
+            ]
+          },
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-slide-once.mp4",
+            "posters": [
+              "/images/works/agroprolisok/agroprolisok-slide-once-poster.webp"
+            ]
+          },
+          {
+            "value": "/images/works/agroprolisok/poster-agroprolisok.webp"
+          }
+        ]
+      },
       {
         "slug": "eschool",
         "name": "Єдина школа",
@@ -30,6 +62,10 @@
             "value": [
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/pattern-7FYP7nbV3CGC1QLG91RSvOTvGTFutP.mp4",
               "/images/works/eschool/andrej-lisakov-x6n28pzzhiq-unsplash.webp"
+            ],
+            "posters": [
+              "/images/works/eschool/pattern-poster.webp",
+              ""
             ]
           },
           {
@@ -39,6 +75,10 @@
             "value": [
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/motion-kn056cg9gL09tLTkJlTNHbiN9s8u5w.mp4",
               "/images/works/eschool/edyna-school-phone-start.webp"
+            ],
+            "posters": [
+              "/images/works/eschool/motion-poster.webp",
+              ""
             ]
           },
           {
@@ -48,7 +88,10 @@
             "value": "/images/works/eschool/yedyna-school-email.webp"
           },
           {
-            "value": "/images/works/eschool/yedyna-school-posts-carousel.webm"
+            "value": "/images/works/eschool/yedyna-school-posts-carousel.mp4",
+            "posters": [
+              "/images/works/eschool/yedyna-school-posts-carousel-poster.webp"
+            ]
           }
         ]
       },
@@ -83,10 +126,20 @@
             "value": "/images/works/westudy/westudy-case-4-web.webp"
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-bg-loop-VhHFUwyC3DYRS93CV36impmK4EKqTc.mp4"
+            "value": "/images/works/westudy/westudy-bg-loop.mp4",
+            "posters": [
+              "/images/works/westudy/westudy-bg-loop-poster.webp"
+            ]
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-ETVdg8QtHWVscj8A5SRC5TAjvRTjJ4.mp4"
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-ETVdg8QtHWVscj8A5SRC5TAjvRTjJ4.mp4",
+            "active": false
+          },
+          {
+            "value": "/images/works/westudy/westudy-ads-carousel.mp4",
+            "posters": [
+              "/images/works/westudy/westudy-ads-carousel-poster.webp"
+            ]
           }
         ]
       },
@@ -109,12 +162,19 @@
             ]
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-tI00blXpyrUv6JiBqhcBXpXW4PTyCM.mp4"
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-tI00blXpyrUv6JiBqhcBXpXW4PTyCM.mp4",
+            "posters": [
+              "/images/works/sednpulse/sendpulse-case-icons-poster.webp"
+            ]
           },
           {
             "value": [
               "/images/works/sednpulse/sendpulse-case-customer.webp",
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-2-2nfrXSmhQIM1M0nSryecfBWezuE3Wt.mp4"
+            ],
+            "posters": [
+              "",
+              "/images/works/sednpulse/sendpulse-case-icons-2-poster.webp"
             ]
           },
           {
@@ -161,7 +221,7 @@
   "en": {
     "cvUrl": "/Georgiy_Telpis_uxui_(product)_designer-en.pdf",
     "hero": {
-      "text1": "I'm Georgiy, a designer who works comprehensively with SaaS products — from visual communications to product interface development. I love combining engineering with graphic design.",
+      "text1": "I'm Georgiy, a designer who works comprehensively with brands — from visual communications to product interface development. I love combining engineering with graphic design.",
       "text2": ""
     },
     "about": [
@@ -171,6 +231,37 @@
       "I graduated from Odesa Polytechnic and the British Higher School of Art & Design."
     ],
     "companies": [
+      {
+        "slug": "agroprolisok",
+        "name": "Agroprolisok",
+        "url": "https://agroprolisok.com.ua/ua/",
+        "period": "",
+        "productType": "Supply, installation and service of equipment for poultry, pig farming and climate control (B2B)",
+        "role": "",
+        "icon": "/images/icons/agroprolisok.svg",
+        "description": "A technical partner for poultry and livestock farms. Created a visual communications guide for social media: palette, typography, graphic elements, photo style and Instagram carousels.",
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-guide.webp"
+          },
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-carousel.mp4",
+            "posters": [
+              "/images/works/agroprolisok/agroprolisok-carousel-poster.webp"
+            ]
+          },
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-slide-once.mp4",
+            "posters": [
+              "/images/works/agroprolisok/agroprolisok-slide-once-poster.webp"
+            ]
+          },
+          {
+            "value": "/images/works/agroprolisok/agroprolisok-billboard.webp"
+          }
+        ]
+      },
       {
         "slug": "eschool",
         "name": "Yedyna Shkola",
@@ -189,6 +280,10 @@
             "value": [
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/pattern-7FYP7nbV3CGC1QLG91RSvOTvGTFutP.mp4",
               "/images/works/eschool/andrej-lisakov-x6n28pzzhiq-unsplash.webp"
+            ],
+            "posters": [
+              "/images/works/eschool/pattern-poster.webp",
+              ""
             ]
           },
           {
@@ -198,6 +293,10 @@
             "value": [
               "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/eschool/motion-kn056cg9gL09tLTkJlTNHbiN9s8u5w.mp4",
               "/images/works/eschool/edyna-school-phone-start.webp"
+            ],
+            "posters": [
+              "/images/works/eschool/motion-poster.webp",
+              ""
             ]
           },
           {
@@ -207,7 +306,10 @@
             "value": "/images/works/eschool/yedyna-school-email.webp"
           },
           {
-            "value": "/images/works/eschool/yedyna-school-posts-carousel.webm"
+            "value": "/images/works/eschool/yedyna-school-posts-carousel.mp4",
+            "posters": [
+              "/images/works/eschool/yedyna-school-posts-carousel-poster.webp"
+            ]
           }
         ]
       },
@@ -242,10 +344,20 @@
             "value": "/images/works/westudy/westudy-case-4-web.webp"
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-bg-loop-VhHFUwyC3DYRS93CV36impmK4EKqTc.mp4"
+            "value": "/images/works/westudy/westudy-bg-loop.mp4",
+            "posters": [
+              "/images/works/westudy/westudy-bg-loop-poster.webp"
+            ]
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-S3A5HmZky7z5gEPsdPPz3c7MNNSIbf.mp4"
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/westudy/westudy-case-4-ETVdg8QtHWVscj8A5SRC5TAjvRTjJ4.mp4",
+            "active": false
+          },
+          {
+            "value": "/images/works/westudy/westudy-ads-carousel.mp4",
+            "posters": [
+              "/images/works/westudy/westudy-ads-carousel-poster.webp"
+            ]
           }
         ]
       },
@@ -268,12 +380,19 @@
             ]
           },
           {
-            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-9jGBtsBPI5U1PiGc2QCv2k29FF8UJ4.mp4"
+            "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-tI00blXpyrUv6JiBqhcBXpXW4PTyCM.mp4",
+            "posters": [
+              "/images/works/sednpulse/sendpulse-case-icons-poster.webp"
+            ]
           },
           {
             "value": [
               "/images/works/sednpulse/sendpulse-case-customer.webp",
-              "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-2-z59sZD2RhovqZiRWqm5Cu4RHIs06Xk.mp4"
+              "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/sednpulse/sendpulse-case-icons-2-2nfrXSmhQIM1M0nSryecfBWezuE3Wt.mp4"
+            ],
+            "posters": [
+              "",
+              "/images/works/sednpulse/sendpulse-case-icons-2-poster.webp"
             ]
           },
           {

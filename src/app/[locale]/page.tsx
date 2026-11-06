@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { isHiddenCaseUrl } from "@/lib/case-store";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -100,7 +101,12 @@ export default async function LocalePage({
             items={[
               ...companies.map((c) => companyToWorkItem(c, locale)),
               ...(home.petProjects?.items ?? []).map((p) => petToWorkItem(p, locale)),
-            ]}
+            ].map((it) => ({
+              ...it,
+              // Cases hidden in the admin must not be linked from the home page.
+              caseUrl: isHiddenCaseUrl(it.caseUrl) ? undefined : it.caseUrl,
+              screens: it.screens.map((sc) => ({ ...sc, caseUrl: isHiddenCaseUrl(sc.caseUrl) ? undefined : sc.caseUrl })),
+            }))}
             locale={locale}
             showTimeline
           />

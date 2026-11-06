@@ -44,3 +44,13 @@ export function readCaseFile(slug: string): CaseFile | null {
     return null;
   }
 }
+
+export function isCaseDraft(slug: string): boolean {
+  return readCaseFile(slug)?.status === "draft";
+}
+
+// True when a "/uk/cases/<slug>" style link points at a case hidden in the admin.
+export function isHiddenCaseUrl(url: string | undefined): boolean {
+  const match = url?.match(/^\/(?:uk|en)\/cases\/([a-z0-9-]+)$/);
+  return match ? isCaseDraft(match[1]) : false;
+}
