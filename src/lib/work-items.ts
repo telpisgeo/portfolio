@@ -5,6 +5,7 @@ export type WorkScreen = {
   title: string;
   description: string;
   caseUrl?: string;
+  crop?: number;
 };
 
 export type WorkItem = {
@@ -21,7 +22,7 @@ export type WorkItem = {
   note?: string;
   caseUrl?: string;
   casePending?: boolean;
-  /** Pet/side project (kept in home.json petProjects, shown first in the works list). */
+  /** Pet/side project (kept in home.json petProjects, shown last in the works list). */
   isPet?: boolean;
   screens: WorkScreen[];
 };
@@ -51,6 +52,7 @@ export function companyToWorkItem(c: HomeCompany, locale: string): WorkItem {
           title: r.title || stub.title,
           description: r.description || stub.description,
           caseUrl: r.caseUrl,
+          crop: r.crop,
         };
       }),
     );
@@ -84,6 +86,21 @@ export function petToWorkItem(p: PetProject, locale: string): WorkItem {
     description: p.description,
     note: p.note,
     isPet: true,
-    screens: p.image ? [stubScreen(p.image, 1, locale)] : [],
+    screens: [
+      ...(p.image
+        ? [
+            {
+              ...stubScreen(p.image, 1, locale),
+              ...(p.imageTitle ? { title: p.imageTitle } : {}),
+              ...(p.imageDescription ? { description: p.imageDescription } : {}),
+            },
+          ]
+        : []),
+      ...(p.moreScreens ?? []).map((m, i) => ({
+        ...stubScreen(m.src, i + 2, locale),
+        title: m.title,
+        ...(m.description ? { description: m.description } : {}),
+      })),
+    ],
   };
 }

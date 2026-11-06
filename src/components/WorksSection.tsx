@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { WorkItem } from "@/lib/work-items";
@@ -15,6 +15,37 @@ type Props = {
 };
 
 type Open = { item: number; screen: number } | null;
+
+/** Rail video: plays on hover (desktop), rests on its first frame otherwise; touch devices have no hover, so it autoplays there. */
+function HoverVideo({ src, className }: { src: string; className?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [canHover, setCanHover] = useState(true);
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover)");
+    const sync = () => setCanHover(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  return (
+    <video
+      ref={ref}
+      src={canHover ? `${src}#t=0.001` : src}
+      className={className}
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      autoPlay={!canHover}
+      onMouseEnter={() => canHover && ref.current?.play().catch(() => {})}
+      onMouseLeave={() => {
+        if (!canHover || !ref.current) return;
+        ref.current.pause();
+        ref.current.currentTime = 0;
+      }}
+    />
+  );
+}
 
 // Arrow icon exported from Figma (Portfolio-Graphic design, node 567:4114), pointing up-right.
 function ArrowIcon({ className }: { className?: string }) {
@@ -103,11 +134,18 @@ function ScreenScroller({
               className="group relative h-[260px] sm:h-[400px] rounded-xl overflow-hidden bg-muted cursor-zoom-in"
             >
               {VIDEO_EXT_RE.test(s.src) ? (
-                <video src={s.src} className="h-full w-auto" autoPlay loop muted playsInline />
+                s.crop ? (
+                  <div className="relative h-full" style={{ aspectRatio: `${1144 * s.crop} / 640` }}>
+                    <HoverVideo src={s.src} className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2" />
+                  </div>
+                ) : (
+                  <HoverVideo src={s.src} className="h-full w-auto" />
+                )
               ) : (
                 // eslint-disable-next-line @next/next/no-img-element -- natural width drives the horizontal rail
                 <img src={s.src} alt={s.title} loading="lazy" draggable={false} className="h-full w-auto max-w-none" />
               )}
+              {item.isPet && <span aria-hidden className="pointer-events-none absolute inset-0 rounded-xl border border-black/10" />}
               <span className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 text-foreground shadow flex items-center justify-center opacity-0 group-hover:opacity-100 max-sm:opacity-100 transition-opacity">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
@@ -311,8 +349,9 @@ export default function WorksSection({ items, locale, showTimeline = false }: Pr
               {items.map((it) => {
                 const isActive = active === it.slug;
                 return (
+                  <Fragment key={it.slug}>
+                  {it.isPet && <span aria-hidden className="shrink-0 self-center w-px h-8 bg-foreground/20" />}
                   <a
-                    key={it.slug}
                     href={`#work-${it.slug}`}
                     onClick={(e) => {
                       e.preventDefault();
@@ -321,9 +360,10 @@ export default function WorksSection({ items, locale, showTimeline = false }: Pr
                     className={`relative shrink-0 py-3 text-sm leading-tight transition-colors ${isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
                   >
                     <span className="block font-medium">{it.name}</span>
-                    {it.period && <span className="block text-xs opacity-70 mt-0.5">{it.period}</span>}
+                    {(it.isPet || it.period) && <span className="block text-xs opacity-70 mt-0.5">{it.isPet ? "Pet-project" : it.period}</span>}
                     <span className={`absolute left-0 right-0 -bottom-px h-0.5 bg-foreground transition-opacity ${isActive ? "opacity-100" : "opacity-0"}`} />
                   </a>
+                  </Fragment>
                 );
               })}
             </div>

@@ -4,6 +4,8 @@ export type HomeImageRow = {
   title?: string;
   description?: string;
   caseUrl?: string;
+  /** Video only: visible share (0–1) of the frame width, centered. Trims empty side margins in the works rail. */
+  crop?: number;
 };
 
 export type HomeCompany = {
@@ -53,6 +55,11 @@ export type PetProject = {
   description: string;
   note?: string;
   image?: string;
+  /** Caption and drawer text for the single screen. */
+  imageTitle?: string;
+  imageDescription?: string;
+  /** Further screens shown after the main image. */
+  moreScreens?: { src: string; title: string; description?: string }[];
 };
 
 export type PetProjectsSection = {

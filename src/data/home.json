@@ -20,19 +20,21 @@
         "tools": "Figma, Claude Code",
         "imageRows": [
           {
-            "value": "/images/works/eschool/eschool-mob2-ua.webp",
+            "value": "/images/works/eschool/video-presentation-ua.webm",
+            "crop": 0.42,
             "caseUrl": "/uk/cases/eschool-2",
-            "title": "Аналітика учня та рекомендації",
+            "title": "AI-аналітика успішності учня",
             "description": "Оновив сервіс рекомендацій для батьків: поглиблена аналітика учня на основі оцінок, домашніх завдань і відвідуваності та рекомендації репетиторів. Запропонував Gallup-підхід — підсилювати те, що дитині вдається найкраще."
           },
           {
-            "value": "/images/works/eschool/eschool-promo.png",
-            "active": false
+            "value": "/images/works/eschool/eschool.webp",
+            "title": "Розумники: цікавинки для дітей",
+            "description": "Спроєктував сервіс «Розумники» для дітей: щоденні цікавинки зі шкільної програми та тижневий рейтинг серед друзів по класу й школі. До запуску сервіс не дійшов."
           },
           {
-            "value": "/images/works/eschool/eschool.webp",
-            "title": "Розумники",
-            "description": "Спроєктував сервіс «Розумники» для дітей: щоденні цікавинки зі шкільної програми та тижневий рейтинг серед друзів по класу й школі. До запуску сервіс не дійшов."
+            "value": "/images/works/eschool/case-Yedyna school-promo-ua.webp",
+            "title": "Редизайн головного сайту",
+            "description": "Оновив головний сайт платформи «Єдина школа»: нова структура та візуальна мова, окремі сторінки для вчителів, батьків і учнів."
           }
         ],
         "achievements": []
@@ -197,6 +199,15 @@
           "tools": "Figma, Claude Code, Supabase",
           "description": "Щоденна 15-хвилинна вправа з читання для дітей 6–12 років з дислексією: AI підбирає слова та історії під інтереси дитини, а батьки проводять її вдома.",
           "image": "/images/works/vgolos/vgolos.webm",
+          "moreScreens": [
+            {
+              "src": "/images/works/vgolos/vgolos-reading.webp",
+              "title": "Читання історії вголос",
+              "description": "Екран читання: ілюстрація та текст історії, слово що читається підсвічується. Дитина може прослухати слово або читати вголос, а сервіс слухає та підказує."
+            }
+          ],
+          "imageTitle": "Генерація історії під інтереси дитини",
+          "imageDescription": "Головний екран: дитина обирає вік і формат вправи (історія чи слова) та описує, про що хоче почитати, а AI складає текст під її інтереси та рівень читання.",
           "productType": "Читалка для дітей з дислексією",
           "icon": "/images/icons/vgolos.svg",
           "note": "Кейс у стані наповнення"
@@ -227,17 +238,18 @@
           {
             "value": "/images/works/eschool/eschool-mob2-en.webp",
             "caseUrl": "/en/cases/eschool-2",
-            "title": "Student analytics and recommendations",
+            "title": "AI-powered student analytics",
             "description": "Redesigned the parent recommendations service: in-depth student analytics based on grades, homework and attendance, plus tutor recommendations. Proposed a Gallup-style approach: reinforce what the child does best."
           },
           {
-            "value": "/images/works/eschool/eschool-web-en.webp",
-            "active": false
+            "value": "/images/works/eschool/eschool-mob-en.webp",
+            "title": "Rozumnyky: daily facts for kids",
+            "description": "Designed “Rozumnyky”, a service for kids: daily fun facts from the school curriculum and a weekly leaderboard among classmates and schoolmates. The service was never launched."
           },
           {
-            "value": "/images/works/eschool/eschool-mob-en.webp",
-            "title": "Rozumnyky",
-            "description": "Designed “Rozumnyky”, a service for kids: daily fun facts from the school curriculum and a weekly leaderboard among classmates and schoolmates. The service was never launched."
+            "value": "/images/works/eschool/case-Yedyna school-promo-en.webp",
+            "title": "Main website redesign",
+            "description": "Redesigned the main website of the Yedyna Shkola platform: a new structure and visual language, with separate sections for teachers, parents and students."
           }
         ],
         "achievements": []
@@ -387,7 +399,30 @@
     "worksTitle": "",
     "petProjects": {
       "title": "Pet project",
-      "items": []
+      "items": [
+        {
+          "slug": "vgolos",
+          "name": "Vgolos",
+          "url": "https://www.vgolos.fun",
+          "period": "2026",
+          "role": "Product Designer",
+          "tools": "Figma, Claude Code, Supabase",
+          "description": "A daily 15-minute reading exercise for children aged 6–12 with dyslexia: AI picks words and stories based on the child's interests, and parents run it at home.",
+          "image": "/images/works/vgolos/vgolos.webm",
+          "moreScreens": [
+            {
+              "src": "/images/works/vgolos/vgolos-reading.webp",
+              "title": "Reading a story aloud",
+              "description": "Reading screen: the illustration and story text, with the current word highlighted. The child can listen to a word or read aloud while the service listens and helps."
+            }
+          ],
+          "imageTitle": "Story generation based on the child's interests",
+          "imageDescription": "Main screen: the child picks an age and format (story or words) and describes what they want to read, and AI writes a text matched to their interests and reading level.",
+          "productType": "Reading app for children with dyslexia",
+          "icon": "/images/icons/vgolos.svg",
+          "note": "Case study in progress"
+        }
+      ]
     }
   }
 }

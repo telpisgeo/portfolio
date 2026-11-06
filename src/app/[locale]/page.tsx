@@ -95,11 +95,11 @@ export default async function LocalePage({
               </h2>
             </div>
           )}
-          {/* Side project first (newest), then the cases — one list and one timeline, no separate category. */}
+          {/* Cases first, then the side project at the end — one list and one timeline, no separate category. */}
           <WorksSection
             items={[
-              ...(home.petProjects?.items ?? []).map((p) => petToWorkItem(p, locale)),
               ...companies.map((c) => companyToWorkItem(c, locale)),
+              ...(home.petProjects?.items ?? []).map((p) => petToWorkItem(p, locale)),
             ]}
             locale={locale}
             showTimeline

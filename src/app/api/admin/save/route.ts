@@ -41,6 +41,7 @@ function validateImageRows(rows: unknown): string | null {
     if (r.title !== undefined && (!isString(r.title) || r.title.length > 200)) return "Невірна назва екрана";
     if (r.description !== undefined && (!isString(r.description) || r.description.length > 1000)) return "Невірний опис екрана";
     if (r.caseUrl !== undefined && (!isString(r.caseUrl) || !CASE_URL_RE.test(r.caseUrl))) return `Невірне посилання на кейс: ${r.caseUrl}`;
+    if (r.crop !== undefined && (typeof r.crop !== "number" || !(r.crop > 0 && r.crop <= 1))) return "crop має бути числом від 0 до 1";
     if (Array.isArray(r.value)) {
       for (const img of r.value) {
         const err = validateMediaPath(img);
@@ -120,7 +121,7 @@ function validatePetProjects(section: unknown): string | null {
     seen.add(p.slug);
     if (!isString(p.name) || p.name.length > 200) return "Невірна назва Pet-проєкту";
     if (!isString(p.description) || p.description.length > 3000) return "Невірний опис Pet-проєкту";
-    for (const k of ["url", "productType", "period", "role", "tools", "note"] as const) {
+    for (const k of ["url", "productType", "period", "role", "tools", "note", "imageTitle", "imageDescription"] as const) {
       if (p[k] !== undefined && (!isString(p[k]) || (p[k] as string).length > 500)) return `Невірне поле ${k} Pet-проєкту`;
     }
     if (p.icon !== undefined && p.icon !== "") {
