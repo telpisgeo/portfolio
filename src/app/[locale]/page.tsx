@@ -63,12 +63,13 @@ export default async function LocalePage({
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([personJsonLd(locale as Locale), websiteJsonLd(locale as Locale)]),
-        }}
-      />
+      {[personJsonLd(locale as Locale), websiteJsonLd(locale as Locale)].map((data) => (
+        <script
+          key={data["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
       <Navbar
         locale={locale}
         otherLocale={otherLocale}

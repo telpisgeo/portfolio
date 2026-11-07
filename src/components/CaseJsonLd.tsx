@@ -14,9 +14,14 @@ export default function CaseJsonLd({
   title: string;
 }) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(caseJsonLd(locale, path, eyebrow, title)) }}
-    />
+    <>
+      {caseJsonLd(locale, path, eyebrow, title).map((data) => (
+        <script
+          key={data["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
+    </>
   );
 }
