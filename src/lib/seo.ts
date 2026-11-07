@@ -35,6 +35,12 @@ export const OG_IMAGE: Record<Locale, string> = {
   en: `${SITE_URL}/og-en-v2.png`,
 };
 
+/** 1200×628 Open Graph image for the graph-design page (from Figma "Social for graph design"). */
+export const OG_IMAGE_GRAPH: Record<Locale, string> = {
+  uk: `${SITE_URL}/og-graph-ua.png`,
+  en: `${SITE_URL}/og-graph-en.png`,
+};
+
 /**
  * Build canonical + hreflang alternates for a page.
  *
@@ -63,6 +69,7 @@ export function socialMetadata(
   title: string,
   description: string,
   type: "website" | "article" = "website",
+  image: string = OG_IMAGE[locale],
 ): Pick<Metadata, "openGraph" | "twitter"> {
   return {
     openGraph: {
@@ -72,13 +79,13 @@ export function socialMetadata(
       siteName: SITE_NAME[locale],
       locale: OG_LOCALE[locale],
       type,
-      images: [{ url: OG_IMAGE[locale], width: 1200, height: 630, alt: title }],
+      images: [{ url: image, width: 1200, height: 628, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [OG_IMAGE[locale]],
+      images: [image],
     },
   };
 }

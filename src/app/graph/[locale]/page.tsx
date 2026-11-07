@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
-import { SITE_URL, personJsonLd, socialMetadata } from "@/lib/seo";
+import { OG_IMAGE_GRAPH, SITE_URL, personJsonLd, socialMetadata } from "@/lib/seo";
 import graphJson from "@/data/graph.json";
 import type { GraphContent } from "@/lib/graph-content";
 import Navbar from "@/components/Navbar";
@@ -56,7 +56,7 @@ export async function generateMetadata({
         "x-default": `${SITE_URL}/graph/ua`,
       },
     },
-    ...socialMetadata(toContentLocale(locale), `${SITE_URL}/graph/${locale}`, title, description),
+    ...socialMetadata(toContentLocale(locale), `${SITE_URL}/graph/${locale}`, title, description, "website", OG_IMAGE_GRAPH[toContentLocale(locale)]),
   };
 }
 
