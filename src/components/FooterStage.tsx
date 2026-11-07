@@ -1,45 +1,36 @@
 "use client";
 
-import { useCallback, useState } from "react";
 import FooterBouncer from "./FooterBouncer";
 
-/** Footer body: the bouncing photo plus a mailto line whose wording changes on every bounce. */
+/** Footer body: one round photo bouncing off the footer edges (it passes under the text), and a mailto quote. */
 export default function FooterStage({
   photos,
-  messages,
+  text,
+  author,
   email,
   children,
 }: {
   photos: string[];
-  messages: string[];
+  text: string;
+  author: string;
   email: string;
   children: React.ReactNode;
 }) {
-  const [msg, setMsg] = useState(0);
-  const next = useCallback(() => {
-    setMsg((cur) => {
-      let n = cur;
-      while (messages.length > 1 && n === cur) n = Math.floor(Math.random() * messages.length);
-      return n;
-    });
-  }, [messages.length]);
-
   return (
     <div className="relative isolate flex min-h-[460px] sm:min-h-[520px] items-center justify-center overflow-hidden px-6 sm:px-12 py-10">
-      <FooterBouncer photos={photos} onBounce={next} />
+      <FooterBouncer photos={photos} />
       <div className="relative z-10 flex flex-col items-center text-center">
-        {/* Fixed two-line slot so the socials below never jump when the wording changes. */}
-        <div className="flex min-h-[2.3em] items-center justify-center text-[clamp(1.75rem,5.5vw,3.25rem)] leading-[1.1]">
+        <div className="flex items-center justify-center text-[clamp(1.75rem,5.5vw,3.25rem)] leading-[1.1]">
           <a
-            key={msg}
             href={`mailto:${email}`}
-            aria-label={`${messages[msg]} (${email})`}
+            aria-label={`${text} — ${author} (${email})`}
             title={email}
-            className="max-w-[24ch] text-balance font-medium hover:opacity-80 transition-opacity animate-[fadeIn_0.35s_ease-out]"
+            className="max-w-[24ch] text-balance font-medium hover:opacity-80 transition-opacity"
           >
-            {messages[msg]}
+            {text}
           </a>
         </div>
+        <p className="mt-3 text-sm text-footer-text/50">— {author}</p>
         {children}
       </div>
     </div>

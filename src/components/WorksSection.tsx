@@ -16,13 +16,14 @@ type Props = {
 
 type Open = { item: number; screen: number } | null;
 
-/** Rail video: plays on hover (desktop), rests on its first frame otherwise; touch devices have no hover, so it autoplays there. */
-function HoverVideo({ src, className }: { src: string; className?: string }) {
+/** Rail video: plays on hover (desktop), rests on its first frame otherwise; touch devices have no hover, so it autoplays there. `always` (the first screen of a case) autoplays everywhere. */
+function HoverVideo({ src, className, always }: { src: string; className?: string; always?: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [canHover, setCanHover] = useState(true);
+  const [hoverMode, setHoverMode] = useState(true);
+  const canHover = hoverMode && !always;
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover)");
-    const sync = () => setCanHover(mq.matches);
+    const sync = () => setHoverMode(mq.matches);
     sync();
     mq.addEventListener("change", sync);
     return () => mq.removeEventListener("change", sync);
@@ -136,10 +137,10 @@ function ScreenScroller({
               {VIDEO_EXT_RE.test(s.src) ? (
                 s.crop ? (
                   <div className="relative h-full" style={{ aspectRatio: `${1144 * s.crop} / 640` }}>
-                    <HoverVideo src={s.src} className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2" />
+                    <HoverVideo src={s.src} always={i === 0} className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2" />
                   </div>
                 ) : (
-                  <HoverVideo src={s.src} className="h-full w-auto" />
+                  <HoverVideo src={s.src} always={i === 0} className="h-full w-auto" />
                 )
               ) : (
                 // eslint-disable-next-line @next/next/no-img-element -- natural width drives the horizontal rail

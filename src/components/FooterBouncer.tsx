@@ -6,14 +6,14 @@ import { useEffect, useRef, useState } from "react";
  * One round photo drifting around its parent like a DVD screensaver.
  * Constant speed; each wall hit swaps the photo and nudges the heading.
  */
-export default function FooterBouncer({ photos, onBounce }: { photos: string[]; onBounce?: () => void }) {
+export default function FooterBouncer({
+  photos,
+}: {
+  photos: string[];
+}) {
   const stage = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
-  const onBounceRef = useRef(onBounce);
-  useEffect(() => {
-    onBounceRef.current = onBounce;
-  }, [onBounce]);
 
   useEffect(() => {
     // Warm the cache so a swap never flashes empty.
@@ -80,7 +80,6 @@ export default function FooterBouncer({ photos, onBounce }: { photos: string[]; 
         ax = Math.cos(a);
         ay = Math.sin(a);
         swap();
-        onBounceRef.current?.();
       }
       place();
       raf = requestAnimationFrame(tick);
