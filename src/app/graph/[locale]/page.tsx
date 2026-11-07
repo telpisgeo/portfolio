@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
+import { SITE_URL, personJsonLd, socialMetadata } from "@/lib/seo";
 import graphJson from "@/data/graph.json";
 import type { GraphContent } from "@/lib/graph-content";
 import Navbar from "@/components/Navbar";
@@ -13,7 +14,6 @@ import ShimmerImage from "@/components/ShimmerImage";
 import Testimonials from "@/components/Testimonials";
 import CenterPlayVideo from "@/components/CenterPlayVideo";
 
-const SITE_URL = "https://www.telpis.com.ua";
 
 const VIDEO_EXT_RE = /\.(webm|mp4|mov)$/i;
 // Videos named "*-once.<ext>" play a single time and stay on the last frame.
@@ -40,7 +40,7 @@ export async function generateMetadata({
   if (locale !== "ua" && locale !== "en") return {};
   const isUa = locale === "ua";
   const title = isUa
-    ? "Тельпіс Георгій. Графічний дизайнер."
+    ? "Георгій Тельпіс. Графічний дизайнер."
     : "Georgiy Telpis. Graphic Designer.";
   const description = isUa
     ? "Графічний дизайн: фірмові стилі, ілюстрації та візуальні матеріали."
@@ -56,13 +56,7 @@ export async function generateMetadata({
         "x-default": `${SITE_URL}/graph/ua`,
       },
     },
-    openGraph: {
-      title,
-      description,
-      locale: isUa ? "uk_UA" : "en_US",
-      type: "website",
-      images: [{ url: isUa ? `${SITE_URL}/og-ua-v2.png` : `${SITE_URL}/og-en-v2.png`, width: 1200, height: 628 }],
-    },
+    ...socialMetadata(toContentLocale(locale), `${SITE_URL}/graph/${locale}`, title, description),
   };
 }
 
@@ -87,6 +81,12 @@ export default async function GraphLocalePage({
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(personJsonLd(locale, `${SITE_URL}/graph/${urlLocale}`)),
+        }}
+      />
       <Navbar
         locale={locale}
         otherLocale={locale === "uk" ? "en" : "uk"}

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { translations, type Locale, type CaseBlock } from "@/lib/translations";
 import { listDynamicCaseSlugs, readCaseFile } from "@/lib/case-store";
 import { caseMetadata } from "@/lib/seo";
+import CaseJsonLd from "@/components/CaseJsonLd";
 import { Caption, CaseBlockList } from "@/components/CaseBlocks";
 import CaseStepsNav from "@/components/CaseStepsNav";
 import Footer from "@/components/Footer";
@@ -113,6 +114,7 @@ export default async function CasePage({
     const otherLabel = locale === "uk" ? "EN" : "UA";
     return (
       <div className="min-h-screen flex flex-col bg-background">
+        <CaseJsonLd locale={locale as Locale} path={`/cases/${slug}`} eyebrow={oc.eyebrow} title={oc.title} />
         <Navbar
           locale={locale}
           otherLocale={otherLocale}
@@ -158,6 +160,7 @@ export default async function CasePage({
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <CaseJsonLd locale={locale as Locale} path={`/cases/${slug}`} eyebrow={c.title} title={c.subtitle} />
 
       <Navbar
         locale={locale}

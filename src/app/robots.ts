@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,7 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin", "/api", "/sandbox"],
     },
-    sitemap: "https://www.telpis.com.ua/sitemap.xml",
-    host: "https://www.telpis.com.ua",
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

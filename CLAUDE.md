@@ -170,7 +170,7 @@ When the user says "додай зображення [name]" or "add image [name]
 
 ## Notes
 - The old `cases/eschool` page was removed; `src/proxy.ts` 301-redirects `/uk|en/cases/eschool` to `eschool-2`.
-- Case page body copy is currently **UA only**; EN is translated later.
+- Case pages have UA and EN copy. SEO: `CASES_TRANSLATED_EN` in `src/lib/seo.ts` controls EN hreflang/sitemap — set it to `false` if a case ships UA-only.
 
 ## Content updates must stay in sync (site ↔ admin ↔ docs)
 

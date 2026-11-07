@@ -4,7 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
-import { localeAlternates, personJsonLd } from "@/lib/seo";
+import {
+  HOME_DESCRIPTION,
+  HOME_TITLE,
+  SITE_URL,
+  localeAlternates,
+  personJsonLd,
+  socialMetadata,
+  websiteJsonLd,
+} from "@/lib/seo";
 import homeJson from "@/data/home.json";
 import type { HomeContent } from "@/lib/home-content";
 import { hasPetProjects } from "@/lib/pet-projects";
@@ -28,25 +36,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (locale !== "uk" && locale !== "en") return {};
-  const t = translations[locale as Locale];
-  const isUk = locale === "uk";
+  const l = locale as Locale;
   return {
-    title: isUk
-      ? "Тельпіс Георгій. Продуктовий дизайнер."
-      : "Georgiy Telpis. Product Designer.",
-    description: isUk
-      ? "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу."
-      : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
-    alternates: localeAlternates(locale as Locale, ""),
-    openGraph: {
-      title: isUk ? "Тельпіс Георгій. Продуктовий дизайнер." : "Georgiy Telpis. Product Designer.",
-      description: isUk
-        ? "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу."
-        : "Experience launching complex products in EdTech and MarTech domains from idea to release.",
-      locale: isUk ? "uk_UA" : "en_US",
-      type: "website",
-      images: [{ url: isUk ? "https://www.telpis.com.ua/og-ua-v2.png" : "https://www.telpis.com.ua/og-en-v2.png", width: 1200, height: 628 }],
-    },
+    title: HOME_TITLE[l],
+    description: HOME_DESCRIPTION[l],
+    alternates: localeAlternates(l, ""),
+    ...socialMetadata(l, `${SITE_URL}/${l}`, HOME_TITLE[l], HOME_DESCRIPTION[l]),
   };
 }
 
@@ -70,7 +65,9 @@ export default async function LocalePage({
     <div className="min-h-screen flex flex-col bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(locale as Locale)) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([personJsonLd(locale as Locale), websiteJsonLd(locale as Locale)]),
+        }}
       />
       <Navbar
         locale={locale}

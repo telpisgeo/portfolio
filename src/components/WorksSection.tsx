@@ -236,7 +236,7 @@ function Drawer({
           <video key={s.src} src={s.src} onClick={(e) => e.stopPropagation()} className="max-w-full max-h-full rounded-xl shadow-2xl" autoPlay loop muted playsInline controls />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element -- natural size, fitted to the viewport
-          <img key={s.src} src={s.src} alt={s.title} onClick={(e) => e.stopPropagation()} className="max-w-full max-h-full rounded-xl shadow-2xl object-contain" />
+          <img key={s.src} src={s.src} alt={s.title} onClick={(e) => e.stopPropagation()} className="w-auto h-auto max-w-full max-h-full shrink-0 rounded-xl shadow-2xl" />
         )}
       </div>
       <aside
@@ -264,7 +264,7 @@ function Drawer({
               <video key={s.src} src={s.src} className="w-full rounded-xl" autoPlay loop muted playsInline />
             ) : (
               // eslint-disable-next-line @next/next/no-img-element -- natural size
-              <img key={s.src} src={s.src} alt={s.title} className="w-full rounded-xl" />
+              <img key={s.src} src={s.src} alt={s.title} className="w-auto h-auto max-w-full mx-auto rounded-xl" />
             )}
           </div>
 

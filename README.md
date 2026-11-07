@@ -21,7 +21,7 @@ Open [http://localhost:3000](http://localhost:3000). Other commands: `npm run bu
 
 ## Project structure
 
-- `src/app/[locale]/` — public pages (home, `cases/*`, `odesa`)
+- `src/app/[locale]/` — public pages (home, `cases/*`)
 - `src/app/admin/` — admin panel (cases, home, pet projects, résumé, graph)
 - `src/app/graph/` — skills graph
 - `src/components/` — components, including case blocks (`CaseBlocks.tsx`)

@@ -4,6 +4,7 @@ import { Google_Sans } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import VercelAnalytics from "@/components/VercelAnalytics";
 import Amplitude from "@/components/Amplitude";
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 // Self-hosted (no render-blocking request to Google) with Cyrillic support.
@@ -15,17 +16,18 @@ const googleSans = Google_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Георгій Тельпіс — Product Designer",
-  description: "Product Designer, що проєктує B2B SaaS продукти — від дослідження до готового інтерфейсу. Досвід у лідогенерації, email-маркетингу та CRM-інструментах.",
-  metadataBase: new URL("https://www.telpis.com.ua"),
+  title: "Георгій Тельпіс. Продуктовий дизайнер.",
+  description: "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу.",
+  metadataBase: new URL(SITE_URL),
+  applicationName: "Георгій Тельпіс",
+  authors: [{ name: "Георгій Тельпіс", url: SITE_URL }],
+  // Fallback for any page without its own social tags; pages override via socialMetadata().
   openGraph: {
-    title: "Георгій Тельпіс — Product Designer",
-    description: "Product Designer, що проєктує B2B SaaS продукти — від дослідження до готового інтерфейсу.",
-    url: "https://www.telpis.com.ua",
     siteName: "Георгій Тельпіс",
-    locale: "uk_UA",
     type: "website",
+    images: [{ url: OG_IMAGE.uk, width: 1200, height: 630 }],
   },
+  twitter: { card: "summary_large_image", images: [OG_IMAGE.uk] },
 };
 
 export default async function RootLayout({

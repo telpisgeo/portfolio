@@ -4,6 +4,7 @@ import { translations, type Locale } from "@/lib/translations";
 import type { CaseContent } from "@/lib/case-blocks";
 import { isCaseDraft } from "@/lib/case-store";
 import { caseMetadata } from "@/lib/seo";
+import CaseJsonLd from "@/components/CaseJsonLd";
 import caseJson from "@/data/cases/eschool-2.json";
 import { hasPetProjects } from "@/lib/pet-projects";
 import Navbar from "@/components/Navbar";
@@ -44,6 +45,7 @@ export default async function EschoolV2Page({
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <CaseJsonLd locale={locale as Locale} path="/cases/eschool-2" eyebrow={c.eyebrow} title={c.title} />
       <Navbar
         locale={locale}
         otherLocale={otherLocale}
