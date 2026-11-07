@@ -17,7 +17,7 @@ type Props = {
 type Open = { item: number; screen: number } | null;
 
 /** Rail video: plays on hover (desktop), rests on its first frame otherwise; touch devices have no hover, so it autoplays there. `always` (the first screen of a case) autoplays everywhere. */
-function HoverVideo({ src, className, always }: { src: string; className?: string; always?: boolean }) {
+function HoverVideo({ src, className, always, poster }: { src: string; className?: string; always?: boolean; poster?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [hoverMode, setHoverMode] = useState(true);
   const canHover = hoverMode && !always;
@@ -32,6 +32,7 @@ function HoverVideo({ src, className, always }: { src: string; className?: strin
     <video
       ref={ref}
       src={canHover ? `${src}#t=0.001` : src}
+      poster={poster}
       className={className}
       loop
       muted
@@ -137,10 +138,10 @@ function ScreenScroller({
               {VIDEO_EXT_RE.test(s.src) ? (
                 s.crop ? (
                   <div className="relative h-full" style={{ aspectRatio: `${1144 * s.crop} / 640` }}>
-                    <HoverVideo src={s.src} always={i === 0} className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2" />
+                    <HoverVideo src={s.src} poster={s.poster} always={i === 0} className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2" />
                   </div>
                 ) : (
-                  <HoverVideo src={s.src} always={i === 0} className="h-full w-auto" />
+                  <HoverVideo src={s.src} poster={s.poster} always={i === 0} className="h-full w-auto" />
                 )
               ) : (
                 // eslint-disable-next-line @next/next/no-img-element -- natural width drives the horizontal rail
@@ -233,7 +234,7 @@ function Drawer({
         className={`absolute inset-y-0 left-0 right-[480px] hidden sm:flex items-center justify-center p-10 transition-opacity duration-300 ${shown ? "opacity-100" : "opacity-0"}`}
       >
         {VIDEO_EXT_RE.test(s.src) ? (
-          <video key={s.src} src={s.src} onClick={(e) => e.stopPropagation()} className="max-w-full max-h-full rounded-xl shadow-2xl" autoPlay loop muted playsInline controls />
+          <video key={s.src} src={s.src} poster={s.poster} onClick={(e) => e.stopPropagation()} className="max-w-full max-h-full rounded-xl shadow-2xl" autoPlay loop muted playsInline controls />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element -- natural size, fitted to the viewport
           <img key={s.src} src={s.src} alt={s.title} onClick={(e) => e.stopPropagation()} className="w-auto h-auto max-w-full max-h-full shrink-0 rounded-xl shadow-2xl" />
@@ -261,7 +262,7 @@ function Drawer({
 
           <div className="sm:hidden -mx-2">
             {VIDEO_EXT_RE.test(s.src) ? (
-              <video key={s.src} src={s.src} className="w-full rounded-xl" autoPlay loop muted playsInline />
+              <video key={s.src} src={s.src} poster={s.poster} className="w-full rounded-xl" autoPlay loop muted playsInline />
             ) : (
               // eslint-disable-next-line @next/next/no-img-element -- natural size
               <img key={s.src} src={s.src} alt={s.title} className="w-auto h-auto max-w-full mx-auto rounded-xl" />

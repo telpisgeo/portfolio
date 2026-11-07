@@ -45,6 +45,36 @@ export default function AdminPetProjectsPage() {
     setPetProjects({ ...petProjects, items: petProjects.items.filter((_, j) => j !== i) });
   }
 
+  function setMoreScreens(i: number, next: NonNullable<PetProject["moreScreens"]>) {
+    updatePetProject(i, { moreScreens: next });
+  }
+
+  // Empty file slots / blank optional text would fail server validation.
+  function cleanContent(c: HomeContent): HomeContent {
+    const clean = (loc: "uk" | "en") => {
+      const pets = c[loc].petProjects;
+      if (!pets) return c[loc];
+      return {
+        ...c[loc],
+        petProjects: {
+          ...pets,
+          items: pets.items.map((p) => {
+            const next: PetProject = { ...p };
+            if (!next.imageTitle?.trim()) delete next.imageTitle;
+            if (!next.imageDescription?.trim()) delete next.imageDescription;
+            const more = (next.moreScreens ?? [])
+              .filter((m) => m.src.trim() !== "")
+              .map((m) => (m.description?.trim() ? m : { src: m.src, title: m.title }));
+            if (more.length) next.moreScreens = more;
+            else delete next.moreScreens;
+            return next;
+          }),
+        },
+      };
+    };
+    return { uk: clean("uk"), en: clean("en") };
+  }
+
   async function handleSave() {
     setSaving(true);
     setSaveStatus("idle");
@@ -53,7 +83,7 @@ export default function AdminPetProjectsPage() {
       const res = await fetch("/api/admin/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ files: { "src/data/home.json": content } }),
+        body: JSON.stringify({ files: { "src/data/home.json": cleanContent(content) } }),
       });
       const data = await res.json();
       if (!res.ok) { setSaveStatus("error"); setSaveError(data.error ?? "Помилка збереження"); }
@@ -166,6 +196,60 @@ export default function AdminPetProjectsPage() {
                   onChange={(src) => updatePetProject(i, { image: src })}
                   label="Зображення"
                 />
+                <div className="grid grid-cols-1 gap-3 mt-3">
+                  <div>
+                    <label className={labelClass}>Назва головного екрана (підпис)</label>
+                    <input value={p.imageTitle ?? ""} onChange={(e) => updatePetProject(i, { imageTitle: e.target.value })} className={inputClass} maxLength={200} />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Опис головного екрана</label>
+                    <textarea value={p.imageDescription ?? ""} onChange={(e) => updatePetProject(i, { imageDescription: e.target.value })} rows={3} maxLength={1000} className={`${inputClass} resize-none leading-relaxed`} />
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <label className={labelClass}>Додаткові екрани</label>
+                  <div className="flex flex-col gap-3">
+                    {(p.moreScreens ?? []).map((m, k) => {
+                      const list = p.moreScreens ?? [];
+                      const patch = (v: Partial<typeof m>) => setMoreScreens(i, list.map((x, j) => (j === k ? { ...x, ...v } : x)));
+                      const move = (dir: -1 | 1) => {
+                        const t = k + dir;
+                        if (t < 0 || t >= list.length) return;
+                        const next = [...list];
+                        [next[k], next[t]] = [next[t], next[k]];
+                        setMoreScreens(i, next);
+                      };
+                      return (
+                        <div key={k} className="border border-border rounded-xl p-3 flex flex-col gap-2">
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs uppercase tracking-widest text-muted-foreground">Екран {k + 2}</span>
+                            <div className="flex items-center gap-1">
+                              <button onClick={() => move(-1)} disabled={k === 0} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors disabled:opacity-30">↑</button>
+                              <button onClick={() => move(1)} disabled={k === list.length - 1} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors disabled:opacity-30">↓</button>
+                              <button onClick={() => setMoreScreens(i, list.filter((_, j) => j !== k))} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors">✕</button>
+                            </div>
+                          </div>
+                          <MediaUpload kind="media" dir={`pet-${p.slug}`} value={m.src} onChange={(src) => patch({ src })} />
+                          <div>
+                            <label className={labelClass}>Назва (підпис)</label>
+                            <input value={m.title} onChange={(e) => patch({ title: e.target.value })} className={inputClass} maxLength={200} />
+                          </div>
+                          <div>
+                            <label className={labelClass}>Опис</label>
+                            <textarea value={m.description ?? ""} onChange={(e) => patch({ description: e.target.value })} rows={3} maxLength={1000} className={`${inputClass} resize-none leading-relaxed`} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                    <button
+                      onClick={() => setMoreScreens(i, [...(p.moreScreens ?? []), { src: "", title: "" }])}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors self-start"
+                    >
+                      + Додати екран
+                    </button>
+                  </div>
+                </div>
               </div>
             ))}
             <button onClick={addPetProject} className="text-sm text-muted-foreground hover:text-foreground transition-colors self-start">

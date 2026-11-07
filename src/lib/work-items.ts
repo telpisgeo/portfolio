@@ -6,6 +6,8 @@ export type WorkScreen = {
   description: string;
   caseUrl?: string;
   crop?: number;
+  /** Still frame shown while a video loads. */
+  poster?: string;
 };
 
 export type WorkItem = {
@@ -44,7 +46,7 @@ export function companyToWorkItem(c: HomeCompany, locale: string): WorkItem {
   const screens = c.imageRows
     .filter((r) => r.active !== false)
     .flatMap((r) =>
-      (Array.isArray(r.value) ? r.value : [r.value]).map((src): WorkScreen => {
+      (Array.isArray(r.value) ? r.value : [r.value]).map((src, k): WorkScreen => {
         n += 1;
         const stub = stubScreen(src, n, locale);
         return {
@@ -53,6 +55,7 @@ export function companyToWorkItem(c: HomeCompany, locale: string): WorkItem {
           description: r.description || stub.description,
           caseUrl: r.caseUrl,
           crop: r.crop,
+          poster: r.posters?.[k] || undefined,
         };
       }),
     );

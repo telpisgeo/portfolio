@@ -21,6 +21,8 @@ function caseSlugFromUrl(caseUrl: string | undefined): string {
   return match ? match[1] : "";
 }
 
+const VIDEO_RE = /\.(webm|mp4|mov)$/i;
+
 function slugify(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
@@ -29,10 +31,24 @@ function slugify(name: string): string {
 // an empty string there fails server-side path validation and blocked
 // saving the entire form.
 function cleanImageRows(rows: HomeImageRow[]): HomeImageRow[] {
-  return rows
-    .map((row) => ({ ...row, value: Array.isArray(row.value) ? row.value.filter((v) => v.trim() !== "") : row.value }))
-    .filter((row) => (Array.isArray(row.value) ? row.value.length > 0 : row.value.trim() !== ""))
-    .map((row) => (Array.isArray(row.value) && row.value.length === 1 ? { ...row, value: row.value[0] } : row));
+  // Legacy "pair" rows ([a, b]) are split: every item is its own screen on the site.
+  const flat = rows.flatMap((row): HomeImageRow[] =>
+    Array.isArray(row.value)
+      ? row.value.map((v, k) => ({ ...row, value: v, posters: row.posters ? [row.posters[k] ?? ""] : undefined }))
+      : [row],
+  );
+  return flat
+    .filter((row) => typeof row.value === "string" && row.value.trim() !== "")
+    .map((row) => {
+      const next: HomeImageRow = { ...row };
+      // Drop empty optional fields so they don't fail validation or bloat the JSON.
+      if (!next.title?.trim()) delete next.title;
+      if (!next.description?.trim()) delete next.description;
+      if (!next.caseUrl) delete next.caseUrl;
+      if (!next.posters || next.posters.every((p) => !p)) delete next.posters;
+      if (!next.crop || !VIDEO_RE.test(next.value as string)) delete next.crop;
+      return next;
+    });
 }
 
 function cleanContent(content: HomeContent): HomeContent {
@@ -129,34 +145,25 @@ export default function AdminHomePage() {
     updateImageRows(index, [...companies[index].imageRows, { value: "" }]);
   }
 
-  function addImagePairRow(index: number) {
-    updateImageRows(index, [...companies[index].imageRows, { value: ["", ""] }]);
-  }
-
   function removeImageRow(index: number, rowIdx: number) {
     updateImageRows(index, companies[index].imageRows.filter((_, i) => i !== rowIdx));
   }
 
-  function updateImageRowValue(index: number, rowIdx: number, colIdx: number, value: string) {
+  function updateImageRowValue(index: number, rowIdx: number, src: string, poster?: string) {
     const rows = companies[index].imageRows.map((row, i) => {
       if (i !== rowIdx) return row;
-      if (Array.isArray(row.value)) {
-        const updated = [...row.value];
-        updated[colIdx] = value;
-        return { ...row, value: updated };
-      }
-      return { ...row, value };
+      const next: HomeImageRow = { ...row, value: src };
+      // A new/removed file invalidates the old poster; a new video brings its own.
+      if (src && poster) next.posters = [poster];
+      else delete next.posters;
+      if (!VIDEO_RE.test(src)) delete next.crop;
+      return next;
     });
     updateImageRows(index, rows);
   }
 
-  function toggleImagePair(index: number, rowIdx: number) {
-    const rows = companies[index].imageRows.map((row, i) => {
-      if (i !== rowIdx) return row;
-      if (Array.isArray(row.value)) return { ...row, value: row.value[0] ?? "" };
-      return { ...row, value: [row.value, ""] };
-    });
-    updateImageRows(index, rows);
+  function updateImageRowMeta(index: number, rowIdx: number, patch: Partial<HomeImageRow>) {
+    updateImageRows(index, companies[index].imageRows.map((row, i) => (i === rowIdx ? { ...row, ...patch } : row)));
   }
 
   function moveImageRow(index: number, rowIdx: number, dir: -1 | 1) {
@@ -427,16 +434,6 @@ export default function AdminHomePage() {
                             <button onClick={() => moveImageRow(index, rowIdx, -1)} disabled={rowIdx === 0} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors disabled:opacity-30">↑</button>
                             <button onClick={() => moveImageRow(index, rowIdx, 1)} disabled={rowIdx === company.imageRows.length - 1} className="w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors disabled:opacity-30">↓</button>
                             <button
-                              onClick={() => toggleImagePair(index, rowIdx)}
-                              title={Array.isArray(row.value) ? "Зробити одним рядком" : "Поставити поруч (2 в ряд)"}
-                              className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-colors shrink-0 ${Array.isArray(row.value) ? "border-foreground text-foreground bg-foreground/5" : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"}`}
-                            >
-                              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                <rect x="1" y="3" width="6" height="10" rx="1.5" />
-                                <rect x="9" y="3" width="6" height="10" rx="1.5" />
-                              </svg>
-                            </button>
-                            <button
                               onClick={() => toggleImageRowActive(index, rowIdx)}
                               title={isActive ? "Вимкнути зображення" : "Увімкнути зображення"}
                               className={`w-8 h-8 flex items-center justify-center rounded-lg transition-colors shrink-0 ${isActive ? "text-muted-foreground hover:text-foreground hover:bg-muted" : "text-foreground bg-muted"}`}
@@ -463,37 +460,70 @@ export default function AdminHomePage() {
                             </button>
                           </div>
                         </div>
-                        {Array.isArray(row.value) ? (
-                          <div className="flex gap-2">
-                            {row.value.map((val, colIdx) => (
-                              <div key={colIdx} className="flex-1 min-w-0">
-                                <MediaUpload
-                                  kind="media"
-                                  dir={company.slug}
-                                  value={val}
-                                  onChange={(src) => updateImageRowValue(index, rowIdx, colIdx, src)}
-                                />
-                              </div>
-                            ))}
+                        <MediaUpload
+                          kind="media"
+                          dir={company.slug}
+                          value={typeof row.value === "string" ? row.value : ""}
+                          onChange={(src, _ratio, poster) => updateImageRowValue(index, rowIdx, src, poster)}
+                        />
+                        <div className="grid grid-cols-2 gap-3 pt-1">
+                          <div className="col-span-2">
+                            <label className={labelClass}>Назва екрана (підпис)</label>
+                            <input
+                              value={row.title ?? ""}
+                              onChange={(e) => updateImageRowMeta(index, rowIdx, { title: e.target.value })}
+                              className={inputClass}
+                              maxLength={200}
+                            />
                           </div>
-                        ) : (
-                          <MediaUpload
-                            kind="media"
-                            dir={company.slug}
-                            value={row.value}
-                            onChange={(src) => updateImageRowValue(index, rowIdx, 0, src)}
-                          />
-                        )}
+                          <div className="col-span-2">
+                            <label className={labelClass}>Опис екрана (у панелі)</label>
+                            <textarea
+                              value={row.description ?? ""}
+                              onChange={(e) => updateImageRowMeta(index, rowIdx, { description: e.target.value })}
+                              rows={3}
+                              maxLength={1000}
+                              className={`${inputClass} resize-none leading-relaxed`}
+                            />
+                          </div>
+                          <div>
+                            <label className={labelClass}>Кнопка «Дивитись кейс» на цьому екрані</label>
+                            <select
+                              value={caseSlugFromUrl(row.caseUrl)}
+                              onChange={(e) => updateImageRowMeta(index, rowIdx, { caseUrl: e.target.value ? `/${locale}/cases/${e.target.value}` : undefined })}
+                              className={inputClass}
+                            >
+                              <option value="">Без посилання</option>
+                              {caseOptions.map((opt) => (
+                                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                              ))}
+                            </select>
+                          </div>
+                          {typeof row.value === "string" && VIDEO_RE.test(row.value) && (
+                            <div>
+                              <label className={labelClass}>Обрізка полів, 0.1–1 (пусто — без обрізки)</label>
+                              <input
+                                type="number"
+                                step="0.01"
+                                min="0.1"
+                                max="1"
+                                value={row.crop ?? ""}
+                                onChange={(e) => {
+                                  const n = parseFloat(e.target.value);
+                                  updateImageRowMeta(index, rowIdx, { crop: Number.isFinite(n) && n > 0 && n <= 1 ? n : undefined });
+                                }}
+                                className={inputClass}
+                              />
+                            </div>
+                          )}
+                        </div>
                       </div>
                       );
                     })}
 
                     <div className="flex gap-3 pt-1">
                       <button onClick={() => addImageRow(index)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                        + Додати зображення
-                      </button>
-                      <button onClick={() => addImagePairRow(index)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                        + Додати пару поруч
+                        + Додати екран
                       </button>
                     </div>
                   </div>
