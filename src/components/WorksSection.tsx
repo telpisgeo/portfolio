@@ -179,6 +179,57 @@ function ScreenScroller({
   );
 }
 
+// Lightbox media (image or video): a frame with the media's own aspect ratio, never larger than its
+// natural size, never wider than its container and never taller than 700px, so it can't stretch or
+// overflow (incl. Safari). Applies to every image/video opened from the works rail.
+const LIGHTBOX_MAX_H = 700;
+function LightboxMedia({ src, alt, poster, className = "" }: { src: string; alt: string; poster?: string; className?: string }) {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isVideo = VIDEO_EXT_RE.test(src);
+  const [dims, setDims] = useState<{ w: number; h: number } | null>(null);
+  const measure = useCallback(() => {
+    const img = imgRef.current;
+    const video = videoRef.current;
+    if (img?.naturalWidth) setDims({ w: img.naturalWidth, h: img.naturalHeight });
+    else if (video?.videoWidth) setDims({ w: video.videoWidth, h: video.videoHeight });
+  }, []);
+  useEffect(measure, [measure, src]);
+  return (
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className={`overflow-hidden rounded-xl shadow-2xl ${className}`}
+      style={
+        dims
+          ? {
+              aspectRatio: `${dims.w} / ${dims.h}`,
+              width: `min(${dims.w}px, 100%, calc(min(${LIGHTBOX_MAX_H}px, 100vh - 80px) * ${dims.w / dims.h}))`,
+            }
+          : { width: 0, height: 0 }
+      }
+    >
+      {isVideo ? (
+        <video
+          ref={videoRef}
+          key={src}
+          src={src}
+          poster={poster}
+          onLoadedMetadata={measure}
+          className="block h-full w-full object-contain"
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls
+        />
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element -- natural size drives the frame
+        <img ref={imgRef} key={src} src={src} alt={alt} onLoad={measure} className="block h-full w-full object-contain" />
+      )}
+    </div>
+  );
+}
+
 function Drawer({
   item,
   screen,
@@ -233,40 +284,30 @@ function Drawer({
         onClick={onClose}
         className={`absolute inset-y-0 left-0 right-[480px] hidden sm:flex items-center justify-center p-10 transition-opacity duration-300 ${shown ? "opacity-100" : "opacity-0"}`}
       >
-        {VIDEO_EXT_RE.test(s.src) ? (
-          <video key={s.src} src={s.src} poster={s.poster} onClick={(e) => e.stopPropagation()} className="max-w-full max-h-full rounded-xl shadow-2xl" autoPlay loop muted playsInline controls />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element -- natural size, fitted to the viewport
-          <img key={s.src} src={s.src} alt={s.title} onClick={(e) => e.stopPropagation()} className="w-auto h-auto max-w-full max-h-full shrink-0 rounded-xl shadow-2xl" />
-        )}
+        <LightboxMedia src={s.src} alt={s.title} poster={s.poster} />
       </div>
       <aside
-        className={`absolute bg-secondary text-secondary-foreground shadow-2xl overflow-y-auto transition-transform duration-300 ease-out
+        className={`absolute flex flex-col overflow-hidden bg-secondary text-secondary-foreground shadow-2xl transition-transform duration-300 ease-out
           sm:top-0 sm:right-0 sm:h-full sm:w-[480px] sm:max-w-full ${shown ? "sm:translate-x-0" : "sm:translate-x-full"}
           max-sm:bottom-0 max-sm:inset-x-0 max-sm:max-h-[85vh] max-sm:rounded-t-3xl ${shown ? "max-sm:translate-y-0" : "max-sm:translate-y-full"}`}
       >
-        <div className="p-6 sm:p-8 flex flex-col gap-6">
-          <div className="flex items-center justify-between">
-            <div className="flex gap-2">
-              <button type="button" aria-label="Previous" className={navBtn} disabled={screen === 0} onClick={() => onNav(-1)}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6l-6 6 6 6" /></svg>
-              </button>
-              <button type="button" aria-label="Next" className={navBtn} disabled={screen === item.screens.length - 1} onClick={() => onNav(1)}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
-              </button>
-            </div>
-            <button type="button" aria-label="Close" className={navBtn} onClick={onClose}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        <div className="flex shrink-0 items-center justify-between p-4 sm:px-8 sm:pt-8 sm:pb-0 max-sm:order-last max-sm:border-t max-sm:border-secondary-foreground/15">
+          <div className="flex gap-2">
+            <button type="button" aria-label="Previous" className={navBtn} disabled={screen === 0} onClick={() => onNav(-1)}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6l-6 6 6 6" /></svg>
+            </button>
+            <button type="button" aria-label="Next" className={navBtn} disabled={screen === item.screens.length - 1} onClick={() => onNav(1)}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
             </button>
           </div>
+          <button type="button" aria-label="Close" className={navBtn} onClick={onClose}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
 
+        <div className="min-h-0 flex-1 overflow-y-auto p-6 sm:px-8 sm:pb-8 sm:pt-6 flex flex-col gap-6">
           <div className="sm:hidden -mx-2">
-            {VIDEO_EXT_RE.test(s.src) ? (
-              <video key={s.src} src={s.src} poster={s.poster} className="w-full rounded-xl" autoPlay loop muted playsInline />
-            ) : (
-              // eslint-disable-next-line @next/next/no-img-element -- natural size
-              <img key={s.src} src={s.src} alt={s.title} className="w-auto h-auto max-w-full mx-auto rounded-xl" />
-            )}
+            <LightboxMedia src={s.src} alt={s.title} poster={s.poster} className="mx-auto" />
           </div>
 
           <div className="flex items-start justify-between gap-4 pb-6 border-b border-secondary-foreground/15">
