@@ -90,7 +90,7 @@
         "after": {
           "label": "Нова версія веб-білдера",
           "ratio": "1144/640",
-          "videoSrc": "/images/works/westudy/case-westudy-after-en.webm"
+          "videoSrc": "/images/works/westudy/case-westudy-after-en.mp4"
         }
       },
       {
@@ -265,7 +265,7 @@
         "after": {
           "label": "New website builder",
           "ratio": "1144/640",
-          "videoSrc": "/images/works/westudy/case-westudy-after-en.webm"
+          "videoSrc": "/images/works/westudy/case-westudy-after-en.mp4"
         },
         "beforeLabel": "Before",
         "afterLabel": "After"

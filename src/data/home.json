@@ -20,7 +20,7 @@
         "tools": "Figma, Claude Code",
         "imageRows": [
           {
-            "value": "/images/works/eschool/video-presentation-ua.webm",
+            "value": "/images/works/eschool/video-presentation-ua.mp4",
             "crop": 0.42,
             "caseUrl": "/uk/cases/eschool-2",
             "title": "AI-аналітика успішності учня",
@@ -59,7 +59,7 @@
             "active": false
           },
           {
-            "value": "/images/works/westudy/case-westudy-after-en.webm",
+            "value": "/images/works/westudy/case-westudy-after-en.mp4",
             "title": "Розробка сайтбілдеру",
             "description": "Оновив конструктор сайтів для курсів, щоб утримати клієнтів, яких не влаштовував складний інструмент: сайт за лічені хвилини з наявних даних про курси та окремий режим для авторського дизайну.",
             "caseUrl": "/uk/cases/westudy"
@@ -198,7 +198,7 @@
           "role": "Product Designer",
           "tools": "Figma, Claude Code, Supabase",
           "description": "Щоденна 15-хвилинна вправа з читання для дітей 6–12 років з дислексією: AI підбирає слова та історії під інтереси дитини, а батьки проводять її вдома.",
-          "image": "/images/works/vgolos/vgolos.webm",
+          "image": "/images/works/vgolos/vgolos.mp4",
           "moreScreens": [
             {
               "src": "/images/works/vgolos/vgolos-reading.webp",
@@ -274,7 +274,7 @@
             "active": false
           },
           {
-            "value": "/images/works/westudy/case-westudy-after-en.webm",
+            "value": "/images/works/westudy/case-westudy-after-en.mp4",
             "title": "Site builder development",
             "description": "Redesigned the course site builder to retain clients unhappy with a complex tool: a site in minutes from existing course data, plus a separate mode for custom design.",
             "caseUrl": "/en/cases/westudy"
@@ -408,7 +408,7 @@
           "role": "Product Designer",
           "tools": "Figma, Claude Code, Supabase",
           "description": "A daily 15-minute reading exercise for children aged 6–12 with dyslexia: AI picks words and stories based on the child's interests, and parents run it at home.",
-          "image": "/images/works/vgolos/vgolos.webm",
+          "image": "/images/works/vgolos/vgolos.mp4",
           "moreScreens": [
             {
               "src": "/images/works/vgolos/vgolos-reading.webp",
