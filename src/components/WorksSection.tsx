@@ -118,7 +118,7 @@ function ScreenScroller({
       <div
         ref={ref}
         onScroll={update}
-        className="px-[max(1.5rem,calc((100vw_-_1440px)/2_+_1.5rem))] sm:px-[max(3rem,calc((100vw_-_1440px)/2_+_3rem))] scroll-px-[max(1.5rem,calc((100vw_-_1440px)/2_+_1.5rem))] sm:scroll-px-[max(3rem,calc((100vw_-_1440px)/2_+_3rem))] flex gap-3 overflow-x-auto no-scrollbar snap-x snap-proximity"
+        className="px-[max(1.5rem,calc((100vw_-_1440px)/2_+_1.5rem))] sm:px-[max(3rem,calc((100vw_-_1440px)/2_+_3rem))] scroll-px-[max(1.5rem,calc((100vw_-_1440px)/2_+_1.5rem))] sm:scroll-px-[max(3rem,calc((100vw_-_1440px)/2_+_3rem))] flex gap-3 overflow-x-auto no-scrollbar snap-x snap-proximity pb-8 -mb-8"
       >
         {item.screens.map((s, i) => (
           <figure key={s.src} className="shrink-0 snap-start flex flex-col gap-3">
@@ -133,7 +133,7 @@ function ScreenScroller({
                   onOpen(i);
                 }
               }}
-              className="group relative h-[260px] sm:h-[400px] rounded-xl overflow-hidden bg-muted cursor-zoom-in"
+              className="group relative h-[260px] sm:h-[400px] rounded-xl overflow-hidden bg-muted cursor-zoom-in transition-shadow duration-300 hover:shadow-[0_12px_30px_-12px_rgba(29,29,22,0.35)] focus-visible:shadow-[0_12px_30px_-12px_rgba(29,29,22,0.35)]"
             >
               {VIDEO_EXT_RE.test(s.src) ? (
                 s.crop ? (
