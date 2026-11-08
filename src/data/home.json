@@ -140,12 +140,20 @@
         "tools": "Figma, Figma Motion",
         "imageRows": [
           {
-            "value": "/images/works/sendpulse/analytics-motion-uk.mp4",
+            "value": "/images/works/sendpulse/analytics-motion-uk.webm",
             "posters": [
               "/images/works/sendpulse/analytics-after-uk.webp"
             ],
             "title": "Аналітика курсів",
             "description": "Спроєктував аналітику для курсів у SendPulse, якої раніше не було. Врахував усі наявні дані та відобразив головні метрики курсу. Пройшов понад 10 ітерацій і провів тестування, щоб дійти до фінального рішення."
+          },
+          {
+            "value": "/images/works/sendpulse/call-story-uk.webm",
+            "posters": [
+              "/images/works/sendpulse/call-story-uk-poster.webp"
+            ],
+            "title": "Ringostat і телефонія в CRM",
+            "description": "Робив інтеграцію Ringostat у сервісі й оновлення CRM під телефонію: вхідний дзвінок, розмова, коментар після дзвінка та історія дзвінків у картці контакту."
           }
         ]
       }
@@ -372,12 +380,20 @@
         "tools": "Figma, Figma Motion",
         "imageRows": [
           {
-            "value": "/images/works/sendpulse/analytics-motion-en.mp4",
+            "value": "/images/works/sendpulse/analytics-motion-en.webm",
             "posters": [
               "/images/works/sendpulse/analytics-after-en.webp"
             ],
             "title": "Course analytics",
             "description": "I designed course analytics at SendPulse that the platform did not have before. I took all the available data into account and showed the main course metrics. It took more than 10 iterations and testing to reach the final solution."
+          },
+          {
+            "value": "/images/works/sendpulse/call-story-en.webm",
+            "posters": [
+              "/images/works/sendpulse/call-story-en-poster.webp"
+            ],
+            "title": "Ringostat and telephony in the CRM",
+            "description": "I worked on the Ringostat integration in the service and updated the CRM for telephony: an incoming call, the conversation, a comment after the call and the call history in the contact card."
           }
         ]
       }
