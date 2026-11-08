@@ -54,7 +54,7 @@
       {
         "t": "white-section",
         "caption": "Про кейс",
-        "statement": "Колись я спроєктував екран аналітики курсу: показники студентів, залученості, питань і тестів та таблицю з уроками. Інтерфейс продукту з того часу змінився, тому я перемалював екран у Figma за новою дизайн-системою й зібрав анімований прототип."
+        "statement": "Спроєктував аналітику для курсів у SendPulse, якої раніше не було. Врахував усі наявні дані та відобразив головні метрики курсу. Пройшов понад 10 ітерацій і провів тестування, щоб дійти до фінального рішення."
       },
       {
         "t": "before-after",
@@ -151,7 +151,7 @@
       {
         "t": "white-section",
         "caption": "About the case",
-        "statement": "I once designed a course analytics screen: student, engagement, question and test metrics plus a lessons table. The product interface has changed since then, so I redrew the screen in Figma with the new design system and built an animated prototype."
+        "statement": "I designed course analytics at SendPulse that the platform did not have before. I took all the available data into account and showed the main course metrics. It took more than 10 iterations and testing to reach the final solution."
       },
       {
         "t": "before-after",
