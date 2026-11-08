@@ -126,6 +126,28 @@
             "description": "Редизайн всього інструменту: прогрів одразу для кількох емейлів, більше стратегій з поясненнями та орієнтовним часом, оновлений вибір контенту."
           }
         ]
+      },
+      {
+        "slug": "sendpulse",
+        "name": "SendPulse",
+        "url": "https://sendpulse.com",
+        "period": "2021 → 2022",
+        "productType": "Інструменти багатоканального маркетингу",
+        "role": "UI/UX Designer",
+        "icon": "/images/icons/sendpulse.svg",
+        "description": "Оновив інструмент багатоканальних кампаній, спроєктував телефонію з інтерфейсом дзвінків і оновлену CRM, перезапустив партнерську програму та оновив інструменти створення курсів. Розробляв дашборди для навчальної платформи.",
+        "achievements": [],
+        "tools": "Figma, Figma Motion",
+        "imageRows": [
+          {
+            "value": "/images/works/sendpulse/analytics-motion-uk.mp4",
+            "posters": [
+              "/images/works/sendpulse/analytics-after-uk.webp"
+            ],
+            "title": "Аналітика навчальної платформи",
+            "description": "Дашборд аналітики курсів, який я проєктував у SendPulse. Перемалював його під актуальний інтерфейс: нова навігація, іконки, шрифт Onest, діаграми-напівкола в картках і вкладки «Уроки», «Завдання», «Тести», «Форми». Зробив анімований прототип у Figma Motion."
+          }
+        ]
       }
     ],
     "timeline": [
@@ -334,6 +356,28 @@
             "value": "/images/works/snov/n-warm-flow.mp4",
             "title": "Email warm-up redesign",
             "description": "A redesign of the whole tool: warm up several emails at once, more strategies with explanations and estimated time, an updated content picker."
+          }
+        ]
+      },
+      {
+        "slug": "sendpulse",
+        "name": "SendPulse",
+        "url": "https://sendpulse.com",
+        "period": "2021 → 2022",
+        "productType": "Multichannel marketing tools",
+        "role": "UI/UX Designer",
+        "icon": "/images/icons/sendpulse.svg",
+        "description": "Updated the multichannel campaign tool, designed telephony with a call interface and an updated CRM, relaunched the partner program and updated the course creation tools. Built dashboards for the learning platform.",
+        "achievements": [],
+        "tools": "Figma, Figma Motion",
+        "imageRows": [
+          {
+            "value": "/images/works/sendpulse/analytics-motion-en.mp4",
+            "posters": [
+              "/images/works/sendpulse/analytics-after-en.webp"
+            ],
+            "title": "Learning platform analytics",
+            "description": "A course analytics dashboard I designed at SendPulse. I redrew it for the current interface: new navigation, icons, the Onest typeface, semicircle gauges in cards, and the Lessons, Assignments, Tests and Forms tabs. Built an animated prototype in Figma Motion."
           }
         ]
       }

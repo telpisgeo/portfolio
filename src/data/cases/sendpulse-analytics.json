@@ -1,0 +1,197 @@
+{
+  "status": "draft",
+  "uk": {
+    "eyebrow": "SendPulse",
+    "title": "Оновлення екрана аналітики курсів у SendPulse під новий інтерфейс",
+    "steps": [
+      {
+        "label": "Контекст",
+        "href": "#context"
+      },
+      {
+        "label": "Мета",
+        "href": "#problems"
+      },
+      {
+        "label": "Концепт",
+        "href": "#decision"
+      },
+      {
+        "label": "Підсумки",
+        "href": "#summary"
+      }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          {
+            "label": "Роль",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Продукт",
+            "value": "SendPulse Courses"
+          },
+          {
+            "label": "Інструменти",
+            "value": "Figma, Figma Motion"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "Про продукт",
+        "statement": "SendPulse Courses — платформа для створення онлайн-курсів: уроки, тести, форми й завдання, студенти, сертифікати та аналітика навчання в одному акаунті."
+      },
+      {
+        "t": "white-section",
+        "id": "problems",
+        "caption": "Мета",
+        "statement": "Оновити екран аналітики курсу під актуальний інтерфейс SendPulse: нова навігація, кольори, типографіка та компоненти, зберігши логіку попереднього концепту."
+      },
+      {
+        "t": "white-section",
+        "caption": "Про кейс",
+        "statement": "Колись я спроєктував екран аналітики курсу: показники студентів, залученості, питань і тестів та таблицю з уроками. Інтерфейс продукту з того часу змінився, тому я перемалював екран у Figma за новою дизайн-системою й зібрав анімований прототип."
+      },
+      {
+        "t": "before-after",
+        "id": "decision",
+        "caption": "Концепт. Оновлення інтерфейсу",
+        "statement": "Переніс концепт у новий стиль SendPulse: темна верхня навігація, світлий сайдбар з іконками продукту, шрифт Onest, картки з діаграмами-напівколами та вкладки «Уроки», «Завдання», «Тести», «Форми» замість двох старих.",
+        "before": {
+          "label": "Аналітика — було",
+          "ratio": "1382/832",
+          "src": "/images/works/sendpulse/analytics-before.webp"
+        },
+        "after": {
+          "label": "Аналітика — стало",
+          "ratio": "1382/832",
+          "src": "/images/works/sendpulse/analytics-after-uk.webp"
+        },
+        "beforeLabel": "Було",
+        "afterLabel": "Стало"
+      },
+      {
+        "t": "light-section",
+        "caption": "Концепт. Анімація аналітики",
+        "statement": "Прототип починається з переходу «Статистика» → «Аналітика». Далі картки з показниками з'являються послідовно: дуги діаграм дорисовуються, числа «прокручуються» до значення, а смуга тестів складається з трьох частин. Потім вкладки перемикаються між уроками, завданнями, тестами та формами.",
+        "img": {
+          "label": "Аналітика — прототип",
+          "ratio": "1382/832",
+          "videoSrc": "/images/works/sendpulse/analytics-motion-uk.mp4"
+        }
+      },
+      {
+        "t": "bullets-card",
+        "id": "summary",
+        "sectionCaption": "Підсумки",
+        "text": "",
+        "items": [
+          "Екран аналітики, який виглядає як частина продукту: та сама навігація, іконки, кольори й типографіка;",
+          "Єдина структура: ключові показники в картках зверху та вкладки з деталями знизу, з уроками за замовчуванням;",
+          "Анімований прототип для демонстрації в UA та EN версіях, зроблений у Figma Motion."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "eyebrow": "SendPulse",
+    "title": "Redesigning the course analytics screen in SendPulse for the new interface",
+    "steps": [
+      {
+        "label": "Context",
+        "href": "#context"
+      },
+      {
+        "label": "Goal",
+        "href": "#problems"
+      },
+      {
+        "label": "Concept",
+        "href": "#decision"
+      },
+      {
+        "label": "Summary",
+        "href": "#summary"
+      }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          {
+            "label": "Role",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Product",
+            "value": "SendPulse Courses"
+          },
+          {
+            "label": "Tools",
+            "value": "Figma, Figma Motion"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "About the product",
+        "statement": "SendPulse Courses is a platform for building online courses: lessons, tests, forms and assignments, students, certificates and learning analytics in one account."
+      },
+      {
+        "t": "white-section",
+        "id": "problems",
+        "caption": "Goal",
+        "statement": "Update the course analytics screen to match the current SendPulse interface: new navigation, colors, typography and components, while keeping the logic of the previous concept."
+      },
+      {
+        "t": "white-section",
+        "caption": "About the case",
+        "statement": "I once designed a course analytics screen: student, engagement, question and test metrics plus a lessons table. The product interface has changed since then, so I redrew the screen in Figma with the new design system and built an animated prototype."
+      },
+      {
+        "t": "before-after",
+        "id": "decision",
+        "caption": "Concept. Interface update",
+        "statement": "I moved the concept into the new SendPulse style: a dark top navigation, a light sidebar with product icons, the Onest typeface, cards with semicircle gauges, and the Lessons, Assignments, Tests and Forms tabs instead of the previous two.",
+        "before": {
+          "label": "Analytics — before",
+          "ratio": "1382/832",
+          "src": "/images/works/sendpulse/analytics-before.webp"
+        },
+        "after": {
+          "label": "Analytics — after",
+          "ratio": "1382/832",
+          "src": "/images/works/sendpulse/analytics-after-en.webp"
+        },
+        "beforeLabel": "Before",
+        "afterLabel": "After"
+      },
+      {
+        "t": "light-section",
+        "caption": "Concept. Analytics animation",
+        "statement": "The prototype starts with the Statistics → Analytics navigation. Then the metric cards appear one by one: the gauges draw in, the numbers roll up to their values and the tests bar assembles from three parts. After that the tabs switch between lessons, assignments, tests and forms.",
+        "img": {
+          "label": "Analytics — prototype",
+          "ratio": "1382/832",
+          "videoSrc": "/images/works/sendpulse/analytics-motion-en.mp4"
+        }
+      },
+      {
+        "t": "bullets-card",
+        "id": "summary",
+        "sectionCaption": "Summary",
+        "text": "",
+        "items": [
+          "An analytics screen that looks like part of the product: the same navigation, icons, colors and typography;",
+          "A single structure: key metrics in cards on top and detail tabs below, with lessons shown by default;",
+          "An animated prototype for demos in UA and EN versions, built in Figma Motion."
+        ]
+      }
+    ]
+  }
+}
