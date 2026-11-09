@@ -1,0 +1,155 @@
+{
+  "status": "draft",
+  "uk": {
+    "eyebrow": "SendPulse",
+    "title": "Каталог партнерів SendPulse: пошук експерта та замовлення послуги",
+    "steps": [
+      {
+        "label": "Контекст",
+        "href": "#context"
+      },
+      {
+        "label": "Мета",
+        "href": "#problems"
+      },
+      {
+        "label": "Концепт",
+        "href": "#decision"
+      },
+      {
+        "label": "Підсумки",
+        "href": "#summary"
+      }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          {
+            "label": "Роль",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Продукт",
+            "value": "SendPulse Partners"
+          },
+          {
+            "label": "Інструменти",
+            "value": "Figma, Adobe Illustrator"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "Про продукт",
+        "statement": "Каталог партнерів — це місце, де користувачі SendPulse знаходять експертів: фрилансерів і агенції, які налаштують розсилки, чат-ботів, CRM чи онлайн-курси."
+      },
+      {
+        "t": "white-section",
+        "id": "problems",
+        "caption": "Мета",
+        "statement": "Зробити шлях від пошуку партнера до замовлення послуги коротким і зрозумілим: каталог з фільтрами, сторінка партнера з описом і відгуками та проста форма запиту."
+      },
+      {
+        "t": "light-section",
+        "id": "decision",
+        "caption": "Концепт. Від каталогу до запиту",
+        "statement": "Користувач переглядає партнерів у каталозі, відкриває профіль, читає опис і відгуки та натискає «Замовити послугу». У модальному вікні він обирає потрібні послуги, описує завдання й надсилає запит. Після цього бачить статус «Очікує відповіді».",
+        "img": {
+          "label": "Каталог партнерів — прототип",
+          "ratio": "1510/909",
+          "videoSrc": "/images/works/sendpulse/partners-uk.webm"
+        }
+      },
+      {
+        "t": "bullets-card",
+        "id": "summary",
+        "sectionCaption": "Підсумки",
+        "text": "",
+        "items": [
+          "Каталог партнерів із чіткою карткою: фото, статус, ціна, опис і послуги;",
+          "Сторінка партнера з описом, відгуками та основною дією «Замовити послугу»;",
+          "Модальне вікно запиту та статус після відправлення;",
+          "Анімований прототип для демонстрації в UA та EN версіях."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "eyebrow": "SendPulse",
+    "title": "SendPulse partner catalog: finding an expert and ordering a service",
+    "steps": [
+      {
+        "label": "Context",
+        "href": "#context"
+      },
+      {
+        "label": "Goal",
+        "href": "#problems"
+      },
+      {
+        "label": "Concept",
+        "href": "#decision"
+      },
+      {
+        "label": "Summary",
+        "href": "#summary"
+      }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          {
+            "label": "Role",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Product",
+            "value": "SendPulse Partners"
+          },
+          {
+            "label": "Tools",
+            "value": "Figma, Adobe Illustrator"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "About the product",
+        "statement": "The partner catalog is where SendPulse users find experts: freelancers and agencies who set up email campaigns, chatbots, CRM or online courses."
+      },
+      {
+        "t": "white-section",
+        "id": "problems",
+        "caption": "Goal",
+        "statement": "Make the path from finding a partner to ordering a service short and clear: a catalog with filters, a partner page with a description and reviews, and a simple request form."
+      },
+      {
+        "t": "light-section",
+        "id": "decision",
+        "caption": "Concept. From catalog to request",
+        "statement": "The user browses partners in the catalog, opens a profile, reads the description and reviews and clicks “Request service”. In the modal they pick the services they need, describe the task and send the request. Then they see the “Awaiting reply” status.",
+        "img": {
+          "label": "Partner catalog — prototype",
+          "ratio": "1510/909",
+          "videoSrc": "/images/works/sendpulse/partners-en.webm"
+        }
+      },
+      {
+        "t": "bullets-card",
+        "id": "summary",
+        "sectionCaption": "Summary",
+        "text": "",
+        "items": [
+          "A catalog with a clear partner card: photo, status, price, description and services;",
+          "A partner page with a description, reviews and the main “Request service” action;",
+          "A request modal and the status after sending;",
+          "An animated prototype for demos in UA and EN versions."
+        ]
+      }
+    ]
+  }
+}

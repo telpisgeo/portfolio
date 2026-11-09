@@ -137,7 +137,7 @@
         "icon": "/images/icons/sendpulse.svg",
         "description": "Оновив інструмент багатоканальних кампаній, спроєктував телефонію з інтерфейсом дзвінків і оновлену CRM, перезапустив партнерську програму, оновив інструменти створення курсів і спроєктував з нуля аналітику для курсів.",
         "achievements": [],
-        "tools": "Figma, Figma Motion",
+        "tools": "Figma, Adobe Illustrator",
         "imageRows": [
           {
             "value": "/images/works/sendpulse/analytics-motion-uk.webm",
@@ -154,6 +154,14 @@
             ],
             "title": "Ringostat і телефонія в CRM",
             "description": "Робив інтеграцію Ringostat у сервісі й оновлення CRM під телефонію: вхідний дзвінок, розмова, коментар після дзвінка та історія дзвінків у картці контакту."
+          },
+          {
+            "value": "/images/works/sendpulse/partners-uk.webm",
+            "posters": [
+              "/images/works/sendpulse/partners-uk-poster.webp"
+            ],
+            "title": "Каталог партнерів",
+            "description": "Спроєктував каталог партнерів, сторінку партнера й модальне вікно замовлення послуги: від перегляду виконавців до статусу «Очікує відповіді»."
           }
         ]
       }
@@ -377,7 +385,7 @@
         "icon": "/images/icons/sendpulse.svg",
         "description": "Updated the multichannel campaign tool, designed telephony with a call interface and an updated CRM, relaunched the partner program, updated the course creation tools and designed course analytics from scratch.",
         "achievements": [],
-        "tools": "Figma, Figma Motion",
+        "tools": "Figma, Adobe Illustrator",
         "imageRows": [
           {
             "value": "/images/works/sendpulse/analytics-motion-en.webm",
@@ -394,6 +402,14 @@
             ],
             "title": "Ringostat and telephony in the CRM",
             "description": "I worked on the Ringostat integration in the service and updated the CRM for telephony: an incoming call, the conversation, a comment after the call and the call history in the contact card."
+          },
+          {
+            "value": "/images/works/sendpulse/partners-en.webm",
+            "posters": [
+              "/images/works/sendpulse/partners-en-poster.webp"
+            ],
+            "title": "Partner catalog",
+            "description": "Designed the partner catalog, the partner page and the service order modal: from browsing experts to the “Awaiting reply” status."
           }
         ]
       }

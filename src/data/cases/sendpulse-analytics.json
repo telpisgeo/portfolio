@@ -36,7 +36,7 @@
           },
           {
             "label": "Інструменти",
-            "value": "Figma, Figma Motion"
+            "value": "Figma, Adobe Illustrator"
           }
         ]
       },
@@ -92,7 +92,7 @@
         "items": [
           "Екран аналітики, який виглядає як частина продукту: та сама навігація, іконки, кольори й типографіка;",
           "Єдина структура: ключові показники в картках зверху та вкладки з деталями знизу, з уроками за замовчуванням;",
-          "Анімований прототип для демонстрації в UA та EN версіях, зроблений у Figma Motion."
+          "Анімований прототип для демонстрації в UA та EN версіях."
         ]
       }
     ]
@@ -133,7 +133,7 @@
           },
           {
             "label": "Tools",
-            "value": "Figma, Figma Motion"
+            "value": "Figma, Adobe Illustrator"
           }
         ]
       },
@@ -189,7 +189,7 @@
         "items": [
           "An analytics screen that looks like part of the product: the same navigation, icons, colors and typography;",
           "A single structure: key metrics in cards on top and detail tabs below, with lessons shown by default;",
-          "An animated prototype for demos in UA and EN versions, built in Figma Motion."
+          "An animated prototype for demos in UA and EN versions."
         ]
       }
     ]
