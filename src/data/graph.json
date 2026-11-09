@@ -44,6 +44,7 @@
           },
           {
             "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/agroprolisok/slide-18-0AYjx2rqenXHfLPY6Be0ev5OciLE5S.webm",
+            "once": true,
             "posters": [
               "/images/works/agroprolisok/slide-18-poster.webp"
             ]
@@ -268,6 +269,7 @@
           },
           {
             "value": "https://g2yuyrbtylolu1yv.public.blob.vercel-storage.com/agroprolisok/slide-18-gE6Cn2vnNt8ewFMuTje9TgxpP1Xz1r.webm",
+            "once": true,
             "posters": [
               "/images/works/agroprolisok/slide-18-poster.webp"
             ]
