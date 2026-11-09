@@ -9,6 +9,8 @@ export type HomeImageRow = {
   caseUrl?: string;
   /** Video only: visible share (0–1) of the frame width, centered. Trims empty side margins in the works rail. */
   crop?: number;
+  /** Video only: play a single time and stay on the last frame (no loop). Unset → legacy `*-once.*` filename rule. */
+  once?: boolean;
 };
 
 export type HomeCompany = {

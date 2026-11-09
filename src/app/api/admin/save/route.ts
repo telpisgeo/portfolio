@@ -41,6 +41,7 @@ function validateImageRows(rows: unknown): string | null {
     if (r.title !== undefined && (!isString(r.title) || r.title.length > 200)) return "Невірна назва екрана";
     if (r.description !== undefined && (!isString(r.description) || r.description.length > 1000)) return "Невірний опис екрана";
     if (r.caseUrl !== undefined && (!isString(r.caseUrl) || !CASE_URL_RE.test(r.caseUrl))) return `Невірне посилання на кейс: ${r.caseUrl}`;
+    if (r.once !== undefined && typeof r.once !== "boolean") return "once має бути булевим";
     if (r.crop !== undefined && (typeof r.crop !== "number" || !(r.crop > 0 && r.crop <= 1))) return "crop має бути числом від 0 до 1";
     if (r.posters !== undefined) {
       if (!Array.isArray(r.posters)) return "posters має бути масивом";

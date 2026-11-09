@@ -190,6 +190,11 @@ export default function AdminGraphPage() {
     updateImageRows(index, next);
   }
 
+  function toggleImageRowLoop(index: number, rowIdx: number, loop: boolean) {
+    const rows = companies[index].imageRows.map((row, i) => (i === rowIdx ? { ...row, once: !loop } : row));
+    updateImageRows(index, rows);
+  }
+
   function toggleImageRowActive(index: number, rowIdx: number) {
     const rows = companies[index].imageRows.map((row, i) => (i === rowIdx ? { ...row, active: row.active === false } : row));
     updateImageRows(index, rows);
@@ -550,6 +555,16 @@ export default function AdminGraphPage() {
                             value={row.value}
                             onChange={(src, _ratio, poster) => updateImageRowValue(index, rowIdx, 0, src, poster)}
                           />
+                        )}
+                        {(Array.isArray(row.value) ? row.value : [row.value]).some((v) => /\.(webm|mp4|mov)$/i.test(v)) && (
+                          <label className="flex items-center gap-2 text-sm cursor-pointer select-none">
+                            <input
+                              type="checkbox"
+                              checked={!(row.once ?? (Array.isArray(row.value) ? row.value : [row.value]).some((v) => /-once\.(webm|mp4|mov)$/i.test(v)))}
+                              onChange={(e) => toggleImageRowLoop(index, rowIdx, e.target.checked)}
+                            />
+                            Відео циклічне (знято — грає один раз при скролі і зупиняється)
+                          </label>
                         )}
                       </div>
                       );
