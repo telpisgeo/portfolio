@@ -1,0 +1,267 @@
+{
+  "status": "draft",
+  "uk": {
+    "eyebrow": "WeStudy",
+    "title": "Курс-маркет Westudy: каталог курсів, де студенти знаходять навчання, а автори — аудиторію",
+    "steps": [
+      {
+        "label": "Контекст",
+        "href": "#context"
+      },
+      {
+        "label": "Мета",
+        "href": "#goal"
+      },
+      {
+        "label": "Каталог",
+        "href": "#catalog"
+      },
+      {
+        "label": "Курс і автор",
+        "href": "#course"
+      },
+      {
+        "label": "Підсумки",
+        "href": "#summary"
+      }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          {
+            "label": "Роль",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Продукт",
+            "value": "Westudy"
+          },
+          {
+            "label": "Інструменти",
+            "value": "Figma"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "Про продукт",
+        "statement": "Westudy — платформа для створення онлайн-курсів: конструктор сайтів, email-розсилки, чат-боти та CRM в одному місці. Курс-маркет — публічний каталог, де всі курси платформи зібрані в одному місці."
+      },
+      {
+        "t": "white-section",
+        "id": "goal",
+        "caption": "Мета",
+        "statement": "Дати студентам зручний шлях від пошуку до покупки курсу, а авторам — додатковий канал, через який їх знаходять. Каталог має працювати і для тих, хто шукає конкретну тему, і для тих, хто просто дивиться, що нового."
+      },
+      {
+        "t": "light-section",
+        "id": "catalog",
+        "caption": "Концепт. Головна курс-маркету",
+        "statement": "На головній — вибір напряму (бізнес-тренінги, психологія, фітнес, мистецтво та інші), добірки «Нове у цьому місяці», преміум та безкоштовні курси, а також запрошення для авторів створити власний курс на Westudy.",
+        "img": {
+          "label": "Курс-маркет — головна",
+          "ratio": "1440/4974",
+          "src": "/images/works/westudy/market-start.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "caption": "Концепт. Каталог і фільтри",
+        "statement": "Сторінка каталогу з категоріями, фільтрами «Всі курси», «Курс набирається», «Нові курси» та пагінацією. Картка курсу показує обкладинку, назву, автора, школу та ціну; за наведення на іконку «i» відкривається короткий опис.",
+        "img": {
+          "label": "Курс-маркет — каталог",
+          "ratio": "1440/3078",
+          "src": "/images/works/westudy/market-list.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "caption": "Концепт. Пошук",
+        "statement": "Пошук підказує курси під час введення запиту. Якщо нічого не знайдено, користувач бачить пояснення й поради: перевірити написання, спробувати інші чи загальніші терміни.",
+        "img": {
+          "label": "Курс-маркет — пошук",
+          "ratio": "1440/3406",
+          "src": "/images/works/westudy/market-search.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "id": "course",
+        "caption": "Концепт. Сторінка курсу",
+        "statement": "Сторінка курсу відповідає на головні питання перед покупкою: що входить (модулі, тести, відео, вебінари), скільки діє доступ, чи є сертифікат та якою мовою курс. Нижче — чого навчишся, програма по модулях, опис і автор. Якщо тарифів кілька, показуємо знижку та мінімальну вартість «від».",
+        "img": {
+          "label": "Курс-маркет — сторінка курсу",
+          "ratio": "1440/3733",
+          "src": "/images/works/westudy/market-course.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "caption": "Концепт. Сторінка автора",
+        "statement": "Три варіанти профілю: окремий автор курсу, школа та школа з кількома авторами. Клік на автора в картці веде до всіх його курсів, відфільтрованих у каталозі.",
+        "img": {
+          "label": "Курс-маркет — сторінка автора",
+          "ratio": "1444/3017",
+          "src": "/images/works/westudy/market-author.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "caption": "Специфікація станів",
+        "statement": "Для розробки описали стани картки: завантаження, ховер на курс, автора та іконку, відображення знижок і мінімальної ціни, курс без зображення (зберігаємо як svg).",
+        "img": {
+          "label": "Курс-маркет — специфікація",
+          "ratio": "1440/1752",
+          "src": "/images/works/westudy/market-spec.webp"
+        }
+      },
+      {
+        "t": "bullets-card",
+        "id": "summary",
+        "sectionCaption": "Підсумки",
+        "text": "",
+        "items": [
+          "Публічний каталог курсів із категоріями, фільтрами та пошуком;",
+          "Зрозуміла картка курсу: обкладинка, автор, школа, ціна та короткий опис;",
+          "Сторінка курсу з програмою, тарифами, знижками та сертифікатом;",
+          "Профілі автора й школи з усіма їхніми курсами;",
+          "Специфікація станів для передачі в розробку."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "eyebrow": "WeStudy",
+    "title": "Westudy Course Market: a course catalog where students find learning and authors find an audience",
+    "steps": [
+      {
+        "label": "Context",
+        "href": "#context"
+      },
+      {
+        "label": "Goal",
+        "href": "#goal"
+      },
+      {
+        "label": "Catalog",
+        "href": "#catalog"
+      },
+      {
+        "label": "Course & author",
+        "href": "#course"
+      },
+      {
+        "label": "Summary",
+        "href": "#summary"
+      }
+    ],
+    "blocks": [
+      {
+        "t": "meta",
+        "id": "context",
+        "items": [
+          {
+            "label": "Role",
+            "value": "Product Designer"
+          },
+          {
+            "label": "Product",
+            "value": "Westudy"
+          },
+          {
+            "label": "Tools",
+            "value": "Figma"
+          }
+        ]
+      },
+      {
+        "t": "dark-section",
+        "caption": "About the product",
+        "statement": "Westudy is a platform for building online courses: a site builder, email campaigns, chatbots and CRM in one place. Course Market is a public catalog that gathers every course on the platform."
+      },
+      {
+        "t": "white-section",
+        "id": "goal",
+        "caption": "Goal",
+        "statement": "Give students a simple path from search to buying a course, and give authors an extra channel to be discovered. The catalog has to work both for people searching for a specific topic and for those just browsing what is new."
+      },
+      {
+        "t": "light-section",
+        "id": "catalog",
+        "caption": "Concept. Course Market home",
+        "statement": "The home page offers a choice of category (business training, psychology, fitness, art and more), collections such as “New this month”, premium and free courses, and an invitation for authors to create their own course on Westudy.",
+        "img": {
+          "label": "Course Market — home",
+          "ratio": "1440/4974",
+          "src": "/images/works/westudy/market-start.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "caption": "Concept. Catalog and filters",
+        "statement": "The catalog page has categories, the filters “All courses”, “Enrolling” and “New courses”, and pagination. A course card shows the cover, title, author, school and price; hovering the “i” icon reveals a short description.",
+        "img": {
+          "label": "Course Market — catalog",
+          "ratio": "1440/3078",
+          "src": "/images/works/westudy/market-list.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "caption": "Concept. Search",
+        "statement": "Search suggests courses as the user types. When nothing matches, the user sees an explanation and tips: check spelling, try other or more general terms.",
+        "img": {
+          "label": "Course Market — search",
+          "ratio": "1440/3406",
+          "src": "/images/works/westudy/market-search.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "id": "course",
+        "caption": "Concept. Course page",
+        "statement": "The course page answers the key questions before purchase: what is included (modules, tests, videos, webinars), how long access lasts, whether there is a certificate and the course language. Below are what you will learn, the program by module, the description and the author. When there are several plans, we show the discount and the minimum price “from”.",
+        "img": {
+          "label": "Course Market — course page",
+          "ratio": "1440/3733",
+          "src": "/images/works/westudy/market-course.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "caption": "Concept. Author page",
+        "statement": "Three profile variants: a single course author, a school, and a school with several authors. Clicking an author on a card leads to all of their courses, filtered in the catalog.",
+        "img": {
+          "label": "Course Market — author page",
+          "ratio": "1444/3017",
+          "src": "/images/works/westudy/market-author.webp"
+        }
+      },
+      {
+        "t": "light-section",
+        "caption": "State specification",
+        "statement": "For development we documented the card states: loading, hover on the course, author and icon, discounts and minimum price, and a course without an image (saved as svg).",
+        "img": {
+          "label": "Course Market — specification",
+          "ratio": "1440/1752",
+          "src": "/images/works/westudy/market-spec.webp"
+        }
+      },
+      {
+        "t": "bullets-card",
+        "id": "summary",
+        "sectionCaption": "Summary",
+        "text": "",
+        "items": [
+          "A public course catalog with categories, filters and search;",
+          "A clear course card: cover, author, school, price and a short description;",
+          "A course page with the program, plans, discounts and certificate;",
+          "Author and school profiles with all their courses;",
+          "A state specification for handoff to development."
+        ]
+      }
+    ]
+  }
+}

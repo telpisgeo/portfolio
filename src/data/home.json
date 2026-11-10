@@ -70,6 +70,14 @@
             "description": "Онбординг для нових клієнтів платформи: чекліст налаштування проєкту, персональний помічник із записом на відео-зустріч та віджет допомоги з поширеними запитаннями."
           },
           {
+            "value": "/images/works/westudy/market-motion-uk.webm",
+            "posters": [
+              "/images/works/westudy/market-motion-uk-poster.webp"
+            ],
+            "title": "Курс-маркет",
+            "description": "Зробив курс-маркет, де всі користувачі платформи Westudy можуть мати додатковий канал продажів. Розробив бізнес-логіку та дизайн. Станом на зараз курс-маркет ще не запрацював."
+          },
+          {
             "value": "/images/works/westudy/westudy-about-promo-2-ua.webp",
             "title": "Додаток-маркетплейс шкіл",
             "description": "Мобільний додаток-маркетплейс для шкіл на Westudy: пошук курсів за категоріями, кабінет учня з прогресом навчання та завантаженням матеріалів на телефон. Створив для преміум-клієнтів, яким потрібна була кастомізація."
@@ -316,6 +324,14 @@
             "title": "Site builder development",
             "description": "Redesigned the course site builder to retain clients unhappy with a complex tool: a site in minutes from existing course data, plus a separate mode for custom design.",
             "caseUrl": "/en/cases/westudy"
+          },
+          {
+            "value": "/images/works/westudy/market-motion-en.webm",
+            "posters": [
+              "/images/works/westudy/market-motion-en-poster.webp"
+            ],
+            "title": "Course Market",
+            "description": "Created a course market where all Westudy platform users can get an additional sales channel. I designed the business logic and the interface. As of now, the course market has not launched yet."
           },
           {
             "value": "/images/works/westudy/westudy-about-promo-2-ua.webp",
