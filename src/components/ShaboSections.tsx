@@ -449,8 +449,9 @@ function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
       onClick={() => setOpen((o) => !o)}
       aria-label={alt}
       aria-pressed={open}
-      className="relative h-full max-w-full cursor-pointer outline-none"
-      style={{ aspectRatio: `${ENV_COMP.w} / ${ENV_COMP.h}` }}
+      className="relative shrink-0 cursor-pointer outline-none"
+      // Keep the composition's proportions: as wide as fits the stage, but never taller than it.
+      style={{ aspectRatio: `${ENV_COMP.w} / ${ENV_COMP.h}`, width: `min(100cqw, calc(100cqh * ${ENV_COMP.w / ENV_COMP.h}))` }}
     >
       <style>{`@keyframes shabo-drift { from { translate: 0 -0.6%; rotate: -4deg; } to { translate: 0.4% 0.8%; rotate: 5deg; } }`}</style>
       <div
@@ -743,7 +744,7 @@ export default function ShaboSections({ sections, logo, photo, name }: Props) {
             data-snap
             className="snap-start snap-always h-dvh flex flex-col items-center gap-5 md:gap-6 px-4 md:px-8 lg:px-12 pt-8 md:pt-6 pb-4 md:pb-10"
           >
-            <header className="flex flex-col items-center text-center max-w-[760px] shrink-0 md:shrink md:flex-1 md:justify-center">
+            <header className="flex flex-col items-center text-center max-w-[760px] shrink-0 md:justify-center">
               <div style={fadeUp(seen.includes(i), 100)}>
                 <Image src={logo} alt="SHABO" width={610} height={190} unoptimized className="h-6 md:h-8 w-auto mb-4 md:mb-6" priority={i === 0} />
               </div>
@@ -758,13 +759,13 @@ export default function ShaboSections({ sections, logo, photo, name }: Props) {
 
             {/* Stage keeps the Figma proportions on desktop (2500×1532, post ≈79% of its height,
                 card ≈69% of its width); on mobile it simply fills the remaining height. */}
-            <div className="flex-1 md:flex-none min-h-0 w-full flex items-center justify-center">
+            <div className="flex-1 min-h-0 w-full flex items-center justify-center">
               <div
-                className="shabo-stage w-full h-full md:h-auto md:aspect-[2500/1532] max-w-[1440px] bg-muted flex items-center justify-center p-4 md:p-0"
+                className="shabo-stage w-full h-full md:max-h-[883px] max-w-[1440px] bg-muted flex items-center justify-center p-4 md:p-0"
                 style={{ opacity: seen.includes(i) ? 1 : 0, transition: `opacity 800ms ${EASE} 900ms` }}
               >
                 {s.envelope ? (
-                  <div className="h-full md:h-[88%] max-w-full flex items-center justify-center" style={imgReveal(seen.includes(i))}>
+                  <div className="h-full md:h-[88%] w-full flex items-center justify-center" style={{ containerType: "size", ...imgReveal(seen.includes(i)) }}>
                     <EnvelopeCard show={seen.includes(i)} alt={s.alt} />
                   </div>
                 ) : s.image ? (
