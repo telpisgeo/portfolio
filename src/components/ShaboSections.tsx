@@ -373,7 +373,8 @@ function PostCarousel({ slides, alt, autoplay = false, meta }: { slides: PostSli
 // All layers share one coordinate space of 1134×1375 (open envelope, incl. shadows).
 const ENV = { w: 1134, h: 1375, hinge: 594 };
 // Whole composition (envelope + confetti flying out to the right / above), same units as ENV.
-const ENV_COMP = { w: 1881, h: 1520, top: 145 };
+// The envelope stays centred (it never moves); the confetti scatters on both sides of it.
+const ENV_COMP = { w: 2180, h: 1520, top: 145, left: 523 };
 // New card (with the two gold stars) and its position inside the envelope box.
 const ENV_CARD = { x: 103, y: 81, w: 950, h: 670 };
 // Confetti pieces [file, x, y, w, h] in ENV units; they scatter out of the envelope mouth when it opens.
@@ -410,6 +411,10 @@ const ENV_CONFETTI: [string, number, number, number, number][] = [
   ["c15", 1075, 394, 52, 52],
 ];
 const ENV_MOUTH = { x: 560, y: 330 };
+const ENV_CONFETTI_POS = ENV_CONFETTI.map(([n, x, y, w, h], i) => {
+  const nx = x > ENV.w ? ENV.w + (x - ENV.w) * 0.7 : x;
+  return [n, i % 2 ? ENV.w - nx - w : nx, y, w, h] as [string, number, number, number, number];
+});
 const ENV_DIR = "/images/works/shabo/envelope";
 const pct = (v: number, total: number) => `${(v / total) * 100}%`;
 const envBox = (x: number, y: number, w: number, h: number): React.CSSProperties => ({
@@ -451,14 +456,14 @@ function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
       <div
         className="absolute"
         style={{
-          left: 0,
+          left: pct(ENV_COMP.left, ENV_COMP.w),
           top: pct(ENV_COMP.top, ENV_COMP.h),
           width: pct(ENV.w, ENV_COMP.w),
           height: pct(ENV.h, ENV_COMP.h),
           containerType: "inline-size",
           perspective: "2600px",
-          // closed: the envelope sits centred in the composition; opening slides it left to make room for the confetti
-          transform: open ? "translate(0, 0)" : `translate(${((ENV_COMP.w - ENV.w) / 2 / ENV.w) * 100}%, -21%)`,
+          // the envelope never moves sideways; closed it only sits a little higher
+          transform: open ? "translate(0, 0)" : "translate(0, -21%)",
           transition: `transform 1100ms ${EASE} ${open ? 500 : 0}ms`,
         }}
       >
@@ -495,7 +500,7 @@ function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
       >
         {img("card", ENV_CARD.w, ENV_CARD.h)}
       </div>
-      {ENV_CONFETTI.map(([n, x, y, w, h], i) => {
+      {ENV_CONFETTI_POS.map(([n, x, y, w, h], i) => {
         // Deterministic pseudo-random delay and spin per piece, so it looks scattered rather than choreographed.
         const r1 = ((i * 37) % 100) / 100;
         const r2 = ((i * 61) % 100) / 100;
