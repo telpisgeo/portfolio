@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ShaboSections, { type ShaboSection } from "@/components/ShaboSections";
+import { OG_IMAGE_GRAPH, SITE_URL, socialMetadata } from "@/lib/seo";
 
 // Temporary presentation page for the SHABO test assignment (telpis.com.ua/shabo).
 // Hidden from search engines and robots.txt; delete this folder, the component,
@@ -8,6 +9,15 @@ export const metadata: Metadata = {
   title: "SHABO — тестове завдання",
   description: "Тестове завдання для дизайнера: два пости для Instagram та святкова листівка для SHABO.",
   robots: { index: false, follow: false },
+  // Link preview uses the graph-design featured image, not the site-wide one.
+  ...socialMetadata(
+    "uk",
+    `${SITE_URL}/shabo`,
+    "SHABO — тестове завдання",
+    "Тестове завдання для дизайнера: два пости для Instagram та святкова листівка для SHABO.",
+    "website",
+    OG_IMAGE_GRAPH.uk,
+  ),
 };
 
 const SECTIONS: ShaboSection[] = [
