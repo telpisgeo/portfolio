@@ -793,7 +793,7 @@ export default function ShaboSections({ sections, logo, photo, name }: Props) {
         ))}
 
         <section data-snap className="snap-start snap-always h-dvh flex flex-col items-center justify-center gap-8 px-4">
-          <Link href="/" className="group flex flex-col items-center gap-[17px]" aria-label={name}>
+          <Link href="/graph/ua" className="group flex flex-col items-center gap-[17px]" aria-label={name}>
             <div
               className="rounded-full overflow-hidden w-[86px] h-[86px]"
               style={{
