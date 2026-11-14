@@ -437,6 +437,93 @@ function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
     return () => window.clearTimeout(t);
   }, [show]);
 
+  // Confetti physics: pieces burst out of the envelope mouth, then gravity, air drag, sideways flutter
+  // and a paper-like flip pull them down until they land on the floor and stay there.
+  const confettiRefs = useRef<(HTMLDivElement | null)[]>([]);
+  useEffect(() => {
+    const els = confettiRefs.current;
+    if (!open) {
+      els.forEach((el) => el && (el.style.opacity = "0"));
+      return;
+    }
+    const G = 2000; // gravity, ENV units / s²
+    const KX = 1.5; // horizontal air drag
+    const KY = 2.4; // vertical air drag (terminal speed G / KY)
+    const rnd = (a: number, b: number) => a + Math.random() * (b - a);
+    const k = 100 / ENV.w; // ENV units → cqw
+    const P = ENV_CONFETTI_POS.map(([, , , w, h], i) => ({
+      w,
+      h,
+      x: ENV_MOUTH.x - w / 2,
+      y: ENV_MOUTH.y - h / 2,
+      vx: (i % 2 ? 1 : -1) * rnd(800, 1700),
+      vy: -rnd(900, 1700),
+      rot: rnd(0, 360),
+      vr: rnd(-420, 420),
+      flip: rnd(0, 6),
+      vf: rnd(5, 15),
+      ph: rnd(0, 6.28),
+      sw: rnd(3, 7),
+      floor: ENV.h - h - rnd(4, 40),
+      delay: 1000 + rnd(0, 380),
+      born: false,
+      bounced: false,
+      rest: false,
+    }));
+    const paint = (i: number, scale: number) => {
+      const p = P[i];
+      const el = els[i];
+      if (el) el.style.transform = `translate(${p.x * k}cqw, ${p.y * k}cqw) rotate(${p.rot}deg) scale(${scale}, ${scale * Math.cos(p.flip)})`;
+    };
+    let raf = 0;
+    let last = performance.now();
+    const t0 = last;
+    const step = (now: number) => {
+      const dt = Math.min(0.033, (now - last) / 1000);
+      last = now;
+      const el = now - t0;
+      let active = false;
+      P.forEach((p, i) => {
+        if (p.rest) return;
+        active = true;
+        if (el < p.delay) return;
+        if (!p.born) {
+          p.born = true;
+          const node = els[i];
+          if (node) node.style.opacity = "1";
+        }
+        const age = Math.min(1, (el - p.delay) / 220);
+        p.vx += Math.sin(el / 1000 * p.sw + p.ph) * 700 * dt;
+        p.vy += G * dt;
+        p.vx *= Math.exp(-KX * dt);
+        p.vy *= Math.exp(-KY * dt);
+        p.vr *= Math.exp(-0.7 * dt);
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        p.rot += p.vr * dt;
+        p.flip += p.vf * dt;
+        if (p.y >= p.floor && p.vy > 0) {
+          p.y = p.floor;
+          if (!p.bounced) {
+            p.bounced = true;
+            p.vy = -p.vy * 0.22;
+            p.vx *= 0.45;
+            p.vr *= 0.4;
+            p.vf *= 0.3;
+          } else {
+            p.rest = true;
+            p.flip = rnd(0, 0.9);
+          }
+        }
+        paint(i, 0.4 + 0.6 * age);
+      });
+      P.forEach((p, i) => p.rest && paint(i, 1));
+      if (active) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [open]);
+
   const flapMs = 900;
   const img = (name: string, w: number, h: number, extra?: React.CSSProperties) => (
     // eslint-disable-next-line @next/next/no-img-element
@@ -453,7 +540,6 @@ function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
       // Keep the composition's proportions: as wide as fits the stage, but never taller than it.
       style={{ aspectRatio: `${ENV_COMP.w} / ${ENV_COMP.h}`, width: `min(100cqw, calc(100cqh * ${ENV_COMP.w / ENV_COMP.h}))` }}
     >
-      <style>{`@keyframes shabo-drift { from { translate: 0 -0.6%; rotate: -4deg; } to { translate: 0.4% 0.8%; rotate: 5deg; } }`}</style>
       <div
         className="absolute"
         style={{
@@ -501,38 +587,18 @@ function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
       >
         {img("card", ENV_CARD.w, ENV_CARD.h)}
       </div>
-      {ENV_CONFETTI_POS.map(([n, x, y, w, h], i) => {
-        // Deterministic pseudo-random delay and spin per piece, so it looks scattered rather than choreographed.
-        const r1 = ((i * 37) % 100) / 100;
-        const r2 = ((i * 61) % 100) / 100;
-        const dx = ((ENV_MOUTH.x - x - w / 2) / ENV.w) * 100;
-        const dy = ((ENV_MOUTH.y - y - h / 2) / ENV.w) * 100;
-        const spin = (r1 - 0.5) * 540;
-        return (
-          <div
-            key={n}
-            style={{
-              ...envBox(x, y, w, h),
-              zIndex: 4,
-              pointerEvents: "none",
-              opacity: open ? 1 : 0,
-              transform: open ? "translate(0, 0) rotate(0deg) scale(1)" : `translate(${dx}cqw, ${dy}cqw) rotate(${spin}deg) scale(0.2)`,
-              transition: open
-                ? `transform ${1000 + r2 * 700}ms cubic-bezier(0.2, 0.9, 0.3, 1.12) ${1000 + r1 * 600}ms, opacity 300ms ease ${1000 + r1 * 600}ms`
-                : `transform 500ms ease ${r2 * 150}ms, opacity 300ms ease ${r2 * 150}ms`,
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${ENV_DIR}/confetti/${n}.webp`}
-              alt=""
-              draggable={false}
-              className="block w-full h-full select-none"
-              style={open ? { animation: `shabo-drift ${3.5 + r2 * 3}s ease-in-out ${2.6 + r1}s infinite alternate` } : undefined}
-            />
-          </div>
-        );
-      })}
+      {ENV_CONFETTI_POS.map(([n, , , w, h], i) => (
+        <div
+          key={n}
+          ref={(el) => {
+            confettiRefs.current[i] = el;
+          }}
+          style={{ ...envBox(0, 0, w, h), zIndex: 4, pointerEvents: "none", opacity: 0, willChange: "transform" }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`${ENV_DIR}/confetti/${n}.webp`} alt="" draggable={false} className="block w-full h-full select-none" />
+        </div>
+      ))}
       <div style={{ ...envBox(0, 588, ENV.w, ENV.h - 588), zIndex: 5 }}>{img("front", ENV.w, ENV.h - 588)}</div>
       </div>
     </button>
