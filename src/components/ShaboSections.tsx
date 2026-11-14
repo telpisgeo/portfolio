@@ -60,8 +60,14 @@ export type ShaboSection = {
   autoplay?: boolean;
 };
 
+/** A "behind the scenes" photo. `src: null` → grey placeholder until the real photo is added. */
+export type BackstageItem = { src: string | null; caption?: string };
+
 type Props = {
   sections: ShaboSection[];
+  /** Photos for the "За лаштунками" slideshow on the closing screen. Hidden when empty. */
+  backstage?: BackstageItem[];
+  backstageLabel?: string;
   logo: string;
   photo: string;
   name: string;
@@ -727,8 +733,56 @@ function VoiceNote({ voice, photo, show }: { voice: ShaboVoice; photo: string; s
   );
 }
 
-export default function ShaboSections({ sections, logo, photo, name }: Props) {
+// Behind-the-scenes photos as a grid of equal squares in a modal; Esc, ✕ or a click on the backdrop closes it.
+function BackstageModal({ items, onClose }: { items: BackstageItem[]; onClose: () => void }) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const prev = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      prev?.focus?.();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="За лаштунками"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-3 md:p-8"
+      style={{ animation: "shabo-meta-in 300ms ease-out" }}
+      onClick={onClose}
+    >
+      <style>{`@keyframes shabo-meta-in { from { opacity: 0; } to { opacity: 1; } }`}</style>
+      <div className="relative flex flex-col w-full max-w-[880px] max-h-full rounded-3xl bg-[#171415] text-[#f3eee6] ring-1 ring-white/10 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between shrink-0 px-5 md:px-7 pt-4 md:pt-5 pb-3">
+          <h3 className={`${forum.className} text-lg md:text-2xl`}>За лаштунками</h3>
+          <button ref={closeRef} type="button" aria-label="Закрити" onClick={onClose} className="grid place-items-center w-9 h-9 rounded-full bg-white/10 text-white/75 cursor-pointer transition-colors hover:bg-white/25">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M3 3l10 10M13 3L3 13" /></svg>
+          </button>
+        </div>
+        <div className="overflow-y-auto overscroll-contain px-5 md:px-7 pb-5 md:pb-7">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3">
+            {items.map((it, k) => (
+              <li key={k} className="relative aspect-square overflow-hidden rounded-xl bg-white/[0.06]">
+                {it.src && <Image src={it.src} alt={it.caption ?? `Фото ${k + 1}`} fill sizes="(min-width: 768px) 270px, 45vw" className="object-cover" />}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ShaboSections({ sections, logo, photo, name, backstage = [], backstageLabel = "За лаштунками" }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [backstageOpen, setBackstageOpen] = useState(false);
+  const modalOpen = useRef(false);
+  modalOpen.current = backstageOpen;
   const [active, setActive] = useState(0);
   // Sections that were already shown keep their final state (animation plays once).
   const [seen, setSeen] = useState<number[]>([0]);
@@ -763,7 +817,7 @@ export default function ShaboSections({ sections, logo, photo, name }: Props) {
     let locked = false;
     const sections = () => Array.from(root.querySelectorAll<HTMLElement>("[data-snap]"));
     const step = (dir: 1 | -1) => {
-      if (locked) return;
+      if (locked || modalOpen.current) return;
       const els = sections();
       const cur = Math.round(root.scrollTop / root.clientHeight);
       const next = Math.min(els.length - 1, Math.max(0, cur + dir));
@@ -882,8 +936,21 @@ export default function ShaboSections({ sections, logo, photo, name }: Props) {
               className="w-[min(88vw,372px)] h-auto transition-opacity duration-500 group-hover:opacity-70"
             />
           </Link>
+          {backstage.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setBackstageOpen(true)}
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--shabo-gold)]/60 px-5 py-2.5 text-sm text-foreground/80 cursor-pointer transition-colors hover:bg-[var(--shabo-gold)] hover:text-white"
+              style={fadeUp(closing, 1900)}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><rect x="3" y="6" width="18" height="14" rx="2.5" /><circle cx="12" cy="13" r="3.5" /><path d="M8.5 6l1.2-2h4.6l1.2 2" /></svg>
+              {backstageLabel}
+            </button>
+          )}
         </section>
       </div>
+
+      {backstageOpen && <BackstageModal items={backstage} onClose={() => setBackstageOpen(false)} />}
 
       <nav aria-label="Секції" className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-10 flex-col gap-3">
         {Array.from({ length: total }).map((_, i) => (

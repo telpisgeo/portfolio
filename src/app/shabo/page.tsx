@@ -90,6 +90,18 @@ export default function ShaboPage() {
       logo="/images/works/shabo/logo.svg"
       photo="/images/hero-photo-face2.webp"
       name="Тельпіс Георгій"
+      // Behind-the-scenes photos (square crops, /public/images/works/shabo/backstage). exported from Figma «Social media» → Section 80:291 (frames backstage01–09).
+      backstage={[
+        { src: "/images/works/shabo/backstage/01.webp" },
+        { src: "/images/works/shabo/backstage/02.webp" },
+        { src: "/images/works/shabo/backstage/03.webp" },
+        { src: "/images/works/shabo/backstage/04.webp" },
+        { src: "/images/works/shabo/backstage/05.webp" },
+        { src: "/images/works/shabo/backstage/06.webp" },
+        { src: "/images/works/shabo/backstage/07.webp" },
+        { src: "/images/works/shabo/backstage/08.webp" },
+        { src: "/images/works/shabo/backstage/09.webp" },
+      ]}
     />
   );
 }
