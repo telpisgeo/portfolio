@@ -110,21 +110,43 @@ const imgReveal = (show: boolean): React.CSSProperties => ({
   transition: `opacity 1000ms ${EASE} 1300ms, transform 1200ms ${EASE} 1300ms`,
 });
 
-// Video slide (WebM/MP4): plays muted on a loop only while it is the visible slide of the carousel.
+// Video slide (WebM/MP4): plays muted on a loop only while its section is on screen AND it is the visible
+// slide of the carousel; it restarts from the first frame every time the user scrolls back to the section.
 function SlideVideo({ src, label }: { src: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
+    const section = el.closest<HTMLElement>("[data-snap]");
+    let inView = false;
+    let slideVisible = false;
+    const sync = () => {
+      if (inView && slideVisible) el.play().catch(() => {});
+      else el.pause();
+    };
+    const ioSlide = new IntersectionObserver(
       ([e]) => {
-        if (e.intersectionRatio >= 0.6) el.play().catch(() => {});
-        else el.pause();
+        slideVisible = e.intersectionRatio >= 0.6;
+        sync();
       },
       { root: el.closest("[data-carousel]"), threshold: [0, 0.6] },
     );
-    io.observe(el);
-    return () => io.disconnect();
+    const ioSection = new IntersectionObserver(
+      ([e]) => {
+        const now = e.intersectionRatio >= 0.6;
+        if (now && !inView) el.currentTime = 0;
+        inView = now;
+        sync();
+      },
+      { threshold: [0, 0.6] },
+    );
+    ioSlide.observe(el);
+    if (section) ioSection.observe(section);
+    else inView = true;
+    return () => {
+      ioSlide.disconnect();
+      ioSection.disconnect();
+    };
   }, []);
   return <video ref={ref} src={src} aria-label={label} muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover" />;
 }
