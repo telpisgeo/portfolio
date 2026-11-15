@@ -29,7 +29,8 @@ export type PostSlide =
   | string
   | { bg: string; blobs: string; fg: string; /** draw the handwritten signature (slide 5) when the slide is first shown */ signature?: boolean }
   // Slide 1: live gradient ellipses (SVG) behind the bottle layer `fg`; they slide so the dark part of the gradient travels sideways.
-  | { bg: string; ellipses: "slide1"; fg: string }
+  // `fg` = bottle + logo (drifts slowly), `hint` = «Гортайте далі» + arrow (nudges), both transparent layers over the ellipses.
+  | { bg: string; ellipses: "slide1"; fg: string; hint?: string }
   // Layered slide whose shapes and text come in when the slide first becomes active (the logo stays put).
   | { bg: string; shapes: string[]; texts: string[]; logo: string };
 
@@ -151,8 +152,8 @@ function SlideVideo({ src, label }: { src: string; label: string }) {
   return <video ref={ref} src={src} aria-label={label} muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover" />;
 }
 
-// The six Figma ellipses of slide 1. They start in the first Figma frame (69:20213), smoothly move/stretch
-// into the second one (69:20243) and back; the radial gradient inside each ellipse goes with it.
+// The six Figma ellipses of slide 1. They start in the first Figma frame (69:20213) and sweep (a stretched
+// version of) the second one back and forth, so the gradient shapes keep drifting across the slide.
 function SlideEllipses() {
   return (
     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 645 855" preserveAspectRatio="xMidYMid slice" aria-hidden>
@@ -169,7 +170,11 @@ function SlideEllipses() {
         <g
           key={i}
           className="shabo-slide"
-          style={{ ["--from" as string]: `matrix(${e.from.join(",")})`, ["--to" as string]: `matrix(${e.to.join(",")})` }}
+          style={{
+            ["--from" as string]: `matrix(${e.from.join(",")})`,
+            // exaggerate Figma's second keyframe by 1.6× so the shapes sweep further
+            ["--to" as string]: `matrix(${e.to.map((v, j) => +(e.from[j] + (v - e.from[j]) * 1.6).toFixed(4)).join(",")})`,
+          }}
         >
           <ellipse cx={e.w / 2} cy={e.h / 2} rx={e.w / 2} ry={e.h / 2} fill={`url(#shabo-e${i})`} filter={e.blur ? "url(#shabo-eblur)" : undefined} />
         </g>
@@ -297,9 +302,9 @@ function PostCarousel({ slides, alt, autoplay = false, meta }: { slides: PostSli
     <>
       <style>{`
         @keyframes shabo-meta-in { from { opacity: 0; } to { opacity: 1; } }
-        /* the shapes never move or resize; only the dark part of their gradient slides left ↔ right inside them */
+        /* gradient shapes drift between Figma's two keyframes */
         @keyframes shabo-slide { from { transform: var(--from); } to { transform: var(--to); } }
-        .shabo-slide { animation: shabo-slide 9s ease-in-out infinite alternate; }
+        .shabo-slide { transform: var(--from); animation: shabo-slide 4.5s ease-in-out infinite alternate; }
         @keyframes shabo-xfade { from { opacity: 0; } to { opacity: 1; } }
         .shabo-xfade { animation: shabo-xfade 6s ease-in-out infinite alternate; }
         @keyframes shabo-grad { from { background-position: 0% 0; } to { background-position: 100% 0; } }
@@ -329,7 +334,20 @@ function PostCarousel({ slides, alt, autoplay = false, meta }: { slides: PostSli
                   <>
                     {/* gradient shapes stay put; only their gradient moves */}
                     {"ellipses" in src ? <SlideEllipses /> : <GradientShape src={src.blobs} delay={k * 2.3} />}
-                    <Image src={src.fg} alt="" fill sizes="(min-width: 768px) 520px, 90vw" className="object-cover" />
+                    {"ellipses" in src ? (
+                      <>
+                        <div className="absolute inset-0">
+                          <Image src={src.fg} alt="" fill sizes="(min-width: 768px) 520px, 90vw" className="object-cover" />
+                        </div>
+                        {src.hint && (
+                          <div className="absolute inset-0">
+                            <Image src={src.hint} alt="" fill sizes="(min-width: 768px) 520px, 90vw" className="object-cover" />
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <Image src={src.fg} alt="" fill sizes="(min-width: 768px) 520px, 90vw" className="object-cover" />
+                    )}
                     {"signature" in src && src.signature && <DrawnSignature on={shown.includes(k)} />}
                   </>
                 ) : (
@@ -403,8 +421,12 @@ const ENV = { w: 1134, h: 1375, hinge: 594 };
 // Whole composition (envelope + confetti flying out to the right / above), same units as ENV.
 // The envelope stays centred (it never moves); the confetti scatters on both sides of it.
 const ENV_COMP = { w: 2180, h: 1520, top: 145, left: 523 };
-// New card (with the two gold stars) and its position inside the envelope box.
-const ENV_CARD = { x: 103, y: 81, w: 950, h: 670 };
+// Card (Figma «Postcard – stamp die-cut», node 85:396: one gold star + QR) and its position inside the envelope box.
+// The export is 1666×1074 (stamp 1602×1010 + shadow bleed), so the box keeps that ratio.
+const ENV_CARD = { x: 89, y: 101, w: 978, h: 630 };
+// How far the card rises (% of its height, upwards) so it clears the pocket for the flip, and the flip duration.
+const CARD_RISE = -30;
+const CARD_FLIP_MS = 1000;
 // Confetti pieces [file, x, y, w, h] in ENV units; they scatter out of the envelope mouth when it opens.
 const ENV_CONFETTI: [string, number, number, number, number][] = [
   ["c01", 1166, 268, 62, 61],
@@ -457,6 +479,21 @@ const envBox = (x: number, y: number, w: number, h: number): React.CSSProperties
 // section is shown; click toggles it.
 function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
   const [open, setOpen] = useState(false);
+  // Card choreography: 0 hidden in the pocket · 1 slides out and rises (back side) · 2 turns to the front · 3 settles into the envelope.
+  const [step, setStep] = useState(0);
+  useEffect(() => {
+    if (!open) {
+      setStep(0);
+      return;
+    }
+    setStep(1);
+    const t2 = window.setTimeout(() => setStep(2), 800 + 1100 + 350);
+    const t3 = window.setTimeout(() => setStep(3), 800 + 1100 + 350 + CARD_FLIP_MS + 500);
+    return () => {
+      window.clearTimeout(t2);
+      window.clearTimeout(t3);
+    };
+  }, [open]);
   const auto = useRef(false);
   useEffect(() => {
     if (!show || auto.current) return;
@@ -493,7 +530,7 @@ function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
       ph: rnd(0, 6.28),
       sw: rnd(3, 7),
       floor: ENV.h - h - rnd(4, 40),
-      delay: 1000 + rnd(0, 380),
+      delay: 800 + 1100 + 350 + 300 + rnd(0, 380), // bursts as the card turns to its front
       born: false,
       bounced: false,
       rest: false,
@@ -604,16 +641,32 @@ function EnvelopeCard({ show, alt }: { show: boolean; alt: string }) {
         </div>
       </div>
 
+      {/* card: slides out showing the gold back, rises clear of the pocket, turns over to the front,
+          then settles back into the envelope. The flip happens above the pocket, never inside it. */}
       <div
         style={{
           ...envBox(ENV_CARD.x, ENV_CARD.y, ENV_CARD.w, ENV_CARD.h),
           zIndex: 3,
-          transform: open ? "translateY(0)" : "translateY(78%)",
-          opacity: open ? 1 : 0,
-          transition: `transform 1100ms ${EASE} ${open ? 800 : 0}ms, opacity 300ms ease ${open ? 800 : 700}ms`,
+          perspective: "2600px",
+          transform: step === 0 ? "translateY(78%)" : step === 3 ? "translateY(0)" : `translateY(${CARD_RISE}%)`,
+          opacity: step === 0 ? 0 : 1,
+          transition:
+            step === 0
+              ? `transform 700ms ${EASE}, opacity 300ms ease 500ms`
+              : `transform ${step === 1 ? 1100 : step === 3 ? 1000 : 900}ms ${EASE} ${step === 1 ? 800 : 0}ms, opacity 300ms ease ${step === 1 ? 800 : 0}ms`,
         }}
       >
-        {img("card", ENV_CARD.w, ENV_CARD.h)}
+        <div
+          className="relative w-full h-full"
+          style={{
+            transformStyle: "preserve-3d",
+            transform: step >= 2 ? "rotateY(0deg)" : "rotateY(180deg)",
+            transition: step === 0 ? "transform 700ms ease" : `transform ${CARD_FLIP_MS}ms cubic-bezier(0.45, 0, 0.2, 1)`,
+          }}
+        >
+          <div className="absolute inset-0" style={{ backfaceVisibility: "hidden" }}>{img("card", ENV_CARD.w, ENV_CARD.h)}</div>
+          <div className="absolute inset-0" style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>{img("card-back", ENV_CARD.w, ENV_CARD.h)}</div>
+        </div>
       </div>
       {ENV_CONFETTI_POS.map(([n, , , w, h], i) => (
         <div

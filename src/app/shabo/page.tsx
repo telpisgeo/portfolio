@@ -32,7 +32,7 @@ const SECTIONS: ShaboSection[] = [
     alt: "Пост №1 — презентація вина SHABO Reserve в Instagram",
     // Carousel slides exported from Figma (Social media → Frame 36, node 57:5031).
     slides: [
-      { bg: "#B00A39", ellipses: "slide1", fg: "/images/works/shabo/post-1-s1-fg.webp" },
+      { bg: "#B00A39", ellipses: "slide1", fg: "/images/works/shabo/post-1-s1-bottle-v2.webp", hint: "/images/works/shabo/post-1-s1-hint-v2.webp" },
       { bg: "#A9153F", shapes: ["/images/works/shabo/post-1-s2-shapes1-v2.webp"], texts: ["/images/works/shabo/post-1-s2-text1-v2.webp", "/images/works/shabo/post-1-s2-text2-v2.webp"], logo: "/images/works/shabo/post-1-logo-v2.webp" },
       { bg: "#A9153F", shapes: ["/images/works/shabo/post-1-s3-shapes1-v2.webp", "/images/works/shabo/post-1-s3-shapes2-v2.webp"], texts: ["/images/works/shabo/post-1-s3-text1-v2.webp", "/images/works/shabo/post-1-s3-text2-v2.webp"], logo: "/images/works/shabo/post-1-logo-v2.webp" },
       { bg: "#A9153F", shapes: ["/images/works/shabo/post-1-s4-shapes1-v2.webp", "/images/works/shabo/post-1-s4-shapes2-v2.webp", "/images/works/shabo/post-1-s4-shapes3-v2.webp"], texts: ["/images/works/shabo/post-1-s4-text1-v2.webp", "/images/works/shabo/post-1-s4-text2-v2.webp", "/images/works/shabo/post-1-s4-text3-v2.webp", "/images/works/shabo/post-1-s4-text4-v2.webp"], logo: "/images/works/shabo/post-1-logo-v2.webp" },
@@ -75,7 +75,7 @@ const SECTIONS: ShaboSection[] = [
     voice: { src: "/audio/shabo-card.m4a", duration: "0:30" },
     title: "Листівка від SHABO з Новим роком та Різдвом для партнерів",
     description:
-      "Антиква Cormorant додає історичної ваги, дрібний гротеск — сучасного контрасту. Ієрархія проста: бренд → продукт → одна фраза. Аудиторія — поціновувачі вина 30–50 років, які обирають якість та історію бренду, а не знижки.",
+      "В еру штучного інтелекту, коли все робиться промптом за лічені секунди, хочеться чогось справжнього й теплого, особливо на свята. Тому пропоную оформити кожну листівку вручну каліграфією. Якщо партнерів не тисячі, а сотня-дві, то за день можна підписати всім, і кожна листівка буде унікальною. QR-код веде на відео, де записано процес створення, до якого можна залучити всю команду. Нехай воно буде не ідеальним, але щирим.",
     image: null, // placeholder until the card is ready
     ratio: [1720, 1041],
     alt: "Листівка від SHABO у конверті — натисніть, щоб відкрити або закрити",
