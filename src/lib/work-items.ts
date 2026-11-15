@@ -5,6 +5,9 @@ export type WorkScreen = {
   title: string;
   description: string;
   caseUrl?: string;
+  stats?: { value: string; label: string }[];
+  metrics?: { label: string; value: string; note?: string }[];
+  metricsPeriod?: string;
   crop?: number;
   /** Still frame shown while a video loads. */
   poster?: string;
@@ -54,6 +57,9 @@ export function companyToWorkItem(c: HomeCompany, locale: string): WorkItem {
           title: r.title || stub.title,
           description: r.description || stub.description,
           caseUrl: r.caseUrl,
+          stats: r.stats?.length ? r.stats : undefined,
+          metrics: r.metrics?.length ? r.metrics : undefined,
+          metricsPeriod: r.metricsPeriod || undefined,
           crop: r.crop,
           poster: r.posters?.[k] || undefined,
         };

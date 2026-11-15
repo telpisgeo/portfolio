@@ -486,6 +486,52 @@ export default function AdminHomePage() {
                               className={`${inputClass} resize-none leading-relaxed`}
                             />
                           </div>
+                          <div className="col-span-2">
+                            <label className={labelClass}>Статистика (рядок = «значення | підпис», до 6)</label>
+                            <textarea
+                              defaultValue={(row.stats ?? []).map((st) => `${st.value} | ${st.label}`).join("\n")}
+                              onBlur={(e) => {
+                                const stats = e.target.value
+                                  .split("\n")
+                                  .map((l) => l.split("|").map((p) => p.trim()))
+                                  .filter((p) => p[0] && p[1])
+                                  .slice(0, 6)
+                                  .map(([value, label]) => ({ value, label }));
+                                updateImageRowMeta(index, rowIdx, { stats: stats.length ? stats : undefined });
+                              }}
+                              rows={3}
+                              placeholder="930 тис. | батьків"
+                              className={`${inputClass} resize-none leading-relaxed`}
+                            />
+                          </div>
+                          <div className="col-span-2">
+                            <label className={labelClass}>Результати (рядок = «метрика | значення | уточнення», до 6)</label>
+                            <textarea
+                              defaultValue={(row.metrics ?? []).map((m) => `${m.label} | ${m.value}${m.note ? ` | ${m.note}` : ""}`).join("\n")}
+                              onBlur={(e) => {
+                                const metrics = e.target.value
+                                  .split("\n")
+                                  .map((l) => l.split("|").map((p) => p.trim()))
+                                  .filter((p) => p[0] && p[1])
+                                  .slice(0, 6)
+                                  .map(([label, value, note]) => ({ label, value, ...(note ? { note } : {}) }));
+                                updateImageRowMeta(index, rowIdx, { metrics: metrics.length ? metrics : undefined });
+                              }}
+                              rows={3}
+                              placeholder="Конверсія в підписку | 4% | від батьків, які відкрили аналітику"
+                              className={`${inputClass} resize-none leading-relaxed`}
+                            />
+                          </div>
+                          <div className="col-span-2">
+                            <label className={labelClass}>Період вимірювання результатів (поруч із заголовком)</label>
+                            <input
+                              value={row.metricsPeriod ?? ""}
+                              onChange={(e) => updateImageRowMeta(index, rowIdx, { metricsPeriod: e.target.value || undefined })}
+                              className={inputClass}
+                              maxLength={60}
+                              placeholder="перший місяць після запуску"
+                            />
+                          </div>
                           <div>
                             <label className={labelClass}>Кнопка «Дивитись кейс» на цьому екрані</label>
                             <select

@@ -320,6 +320,40 @@ function Drawer({
 
           <p className="text-lg text-secondary-foreground/80 leading-relaxed">{s.description}</p>
 
+          {s.stats && s.stats.length > 0 && (
+            <div className="rounded-2xl bg-white/5 px-5 py-4">
+              <p className="text-sm text-secondary-foreground/60">{uk ? "Масштаб" : "Scale"}</p>
+              <ul className="mt-4 grid grid-cols-3 gap-4">
+                {s.stats.map((st) => (
+                  <li key={st.label}>
+                    <p className="text-2xl font-medium leading-none text-primary">{st.value}</p>
+                    <p className="mt-2 text-sm text-secondary-foreground/60">{st.label}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {s.metrics && s.metrics.length > 0 && (
+            <div className="rounded-2xl bg-white/5 px-5 py-4">
+              <div className="flex items-baseline justify-between gap-4">
+                <p className="text-sm text-secondary-foreground/60">{uk ? "Результати" : "Results"}</p>
+                {s.metricsPeriod && <p className="text-sm text-secondary-foreground/60">{s.metricsPeriod}</p>}
+              </div>
+              <ul className="mt-2">
+                {s.metrics.map((m, i) => (
+                  <li key={m.label} className={`flex items-center justify-between gap-6 py-4 ${i > 0 ? "border-t border-secondary-foreground/15" : ""}`}>
+                    <div className="min-w-0">
+                      <p className="text-sm text-secondary-foreground">{m.label}</p>
+                      {m.note && <p className="mt-1 text-xs text-secondary-foreground/60">{m.note}</p>}
+                    </div>
+                    <p className="shrink-0 text-2xl font-medium leading-none text-primary">{m.value}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {rows.length > 0 && (
             <dl className="rounded-2xl bg-white/5 px-5 py-1">
               {rows.map((r, i) => (

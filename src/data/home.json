@@ -24,7 +24,33 @@
             "crop": 0.42,
             "caseUrl": "/uk/cases/eschool-2",
             "title": "AI-аналітика успішності учня",
-            "description": "Оновив сервіс рекомендацій для батьків: поглиблена аналітика учня на основі оцінок, домашніх завдань і відвідуваності та рекомендації репетиторів. Запропонував Gallup-підхід — підсилювати те, що дитині вдається найкраще."
+            "description": "Оновив сервіс рекомендацій для батьків: поглиблена аналітика учня на основі оцінок, домашніх завдань і відвідуваності та рекомендації репетиторів. Запропонував Gallup-підхід — підсилювати те, що дитині вдається найкраще.",
+            "stats": [
+              {
+                "value": "930 тис.",
+                "label": "батьків"
+              },
+              {
+                "value": "1,2 млн",
+                "label": "учнів"
+              },
+              {
+                "value": "3,5 тис.",
+                "label": "шкіл"
+              }
+            ],
+            "metrics": [
+              {
+                "label": "Конверсія з free preview у підписку",
+                "value": "4%",
+                "note": "від батьків, які відкрили поглиблену аналітику"
+              },
+              {
+                "label": "Записались до репетиторів",
+                "value": "27%",
+                "note": "від тих, хто побачив рекомендацію репетитора"
+              }
+            ]
           },
           {
             "value": "/images/works/eschool/eschool.webp",
@@ -285,7 +311,33 @@
             "value": "/images/works/eschool/eschool-mob2-en.webp",
             "caseUrl": "/en/cases/eschool-2",
             "title": "AI-powered student analytics",
-            "description": "Redesigned the parent recommendations service: in-depth student analytics based on grades, homework and attendance, plus tutor recommendations. Proposed a Gallup-style approach: reinforce what the child does best."
+            "description": "Redesigned the parent recommendations service: in-depth student analytics based on grades, homework and attendance, plus tutor recommendations. Proposed a Gallup-style approach: reinforce what the child does best.",
+            "stats": [
+              {
+                "value": "930K",
+                "label": "parents"
+              },
+              {
+                "value": "1.2M",
+                "label": "students"
+              },
+              {
+                "value": "3.5K",
+                "label": "schools"
+              }
+            ],
+            "metrics": [
+              {
+                "label": "Free preview to subscription conversion",
+                "value": "4%",
+                "note": "of parents who opened the in-depth analytics"
+              },
+              {
+                "label": "Booked tutors",
+                "value": "27%",
+                "note": "of those who saw a tutor recommendation"
+              }
+            ]
           },
           {
             "value": "/images/works/eschool/eschool-mob-en.webp",

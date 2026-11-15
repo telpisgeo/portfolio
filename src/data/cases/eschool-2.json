@@ -201,12 +201,10 @@
         "t": "bullets-card",
         "id": "summary",
         "sectionCaption": "Підсумки",
-        "text": "Новий сервіс запустився в новому навчальному році, за умовами договору, я не маю права розголошувати конкретні цифри. Метрики успіху для оновлення були:",
+        "text": "Новий сервіс запустився в новому навчальному році. Ключові результати оновлення:",
         "items": [
-          "Конверсія з free preview у підписку",
-          "Відсоток батьків, які залишають feedback по блоках",
-          "Retention після першого місяця",
-          "Частка заповнених журналів"
+          "Конверсія з free preview у підписку — 4% від батьків, які відкрили поглиблену аналітику",
+          "27% з тих, хто побачив рекомендацію репетитора, записались до репетиторів"
         ]
       }
     ]
@@ -284,7 +282,7 @@
             "icon": "students"
           },
           {
-            "value": "3,500",
+            "value": "3.5K",
             "label": "schools",
             "icon": "schools"
           },
@@ -404,11 +402,10 @@
         "t": "bullets-card",
         "id": "summary",
         "sectionCaption": "Summary",
-        "text": "The new service launched in the new school year. Under the terms of my contract, I am not permitted to disclose specific figures. The success metrics for the update were:",
+        "text": "The new service launched in the new school year. Key results of the update:",
         "items": [
-          "Conversion from free preview to subscription",
-          "Percentage of parents leaving per-block feedback",
-          "Retention after the first month"
+          "Free preview to subscription conversion — 4% of parents who opened the in-depth analytics",
+          "27% of those who saw a tutor recommendation booked tutors"
         ]
       }
     ]

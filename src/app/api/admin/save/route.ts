@@ -41,6 +41,21 @@ function validateImageRows(rows: unknown): string | null {
     if (r.title !== undefined && (!isString(r.title) || r.title.length > 200)) return "Невірна назва екрана";
     if (r.description !== undefined && (!isString(r.description) || r.description.length > 1000)) return "Невірний опис екрана";
     if (r.caseUrl !== undefined && (!isString(r.caseUrl) || !CASE_URL_RE.test(r.caseUrl))) return `Невірне посилання на кейс: ${r.caseUrl}`;
+    if (r.stats !== undefined) {
+      if (!Array.isArray(r.stats) || r.stats.length > 6) return "stats має бути масивом до 6 елементів";
+      for (const st of r.stats) {
+        const o = st as Record<string, unknown>;
+        if (!o || !isString(o.value) || !isString(o.label) || o.value.length > 20 || o.label.length > 40) return "Невірна статистика";
+      }
+    }
+    if (r.metricsPeriod !== undefined && (!isString(r.metricsPeriod) || r.metricsPeriod.length > 60)) return "Невірний період метрик";
+    if (r.metrics !== undefined) {
+      if (!Array.isArray(r.metrics) || r.metrics.length > 6) return "metrics має бути масивом до 6 елементів";
+      for (const m of r.metrics) {
+        const o = m as Record<string, unknown>;
+        if (!o || !isString(o.label) || !isString(o.value) || (o.note !== undefined && !isString(o.note)) || o.label.length > 80 || o.value.length > 20 || (isString(o.note) && o.note.length > 100)) return "Невірні метрики успіху";
+      }
+    }
     if (r.once !== undefined && typeof r.once !== "boolean") return "once має бути булевим";
     if (r.crop !== undefined && (typeof r.crop !== "number" || !(r.crop > 0 && r.crop <= 1))) return "crop має бути числом від 0 до 1";
     if (r.posters !== undefined) {

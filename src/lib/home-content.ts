@@ -7,6 +7,12 @@ export type HomeImageRow = {
   title?: string;
   description?: string;
   caseUrl?: string;
+  /** Short scale stats shown as a row of numbers in the works drawer. */
+  stats?: { value: string; label: string }[];
+  /** Success metrics card in the works drawer: what was measured, the result and the measuring period. */
+  metrics?: { label: string; value: string; note?: string }[];
+  /** Measuring window shown next to the «Результати» title, e.g. "перший місяць після запуску". */
+  metricsPeriod?: string;
   /** Video only: visible share (0–1) of the frame width, centered. Trims empty side margins in the works rail. */
   crop?: number;
   /** Video only: play a single time and stay on the last frame (no loop). Unset → legacy `*-once.*` filename rule. */
