@@ -81,14 +81,36 @@
           {
             "value": "/images/works/westudy/westudy-editor.webp",
             "title": "Розробка сайтбілдеру",
-            "description": "Оновив конструктор сайтів для курсів, щоб утримати клієнтів, яких не влаштовував складний інструмент: сайт за лічені хвилини з наявних даних про курси та окремий режим для авторського дизайну.",
+            "description": "Спроєктував з нуля конструктор сайтів для клієнтів Westudy. Старий інструмент був головною причиною відтоку: користувачі не хотіли платити за незручний функціонал і залишали платформу. Для ключових і найбільших клієнтів команда створила авторські сайти.",
             "active": false
           },
           {
             "value": "/images/works/westudy/case-westudy-after-en.mp4",
             "title": "Розробка сайтбілдеру",
-            "description": "Оновив конструктор сайтів для курсів, щоб утримати клієнтів, яких не влаштовував складний інструмент: сайт за лічені хвилини з наявних даних про курси та окремий режим для авторського дизайну.",
-            "caseUrl": "/uk/cases/westudy"
+            "description": "Спроєктував з нуля конструктор сайтів для клієнтів Westudy. Старий інструмент був головною причиною відтоку: користувачі не хотіли платити за незручний функціонал і залишали платформу. Для ключових і найбільших клієнтів команда створила авторські сайти.",
+            "caseUrl": "/uk/cases/westudy",
+            "metricsPeriod": "Вимірювали 8 тижнів до та 8 тижнів після релізу",
+            "metrics": [
+              {
+                "label": "Усі користувачі отримали базовий оновлений сайт курсів, з якого легко записатись на курс",
+                "value": ""
+              },
+              {
+                "label": "Створили сайт з авторським дизайном",
+                "value": "35%+",
+                "note": "від користувачів сервісу"
+              },
+              {
+                "label": "Індекс легкості створення сайту",
+                "value": "1,8 → 4,9",
+                "note": "по 7-бальній шкалі"
+              },
+              {
+                "label": "Звернення в підтримку",
+                "value": "−45%",
+                "note": "щодо конструктора, на 100 нових сайтів"
+              }
+            ]
           },
           {
             "value": "/images/works/westudy/westudy-onboarding.webp",
@@ -368,14 +390,36 @@
           {
             "value": "/images/works/westudy/promo-builder-westudy.webp",
             "title": "Site builder development",
-            "description": "Redesigned the course site builder to retain clients unhappy with a complex tool: a site in minutes from existing course data, plus a separate mode for custom design.",
+            "description": "Designed a new site builder for Westudy clients from scratch. The old tool was the main cause of churn: users refused to pay for a poorly working feature and left the platform. For key and largest clients, the team created custom-designed sites.",
             "active": false
           },
           {
             "value": "/images/works/westudy/case-westudy-after-en.mp4",
             "title": "Site builder development",
-            "description": "Redesigned the course site builder to retain clients unhappy with a complex tool: a site in minutes from existing course data, plus a separate mode for custom design.",
-            "caseUrl": "/en/cases/westudy"
+            "description": "Designed a new site builder for Westudy clients from scratch. The old tool was the main cause of churn: users refused to pay for a poorly working feature and left the platform. For key and largest clients, the team created custom-designed sites.",
+            "caseUrl": "/en/cases/westudy",
+            "metricsPeriod": "Measured over 8 weeks before and 8 weeks after release",
+            "metrics": [
+              {
+                "label": "All users received a basic updated course site from which it is easy to enroll in a course",
+                "value": ""
+              },
+              {
+                "label": "Created a custom-designed site",
+                "value": "35%+",
+                "note": "of the service's users"
+              },
+              {
+                "label": "Site creation ease index",
+                "value": "1.8 → 4.9",
+                "note": "on a 7-point scale"
+              },
+              {
+                "label": "Support requests",
+                "value": "−45%",
+                "note": "about the builder, per 100 new sites"
+              }
+            ]
           },
           {
             "value": "/images/works/westudy/market-motion-en.webm",

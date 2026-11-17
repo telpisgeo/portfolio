@@ -6,6 +6,7 @@ import SiteShowcase from "@/components/SiteShowcase";
 import LazyVideo from "@/components/LazyVideo";
 import FadeUp from "@/components/FadeUp";
 import FadeImage from "@/components/FadeImage";
+import InfoTip from "@/components/InfoTip";
 
 export function Caption({ text }: { text: string }) {
   return <p className="text-sm font-bold text-muted-foreground">{text}</p>;
@@ -278,14 +279,41 @@ export function renderCaseBlock(block: Block, i: number) {
             <div className="rounded-2xl bg-primary px-4 md:px-7 lg:px-10 py-4 md:py-6 lg:py-8 flex flex-col gap-6">
               <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">{block.text}</p>
               <ul className="flex flex-col gap-4">
-                {block.items.map((it, j) => (
-                  <li key={j} className="flex gap-4 text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">
-                    <span className="text-foreground/30 shrink-0">•</span>
-                    <span>{it}</span>
-                  </li>
-                ))}
+                {block.items.map((it, j) => {
+                  // "Головне | дрібний текст"; "Головне |i| текст у підказці (i)"; "| текст" — лише примітка без маркера
+                  const tipAt = it.indexOf(" |i| ");
+                  const noteAt = it.indexOf(" | ");
+                  const sep = tipAt >= 0 ? tipAt : noteAt >= 0 ? noteAt : it.startsWith("| ") ? 0 : -1;
+                  const main = sep >= 0 ? it.slice(0, sep).trim() : it;
+                  const rest = sep >= 0 ? it.slice(sep + (tipAt >= 0 ? 5 : sep === 0 ? 2 : 3)).trim() : "";
+                  if (!main) return null; // примітка рендериться під жовтою плашкою
+                  return (
+                    <li key={j} className="relative flex gap-4 text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">
+                      <span className="text-foreground/30 shrink-0">•</span>
+                      <span className="flex flex-col gap-1.5">
+                        <span>
+                          {tipAt >= 0 && rest ? (
+                            <>
+                              {main.includes(" ") ? main.slice(0, main.lastIndexOf(" ") + 1) : ""}
+                              <span className="whitespace-nowrap">
+                                {main.slice(main.lastIndexOf(" ") + 1)}
+                                <InfoTip text={rest} />
+                              </span>
+                            </>
+                          ) : (
+                            main
+                          )}
+                        </span>
+                        {tipAt < 0 && rest && <span className="text-sm md:text-base leading-[1.4] text-foreground/60">{rest}</span>}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
+            {block.items.filter((it) => it.startsWith("| ")).map((it, j) => (
+              <p key={j} className="text-sm md:text-base leading-[1.4] text-foreground/60">{it.slice(2).trim()}</p>
+            ))}
           </div>
         </div>
       );

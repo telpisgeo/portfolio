@@ -512,9 +512,9 @@ export default function AdminHomePage() {
                                 const metrics = e.target.value
                                   .split("\n")
                                   .map((l) => l.split("|").map((p) => p.trim()))
-                                  .filter((p) => p[0] && p[1])
+                                  .filter((p) => p[0])
                                   .slice(0, 6)
-                                  .map(([label, value, note]) => ({ label, value, ...(note ? { note } : {}) }));
+                                  .map(([label, value = "", note]) => ({ label, value, ...(note ? { note } : {}) }));
                                 updateImageRowMeta(index, rowIdx, { metrics: metrics.length ? metrics : undefined });
                               }}
                               rows={3}
@@ -523,13 +523,13 @@ export default function AdminHomePage() {
                             />
                           </div>
                           <div className="col-span-2">
-                            <label className={labelClass}>Період вимірювання результатів (поруч із заголовком)</label>
+                            <label className={labelClass}>Період вимірювання результатів (під усіма метриками)</label>
                             <input
                               value={row.metricsPeriod ?? ""}
                               onChange={(e) => updateImageRowMeta(index, rowIdx, { metricsPeriod: e.target.value || undefined })}
                               className={inputClass}
                               maxLength={60}
-                              placeholder="перший місяць після запуску"
+                              placeholder="Вимірювали перший місяць після запуску"
                             />
                           </div>
                           <div>

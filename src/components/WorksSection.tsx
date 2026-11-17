@@ -336,10 +336,7 @@ function Drawer({
 
           {s.metrics && s.metrics.length > 0 && (
             <div className="rounded-2xl bg-white/5 px-5 py-4">
-              <div className="flex items-baseline justify-between gap-4">
-                <p className="text-sm text-secondary-foreground/60">{uk ? "Результати" : "Results"}</p>
-                {s.metricsPeriod && <p className="text-sm text-secondary-foreground/60">{s.metricsPeriod}</p>}
-              </div>
+              <p className="text-sm text-secondary-foreground/60">{uk ? "Результати" : "Results"}</p>
               <ul className="mt-2">
                 {s.metrics.map((m, i) => (
                   <li key={m.label} className={`flex items-center justify-between gap-6 py-4 ${i > 0 ? "border-t border-secondary-foreground/15" : ""}`}>
@@ -351,6 +348,7 @@ function Drawer({
                   </li>
                 ))}
               </ul>
+              {s.metricsPeriod && <p className="border-t border-secondary-foreground/15 pt-4 pb-1 text-xs text-secondary-foreground/60">{s.metricsPeriod}</p>}
             </div>
           )}
 

@@ -168,8 +168,12 @@
         "sectionCaption": "Результати",
         "text": "",
         "items": [
-          "Після оновлень, за допомогою партнерів-дизайнерів, ми оновили сайти чинним користувачам (які мали власні сайти), перевірили реальну роботу сервісу, виправили безліч технічних проблем та доопрацювали UX.",
-          "Збільшили кількість успішно створених сайтів на 25%"
+          "Усі користувачі отримали базовий оновлений сайт курсів, з якого легко записатись на курс",
+          "Понад 35% користувачів сервісу створили собі сайт з авторським дизайном",
+          "Для найбільших і ключових клієнтів сервісу команда дизайнерів Westudy створила авторські сайти",
+          "Індекс легкості створення сайту виріс з 1,8 до 4,9 (по 7-бальній шкалі) |i| Оцінювали за шкалою від 1 до 7, де 1 — дуже погано, 7 — дуже добре. Перед релізом опитування надіслали всім, хто щось робив із сайтом, після релізу — всім, хто працював над сайтом, незалежно від того, чи опублікували вони його.",
+          "Звернення в підтримку зменшились на 45% | Щодо конструктора, у перерахунку на 100 нових сайтів.",
+          "| Період вимірювання: 8 тижнів до та 8 тижнів після релізу"
         ]
       }
     ]
@@ -345,8 +349,12 @@
         "sectionCaption": "Results",
         "text": "",
         "items": [
-          "After the update, with help from partner designers, we refreshed existing users' sites, tested real-world usage, fixed many technical issues, and refined the UX.",
-          "The number of successfully created sites grew by 25% after the redesign"
+          "All users received a basic updated course site from which it is easy to enroll in a course",
+          "More than 35% of the service's users created a custom-designed site for themselves",
+          "For the largest and key clients, the Westudy design team created custom-designed sites",
+          "The site creation ease index rose from 1.8 to 4.9 (on a 7-point scale) |i| Rated on a scale from 1 to 7, where 1 is very poor and 7 is very good. Before the release the survey was sent to everyone who had done anything with a site; after the release, to everyone who worked on a site, whether or not they published it.",
+          "Support requests dropped by 45% | About the builder, per 100 new sites.",
+          "| Measurement period: 8 weeks before and 8 weeks after release"
         ]
       }
     ]

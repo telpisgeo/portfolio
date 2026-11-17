@@ -53,7 +53,7 @@ function validateImageRows(rows: unknown): string | null {
       if (!Array.isArray(r.metrics) || r.metrics.length > 6) return "metrics має бути масивом до 6 елементів";
       for (const m of r.metrics) {
         const o = m as Record<string, unknown>;
-        if (!o || !isString(o.label) || !isString(o.value) || (o.note !== undefined && !isString(o.note)) || o.label.length > 80 || o.value.length > 20 || (isString(o.note) && o.note.length > 100)) return "Невірні метрики успіху";
+        if (!o || !isString(o.label) || !isString(o.value) || (o.note !== undefined && !isString(o.note)) || o.label.length > 140 || o.value.length > 20 || (isString(o.note) && o.note.length > 100)) return "Невірні метрики успіху";
       }
     }
     if (r.once !== undefined && typeof r.once !== "boolean") return "once має бути булевим";
