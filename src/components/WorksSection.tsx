@@ -320,6 +320,16 @@ function Drawer({
 
           <p className="text-lg text-secondary-foreground/80 leading-relaxed">{s.description}</p>
 
+          {s.caseUrl && (
+            <Link
+              href={s.caseUrl}
+              className="flex items-center justify-center gap-2 w-full rounded-full bg-primary text-primary-foreground font-medium px-6 py-4 hover:brightness-95 transition"
+            >
+              {uk ? "Дивитись кейс" : "View case"}
+              <ArrowIcon className="rotate-45" />
+            </Link>
+          )}
+
           {s.stats && s.stats.length > 0 && (
             <div className="rounded-2xl bg-white/5 px-5 py-4">
               <p className="text-sm text-secondary-foreground/60">{uk ? "Масштаб" : "Scale"}</p>
@@ -361,16 +371,6 @@ function Drawer({
                 </div>
               ))}
             </dl>
-          )}
-
-          {s.caseUrl && (
-            <Link
-              href={s.caseUrl}
-              className="flex items-center justify-center gap-2 w-full rounded-full bg-primary text-primary-foreground font-medium px-6 py-4 hover:brightness-95 transition"
-            >
-              {uk ? "Дивитись кейс" : "View case"}
-              <ArrowIcon className="rotate-45" />
-            </Link>
           )}
         </div>
       </aside>
