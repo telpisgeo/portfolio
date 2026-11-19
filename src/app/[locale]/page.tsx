@@ -129,7 +129,7 @@ export default async function LocalePage({
             <div className="lg:sticky lg:top-24 lg:self-start">
               <Image
                 src="/images/my_photo/photo_me.webp"
-                alt=""
+                alt={locale === "uk" ? "Георгій Тельпіс, продуктовий дизайнер" : "Georgiy Telpis, product designer"}
                 width={1366}
                 height={903}
                 className="w-full max-w-md h-auto"

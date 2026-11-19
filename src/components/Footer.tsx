@@ -6,6 +6,7 @@ type FooterProps = {
   otherLocale: string;
   otherLabel: string;
   copyright: string;
+  hideSocials?: string[];
 };
 
 // One of these floats around the footer and swaps on every bounce (640×640 WebP).
@@ -24,13 +25,14 @@ const PHOTOS = [
 // The mailto line: an epigraph from the end of "Song of Myself" (public domain), shown in the original.
 const QUOTE = { text: "I stop somewhere waiting for you.", author: "Walt Whitman" };
 
-export default function Footer({ copyright }: FooterProps) {
+export default function Footer({ copyright, hideSocials }: FooterProps) {
   return (
     <footer className="bg-footer-bg text-footer-text">
       {/* light cap: page bg curves down into the dark footer (dark fills the corners) */}
       <div className="bg-surface-about h-10 rounded-b-[40px]" aria-hidden />
       <FooterStage photos={PHOTOS} text={QUOTE.text} author={QUOTE.author} email="gtelpis@gmail.com">
         <SocialLinks
+          exclude={hideSocials}
           className="mt-8 flex items-center justify-center gap-5"
           linkClassName="text-footer-text/70 hover:text-footer-text transition-colors"
         />

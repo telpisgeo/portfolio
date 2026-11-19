@@ -20,7 +20,8 @@ export const metadata: Metadata = {
   description: "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу.",
   metadataBase: new URL(SITE_URL),
   applicationName: "Георгій Тельпіс",
-  authors: [{ name: "Георгій Тельпіс", url: SITE_URL }],
+  // No author URL: it renders <link rel="author"> to the main site on every page, including /graph.
+  authors: [{ name: "Георгій Тельпіс" }],
   // Fallback for any page without its own social tags; pages override via socialMetadata().
   openGraph: {
     siteName: "Георгій Тельпіс",

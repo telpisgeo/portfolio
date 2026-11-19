@@ -48,12 +48,14 @@ type SocialLinksProps = {
   /** Classes for each link (colors, hover). */
   linkClassName?: string;
   size?: number;
+  /** Labels to hide, e.g. ["LinkedIn"] on the separate graph portfolio. */
+  exclude?: string[];
 };
 
-export default function SocialLinks({ className = "flex items-center gap-5", linkClassName = "", size = 20 }: SocialLinksProps) {
+export default function SocialLinks({ className = "flex items-center gap-5", linkClassName = "", size = 20, exclude = [] }: SocialLinksProps) {
   return (
     <div className={className}>
-      {SOCIALS.map((s) => (
+      {SOCIALS.filter((s) => !exclude.includes(s.label)).map((s) => (
         <a
           key={s.label}
           href={s.href}

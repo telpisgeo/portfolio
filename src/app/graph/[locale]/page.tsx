@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
-import { OG_IMAGE_GRAPH, SITE_URL, personJsonLd, socialMetadata } from "@/lib/seo";
 import graphJson from "@/data/graph.json";
 import type { GraphContent } from "@/lib/graph-content";
 import Navbar from "@/components/Navbar";
@@ -48,15 +47,8 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: {
-      canonical: `${SITE_URL}/graph/${locale}`,
-      languages: {
-        uk: `${SITE_URL}/graph/ua`,
-        en: `${SITE_URL}/graph/en`,
-        "x-default": `${SITE_URL}/graph/ua`,
-      },
-    },
-    ...socialMetadata(toContentLocale(locale), `${SITE_URL}/graph/${locale}`, title, description, "website", OG_IMAGE_GRAPH[toContentLocale(locale)]),
+    // Private page: not indexed, not followed, no social preview.
+    robots: { index: false, follow: false, nocache: true },
   };
 }
 
@@ -81,12 +73,6 @@ export default async function GraphLocalePage({
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(personJsonLd(locale, `${SITE_URL}/graph/${urlLocale}`)),
-        }}
-      />
       <Navbar
         locale={locale}
         otherLocale={locale === "uk" ? "en" : "uk"}
@@ -100,6 +86,7 @@ export default async function GraphLocalePage({
         switchHref={switchHref}
         showCvButton={false}
         showPetProjects={false}
+        hideSocials={["LinkedIn"]}
       />
       <Hero locale={locale} text1={graph.hero.text1} text2={graph.hero.text2} />
 
@@ -287,7 +274,7 @@ export default async function GraphLocalePage({
               <div className="mb-8">
                 <Image
                   src="/images/my_photo/photo_me.webp"
-                  alt=""
+                  alt={locale === "uk" ? "Георгій Тельпіс, графічний дизайнер" : "Georgiy Telpis, graphic designer"}
                   width={1366}
                   height={903}
                   className="w-full max-w-md h-auto"
@@ -344,6 +331,7 @@ export default async function GraphLocalePage({
         otherLocale={locale === "uk" ? "en" : "uk"}
         otherLabel={otherLabel}
         copyright={t.copyright}
+        hideSocials={["LinkedIn"]}
       />
     </div>
   );
