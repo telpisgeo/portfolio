@@ -154,7 +154,20 @@
             "value": "/images/works/snov/n-li-flow.mp4",
             "title": "LinkedIn автоматизація",
             "description": "Брав участь у розробці LinkedIn-автоматизації у зв’язці з PM. Провів дослідження конкурентів і процесів продажів та спроєктував весь флоу від концепту до фінального дизайну: купівля слотів, підключення акаунту, ліміти безпеки, створення мультиканальних кампаній і статистика.",
-            "caseUrl": "/uk/cases/snov"
+            "caseUrl": "/uk/cases/snov",
+            "metrics": [
+              {
+                "label": "Конверсія з trial у платний слот",
+                "value": "20%",
+                "note": "від юзерів, що пройшли 7-денний trial"
+              },
+              {
+                "label": "Докупили додаткові слоти",
+                "value": "15%",
+                "note": "від користувачів, які вже мали хоча б один платний слот"
+              }
+            ],
+            "metricsPeriod": "Вимірювали 3 місяці після запуску"
           },
           {
             "value": "/images/works/snov/n-ui-flow-v3.mp4",
@@ -458,7 +471,20 @@
             "value": "/images/works/snov/n-li-flow.mp4",
             "title": "LinkedIn automation",
             "description": "Took part in building LinkedIn automation in partnership with the PM. Researched competitors and sales workflows and designed the whole flow from concept to final design: buying slots, connecting an account, safety limits, creating multichannel campaigns and statistics.",
-            "caseUrl": "/en/cases/snov"
+            "caseUrl": "/en/cases/snov",
+            "metrics": [
+              {
+                "label": "Trial to paid slot conversion",
+                "value": "20%",
+                "note": "of users who completed the 7-day trial"
+              },
+              {
+                "label": "Purchased additional slots",
+                "value": "15%",
+                "note": "of users who already had at least one paid slot"
+              }
+            ],
+            "metricsPeriod": "Measured over 3 months after launch"
           },
           {
             "value": "/images/works/snov/n-ui-flow-v3.mp4",
