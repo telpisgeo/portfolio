@@ -81,6 +81,7 @@ export default function AdminFunPage() {
           if (it.more?.length) o.more = it.more.map((m) => (m.poster ? { src: m.src, ratio: m.ratio, poster: m.poster } : { src: m.src, ratio: m.ratio }));
           if (it.caption?.trim()) o.caption = it.caption.trim();
           if (it.description?.trim()) o.description = it.description.trim();
+          if (it.active === false) o.active = false;
           return o;
         }),
       };
@@ -132,8 +133,8 @@ export default function AdminFunPage() {
 
         <div className="flex flex-col gap-4">
           {items.map((it, i) => (
-            <div key={it.id} className="border border-border rounded-2xl p-3 flex flex-col sm:flex-row gap-4">
-              <div className="sm:w-56 shrink-0 self-start rounded-xl overflow-hidden bg-black/[0.06]" style={{ aspectRatio: it.ratio }}>
+            <div key={it.id} className={`border border-border rounded-2xl p-3 flex flex-col sm:flex-row gap-4 ${it.active === false ? "bg-black/[0.03]" : ""}`}>
+              <div className={`sm:w-56 shrink-0 self-start rounded-xl overflow-hidden bg-black/[0.06] transition-opacity ${it.active === false ? "opacity-40" : ""}`} style={{ aspectRatio: it.ratio }}>
                 {isFunVideo(it.src) ? (
                   <video src={it.src} poster={it.poster} className="w-full h-full object-cover" muted loop playsInline autoPlay />
                 ) : (
@@ -170,6 +171,14 @@ export default function AdminFunPage() {
                 value={it.description ?? ""}
                 onChange={(e) => updateItem(i, { description: e.target.value })}
               />
+              <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={it.active !== false}
+                  onChange={(e) => updateItem(i, { active: e.target.checked ? undefined : false })}
+                />
+                {it.active === false ? "Сховано з сайту" : "Показувати на сайті"}
+              </label>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <div className="flex gap-3">
                   <button type="button" onClick={() => moveItem(i, -1)} disabled={i === 0} className="hover:text-foreground disabled:opacity-30">↑</button>

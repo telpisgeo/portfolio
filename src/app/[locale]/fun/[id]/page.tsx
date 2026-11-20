@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
 import { localeAlternates, SITE_URL, socialMetadata } from "@/lib/seo";
-import { FUN_CONTENT, funSlides } from "@/lib/fun-content";
+import { VISIBLE_FUN_ITEMS, funSlides } from "@/lib/fun-content";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FunCarousel from "@/components/FunCarousel";
@@ -14,12 +14,12 @@ const COPY = {
 } as const;
 
 export function generateStaticParams() {
-  return ["uk", "en"].flatMap((locale) => FUN_CONTENT.items.map((it) => ({ locale, id: it.id })));
+  return ["uk", "en"].flatMap((locale) => VISIBLE_FUN_ITEMS.map((it) => ({ locale, id: it.id })));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; id: string }> }): Promise<Metadata> {
   const { locale, id } = await params;
-  const item = FUN_CONTENT.items.find((it) => it.id === id);
+  const item = VISIBLE_FUN_ITEMS.find((it) => it.id === id);
   if ((locale !== "uk" && locale !== "en") || !item) return {};
   const title = item.caption || COPY[locale].untitled;
   const description = item.description || COPY[locale].fallback;
@@ -34,13 +34,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function FunItemPage({ params }: { params: Promise<{ locale: string; id: string }> }) {
   const { locale, id } = await params;
   if (locale !== "uk" && locale !== "en") notFound();
-  const item = FUN_CONTENT.items.find((it) => it.id === id);
+  const item = VISIBLE_FUN_ITEMS.find((it) => it.id === id);
   if (!item) notFound();
   const t = translations[locale as Locale];
   const c = COPY[locale];
   const otherLocale = locale === "uk" ? "en" : "uk";
   const otherLabel = locale === "uk" ? "EN" : "UA";
-  const others = FUN_CONTENT.items.filter((it) => it.id !== id);
+  const others = VISIBLE_FUN_ITEMS.filter((it) => it.id !== id);
 
   return (
     <div className="min-h-screen flex flex-col bg-background [--background:#ffffff] [--surface-about:#ffffff]">

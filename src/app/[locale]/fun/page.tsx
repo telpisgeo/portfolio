@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { translations, type Locale } from "@/lib/translations";
 import { localeAlternates, SITE_URL, socialMetadata } from "@/lib/seo";
-import { FUN_CONTENT } from "@/lib/fun-content";
+import { VISIBLE_FUN_ITEMS } from "@/lib/fun-content";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FunWall from "@/components/FunWall";
@@ -63,7 +63,7 @@ export default async function FunPage({ params }: { params: Promise<{ locale: st
           <h1 className="text-[22px] md:text-[28px] lg:text-[36px] font-bold text-foreground leading-[1.25] text-center mb-8 md:mb-12">
             {c.heading}
           </h1>
-          <FunWall items={FUN_CONTENT.items} empty={c.empty} locale={locale} />
+          <FunWall items={VISIBLE_FUN_ITEMS} empty={c.empty} locale={locale} />
         </div>
       </main>
       <Footer locale={locale} otherLocale={otherLocale} otherLabel={otherLabel} copyright={t.copyright} />

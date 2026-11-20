@@ -21,13 +21,6 @@
       ]
     },
     {
-      "id": "glass-illustrations",
-      "src": "/images/works/fun/glass-illustrations.webp",
-      "ratio": "1600/1200",
-      "caption": "Скляні ілюстрації",
-      "description": "Скляні ілюстрації для email-маркетингу, зроблені у Figma."
-    },
-    {
       "id": "snov-welcome-page",
       "src": "/images/works/fun/snov-welcome-page.webp",
       "ratio": "1600/1200",
@@ -39,6 +32,105 @@
       "src": "/images/works/fun/snov-linkedin-finder.webp",
       "ratio": "1600/1200",
       "caption": "Екран успіху для розширення LinkedIn finder"
+    },
+    {
+      "id": "snov-two-step-auth",
+      "src": "/images/works/fun/snov-two-step.webm",
+      "ratio": "1280/956",
+      "poster": "/images/works/fun/snov-two-step-poster.webp",
+      "caption": "Двоетапна автентифікація"
+    },
+    {
+      "id": "snov-deliverability",
+      "src": "/images/works/fun/snov-deliverability.webp",
+      "ratio": "2400/1800",
+      "caption": "Перевірка доставлюваності листів"
+    },
+    {
+      "id": "snov-linkedin-reports",
+      "src": "/images/works/fun/snov-linkedin-reports-1.webp",
+      "ratio": "2400/1800",
+      "caption": "Звіти по LinkedIn-кампаніях",
+      "more": [
+        {
+          "src": "/images/works/fun/snov-linkedin-reports-2.webp",
+          "ratio": "2400/2906"
+        }
+      ]
+    },
+    {
+      "id": "snov-linkedin-stats",
+      "src": "/images/works/fun/snov-linkedin-stats.webp",
+      "ratio": "2400/1800",
+      "caption": "Статистика LinkedIn-кампанії"
+    },
+    {
+      "id": "snov-linkedin-account",
+      "src": "/images/works/fun/snov-linkedin-account.webp",
+      "ratio": "2400/1800",
+      "caption": "Налаштування LinkedIn-акаунта"
+    },
+    {
+      "id": "snov-linkedin-automation",
+      "src": "/images/works/fun/snov-linkedin-automation-1.webp",
+      "ratio": "1600/1200",
+      "caption": "Автоматизація LinkedIn у Snov.io",
+      "more": [
+        {
+          "src": "/images/works/fun/snov-linkedin-automation-2.webp",
+          "ratio": "1600/1200"
+        }
+      ]
+    },
+    {
+      "id": "snov-campaign-templates",
+      "src": "/images/works/fun/snov-campaign-templates-1.webp",
+      "ratio": "1600/1200",
+      "caption": "Кампанії з шаблонів",
+      "more": [
+        {
+          "src": "/images/works/fun/snov-campaign-templates-2.webp",
+          "ratio": "1600/1200"
+        }
+      ]
+    },
+    {
+      "id": "snov-email-account",
+      "src": "/images/works/fun/snov-email-account.webp",
+      "ratio": "1600/1200",
+      "caption": "Налаштування email-акаунта"
+    },
+    {
+      "id": "snov-email-editor",
+      "src": "/images/works/fun/snov-editor-1.webm",
+      "ratio": "1280/958",
+      "poster": "/images/works/fun/snov-editor-1-poster.webp",
+      "caption": "Новий редактор листів",
+      "more": [
+        {
+          "src": "/images/works/fun/snov-email-editor-2.webp",
+          "ratio": "2400/1800"
+        }
+      ]
+    },
+    {
+      "id": "snov-search-filter",
+      "src": "/images/works/fun/snov-search-filter.webp",
+      "ratio": "1600/1200",
+      "caption": "Фільтр пошуку prospects"
+    },
+    {
+      "id": "snov-database-search",
+      "src": "/images/works/fun/snov-database-search.webp",
+      "ratio": "1600/1200",
+      "caption": "Пошук по базі"
+    },
+    {
+      "id": "glass-illustrations",
+      "src": "/images/works/fun/glass-illustrations.webp",
+      "ratio": "1600/1200",
+      "caption": "Скляні ілюстрації",
+      "description": "Скляні ілюстрації для email-маркетингу, зроблені у Figma."
     },
     {
       "id": "advertising-illustrations",

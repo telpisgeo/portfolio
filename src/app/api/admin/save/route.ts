@@ -260,6 +260,7 @@ function validateFunContent(content: unknown): string | null {
     if (seenIds.has(o.id)) return `Дублікат id: ${o.id}`;
     seenIds.add(o.id);
     if (o.description !== undefined && (!isString(o.description) || o.description.length > 3000)) return "Невірний опис";
+    if (o.active !== undefined && typeof o.active !== "boolean") return "active має бути булевим";
     const slideErr = validateFunSlide(o);
     if (slideErr) return slideErr;
     if (o.more !== undefined) {

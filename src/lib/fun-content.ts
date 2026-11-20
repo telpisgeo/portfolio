@@ -25,11 +25,16 @@ export type FunItem = {
   caption?: string;
   /** Optional longer text shown on the detail page. */
   description?: string;
+  /** `false` hides the work everywhere on the public site (wall, detail page, sitemap); it stays in the admin. */
+  active?: boolean;
 };
 
 export type FunContent = { items: FunItem[] };
 
 export const FUN_CONTENT = funJson as unknown as FunContent;
+
+/** Works shown on the public site (everything except `active: false`). */
+export const VISIBLE_FUN_ITEMS: FunItem[] = FUN_CONTENT.items.filter((it) => it.active !== false);
 
 export function isFunVideo(src: string): boolean {
   return /\.(webm|mp4|mov)$/i.test(src) || src.includes(".public.blob.vercel-storage.com/");
