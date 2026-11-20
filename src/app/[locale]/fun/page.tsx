@@ -10,13 +10,13 @@ import FunWall from "@/components/FunWall";
 const COPY = {
   uk: {
     title: "Fun: концепти, ілюстрації та драфти — Георгій Тельпіс",
-    heading: "Girls Just Want to Have Fun",
+    heading: "Концепти, ідеї, замальовки, все що роблю по фану",
     description: "Неофіційне портфоліо Георгія Тельпіса: концепти, ілюстрації, експерименти й чернетки, які не потрапили в кейси. Усе, що я роблю заради фану.",
     empty: "Скоро тут щось з'явиться.",
   },
   en: {
     title: "Fun: concepts, illustrations and drafts — Georgiy Telpis",
-    heading: "Girls Just Want to Have Fun",
+    heading: "Concepts, ideas, sketches: everything I make just for fun",
     description: "The unofficial side of Georgiy Telpis's portfolio: concepts, illustrations, experiments and drafts that never made it into the case studies. Everything I make just for fun.",
     empty: "Something will show up here soon.",
   },
@@ -47,7 +47,7 @@ export default async function FunPage({ params }: { params: Promise<{ locale: st
   const otherLabel = locale === "uk" ? "EN" : "UA";
 
   return (
-    <div className="min-h-screen flex flex-col bg-background [--background:#ffffff]">
+    <div className="min-h-screen flex flex-col bg-background [--background:#ffffff] [--surface-about:#ffffff]">
       <Navbar
         locale={locale}
         otherLocale={otherLocale}

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { translations } from "@/lib/translations";
 import { isCaseDraft, listDynamicCaseSlugs } from "@/lib/case-store";
+import { FUN_CONTENT } from "@/lib/fun-content";
 import { CASES_TRANSLATED_EN, SITE_URL as BASE } from "@/lib/seo";
 
 const LOCALES = ["uk", "en"] as const;
@@ -37,5 +38,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : [{ url: `${BASE}/uk${path}` }],
   );
 
-  return [...home, ...cases];
+  // Fun wall + one detail page per work. The copy is localised, so both
+  // locales are listed with reciprocal hreflang.
+  const funPaths = ["/fun", ...FUN_CONTENT.items.map((it) => `/fun/${it.id}`)];
+  const fun = funPaths.flatMap((path) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE}/${locale}${path}`,
+      alternates: {
+        languages: { uk: `${BASE}/uk${path}`, en: `${BASE}/en${path}`, "x-default": `${BASE}/uk${path}` },
+      },
+    })),
+  );
+
+  return [...home, ...cases, ...fun];
 }

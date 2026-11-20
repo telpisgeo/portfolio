@@ -43,7 +43,7 @@ export default async function FunItemPage({ params }: { params: Promise<{ locale
   const others = FUN_CONTENT.items.filter((it) => it.id !== id);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background [--background:#ffffff]">
+    <div className="min-h-screen flex flex-col bg-background [--background:#ffffff] [--surface-about:#ffffff]">
       <Navbar
         locale={locale}
         otherLocale={otherLocale}
