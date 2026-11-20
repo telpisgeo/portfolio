@@ -56,6 +56,14 @@ export default function AdminDashboard() {
           </Link>
 
           <Link
+            href="/admin/fun"
+            className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
+          >
+            <h2 className="text-base font-medium text-foreground mb-1">Fun</h2>
+            <p className="text-sm text-muted-foreground">Стіна з картинок і відео для сторінки /fun</p>
+          </Link>
+
+          <Link
             href="/admin/resume"
             className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
           >

@@ -238,6 +238,42 @@ function validateGraphContent(content: unknown): string | null {
   return null;
 }
 
+function validateFunSlide(slide: unknown): string | null {
+  if (!slide || typeof slide !== "object") return "Невірна варіація";
+  const o = slide as Record<string, unknown>;
+  const err = validateMediaPath(o.src);
+  if (err) return err;
+  if (!isString(o.ratio) || !/^\d+\/\d+$/.test(o.ratio)) return `Невірне співвідношення сторін: ${o.ratio}`;
+  if (o.poster !== undefined && (!isString(o.poster) || (o.poster !== "" && !IMAGE_PATH_RE.test(o.poster)))) return `Невірний шлях до постера: ${o.poster}`;
+  return null;
+}
+
+function validateFunContent(content: unknown): string | null {
+  if (!content || typeof content !== "object") return "Невірна структура fun.json";
+  const items = (content as Record<string, unknown>).items;
+  if (!Array.isArray(items) || items.length > 300) return "items має бути масивом (до 300)";
+  const seenIds = new Set<string>();
+  for (const it of items) {
+    if (!it || typeof it !== "object") return "Невірний елемент fun";
+    const o = it as Record<string, unknown>;
+    if (!isString(o.id) || !/^[a-z0-9-]{3,40}$/.test(o.id)) return `Невірний id: ${o.id}`;
+    if (seenIds.has(o.id)) return `Дублікат id: ${o.id}`;
+    seenIds.add(o.id);
+    if (o.description !== undefined && (!isString(o.description) || o.description.length > 3000)) return "Невірний опис";
+    const slideErr = validateFunSlide(o);
+    if (slideErr) return slideErr;
+    if (o.more !== undefined) {
+      if (!Array.isArray(o.more) || o.more.length > 20) return "more має бути масивом (до 20)";
+      for (const m of o.more) {
+        const e = validateFunSlide(m);
+        if (e) return e;
+      }
+    }
+    if (o.caption !== undefined && (!isString(o.caption) || o.caption.length > 200)) return "Невірний підпис";
+  }
+  return null;
+}
+
 function validateImgRef(img: unknown, required: boolean): string | null {
   if (img === undefined) return required ? "Відсутнє зображення" : null;
   if (!img || typeof img !== "object") return "Невірне зображення";
@@ -390,6 +426,7 @@ function validateCaseFile(data: unknown): string | null {
 const FILE_VALIDATORS: Record<string, (data: unknown) => string | null> = {
   "src/data/home.json": validateHomeContent,
   "src/data/graph.json": validateGraphContent,
+  "src/data/fun.json": validateFunContent,
 };
 
 function findValidator(path: string): ((data: unknown) => string | null) | null {

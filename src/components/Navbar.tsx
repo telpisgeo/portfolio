@@ -26,6 +26,10 @@ type NavbarProps = {
   showCvButton?: boolean;
   /** Overrides the default `/${locale}` home link and work/about anchor base. */
   homeHref?: string;
+  /** Shows the "Fun" link (to /<locale>/fun). Off on the independent /graph pages. */
+  showFunLink?: boolean;
+  /** Overrides the label of the back link (default "Головна" / "Home"). */
+  homeLabel?: string;
   /** Overrides the default pathname-derived language switch target. */
   switchHref?: string;
 };
@@ -41,6 +45,8 @@ export default function Navbar({
   showCvButton = true,
   homeHref,
   switchHref,
+  homeLabel,
+  showFunLink = true,
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const hidden = useHideOnScroll(hideOnScroll) && !menuOpen;
@@ -59,7 +65,7 @@ export default function Navbar({
   const burgerColor = isDark ? "bg-secondary-foreground" : "bg-foreground";
   const dropdownText = isDark ? "text-secondary-foreground/80 border-white/10" : "text-foreground/80 border-border";
   const dropdownMuted = isDark ? "text-secondary-foreground/50" : "text-muted-foreground";
-  const homeLabel = locale === "uk" ? "← Головна" : "← Home";
+  const funHref = `/${locale}/fun`;
 
   return (
     <header
@@ -96,7 +102,7 @@ export default function Navbar({
               </svg>
             </span>
             <span className={`text-sm font-medium ${text} leading-tight`}>
-              {locale === "uk" ? "Головна" : "Home"}
+              {homeLabel ?? (locale === "uk" ? "Головна" : "Home")}
             </span>
           </Link>
         )}
@@ -109,6 +115,14 @@ export default function Navbar({
             className="hidden lg:flex items-center gap-1 mr-2"
             linkClassName={`p-2 rounded-full ${textMuted} ${hoverText} ${hoverBg} transition-colors`}
           />
+          {showFunLink && (
+            <Link
+              href={funHref}
+              className={`text-sm font-medium ${pathname === funHref ? text : textMuted} ${hoverText} transition-all px-4 py-2 rounded-full ${hoverBg} hidden sm:block`}
+            >
+              Fun
+            </Link>
+          )}
           <Link
             href={otherLocalePath}
             className={`text-sm font-medium ${textMuted} ${hoverText} transition-all px-4 py-2 rounded-full ${hoverBg} hidden sm:block`}
@@ -174,6 +188,15 @@ export default function Navbar({
             >
               {locale === "uk" ? "Завантажити CV" : "Download CV"}
             </a>
+          )}
+          {showFunLink && (
+            <Link
+              href={funHref}
+              className={`py-3 text-sm font-medium border-b ${dropdownText}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              Fun
+            </Link>
           )}
           <Link
             href={otherLocalePath}

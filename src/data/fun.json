@@ -1,0 +1,78 @@
+{
+  "items": [
+    {
+      "id": "snov-illustration-concept",
+      "src": "/images/works/fun/snov-illustration-concept.webp",
+      "ratio": "1600/1200",
+      "caption": "Концепт ілюстрацій для Snov.io",
+      "description": "Один із концептів ілюстрацій для документів Snov.io: змішаний стиль з градієнтами."
+    },
+    {
+      "id": "snov-error-404",
+      "src": "/images/works/fun/snov-error-404.webp",
+      "ratio": "1600/1200",
+      "caption": "Сторінки помилок Snov.io",
+      "description": "Закриті двері для 404 і песик для 500: дві ілюстрації для сторінок помилок.",
+      "more": [
+        {
+          "src": "/images/works/fun/snov-error-500.webp",
+          "ratio": "1600/1200"
+        }
+      ]
+    },
+    {
+      "id": "glass-illustrations",
+      "src": "/images/works/fun/glass-illustrations.webp",
+      "ratio": "1600/1200",
+      "caption": "Скляні ілюстрації",
+      "description": "Скляні ілюстрації для email-маркетингу, зроблені у Figma."
+    },
+    {
+      "id": "snov-welcome-page",
+      "src": "/images/works/fun/snov-welcome-page.webp",
+      "ratio": "1600/1200",
+      "caption": "Welcome page, концепт",
+      "description": "Концепт вітальної сторінки для onboarding."
+    },
+    {
+      "id": "snov-linkedin-finder",
+      "src": "/images/works/fun/snov-linkedin-finder.webp",
+      "ratio": "1600/1200",
+      "caption": "Екран успіху для розширення LinkedIn finder"
+    },
+    {
+      "id": "advertising-illustrations",
+      "src": "/images/works/fun/advertising-illustrations.webp",
+      "ratio": "1600/1200",
+      "caption": "Ілюстрації для рекламного сайту",
+      "description": "Векторні ілюстрації в Adobe Illustrator."
+    },
+    {
+      "id": "serpstat-personas",
+      "src": "/images/works/fun/serpstat-personas-1.webp",
+      "ratio": "988/739",
+      "caption": "Серпстат: персонажі, частина 2",
+      "more": [
+        {
+          "src": "/images/works/fun/serpstat-personas-2.webp",
+          "ratio": "990/743"
+        },
+        {
+          "src": "/images/works/fun/serpstat-personas-3.webp",
+          "ratio": "988/739"
+        },
+        {
+          "src": "/images/works/fun/serpstat-personas-4.webp",
+          "ratio": "993/742"
+        }
+      ],
+      "description": "Векторні ілюстрації персон для Serpstat: набір образів, у яких користувачі сервісу впізнають себе."
+    },
+    {
+      "id": "serpstat-ad-images",
+      "src": "/images/works/fun/serpstat-ad-images.webp",
+      "ratio": "800/600",
+      "caption": "Рекламні зображення Serpstat"
+    }
+  ]
+}
