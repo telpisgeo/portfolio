@@ -130,10 +130,10 @@ export default function AdminFunPage() {
           <MediaUpload kind="media" dir="fun" value="" onChange={addItem} label="Додати" />
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-4">
           {items.map((it, i) => (
-            <div key={it.id} className="border border-border rounded-2xl p-3 flex flex-col gap-2">
-              <div className="rounded-xl overflow-hidden bg-black/[0.06]" style={{ aspectRatio: it.ratio }}>
+            <div key={it.id} className="border border-border rounded-2xl p-3 flex flex-col sm:flex-row gap-4">
+              <div className="sm:w-56 shrink-0 self-start rounded-xl overflow-hidden bg-black/[0.06]" style={{ aspectRatio: it.ratio }}>
                 {isFunVideo(it.src) ? (
                   <video src={it.src} poster={it.poster} className="w-full h-full object-cover" muted loop playsInline autoPlay />
                 ) : (
@@ -141,6 +141,7 @@ export default function AdminFunPage() {
                   <img src={it.src} alt="" className="w-full h-full object-cover" />
                 )}
               </div>
+              <div className="flex-1 min-w-0 flex flex-col gap-2">
               <input
                 className={inputClass}
                 placeholder="Назва (необовʼязково)"
@@ -175,6 +176,7 @@ export default function AdminFunPage() {
                   <button type="button" onClick={() => moveItem(i, 1)} disabled={i === items.length - 1} className="hover:text-foreground disabled:opacity-30">↓</button>
                 </div>
                 <button type="button" onClick={() => removeItem(i)} className="hover:text-red-600">Прибрати</button>
+              </div>
               </div>
             </div>
           ))}
