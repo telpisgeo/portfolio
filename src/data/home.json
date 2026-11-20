@@ -154,7 +154,20 @@
             "value": "/images/works/snov/n-li-flow.mp4",
             "title": "LinkedIn автоматизація",
             "description": "Брав участь у розробці LinkedIn-автоматизації у зв’язці з PM. Провів дослідження конкурентів і процесів продажів та спроєктував весь флоу від концепту до фінального дизайну: купівля слотів, підключення акаунту, ліміти безпеки, створення мультиканальних кампаній і статистика.",
-            "caseUrl": "/uk/cases/snov"
+            "caseUrl": "/uk/cases/snov",
+            "metrics": [
+              {
+                "label": "Конверсія з trial у платний слот",
+                "value": "20%",
+                "note": "від юзерів, що пройшли 7-денний trial"
+              },
+              {
+                "label": "Докупили додаткові слоти",
+                "value": "15%",
+                "note": "від користувачів, які вже мали хоча б один платний слот"
+              }
+            ],
+            "metricsPeriod": "Вимірювали 3 місяці після запуску"
           },
           {
             "value": "/images/works/snov/n-ui-flow-v3.mp4",
@@ -196,20 +209,20 @@
         "tools": "Figma, Adobe Illustrator",
         "imageRows": [
           {
-            "value": "/images/works/sendpulse/analytics-motion-uk.webm",
-            "posters": [
-              "/images/works/sendpulse/analytics-after-uk.webp"
-            ],
-            "title": "Аналітика курсів",
-            "description": "Спроєктував аналітику для курсів у SendPulse, якої раніше не було. Врахував усі наявні дані та відобразив головні метрики курсу. Пройшов понад 10 ітерацій і провів тестування, щоб дійти до фінального рішення."
-          },
-          {
             "value": "/images/works/sendpulse/call-story-uk.webm",
             "posters": [
               "/images/works/sendpulse/call-story-uk-poster.webp"
             ],
             "title": "Ringostat і телефонія в CRM",
             "description": "Робив інтеграцію Ringostat у сервісі й оновлення CRM під телефонію: вхідний дзвінок, розмова, коментар після дзвінка та історія дзвінків у картці контакту."
+          },
+          {
+            "value": "/images/works/sendpulse/analytics-motion-uk.webm",
+            "posters": [
+              "/images/works/sendpulse/analytics-after-uk.webp"
+            ],
+            "title": "Аналітика курсів",
+            "description": "Спроєктував аналітику для курсів у SendPulse, якої раніше не було. Врахував усі наявні дані та відобразив головні метрики курсу. Пройшов понад 10 ітерацій і провів тестування, щоб дійти до фінального рішення."
           },
           {
             "value": "/images/works/sendpulse/partners-uk.webm",
@@ -220,6 +233,25 @@
             "description": "Спроєктував каталог партнерів, сторінку партнера й модальне вікно замовлення послуги: від перегляду виконавців до статусу «Очікує відповіді»."
           }
         ]
+      },
+      {
+        "slug": "serpstat",
+        "name": "Serpstat",
+        "url": "https://serpstat.com",
+        "period": "2016 → 2019",
+        "productType": "Платформа пошукової та AI-аналітики",
+        "role": "UI/UX Designer",
+        "icon": "/images/icons/serpstat.svg",
+        "description": "Приєднався до команди стартапу на етапі формування. Заклав основу дизайн-системи та підходу до розробки задач. Проєктував інструменти аналізу ключових слів, відстеження позицій, аудиту сайту та аналізу конкурентів.",
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/serpstat/projects-list-uk.webp",
+            "title": "Головна сторінка всіх проєктів",
+            "description": "Спроєктував комплексний флоу роботи з проєктами: додавання проєкту, сторінку детального аналізу, керування проєктами та їх групування. На головній сторінці зібрано зведення по кожному сайту: SEO- і PPC-ключові слова, зворотні посилання, аудит сайту та позиції."
+          }
+        ],
+        "achievements": []
       }
     ],
     "timeline": [
@@ -458,7 +490,20 @@
             "value": "/images/works/snov/n-li-flow.mp4",
             "title": "LinkedIn automation",
             "description": "Took part in building LinkedIn automation in partnership with the PM. Researched competitors and sales workflows and designed the whole flow from concept to final design: buying slots, connecting an account, safety limits, creating multichannel campaigns and statistics.",
-            "caseUrl": "/en/cases/snov"
+            "caseUrl": "/en/cases/snov",
+            "metrics": [
+              {
+                "label": "Trial to paid slot conversion",
+                "value": "20%",
+                "note": "of users who completed the 7-day trial"
+              },
+              {
+                "label": "Purchased additional slots",
+                "value": "15%",
+                "note": "of users who already had at least one paid slot"
+              }
+            ],
+            "metricsPeriod": "Measured over 3 months after launch"
           },
           {
             "value": "/images/works/snov/n-ui-flow-v3.mp4",
@@ -500,20 +545,20 @@
         "tools": "Figma, Adobe Illustrator",
         "imageRows": [
           {
-            "value": "/images/works/sendpulse/analytics-motion-en.webm",
-            "posters": [
-              "/images/works/sendpulse/analytics-after-en.webp"
-            ],
-            "title": "Course analytics",
-            "description": "I designed course analytics at SendPulse that the platform did not have before. I took all the available data into account and showed the main course metrics. It took more than 10 iterations and testing to reach the final solution."
-          },
-          {
             "value": "/images/works/sendpulse/call-story-en.webm",
             "posters": [
               "/images/works/sendpulse/call-story-en-poster.webp"
             ],
             "title": "Ringostat and telephony in the CRM",
             "description": "I worked on the Ringostat integration in the service and updated the CRM for telephony: an incoming call, the conversation, a comment after the call and the call history in the contact card."
+          },
+          {
+            "value": "/images/works/sendpulse/analytics-motion-en.webm",
+            "posters": [
+              "/images/works/sendpulse/analytics-after-en.webp"
+            ],
+            "title": "Course analytics",
+            "description": "I designed course analytics at SendPulse that the platform did not have before. I took all the available data into account and showed the main course metrics. It took more than 10 iterations and testing to reach the final solution."
           },
           {
             "value": "/images/works/sendpulse/partners-en.webm",
@@ -524,6 +569,25 @@
             "description": "Designed the partner catalog, the partner page and the service order modal: from browsing experts to the “Awaiting reply” status."
           }
         ]
+      },
+      {
+        "slug": "serpstat",
+        "name": "Serpstat",
+        "url": "https://serpstat.com",
+        "period": "2016 → 2019",
+        "productType": "Search & AI Intelligence Platform",
+        "role": "UI/UX Designer",
+        "icon": "/images/icons/serpstat.svg",
+        "description": "Joined the startup team at the formation stage. Laid the foundation for the design system and task development approach. Designed tools for keyword analysis, rank tracking, site audit, and competitor research.",
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/serpstat/projects-list.webp",
+            "title": "Main page of all projects",
+            "description": "Designed an end-to-end project workflow: adding a project, a detailed project analysis page, and project management and grouping. The main page brings together a summary for each site: SEO and PPC keywords, backlinks, site audit and rankings."
+          }
+        ],
+        "achievements": []
       }
     ],
     "timeline": [

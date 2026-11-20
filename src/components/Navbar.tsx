@@ -20,6 +20,8 @@ type NavbarProps = {
   aboutLabel?: string;
   /** @deprecated The pet project is part of the works list now; the menu item is gone. Kept so callers still compile. */
   showPetProjects?: boolean;
+  /** Social labels to hide (e.g. LinkedIn on the graph portfolio). */
+  hideSocials?: string[];
   variant?: "dark" | "light" | "case";
   hideOnScroll?: boolean;
   /** Hides the "Download CV" link in both the desktop bar and mobile dropdown. */
@@ -47,6 +49,7 @@ export default function Navbar({
   switchHref,
   homeLabel,
   showFunLink = true,
+  hideSocials,
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const hidden = useHideOnScroll(hideOnScroll) && !menuOpen;
@@ -111,6 +114,7 @@ export default function Navbar({
         {/* Right: lang switcher + contact + burger */}
         <div className="flex items-center gap-2 shrink-0">
           <SocialLinks
+            exclude={hideSocials}
             size={18}
             className="hidden lg:flex items-center gap-1 mr-2"
             linkClassName={`p-2 rounded-full ${textMuted} ${hoverText} ${hoverBg} transition-colors`}
@@ -206,6 +210,7 @@ export default function Navbar({
             {otherLabel}
           </Link>
           <SocialLinks
+            exclude={hideSocials}
             size={20}
             className="flex items-center gap-5 pt-3"
             linkClassName={`${textMuted} ${hoverText} transition-colors`}

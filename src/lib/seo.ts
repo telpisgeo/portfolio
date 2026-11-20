@@ -144,6 +144,8 @@ export function caseJsonLd(locale: Locale, path: string, eyebrow: string, title:
       inLanguage: CASES_TRANSLATED_EN ? locale : "uk",
       image: OG_IMAGE[locale],
       author: { "@id": `${SITE_URL}/#person` },
+      publisher: { "@id": `${SITE_URL}/#person` },
+      isPartOf: { "@id": `${SITE_URL}/#website` },
     },
     {
       "@context": "https://schema.org",

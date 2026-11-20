@@ -277,7 +277,7 @@ export function renderCaseBlock(block: Block, i: number) {
           <div className="max-w-[912px] mx-auto flex flex-col gap-6">
             <Caption text={block.sectionCaption} />
             <div className="rounded-2xl bg-primary px-4 md:px-7 lg:px-10 py-4 md:py-6 lg:py-8 flex flex-col gap-6">
-              <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">{block.text}</p>
+              {block.text && <p className="text-[17px] md:text-[22px] lg:text-[30px] leading-[1.3] text-foreground font-normal">{block.text}</p>}
               <ul className="flex flex-col gap-4">
                 {block.items.map((it, j) => {
                   // "Головне | дрібний текст"; "Головне |i| текст у підказці (i)"; "| текст" — лише примітка без маркера

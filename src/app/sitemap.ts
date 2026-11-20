@@ -37,13 +37,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : [{ url: `${BASE}/uk${path}` }],
   );
 
-  // Graph-design landing page — separate section, own "ua"/"en" segments.
-  const graph = (["ua", "en"] as const).map((locale) => ({
-    url: `${BASE}/graph/${locale}`,
-    alternates: {
-      languages: { uk: `${BASE}/graph/ua`, en: `${BASE}/graph/en`, "x-default": `${BASE}/graph/ua` },
-    },
-  }));
-
-  return [...home, ...cases, ...graph];
+  return [...home, ...cases];
 }
