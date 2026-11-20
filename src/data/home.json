@@ -233,6 +233,25 @@
             "description": "Спроєктував каталог партнерів, сторінку партнера й модальне вікно замовлення послуги: від перегляду виконавців до статусу «Очікує відповіді»."
           }
         ]
+      },
+      {
+        "slug": "serpstat",
+        "name": "Serpstat",
+        "url": "https://serpstat.com",
+        "period": "2016 → 2019",
+        "productType": "Платформа пошукової та AI-аналітики",
+        "role": "UI/UX Designer",
+        "icon": "/images/icons/serpstat.svg",
+        "description": "Приєднався до команди стартапу на етапі формування. Заклав основу дизайн-системи та підходу до розробки задач. Проєктував інструменти аналізу ключових слів, відстеження позицій, аудиту сайту та аналізу конкурентів.",
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/serpstat/projects-list-uk.webp",
+            "title": "Головна сторінка всіх проєктів",
+            "description": "Спроєктував комплексний флоу роботи з проєктами: додавання проєкту, сторінку детального аналізу, керування проєктами та їх групування. На головній сторінці зібрано зведення по кожному сайту: SEO- і PPC-ключові слова, зворотні посилання, аудит сайту та позиції."
+          }
+        ],
+        "achievements": []
       }
     ],
     "timeline": [
@@ -550,6 +569,25 @@
             "description": "Designed the partner catalog, the partner page and the service order modal: from browsing experts to the “Awaiting reply” status."
           }
         ]
+      },
+      {
+        "slug": "serpstat",
+        "name": "Serpstat",
+        "url": "https://serpstat.com",
+        "period": "2016 → 2019",
+        "productType": "Search & AI Intelligence Platform",
+        "role": "UI/UX Designer",
+        "icon": "/images/icons/serpstat.svg",
+        "description": "Joined the startup team at the formation stage. Laid the foundation for the design system and task development approach. Designed tools for keyword analysis, rank tracking, site audit, and competitor research.",
+        "tools": "",
+        "imageRows": [
+          {
+            "value": "/images/works/serpstat/projects-list.webp",
+            "title": "Main page of all projects",
+            "description": "Designed an end-to-end project workflow: adding a project, a detailed project analysis page, and project management and grouping. The main page brings together a summary for each site: SEO and PPC keywords, backlinks, site audit and rankings."
+          }
+        ],
+        "achievements": []
       }
     ],
     "timeline": [

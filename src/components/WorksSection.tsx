@@ -147,7 +147,7 @@ function ScreenScroller({
                 // eslint-disable-next-line @next/next/no-img-element -- natural width drives the horizontal rail
                 <img src={s.src} alt={s.title} loading="lazy" draggable={false} className="h-full w-auto max-w-none" />
               )}
-              {item.isPet && <span aria-hidden className="pointer-events-none absolute inset-0 rounded-xl border border-black/10" />}
+              <span aria-hidden className="pointer-events-none absolute inset-0 rounded-xl border border-black/10" />
               <span className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 text-foreground shadow flex items-center justify-center opacity-0 group-hover:opacity-100 max-sm:opacity-100 transition-opacity">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
