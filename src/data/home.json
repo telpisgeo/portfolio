@@ -246,9 +246,20 @@
         "tools": "",
         "imageRows": [
           {
-            "value": "/images/works/serpstat/projects-list-uk.webp",
-            "title": "Головна сторінка всіх проєктів",
+            "value": "/images/works/serpstat/add-project-uk.webm",
+            "posters": [
+              "/images/works/serpstat/add-project-uk-poster.webp"
+            ],
+            "title": "Додавання проєкту",
             "description": "Спроєктував комплексний флоу роботи з проєктами: додавання проєкту, сторінку детального аналізу, керування проєктами та їх групування. На головній сторінці зібрано зведення по кожному сайту: SEO- і PPC-ключові слова, зворотні посилання, аудит сайту та позиції."
+          },
+          {
+            "value": "/images/works/serpstat/summary-uk.webm",
+            "posters": [
+              "/images/works/serpstat/summary-uk-poster.webp"
+            ],
+            "title": "Сумарний звіт аналізу ключових слів",
+            "description": "Оновив сторінку сумарного звіту в новому стилі: метрики запиту (частотність, конкуренція в PPC, CPC, складність), ключові слова для SEO та PPC, пошукові підказки, конкуренти у видачі та в контексті, приклади оголошень."
           }
         ],
         "achievements": []
@@ -582,9 +593,20 @@
         "tools": "",
         "imageRows": [
           {
-            "value": "/images/works/serpstat/projects-list.webp",
-            "title": "Main page of all projects",
+            "value": "/images/works/serpstat/add-project-en.webm",
+            "posters": [
+              "/images/works/serpstat/add-project-en-poster.webp"
+            ],
+            "title": "Adding a project",
             "description": "Designed an end-to-end project workflow: adding a project, a detailed project analysis page, and project management and grouping. The main page brings together a summary for each site: SEO and PPC keywords, backlinks, site audit and rankings."
+          },
+          {
+            "value": "/images/works/serpstat/summary-en.webm",
+            "posters": [
+              "/images/works/serpstat/summary-en-poster.webp"
+            ],
+            "title": "Keyword analysis summary report",
+            "description": "Redesigned the summary report page in the new style: query metrics (search volume, PPC competition, CPC, difficulty), SEO and PPC keywords, search suggestions, competitors in search and in PPC, and ad examples."
           }
         ],
         "achievements": []
