@@ -260,6 +260,14 @@
             ],
             "title": "Сумарний звіт аналізу ключових слів",
             "description": "Оновив сторінку сумарного звіту в новому стилі: метрики запиту (частотність, конкуренція в PPC, CPC, складність), ключові слова для SEO та PPC, пошукові підказки, конкуренти у видачі та в контексті, приклади оголошень."
+          },
+          {
+            "value": "/images/works/serpstat/checklist-uk.webm",
+            "posters": [
+              "/images/works/serpstat/checklist-uk-poster.webp"
+            ],
+            "title": "SEO-чек-ліст проєкту",
+            "description": "Спроєктував сторінку чек-листа в новому стилі: SEO-завдання проєкту за напрямками, загальний прогрес у кільці та смужки по кожній категорії, які рухаються, коли відмічаєш виконаний пункт."
           }
         ],
         "achievements": []
@@ -607,6 +615,14 @@
             ],
             "title": "Keyword analysis summary report",
             "description": "Redesigned the summary report page in the new style: query metrics (search volume, PPC competition, CPC, difficulty), SEO and PPC keywords, search suggestions, competitors in search and in PPC, and ad examples."
+          },
+          {
+            "value": "/images/works/serpstat/checklist-en.webm",
+            "posters": [
+              "/images/works/serpstat/checklist-en-poster.webp"
+            ],
+            "title": "Project SEO check-list",
+            "description": "Designed the check-list page in the new style: a project's SEO tasks grouped by area, an overall progress ring and per-category bars that move as items are ticked off."
           }
         ],
         "achievements": []
