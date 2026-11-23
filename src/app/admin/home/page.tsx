@@ -322,7 +322,18 @@ export default function AdminHomePage() {
             return (
               <div key={index} className="border border-border rounded-2xl p-6">
                 <div className="flex items-center justify-between mb-5">
-                  <h2 className="text-base font-medium text-foreground">{company.name || "Нова компанія"}</h2>
+                  <h2 className="text-base font-medium text-foreground">
+                    {company.name || "Нова компанія"}
+                    {company.hidden && <span className="ml-2 text-xs font-normal text-muted-foreground">(сховано на головній)</span>}
+                  </h2>
+                  <label className="ml-auto mr-4 flex items-center gap-2 text-sm text-foreground cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={!company.hidden}
+                      onChange={(e) => updateCompany(index, { hidden: e.target.checked ? undefined : true })}
+                    />
+                    Показувати на головній
+                  </label>
                   <button onClick={() => removeCompany(index)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                     Видалити
                   </button>

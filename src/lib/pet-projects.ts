@@ -5,5 +5,5 @@ import type { HomeContent } from "@/lib/home-content";
 // has at least one project (an empty list in the admin hides it).
 export function hasPetProjects(locale: string): boolean {
   if (locale !== "uk" && locale !== "en") return false;
-  return ((homeJson as unknown as HomeContent)[locale].petProjects?.items.length ?? 0) > 0;
+  return ((homeJson as unknown as HomeContent)[locale].petProjects?.items.filter((p) => !p.hidden).length ?? 0) > 0;
 }

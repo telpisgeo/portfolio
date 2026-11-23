@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 
 export function GET() {
   const home = homeJson as unknown as HomeContent;
-  const companies = home.en.companies.filter((c) => !c.caseUrl || !isCaseDraft(c.caseUrl.split("/").pop() ?? ""));
+  const companies = home.en.companies.filter((c) => !c.hidden && (!c.caseUrl || !isCaseDraft(c.caseUrl.split("/").pop() ?? "")));
 
   const lines: string[] = [
     `# ${SITE_NAME.en} (${SITE_NAME.uk})`,

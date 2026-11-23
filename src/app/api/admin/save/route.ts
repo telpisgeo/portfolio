@@ -87,6 +87,7 @@ function validateCompany(company: unknown): string | null {
   if (!isString(c.description) || c.description.length > 3000) return "Опис занадто довгий";
   if (c.caseUrl !== undefined && (!isString(c.caseUrl) || !CASE_URL_RE.test(c.caseUrl))) return `Невірне посилання на кейс: ${c.caseUrl}`;
   if (c.casePending !== undefined && typeof c.casePending !== "boolean") return "casePending має бути булевим";
+  if (c.hidden !== undefined && typeof c.hidden !== "boolean") return "hidden має бути булевим";
   if (c.productType !== undefined && !isString(c.productType)) return "Невірний тип продукту";
   if (c.role !== undefined && !isString(c.role)) return "Невірна роль";
   if (c.tools !== undefined && !isString(c.tools)) return "Невірні інструменти";
@@ -143,6 +144,7 @@ function validatePetProjects(section: unknown): string | null {
     seen.add(p.slug);
     if (!isString(p.name) || p.name.length > 200) return "Невірна назва Pet-проєкту";
     if (!isString(p.description) || p.description.length > 3000) return "Невірний опис Pet-проєкту";
+    if (p.hidden !== undefined && typeof p.hidden !== "boolean") return "hidden має бути булевим";
     for (const k of ["url", "productType", "period", "role", "tools", "note", "imageTitle", "imageDescription"] as const) {
       if (p[k] !== undefined && (!isString(p[k]) || (p[k] as string).length > 500)) return `Невірне поле ${k} Pet-проєкту`;
     }

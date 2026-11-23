@@ -25,6 +25,8 @@ export type HomeCompany = {
   url: string;
   caseUrl?: string;
   casePending?: boolean;
+  /** true → hidden from the home page in this locale (kept in the admin). */
+  hidden?: boolean;
   period: string;
   productType?: string;
   role?: string;
@@ -64,6 +66,8 @@ export type PetProject = {
   role?: string;
   tools?: string;
   description: string;
+  /** true → hidden from the home page in this locale (kept in the admin). */
+  hidden?: boolean;
   note?: string;
   image?: string;
   /** Caption and drawer text for the single screen. */

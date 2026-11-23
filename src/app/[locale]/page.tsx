@@ -59,7 +59,7 @@ export default async function LocalePage({
   const otherLabel = locale === "uk" ? "EN" : "UA";
 
   const home = (homeJson as unknown as HomeContent)[locale as "uk" | "en"];
-  const companies = home.companies;
+  const companies = home.companies.filter((c) => !c.hidden);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -98,7 +98,7 @@ export default async function LocalePage({
           <WorksSection
             items={[
               ...companies.map((c) => companyToWorkItem(c, locale)),
-              ...(home.petProjects?.items ?? []).map((p) => petToWorkItem(p, locale)),
+              ...(home.petProjects?.items ?? []).filter((p) => !p.hidden).map((p) => petToWorkItem(p, locale)),
             ].map((it) => ({
               ...it,
               // Cases hidden in the admin must not be linked from the home page.

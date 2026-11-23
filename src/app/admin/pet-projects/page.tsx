@@ -141,7 +141,18 @@ export default function AdminPetProjectsPage() {
             {petProjects.items.map((p, i) => (
               <div key={i} className="border border-border rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs uppercase tracking-widest text-muted-foreground">{p.name || `Проєкт ${i + 1}`}</span>
+                  <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                    {p.name || `Проєкт ${i + 1}`}
+                    {p.hidden && " (сховано на головній)"}
+                  </span>
+                  <label className="ml-auto mr-4 flex items-center gap-2 text-sm text-foreground cursor-pointer select-none normal-case tracking-normal">
+                    <input
+                      type="checkbox"
+                      checked={!p.hidden}
+                      onChange={(e) => updatePetProject(i, { hidden: e.target.checked ? undefined : true })}
+                    />
+                    Показувати на головній
+                  </label>
                   <button onClick={() => removePetProject(i)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                     Видалити
                   </button>
