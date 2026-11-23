@@ -692,6 +692,7 @@
       "items": [
         {
           "slug": "vgolos",
+          "hidden": true,
           "name": "Vgolos",
           "url": "https://www.vgolos.fun",
           "period": "2026",
