@@ -50,7 +50,8 @@
               "/images/works/agroprolisok/slide-18-poster.webp"
             ]
           }
-        ]
+        ],
+        "hidden": true
       },
       {
         "slug": "eschool",
@@ -276,7 +277,8 @@
               "/images/works/agroprolisok/slide-18-poster.webp"
             ]
           }
-        ]
+        ],
+        "hidden": true
       },
       {
         "slug": "eschool",
