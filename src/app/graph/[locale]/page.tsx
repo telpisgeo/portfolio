@@ -69,7 +69,7 @@ export default async function GraphLocalePage({
   const switchHref = `/graph/${otherUrlLocale}`;
 
   const graph = (graphJson as unknown as GraphContent)[locale];
-  const companies = graph.companies;
+  const companies = graph.companies.filter((c) => !c.hidden);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
