@@ -18,13 +18,13 @@ export const SITE_NAME: Record<Locale, string> = {
 
 /** Home-page title, also reused for the graph-design section name. */
 export const HOME_TITLE: Record<Locale, string> = {
-  uk: "Георгій Тельпіс. Продуктовий дизайнер.",
-  en: "Georgiy Telpis. Product Designer.",
+  uk: "Георгій Тельпіс. Дизайнер Product та UI/UX для EdTech і MarTech.",
+  en: "Georgiy Telpis. Product and UI/UX Designer for EdTech and MarTech.",
 };
 
 export const HOME_DESCRIPTION: Record<Locale, string> = {
-  uk: "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу.",
-  en: "Experience launching complex products in EdTech and MarTech domains from idea to release.",
+  uk: "Дизайнер Product та UI/UX з досвідом запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу. Кейси, інтерфейси та дизайн-системи.",
+  en: "Product and UI/UX designer with experience launching complex products in EdTech and MarTech domains from idea to release. Case studies, interfaces and design systems.",
 };
 
 const OG_LOCALE: Record<Locale, string> = { uk: "uk_UA", en: "en_US" };
@@ -107,7 +107,7 @@ export function personJsonLd(locale: Locale, url = `${SITE_URL}/${locale}`) {
     alternateName: isUk ? "Georgiy Telpis" : "Георгій Тельпіс",
     url,
     image: `${SITE_URL}/images/hero-photo-face2.webp`,
-    jobTitle: isUk ? "Продуктовий дизайнер" : "Product Designer",
+    jobTitle: isUk ? "Дизайнер" : "Designer",
     description: HOME_DESCRIPTION[locale],
     knowsAbout: ["Product design", "UX/UI design", "B2B SaaS", "EdTech", "MarTech", "Design systems"],
     knowsLanguage: ["uk", "en"],

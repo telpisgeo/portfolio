@@ -8,8 +8,8 @@ const greetingsEn = ["Hello", "Hola", "Bonjour", "Ciao", "Hallo", "Olá", "Sveik
 // Defaults match the original hardcoded copy — used whenever a page doesn't
 // pass its own text1/text2 (e.g. the main homepage).
 const DEFAULT_TEXT1: Record<"uk" | "en", string> = {
-  uk: "я Георгій, продуктовий дизайнер з досвідом запуску продуктів для освітніх та маркетингових мультиканальних платформ.",
-  en: "I'm Georgiy, a product designer with experience launching products for educational and multichannel marketing platforms.",
+  uk: "я Георгій, дизайнер з досвідом запуску продуктів для освітніх та маркетингових мультиканальних платформ.",
+  en: "I'm Georgiy, a designer with experience launching products for educational and multichannel marketing platforms.",
 };
 // No default second paragraph on the main homepage; pages may still pass their own text2.
 const DEFAULT_TEXT2: Record<"uk" | "en", string> = { uk: "", en: "" };

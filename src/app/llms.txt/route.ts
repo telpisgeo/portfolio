@@ -13,7 +13,7 @@ export function GET() {
   const lines: string[] = [
     `# ${SITE_NAME.en} (${SITE_NAME.uk})`,
     "",
-    `> Product designer portfolio. ${HOME_DESCRIPTION.en} Content is available in Ukrainian (/uk) and English (/en).`,
+    `> Designer portfolio (Product, UI/UX). ${HOME_DESCRIPTION.en} Content is available in Ukrainian (/uk) and English (/en).`,
     "",
     "## Main pages",
     "",

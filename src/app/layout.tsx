@@ -16,8 +16,8 @@ const googleSans = Google_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Георгій Тельпіс. Продуктовий дизайнер.",
-  description: "Досвід запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу.",
+  title: "Георгій Тельпіс. Дизайнер Product та UI/UX для EdTech і MarTech.",
+  description: "Дизайнер Product та UI/UX з досвідом запуску складних продуктів в доменах EdTech та MarTech від ідеї до релізу. Кейси, інтерфейси та дизайн-системи.",
   metadataBase: new URL(SITE_URL),
   applicationName: "Георгій Тельпіс",
   // No author URL: it renders <link rel="author"> to the main site on every page, including /graph.
