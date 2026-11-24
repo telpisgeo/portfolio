@@ -187,7 +187,7 @@ export default function AdminAdsPage() {
           <a href={`/ads/${locale === "uk" ? "ua" : "en"}`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground">
             /ads/{locale === "uk" ? "ua" : "en"}
           </a>
-          . Не індексується, без посилань на основний сайт і соцмережі. Проєкт додається в обидві мови одразу, тексти й «Показувати на сторінці» редагуються окремо для UA та EN.
+          . Не індексується, без соцмереж. Проєкт додається в обидві мови одразу, тексти й «Показувати на сторінці» редагуються окремо для UA та EN.
         </p>
 
         {saveStatus === "ok" && (
@@ -201,26 +201,19 @@ export default function AdminAdsPage() {
           </div>
         )}
 
-        {/* Header block */}
+        {/* Hero */}
         <div className="border border-border rounded-2xl p-6 mb-10 flex flex-col gap-4">
-          <h2 className="text-base font-medium text-foreground">Заголовок сторінки</h2>
+          <h2 className="text-base font-medium text-foreground">Hero-блок</h2>
+          <p className="text-sm text-muted-foreground">
+            Привітання (&quot;Привіт&quot;/&quot;Hello&quot;/...) міняється випадково і не редагується — тут лише текст після нього.
+          </p>
           <div>
-            <label className={labelClass}>Заголовок</label>
-            <input value={loc.title} onChange={(e) => updateLocale({ title: e.target.value })} className={inputClass} />
+            <label className={labelClass}>Перший рядок (після привітання)</label>
+            <textarea value={loc.hero.text1} onChange={(e) => updateLocale({ hero: { ...loc.hero, text1: e.target.value } })} rows={2} className={`${inputClass} resize-none leading-relaxed`} />
           </div>
           <div>
-            <label className={labelClass}>Вступ</label>
-            <textarea value={loc.intro} onChange={(e) => updateLocale({ intro: e.target.value })} rows={2} className={`${inputClass} resize-none leading-relaxed`} />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className={labelClass}>Email для зв&apos;язку</label>
-              <input value={loc.contactEmail} onChange={(e) => updateLocale({ contactEmail: e.target.value })} className={inputClass} />
-            </div>
-            <div>
-              <label className={labelClass}>Текст посилання</label>
-              <input value={loc.contactLabel} onChange={(e) => updateLocale({ contactLabel: e.target.value })} className={inputClass} />
-            </div>
+            <label className={labelClass}>Другий рядок</label>
+            <textarea value={loc.hero.text2} onChange={(e) => updateLocale({ hero: { ...loc.hero, text2: e.target.value } })} rows={2} className={`${inputClass} resize-none leading-relaxed`} />
           </div>
           <div>
             <label className={labelClass}>Заголовок розділу робіт (пусто — не показується)</label>

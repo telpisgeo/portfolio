@@ -246,10 +246,9 @@ function validateAdsContent(content: unknown): string | null {
   for (const locale of ["uk", "en"]) {
     const loc = c[locale] as Record<string, unknown> | undefined;
     if (!loc) return `Немає локалі ${locale}`;
-    for (const [k, max] of [["title", 200], ["intro", 1000], ["worksTitle", 200], ["contactLabel", 100]] as const) {
-      if (!isString(loc[k]) || (loc[k] as string).length > max) return `Невірне поле ${k} для ${locale}`;
-    }
-    if (!isString(loc.contactEmail) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loc.contactEmail)) return `Невірний email для ${locale}`;
+    const hero = loc.hero as Record<string, unknown> | undefined;
+    if (!hero || !isString(hero.text1) || !isString(hero.text2) || hero.text1.length > 500 || hero.text2.length > 500) return `Невірний "hero" для ${locale}`;
+    if (!isString(loc.worksTitle) || loc.worksTitle.length > 200) return `Невірний заголовок розділу робіт для ${locale}`;
     if (!Array.isArray(loc.projects)) return `Невірні projects для ${locale}`;
     const seen = new Set<string>();
     for (const project of loc.projects) {

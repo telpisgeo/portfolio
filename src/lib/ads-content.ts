@@ -17,12 +17,9 @@ export type AdsProject = {
 };
 
 export type AdsLocaleContent = {
-  title: string;
-  intro: string;
+  /** Text after the (non-editable, randomized) greeting, same as on /graph. */
+  hero: { text1: string; text2: string };
   worksTitle: string;
-  /** Shown in the header as a mailto link. */
-  contactEmail: string;
-  contactLabel: string;
   projects: AdsProject[];
 };
 

@@ -1,18 +1,18 @@
 {
   "uk": {
-    "title": "Георгій Тельпіс. Рекламні креативи.",
-    "intro": "Статичні креативи, моушн і відео для реклами та соцмереж.",
+    "hero": {
+      "text1": "я Георгій, дизайнер. Тут мої рекламні креативи: статика, моушн і відео для реклами та соцмереж.",
+      "text2": ""
+    },
     "worksTitle": "Роботи",
-    "contactEmail": "gtelpis@gmail.com",
-    "contactLabel": "Написати",
     "projects": []
   },
   "en": {
-    "title": "Georgiy Telpis. Ad creatives.",
-    "intro": "Static creatives, motion and video for ads and social media.",
+    "hero": {
+      "text1": "I'm Georgiy, a designer. Here are my ad creatives: static, motion and video for ads and social media.",
+      "text2": ""
+    },
     "worksTitle": "Work",
-    "contactEmail": "gtelpis@gmail.com",
-    "contactLabel": "Get in touch",
     "projects": []
   }
 }
