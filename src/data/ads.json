@@ -1,0 +1,18 @@
+{
+  "uk": {
+    "hero": {
+      "text1": "я Георгій, дизайнер. Тут мої рекламні креативи: статика, моушн і відео для реклами та соцмереж.",
+      "text2": ""
+    },
+    "worksTitle": "Роботи",
+    "projects": []
+  },
+  "en": {
+    "hero": {
+      "text1": "I'm Georgiy, a designer. Here are my ad creatives: static, motion and video for ads and social media.",
+      "text2": ""
+    },
+    "worksTitle": "Work",
+    "projects": []
+  }
+}

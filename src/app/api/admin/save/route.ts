@@ -240,6 +240,37 @@ function validateGraphContent(content: unknown): string | null {
   return null;
 }
 
+function validateAdsContent(content: unknown): string | null {
+  if (!content || typeof content !== "object") return "Невірна структура ads.json";
+  const c = content as Record<string, unknown>;
+  for (const locale of ["uk", "en"]) {
+    const loc = c[locale] as Record<string, unknown> | undefined;
+    if (!loc) return `Немає локалі ${locale}`;
+    const hero = loc.hero as Record<string, unknown> | undefined;
+    if (!hero || !isString(hero.text1) || !isString(hero.text2) || hero.text1.length > 500 || hero.text2.length > 500) return `Невірний "hero" для ${locale}`;
+    if (!isString(loc.worksTitle) || loc.worksTitle.length > 200) return `Невірний заголовок розділу робіт для ${locale}`;
+    if (!Array.isArray(loc.projects)) return `Невірні projects для ${locale}`;
+    const seen = new Set<string>();
+    for (const project of loc.projects) {
+      if (!project || typeof project !== "object") return "Невірний проєкт";
+      const p = project as Record<string, unknown>;
+      if (!isString(p.slug) || !SLUG_RE.test(p.slug)) return `Невірний slug: ${p.slug}`;
+      if (seen.has(p.slug)) return `Дублікат slug: ${p.slug}`;
+      seen.add(p.slug);
+      if (!isString(p.name) || p.name.length > 200) return "Невірна назва проєкту";
+      if (!isString(p.description) || p.description.length > 3000) return "Невірний опис проєкту";
+      if (p.hidden !== undefined && typeof p.hidden !== "boolean") return "hidden має бути булевим";
+      for (const k of ["kind", "period"] as const) {
+        if (p[k] !== undefined && (!isString(p[k]) || (p[k] as string).length > 100)) return `Невірне поле ${k} проєкту`;
+      }
+      if (!Array.isArray(p.imageRows)) return "imageRows має бути масивом";
+      const rowsErr = validateImageRows(p.imageRows);
+      if (rowsErr) return rowsErr;
+    }
+  }
+  return null;
+}
+
 function validateFunSlide(slide: unknown): string | null {
   if (!slide || typeof slide !== "object") return "Невірна варіація";
   const o = slide as Record<string, unknown>;
@@ -430,6 +461,7 @@ const FILE_VALIDATORS: Record<string, (data: unknown) => string | null> = {
   "src/data/home.json": validateHomeContent,
   "src/data/graph.json": validateGraphContent,
   "src/data/fun.json": validateFunContent,
+  "src/data/ads.json": validateAdsContent,
 };
 
 function findValidator(path: string): ((data: unknown) => string | null) | null {

@@ -56,6 +56,14 @@ export default function AdminDashboard() {
           </Link>
 
           <Link
+            href="/admin/ads"
+            className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
+          >
+            <h2 className="text-base font-medium text-foreground mb-1">Рекламне портфоліо</h2>
+            <p className="text-sm text-muted-foreground">Креативи, моушн і відео для приватної сторінки /ads</p>
+          </Link>
+
+          <Link
             href="/admin/fun"
             className="border border-border rounded-2xl p-6 hover:border-foreground transition-colors"
           >
