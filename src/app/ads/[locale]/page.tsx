@@ -35,13 +35,19 @@ export async function generateMetadata({
   const { locale } = await params;
   if (locale !== "ua" && locale !== "en") return {};
   const isUa = locale === "ua";
+  const title = isUa ? "Георгій Тельпіс. Рекламні креативи." : "Georgiy Telpis. Ad creatives.";
+  const description = isUa
+    ? "Рекламні креативи: статика, моушн і відео для реклами та соцмереж."
+    : "Ad creatives: static, motion and video for ads and social media.";
   return {
-    title: isUa ? "Георгій Тельпіс. Рекламні креативи." : "Georgiy Telpis. Ad creatives.",
-    description: isUa
-      ? "Рекламні креативи: статика, моушн і відео для реклами та соцмереж."
-      : "Ad creatives: static, motion and video for ads and social media.",
-    // Private page: not indexed, not followed, no social preview.
+    title,
+    description,
+    // Private page: not indexed, not followed.
     robots: { index: false, follow: false, nocache: true },
+    // Replaces the layout's defaults on purpose: the inherited og:image/site_name
+    // are the product-design card of the main site, which this page must not show.
+    openGraph: { title, description, type: "website" },
+    twitter: { card: "summary", title, description },
   };
 }
 
