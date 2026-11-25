@@ -68,6 +68,15 @@ function ArrowIcon({ className }: { className?: string }) {
 // Style of the "Дивитись кейс" link in a work header.
 const HEADER_LINK =
   "inline-flex items-center gap-1.5 self-start text-[15px] font-bold text-[#515151] hover:text-primary transition-colors";
+// Outlined button variant, used on works that show a results table.
+const HEADER_BUTTON =
+  "inline-flex items-center gap-2 self-start rounded-full border border-[#515151]/40 px-5 py-2.5 text-[15px] font-bold text-[#515151] hover:border-foreground hover:text-foreground transition-colors";
+
+function workMetrics(item: WorkItem) {
+  const ms = item.screens.find((sc) => sc.metrics?.length);
+  const list = (ms?.metrics ?? []).filter((m) => m.value);
+  return { list, period: ms?.metricsPeriod };
+}
 
 function CompanyIcon({ item, size = 36 }: { item: WorkItem; size?: number }) {
   return item.icon ? (
@@ -447,14 +456,17 @@ export default function WorksSection({ items, locale, showTimeline = false }: Pr
       )}
 
       <div className="flex flex-col">
-        {items.map((item, index) => (
+        {items.map((item, index) => {
+          const { list: metricList, period: metricPeriod } = workMetrics(item);
+          const hasMetrics = metricList.length > 0;
+          return (
           <section
             key={item.slug}
             id={`work-${item.slug}`}
             className={`w-full scroll-mt-32 ${index === 0 ? "" : "mt-20 border-t border-border"}`}
           >
             <div className={`max-w-[1440px] w-full mx-auto px-6 sm:px-12 ${index === 0 ? "pt-16" : "pt-20"}`}>
-            <div className="grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-6 md:gap-16 mb-10">
+            <div className={`grid grid-cols-1 ${hasMetrics ? "md:grid-cols-2" : "md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"} gap-6 md:gap-16 mb-10`}>
               <div className="flex flex-col items-start gap-3 text-[#515151]">
                 <CompanyIcon item={item} />
                 <div className="flex flex-col min-w-0">
@@ -482,12 +494,19 @@ export default function WorksSection({ items, locale, showTimeline = false }: Pr
                   <p className="text-[15px] leading-[31px]">
                     {[item.role, item.period?.replace("→", "—")].filter(Boolean).join(" · ")}
                   </p>
+                  {hasMetrics && item.description && <p className="mt-3 text-xl leading-relaxed text-foreground/80">{item.description}</p>}
+                  {hasMetrics && item.caseUrl && (
+                    <Link href={item.caseUrl} className={`${HEADER_BUTTON} mt-5`}>
+                      {uk ? "Дивитись кейс" : "View case"}
+                      <ArrowIcon className="rotate-45" />
+                    </Link>
+                  )}
                 </div>
               </div>
 
               {/* md+: start level with the company name (icon 36 + gap 12), like chrsl.net */}
               <div className="flex flex-col gap-5 md:pt-12">
-                <p className="text-xl text-foreground/80 leading-relaxed">{item.description}</p>
+                {!hasMetrics && <p className="text-xl text-foreground/80 leading-relaxed">{item.description}</p>}
                 {item.achievements && item.achievements.length > 0 && (
                   <ul className="flex flex-col gap-2">
                     {item.achievements.map((a, i) => (
@@ -498,11 +517,27 @@ export default function WorksSection({ items, locale, showTimeline = false }: Pr
                     ))}
                   </ul>
                 )}
+                {hasMetrics && (
+                    <div className="mt-1 flex flex-col gap-3">
+                      <ul className="flex flex-col border-b border-foreground/15">
+                        {metricList.map((m) => (
+                          <li key={m.label} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-6 border-t border-foreground/15 py-4">
+                            <span className="flex flex-col">
+                              <span className="text-base leading-snug text-foreground">{m.label}</span>
+                              {m.note && <span className="mt-1 text-sm leading-snug text-foreground/55">{m.note}</span>}
+                            </span>
+                            <span className="text-3xl leading-none text-foreground text-right">{m.value}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {metricPeriod && <p className="text-xs text-muted-foreground">{metricPeriod}</p>}
+                    </div>
+                )}
                 {item.note && <p className="text-sm text-muted-foreground">{item.note}</p>}
                 {item.casePending && (
                   <p className="text-sm text-muted-foreground">{uk ? "Кейс готується до публікації" : "Case coming soon"}</p>
                 )}
-                {item.caseUrl && (
+                {!hasMetrics && item.caseUrl && (
                   <Link href={item.caseUrl} className={HEADER_LINK}>
                     {uk ? "Дивитись кейс" : "View case"}
                     <ArrowIcon className="rotate-45" />
@@ -517,7 +552,8 @@ export default function WorksSection({ items, locale, showTimeline = false }: Pr
               <ScreenScroller item={item} onOpen={(screen) => setOpen({ item: index, screen })} />
             )}
           </section>
-        ))}
+          );
+        })}
       </div>
 
       {open && (
