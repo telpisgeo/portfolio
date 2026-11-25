@@ -268,6 +268,14 @@
             ],
             "title": "SEO-чек-ліст проєкту",
             "description": "Спроєктував сторінку чек-листа в новому стилі: SEO-завдання проєкту за напрямками, загальний прогрес у кільці та смужки по кожній категорії, які рухаються, коли відмічаєш виконаний пункт."
+          },
+          {
+            "value": "/images/works/serpstat/audit-uk.webm",
+            "posters": [
+              "/images/works/serpstat/audit-uk-poster.webp"
+            ],
+            "title": "Сумарний звіт аудиту сайту",
+            "description": "Спроєктував сумарний звіт аудиту сайту: статус і лог краулінгу, оцінка SDO та кількість помилок за пріоритетами, графіки розподілу (коди відповідей, довжина Title, Description і Body, індексація, канонікалізація) і таблиця всіх категорій помилок із розгортанням. Запуск аудиту оживляє лог, показники й графіки."
           }
         ],
         "achievements": []
@@ -623,6 +631,14 @@
             ],
             "title": "Project SEO check-list",
             "description": "Designed the check-list page in the new style: a project's SEO tasks grouped by area, an overall progress ring and per-category bars that move as items are ticked off."
+          },
+          {
+            "value": "/images/works/serpstat/audit-en.webm",
+            "posters": [
+              "/images/works/serpstat/audit-en-poster.webp"
+            ],
+            "title": "Site audit summary report",
+            "description": "Designed the site audit summary report: crawl status and log, the SDO score and the number of issues by priority, distribution charts (response codes, Title, Description and Body length, indexing, canonicalization) and a table of all issue categories that expands. Starting an audit animates the log, the metrics and the charts."
           }
         ],
         "achievements": []
